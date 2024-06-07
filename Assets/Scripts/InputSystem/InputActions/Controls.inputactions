@@ -15,44 +15,33 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Fire",
+                    "name": "Barrier",
                     "type": "Button",
                     "id": "d4c1cdb0-32be-47c3-89c9-778776e4cded",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Aim",
-                    "type": "Value",
-                    "id": "37955d81-d44a-4b77-827a-18c695e496ee",
-                    "expectedControlType": "Vector2",
+                    "name": "Dash",
+                    "type": "Button",
+                    "id": "dc85e87c-b22c-4a10-9579-4dbd1e33710a",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "6efa539b-4448-4d44-9d21-d4d79ca717bc",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/l",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Fire",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "10f6da3d-3791-4d33-b8af-f18d205d00f5",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Fire",
+                    "action": "Barrier",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -113,12 +102,12 @@
                 },
                 {
                     "name": "",
-                    "id": "1084710d-4c8b-47c8-a31c-2ab97c416cc5",
-                    "path": "<Mouse>/position",
+                    "id": "670907f2-a79d-43fc-b355-8faf8ed1598d",
+                    "path": "<Keyboard>/p",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Aim",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -143,8 +132,8 @@
             ]
         },
         {
-            "name": "Gampad",
-            "bindingGroup": "Gampad",
+            "name": "Gamepad",
+            "bindingGroup": "Gamepad",
             "devices": [
                 {
                     "devicePath": "<Gamepad>",

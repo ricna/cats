@@ -15,9 +15,12 @@ GameObject:
   - component: {fileID: 6407681758990779862}
   - component: {fileID: 276870807812051063}
   - component: {fileID: -5375956426882729271}
+  - component: {fileID: -7644846174890095568}
+  - component: {fileID: 6250484213371724665}
   - component: {fileID: 7109341369543300037}
   - component: {fileID: 6967556572343187335}
   - component: {fileID: 5024310094305606197}
+  - component: {fileID: -5177556667852182973}
   m_Layer: 0
   m_Name: Cat
   m_TagString: Untagged
@@ -233,6 +236,32 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!114 &-7644846174890095568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846332329567583967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d0727d5ae3244e3b569694d3912374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TransitionStateInfoList: []
+  m_Animator: {fileID: 2160832692526638247}
+--- !u!114 &6250484213371724665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846332329567583967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80d7c879794dfda4687da0e400131852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7109341369543300037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,7 +288,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5afc169404c6644c97a8b2340ae7133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cat: {fileID: 0}
   _inputReader: {fileID: 11400000, guid: 957eac0e969caf64caedbcddd7a11d3b, type: 2}
   _transform: {fileID: 3113102540206626565}
   _rb: {fileID: 6407681758990779862}
@@ -272,6 +300,8 @@ MonoBehaviour:
   _catSide: 0
   _lastCatSide: 0
   _isMoving: 0
+  _prefabBarrier: {fileID: 6132515797593101152, guid: b723e7fc5e01d484ca29095d19e1e4a3, type: 3}
+  _spawnBarrier: {x: 0, y: 0}
 --- !u!114 &5024310094305606197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,3 +319,19 @@ MonoBehaviour:
     m_InternalValue: 0
   <IsDead>k__BackingField:
     m_InternalValue: 0
+--- !u!114 &-5177556667852182973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846332329567583967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 544161b719e50254bac2edb952545422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputReader: {fileID: 11400000, guid: 957eac0e969caf64caedbcddd7a11d3b, type: 2}
+  _motionController: {fileID: 6967556572343187335}
+  _cooldownDash: 3
+  _cooldownBarrier: 4

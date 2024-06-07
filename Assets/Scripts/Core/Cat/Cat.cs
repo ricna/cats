@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -6,8 +8,8 @@ namespace Unrez
 {
     public class Cat : NetworkBehaviour
     {
-        private HealthController healthController;
-        private MotionController motionController;
+        private HealthController _healthController;
+        private MotionController _motionController;
 
         [Header("References")]
         [SerializeField]
@@ -15,13 +17,13 @@ namespace Unrez
         [SerializeField]
         private CameraController cameraController;
 
-        private Color[] _playerColorIDX = { Color.white, Color.red, Color.green, Color.yellow, Color.cyan, Color.magenta };
+        private Color[] _playerColorIDX = { Color.white, Color.gray, Color.cyan, Color.yellow, Color.blue, Color.magenta };
         private Color _myColor;
 
         private void Awake()
         {
-            healthController = GetComponent<HealthController>();
-            motionController = GetComponent<MotionController>();
+            _healthController = GetComponent<HealthController>();
+            _motionController = GetComponent<MotionController>();
         }
 
         public override void OnNetworkSpawn()
@@ -40,12 +42,35 @@ namespace Unrez
 
         public void TakeDamage(int damage)
         {
-            healthController.TakeDamage(damage);
+            _healthController.TakeDamage(damage);
         }
 
         public Camera GetCamera()
         {
             return cameraController.GetCamera();
+        }
+
+        public void Dash()
+        {
+            spriteRenderBody.color = Color.red;
+            _motionController.ApplyDash();
+        }
+        private IEnumerator Dashing()
+        {
+            while (_motionController.IsDashing())
+            {
+                yield return null;
+            }
+            spriteRenderBody.color = _myColor;
+        }
+        public bool IsDashing()
+        {
+            return _motionController.IsDashing();
+        }
+
+        public void CreateBarrier()
+        {
+            _motionController.CreateBarrier();
         }
     }
 }

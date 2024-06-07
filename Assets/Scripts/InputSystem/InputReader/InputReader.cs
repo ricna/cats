@@ -9,12 +9,11 @@ namespace Unrez
     public class InputReader : ScriptableObject, IPlayerActions
     {
         private Controls controls;
-        private Vector2 _lastMousePosition = Vector2.positiveInfinity;
 
         public event Action<Vector2> OnMoveEvent;
         public event Action<Vector2> OnAimEvent;
-        public event Action<bool> OnFireEvent;
-        
+        public event Action OnBarrierEvent;
+        public event Action OnDashEvent;
 
         private void OnEnable()
         {
@@ -32,27 +31,19 @@ namespace Unrez
             OnMoveEvent?.Invoke(context.ReadValue<Vector2>());
         }
 
-        public void OnFire(InputAction.CallbackContext context)
+        public void OnBarrier(InputAction.CallbackContext context)
         {
             if (context.performed)
             {
-                OnFireEvent?.Invoke(true);
-            }
-            else
-            {
-                OnFireEvent?.Invoke(false);
+                OnBarrierEvent?.Invoke();
             }
         }
 
-        public void OnAim(InputAction.CallbackContext context)
+        public void OnDash(InputAction.CallbackContext context)
         {
             if (context.performed)
             {
-                if (_lastMousePosition != context.ReadValue<Vector2>())
-                {
-                    _lastMousePosition = context.ReadValue<Vector2>();
-                    OnAimEvent?.Invoke(_lastMousePosition);
-                }
+                OnDashEvent?.Invoke();
             }
         }
     }
