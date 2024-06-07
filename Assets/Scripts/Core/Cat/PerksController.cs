@@ -20,6 +20,7 @@ namespace Unrez
 
         public override void OnNetworkSpawn()
         {
+            base.OnNetworkSpawn();
             if (!IsOwner)
             {
                 return;
@@ -28,6 +29,14 @@ namespace Unrez
             _inputReader.OnDashEvent += OnDashHandler;
             _inputReader.OnBarrierEvent += OnBarrierHandler;
         }
+
+        public override void OnNetworkDespawn()
+        {
+            base.OnNetworkDespawn();
+            _inputReader.OnDashEvent -= OnDashHandler;
+            _inputReader.OnBarrierEvent -= OnBarrierHandler;
+        }
+
         private void OnDashHandler()
         {
             _cat.Dash();

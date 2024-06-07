@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Runtime.CompilerServices;
-using System.Threading;
+﻿using System.Collections;
 using Unity.Netcode;
-using Unity.Netcode.Components;
 using UnityEngine;
 
 namespace Unrez
 {
+    [RequireComponent(typeof(Cat))]
     public class MotionController : NetworkBehaviour
     {
+        private Cat _cat;
+
         [Header("References")]
         [SerializeField]
         private InputReader _inputReader;
@@ -46,23 +45,30 @@ namespace Unrez
         private bool _isMovingVertical = false;
         private bool _isMovingHorizontal = false;
 
+        private void Awake()
+        {
+            _cat = GetComponent<Cat>();
+        }
+
         public override void OnNetworkSpawn()
         {
+            base.OnNetworkSpawn();
             if (!IsOwner)
             {
                 return;
             }
+            _cat = GetComponent<Cat>();
             _inputReader.OnMoveEvent += OnMoveHandler;
         }
 
         public override void OnNetworkDespawn()
         {
+            base.OnNetworkDespawn();
             if (!IsOwner)
             {
                 return;
             }
             _inputReader.OnMoveEvent -= OnMoveHandler;
-
         }
 
         private void OnMoveHandler(Vector2 movementInput)
@@ -194,8 +200,10 @@ namespace Unrez
                         break;
                 }
             }
+            _rb.drag = 0;
             _rb.AddForce(_currentDirection * _dashForce, ForceMode2D.Impulse);
             yield return new WaitForSeconds(_dashDuration);
+
             _isDashing = false;
             //cooldown
             _dashCharge = 0;
@@ -232,7 +240,8 @@ namespace Unrez
         {
             _canCreateBarrier = false;
             _isCreatingBarrier = true;
-            CreateBarrierServerRpc(_spawnBarrier);
+            //InstantiateBarrier(_spawnBarrier);
+            InstantiateBarrierServerRpc(_spawnBarrier);
             _isCreatingBarrier = false;
             //cooldown
             _barrierCharge = 0;
@@ -246,16 +255,35 @@ namespace Unrez
         }
 
         [ServerRpc]
-        private void CreateBarrierServerRpc(Vector2 spawn)
+        private void InstantiateBarrierServerRpc(Vector2 spawn)
         {
             Debug.Log($"CreateBarrierServerRpc IsServer:{IsServer}");
-            if (!IsServer)
+            Barrier barrier = Instantiate(_prefabBarrier, spawn, Quaternion.identity);
+            barrier.GetComponent<NetworkObject>().Spawn();
+            barrier.SetOwnerClientRpc(_cat.GetData().OwnerId, _cat.GetData().Color);
+
+            //InstantiateBarrierClientRpc(spawn);
+        }
+
+
+
+        /*
+        [ClientRpc]
+        private void InstantiateBarrierClientRpc(Vector2 spawn)
+        {
+            if (IsOwner)
             {
                 return;
             }
-            Barrier barrier = Instantiate(_prefabBarrier, spawn, Quaternion.identity);
-            barrier.GetComponent<NetworkObject>().Spawn();
+            InstantiateBarrier(spawn);
         }
+
+        private void InstantiateBarrier(Vector2 spawn)
+        {
+            Barrier barrier = Instantiate(_prefabBarrier, spawn, Quaternion.identity);
+            barrier.SetOwner(_cat.GetData().OwnerId, _cat.GetData().Color);
+        }
+        */
 
         public bool IsDashing()
         {

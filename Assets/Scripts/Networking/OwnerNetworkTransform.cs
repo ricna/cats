@@ -1,7 +1,10 @@
+using Unity.Netcode;
 using Unity.Netcode.Components;
+using UnityEngine;
 
 namespace Unrez
 {
+    [RequireComponent(typeof(NetworkObject))]
     public class OwnerNetworkTransform : NetworkTransform
     {
         public override void OnNetworkSpawn()
@@ -12,7 +15,6 @@ namespace Unrez
 
         protected override void Update()
         {
-            
             CanCommitToTransform = IsOwner;
             base.Update();
             if (IsHost)
