@@ -44,6 +44,8 @@ namespace Unrez
         private bool _isMoving;
         private bool _isMovingVertical = false;
         private bool _isMovingHorizontal = false;
+        [SerializeField]
+        private Vector2 _currentDirection;
 
         private void Awake()
         {
@@ -83,7 +85,6 @@ namespace Unrez
             }
         }
 
-        private Vector2 _currentDirection;
         private void FixedUpdate()
         {
             if (!IsOwner)
@@ -124,7 +125,8 @@ namespace Unrez
                     _lastCatSide = _catSide;
                 }
                 _rb.AddForce(_force * _currentDirection, ForceMode2D.Force);
-                _spawnBarrier = _transform.position * (_currentDirection * -1.5f);
+                _spawnBarrier.position = new Vector2(_transform.position.x - _currentDirection.x * 1.5f, _transform.position.y - _currentDirection.y * 1.5f);
+
             }
             else
             {
@@ -216,7 +218,6 @@ namespace Unrez
             _canDash = true;
         }
 
-
         public void CreateBarrier()
         {
             if (!_canCreateBarrier)
@@ -226,6 +227,7 @@ namespace Unrez
             StartCoroutine(CreatingBarrier());
 
         }
+
         [SerializeField]
         private bool _canCreateBarrier = true;
         private bool _isCreatingBarrier = false;
@@ -235,15 +237,13 @@ namespace Unrez
         [SerializeField]
         private Barrier _prefabBarrier;
         [SerializeField]
-        private Vector2 _spawnBarrier;
+        private Transform _spawnBarrier;
         private IEnumerator CreatingBarrier()
         {
             _canCreateBarrier = false;
             _isCreatingBarrier = true;
-            //InstantiateBarrier(_spawnBarrier);
-            InstantiateBarrierServerRpc(_spawnBarrier);
+            InstantiateBarrierServerRpc(_spawnBarrier.position);
             _isCreatingBarrier = false;
-            //cooldown
             _barrierCharge = 0;
             while (_barrierCharge < 1)
             {
@@ -261,29 +261,7 @@ namespace Unrez
             Barrier barrier = Instantiate(_prefabBarrier, spawn, Quaternion.identity);
             barrier.GetComponent<NetworkObject>().Spawn();
             barrier.SetOwnerClientRpc(_cat.GetData().OwnerId, _cat.GetData().Color);
-
-            //InstantiateBarrierClientRpc(spawn);
         }
-
-
-
-        /*
-        [ClientRpc]
-        private void InstantiateBarrierClientRpc(Vector2 spawn)
-        {
-            if (IsOwner)
-            {
-                return;
-            }
-            InstantiateBarrier(spawn);
-        }
-
-        private void InstantiateBarrier(Vector2 spawn)
-        {
-            Barrier barrier = Instantiate(_prefabBarrier, spawn, Quaternion.identity);
-            barrier.SetOwner(_cat.GetData().OwnerId, _cat.GetData().Color);
-        }
-        */
 
         public bool IsDashing()
         {
