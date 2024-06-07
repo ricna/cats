@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Xml;
+﻿using NUnit.Framework;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -60,12 +59,9 @@ namespace Unrez
         private bool _isMoving;
         private bool _isMovingVertical = false;
         private bool _isMovingHorizontal = false;
-        private bool _lastDirX;
-        private bool _lastDirY;
 
         public override void OnNetworkSpawn()
         {
-
             if (!IsOwner)
             {
                 return;
@@ -85,21 +81,22 @@ namespace Unrez
 
         private void OnMove(Vector2 movementInput)
         {
-            if (IsOwner)
+            if (!IsOwner)
             {
-                if (_movementInput != movementInput)
-                {
-                    _movementInput = movementInput;
-                }
+                return;
+            }
+            if (_movementInput != movementInput)
+            {
+                _movementInput = movementInput;
             }
         }
+
         private void FixedUpdate()
         {
             if (!IsOwner)
             {
                 return;
             }
-            //Vector2 newPosition = Vector2.zero;
             Vector2 dir = Vector2.zero;
             _isMovingHorizontal = _movementInput.x != 0;
             _isMovingVertical = _movementInput.y != 0;
@@ -110,7 +107,6 @@ namespace Unrez
                 _force = _maxVelocity * _rb.drag;
                 if (_isMovingVertical)
                 {
-                    //newPosition = (Vector2)_transform.position + (Vector2.up * _movementInput.y);
                     dir = Vector2.up * _movementInput.y;
                     _catSide = _movementInput.y > 0 ? CatSide.CAT_UP : CatSide.CAT_DOWN;
                 }
@@ -118,13 +114,11 @@ namespace Unrez
                 {
                     if (_isMovingVertical)
                     {
-                        //newPosition = (Vector2)_transform.position + (Vector2.up * _movementInput.y + Vector2.right * _movementInput.x);
                         dir = Vector2.up * _movementInput.y + Vector2.right * _movementInput.x;
 
                     }
                     else
                     {
-                        //newPosition = (Vector2)_transform.position + (Vector2.right * _movementInput.x);
                         dir = Vector2.right * _movementInput.x;
                     }
                     _catSide = _movementInput.x > 0 ? CatSide.CAT_RIGHT : CatSide.CAT_LEFT;
@@ -133,8 +127,7 @@ namespace Unrez
                 {
                     _lastCatSide = _catSide;
                 }
-                //_rb.MovePosition(Vector2.Lerp(_transform.position, newPosition, _speed * Time.fixedDeltaTime));
-                _rb.AddForce(_force * /*Time.fixedDeltaTime **/ dir, ForceMode2D.Force);
+                _rb.AddForce(_force * dir, ForceMode2D.Force);
             }
             else
             {
@@ -143,8 +136,32 @@ namespace Unrez
                 _rb.AddForce(Vector2.zero, ForceMode2D.Force);
                 _catSide = CatSide.NO_SIDE;
             }
+            Animate();
+            AnimaterServerRpc();
+        }
+
+        private void Animate()
+        {
             _animator.SetBool(AnimatorParameter.IS_MOVING, _isMoving);
             _animator.SetFloat(AnimatorParameter.CAT_SIDE, (int)_lastCatSide);
+        }
+
+        [ServerRpc]
+        private void AnimaterServerRpc()
+        {
+            _animator.SetBool(AnimatorParameter.IS_MOVING, _isMoving);
+            _animator.SetFloat(AnimatorParameter.CAT_SIDE, (int)_lastCatSide);
+            AnimaterClientRpc();
+        }
+
+        [ClientRpc]
+        private void AnimaterClientRpc()
+        {
+            if (IsOwner)
+            {
+                return; 
+            }
+            Animate();
         }
     }
 }

@@ -28,9 +28,7 @@ namespace Unrez
         {
             Unbug.Log($"IsHost:{IsHost} IsOwner:{IsOwner} IsLocalPlayer:{IsLocalPlayer} NetworkBehaviourId:{NetworkBehaviourId} ", Uncolor.Black);
             Unbug.Log($"OwnerClientId:{OwnerClientId}", Uncolor.Red);
-
             _myColor = _playerColorIDX[OwnerClientId];
-
             spriteRenderBody.color = _myColor;
             if (!IsOwner)
             {
