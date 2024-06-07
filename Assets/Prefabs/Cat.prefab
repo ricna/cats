@@ -130,7 +130,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 10
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -140,7 +140,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 170000700
+  GlobalObjectIdHash: 4199737136
   InScenePlacedSourceGlobalObjectIdHash: 4199737136
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -263,8 +263,11 @@ MonoBehaviour:
   _transform: {fileID: 3113102540206626565}
   _rb: {fileID: 6407681758990779862}
   _animator: {fileID: 2160832692526638247}
-  _speed: 5
+  _maxVelocity: 10
+  _acceleration: 5
+  _deceleration: 10
   _awayTime: 10
+  _force: 0
   _catSide: 0
   _lastCatSide: 0
   _isMoving: 0
