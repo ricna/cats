@@ -2,7 +2,7 @@ using Unity.Netcode.Components;
 
 namespace Unrez
 {
-    public class ClientNetworkTransform : NetworkTransform
+    public class OwnerNetworkTransform : NetworkTransform
     {
         public override void OnNetworkSpawn()
         {
@@ -28,12 +28,6 @@ namespace Unrez
                         TryCommitTransformToServer(transform, NetworkManager.LocalTime.Time);
                     }
                 }
-
-                /*   if (!IsHost && IsOwner && NetworkManager.IsConnectedClient)
-               {
-                   TryCommitTransformToServer(transform, NetworkManager.LocalTime.Time);
-               }
-                */
             }
         }
 

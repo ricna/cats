@@ -3,6 +3,7 @@ using System.Collections;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using Unity.Netcode;
+using Unity.Netcode.Components;
 using UnityEngine;
 
 namespace Unrez
@@ -83,6 +84,10 @@ namespace Unrez
             {
                 return;
             }
+            if (_isDashing)
+            {
+                return;
+            }
             _isMovingHorizontal = _movementInput.x != 0;
             _isMovingVertical = _movementInput.y != 0;
             _isMoving = _isMovingHorizontal || _isMovingVertical;
@@ -113,7 +118,7 @@ namespace Unrez
                     _lastCatSide = _catSide;
                 }
                 _rb.AddForce(_force * _currentDirection, ForceMode2D.Force);
-                _spawnBarrier = _currentDirection * -2;
+                _spawnBarrier = _transform.position * (_currentDirection * -1.5f);
             }
             else
             {
@@ -150,7 +155,7 @@ namespace Unrez
 
         public void ApplyDash()
         {
-            if (!_canDash)
+            if (!_canDash || !_isMoving)
             {
                 return;
             }
@@ -159,15 +164,18 @@ namespace Unrez
         }
 
         private bool _canDash = true;
+        [SerializeField]
         private bool _isDashing = false;
         private float _dashCooldown = 3;
-        private float _dashDuration = 3;
+        private float _dashDuration = 0.3f;
+        [SerializeField]
         private float _dashCharge = 1;
+        [SerializeField]
+        private float _dashForce;
         private IEnumerator Dashing()
         {
             _canDash = false;
             _isDashing = true;
-
             if (!_isMoving)
             {
                 switch (_lastCatSide)
@@ -186,7 +194,7 @@ namespace Unrez
                         break;
                 }
             }
-            _rb.AddForce(_currentDirection);
+            _rb.AddForce(_currentDirection * _dashForce, ForceMode2D.Impulse);
             yield return new WaitForSeconds(_dashDuration);
             _isDashing = false;
             //cooldown
@@ -210,10 +218,11 @@ namespace Unrez
             StartCoroutine(CreatingBarrier());
 
         }
-
+        [SerializeField]
         private bool _canCreateBarrier = true;
         private bool _isCreatingBarrier = false;
         private float _barrierCooldown = 3;
+        [SerializeField]
         private float _barrierCharge = 1;
         [SerializeField]
         private Barrier _prefabBarrier;
@@ -223,9 +232,7 @@ namespace Unrez
         {
             _canCreateBarrier = false;
             _isCreatingBarrier = true;
-            Barrier barrier = Instantiate(_prefabBarrier, transform.position, Quaternion.identity);
-            barrier.GetComponent<NetworkObject>().Spawn();
-
+            CreateBarrierServerRpc(_spawnBarrier);
             _isCreatingBarrier = false;
             //cooldown
             _barrierCharge = 0;
@@ -238,9 +245,26 @@ namespace Unrez
             _canCreateBarrier = true;
         }
 
+        [ServerRpc]
+        private void CreateBarrierServerRpc(Vector2 spawn)
+        {
+            Debug.Log($"CreateBarrierServerRpc IsServer:{IsServer}");
+            if (!IsServer)
+            {
+                return;
+            }
+            Barrier barrier = Instantiate(_prefabBarrier, spawn, Quaternion.identity);
+            barrier.GetComponent<NetworkObject>().Spawn();
+        }
+
         public bool IsDashing()
         {
             return _isDashing;
+        }
+
+        public bool CanDash()
+        {
+            return _canDash;
         }
     }
 }

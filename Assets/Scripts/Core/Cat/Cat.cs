@@ -31,6 +31,7 @@ namespace Unrez
             Unbug.Log($"IsHost:{IsHost} IsOwner:{IsOwner} IsLocalPlayer:{IsLocalPlayer} NetworkBehaviourId:{NetworkBehaviourId} ", Uncolor.Black);
             Unbug.Log($"OwnerClientId:{OwnerClientId}", Uncolor.Red);
             _myColor = _playerColorIDX[OwnerClientId];
+            name = $"Cat_00{OwnerClientId} - IsServer: {IsServer}";
             spriteRenderBody.color = _myColor;
             if (!IsOwner)
             {
@@ -52,8 +53,12 @@ namespace Unrez
 
         public void Dash()
         {
-            spriteRenderBody.color = Color.red;
-            _motionController.ApplyDash();
+            if (_motionController.CanDash())
+            {
+                spriteRenderBody.color = Color.red;
+                _motionController.ApplyDash();
+                StartCoroutine(Dashing());
+            }
         }
         private IEnumerator Dashing()
         {
