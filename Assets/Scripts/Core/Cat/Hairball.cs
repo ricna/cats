@@ -1,10 +1,8 @@
-using System;
-using Unity.Collections.LowLevel.Unsafe;
 using Unity.Netcode;
 using UnityEngine;
 using Unrez;
 
-public class Barrier : NetworkBehaviour
+public class Hairball : NetworkBehaviour
 {
     [Header("References")]
     [SerializeField]
@@ -15,6 +13,10 @@ public class Barrier : NetworkBehaviour
     private ulong _myOwnerId;
     [SerializeField]
     public Color _myColor;
+    [SerializeField]
+    public Color _hp;
+    [SerializeField]
+    public Color _hitsTaken;
 
     public override void OnNetworkSpawn()
     {
