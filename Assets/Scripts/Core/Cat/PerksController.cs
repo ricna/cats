@@ -1,12 +1,10 @@
-using System;
 using System.Collections;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace Unrez
+namespace Unrez.Cats
 {
-
-    public class PerksController : NetworkBehaviour 
+    public class PerksController : NetworkBehaviour
     {
 
         private Cat _cat;
@@ -20,7 +18,7 @@ namespace Unrez
         [SerializeField]
         private float _dashDuration = 0.25f;
         [SerializeField]
-        private float _dashCooldown = 3; 
+        private float _dashCooldown = 3;
 
         private bool _canDash = true;
         private bool _isDashing = false;

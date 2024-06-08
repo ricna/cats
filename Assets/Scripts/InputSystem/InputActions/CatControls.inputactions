@@ -1,8 +1,8 @@
 {
-    "name": "Controls",
+    "name": "CatControls",
     "maps": [
         {
-            "name": "Player",
+            "name": "Cat",
             "id": "e7f033d9-29f5-4209-b8de-7593c29fdb15",
             "actions": [
                 {

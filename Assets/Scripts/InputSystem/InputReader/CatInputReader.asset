@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44b73c338f9785f4583bc1e2c90d4543, type: 3}
-  m_Name: InputReader
+  m_Name: CatInputReader
   m_EditorClassIdentifier: 

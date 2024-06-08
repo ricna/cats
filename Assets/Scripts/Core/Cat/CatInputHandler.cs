@@ -1,10 +1,7 @@
 using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.Rendering;
-using Unrez;
 
-namespace Unrez
+namespace Unrez.Cats
 {
     [RequireComponent(typeof(Cat))]
     public class CatInputHandler : NetworkBehaviour
@@ -13,7 +10,7 @@ namespace Unrez
         
         [Header("References")]
         [SerializeField]
-        private InputReader _inputReader;
+        private CatInputReader _inputReader;
         private Vector2 _movementInput;
 
         private void Awake()

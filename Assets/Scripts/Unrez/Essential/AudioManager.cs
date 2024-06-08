@@ -1,8 +1,7 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-namespace Unrez
+namespace Unrez.Essential.Audio
 {
     public class AudioManager : Singleton<AudioManager>
     {

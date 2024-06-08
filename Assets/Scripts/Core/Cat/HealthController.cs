@@ -2,7 +2,7 @@ using System;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace Unrez
+namespace Unrez.Cats
 {
     public class HealthController : NetworkBehaviour
     {

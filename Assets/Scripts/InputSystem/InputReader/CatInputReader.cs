@@ -1,14 +1,14 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static Controls;
+using static CatControls;
 
-namespace Unrez
+namespace Unrez.Cats
 {
     [CreateAssetMenu(fileName = "New Input Reader", menuName = "Unrez/Input Reader")]
-    public class InputReader : ScriptableObject, IPlayerActions
+    public class CatInputReader : ScriptableObject, ICatActions
     {
-        private Controls controls;
+        private CatControls controls;
 
         public event Action<Vector2> OnMoveEvent;
         public event Action<Vector2> OnAimEvent;
@@ -19,10 +19,10 @@ namespace Unrez
         {
             if (controls == null)
             {
-                controls = new Controls();
-                controls.Player.SetCallbacks(this);
+                controls = new CatControls();
+                controls.Cat.SetCallbacks(this);
             }
-            controls.Player.Enable();
+            controls.Cat.Enable();
         }
 
         public void OnMove(InputAction.CallbackContext context)

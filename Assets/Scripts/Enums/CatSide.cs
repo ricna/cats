@@ -1,4 +1,4 @@
-namespace Unrez
+namespace Unrez.Cats
 {
     public enum CatSide
     {

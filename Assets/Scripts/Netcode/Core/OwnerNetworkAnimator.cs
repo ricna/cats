@@ -1,7 +1,7 @@
 using Unity.Netcode.Components;
 using UnityEngine;
 
-namespace Unrez
+namespace Unrez.Netcode
 {
     [RequireComponent(typeof(Animator))]
     public class OwnerNetworkAnimator : NetworkAnimator

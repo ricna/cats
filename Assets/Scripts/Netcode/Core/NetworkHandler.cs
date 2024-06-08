@@ -5,7 +5,7 @@ using UnityEngine;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 
-namespace Unrez
+namespace Unrez.Netcode
 {
 
     /// <summary>

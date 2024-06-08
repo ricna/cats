@@ -2,7 +2,7 @@
 using Unity.Cinemachine;
 using UnityEngine;
 
-namespace Unrez
+namespace Unrez.Cats
 {
     public class CameraController : MonoBehaviour
     {

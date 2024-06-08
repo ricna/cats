@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace Unrez
+namespace Unrez.Cats
 {
     [RequireComponent(typeof(Cat))]
     public class MotionController : NetworkBehaviour

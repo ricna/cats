@@ -2,7 +2,8 @@ using System;
 using System.Collections;
 using Unity.Netcode;
 using UnityEngine;
-namespace Unrez
+
+namespace Unrez.Cats
 {
     [Serializable]
     public struct CatStatus

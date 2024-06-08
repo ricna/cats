@@ -19,7 +19,7 @@ MonoBehaviour:
     rid: 301563125827371029
   m_Scenes:
   - m_enabled: 1
-    m_path: Assets/Scenes/Gameplay.unity
+    m_path: Assets/Scenes/Cats.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
     m_Settings:
