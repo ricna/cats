@@ -17,10 +17,13 @@ public class Hairball : NetworkBehaviour
     public Color _hp;
     [SerializeField]
     public Color _hitsTaken;
+    [SerializeField]
+    private ParticleSystem _particlesDestroy;
 
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
+        _particlesDestroy.Play();
     }
 
     public override void OnNetworkDespawn()
@@ -28,10 +31,15 @@ public class Hairball : NetworkBehaviour
         base.OnNetworkDespawn();
     }
 
+    /*
+     * If there is a need for a gameplay event to happen on a collision, 
+     * you can listen to OnCollisionEnter function on the server and synchronize the event via Rpc(SendTo.ClientsAndHost) to all clients.
+     */
     private void OnTriggerEnter2D(Collider2D collider)
     {
         ProcessCollision(collider);
     }
+
     private void OnTriggerStay2D(Collider2D collider)
     {
         ProcessCollision(collider);
@@ -43,14 +51,15 @@ public class Hairball : NetworkBehaviour
         {
             if (cat.IsDashing())
             {
-                DestroyBarrierServerRpc();
+                DestroyHairballServerRpc();
             }
         }
     }
 
     [ServerRpc(RequireOwnership = false)]
-    private void DestroyBarrierServerRpc()
+    private void DestroyHairballServerRpc()
     {
+        _particlesDestroy.Play();
         this.GetComponent<NetworkObject>().Despawn(true);
 
     }

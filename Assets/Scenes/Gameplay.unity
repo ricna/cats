@@ -3053,14 +3053,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1980724267234355780, guid: 3835b425b6c75e049a0778dfd4eacaf2, type: 3}
-      propertyPath: GlobalObjectIdHash
-      value: 3813239830
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: GlobalObjectIdHash
-      value: 3338208033
-      objectReference: {fileID: 0}
     - target: {fileID: 754402561034168600, guid: 3835b425b6c75e049a0778dfd4eacaf2, type: 3}
       propertyPath: m_Color.b
       value: 0
@@ -3076,6 +3068,14 @@ PrefabInstance:
     - target: {fileID: 1830557460425012571, guid: 3835b425b6c75e049a0778dfd4eacaf2, type: 3}
       propertyPath: m_Name
       value: Gear
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980724267234355780, guid: 3835b425b6c75e049a0778dfd4eacaf2, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3813239830
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980724267234355780, guid: 3835b425b6c75e049a0778dfd4eacaf2, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 1404530594
       objectReference: {fileID: 0}
     - target: {fileID: 6042879429773875041, guid: 3835b425b6c75e049a0778dfd4eacaf2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3689,14 +3689,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1980724267234355780, guid: 3835b425b6c75e049a0778dfd4eacaf2, type: 3}
-      propertyPath: GlobalObjectIdHash
-      value: 3586397596
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: GlobalObjectIdHash
-      value: 2210799988
-      objectReference: {fileID: 0}
     - target: {fileID: 754402561034168600, guid: 3835b425b6c75e049a0778dfd4eacaf2, type: 3}
       propertyPath: m_Color.b
       value: 0
@@ -3712,6 +3704,14 @@ PrefabInstance:
     - target: {fileID: 1830557460425012571, guid: 3835b425b6c75e049a0778dfd4eacaf2, type: 3}
       propertyPath: m_Name
       value: Gear_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980724267234355780, guid: 3835b425b6c75e049a0778dfd4eacaf2, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3586397596
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980724267234355780, guid: 3835b425b6c75e049a0778dfd4eacaf2, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 1404530594
       objectReference: {fileID: 0}
     - target: {fileID: 6042879429773875041, guid: 3835b425b6c75e049a0778dfd4eacaf2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5010,7 +5010,6 @@ GameObject:
   - component: {fileID: 1636590176}
   - component: {fileID: 1636590180}
   - component: {fileID: 1636590182}
-  - component: {fileID: 1636590181}
   m_Layer: 0
   m_Name: Sun
   m_TagString: Untagged
@@ -5172,18 +5171,6 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &1636590181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1636590175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80d7c879794dfda4687da0e400131852, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1636590182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5661,14 +5648,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1980724267234355780, guid: 3835b425b6c75e049a0778dfd4eacaf2, type: 3}
-      propertyPath: GlobalObjectIdHash
-      value: 2544942378
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: GlobalObjectIdHash
-      value: 593255460
-      objectReference: {fileID: 0}
     - target: {fileID: 754402561034168600, guid: 3835b425b6c75e049a0778dfd4eacaf2, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -5684,6 +5663,14 @@ PrefabInstance:
     - target: {fileID: 1830557460425012571, guid: 3835b425b6c75e049a0778dfd4eacaf2, type: 3}
       propertyPath: m_Name
       value: Gear_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980724267234355780, guid: 3835b425b6c75e049a0778dfd4eacaf2, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2544942378
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980724267234355780, guid: 3835b425b6c75e049a0778dfd4eacaf2, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 1404530594
       objectReference: {fileID: 0}
     - target: {fileID: 6042879429773875041, guid: 3835b425b6c75e049a0778dfd4eacaf2, type: 3}
       propertyPath: m_LocalPosition.x

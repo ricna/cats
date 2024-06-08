@@ -5127,6 +5127,9 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 1728579317831420578}
   _myOwnerId: 0
   _myColor: {r: 0, g: 0, b: 0, a: 0}
+  _hp: {r: 0, g: 0, b: 0, a: 0}
+  _hitsTaken: {r: 0, g: 0, b: 0, a: 0}
+  _particlesDestroy: {fileID: 1038831744699727305}
 --- !u!50 &-8122114081618366761
 Rigidbody2D:
   serializedVersion: 4
@@ -5140,7 +5143,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 100
-  m_LinearDrag: 10
+  m_LinearDrag: 100
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}

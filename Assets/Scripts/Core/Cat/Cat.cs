@@ -2,11 +2,8 @@ using System;
 using System.Collections;
 using Unity.Netcode;
 using UnityEngine;
-
-
 namespace Unrez
 {
-
     [Serializable]
     public struct CatStatus
     {
@@ -15,14 +12,12 @@ namespace Unrez
         public Color Color;
         public float Health;
     }
-
     public class Cat : NetworkBehaviour
     {
         private CatStatus _catStatus;
         private HealthController _healthController;
         private MotionController _motionController;
         private PerksController _perksController;
-
         [Header("References")]
         [SerializeField]
         private SpriteRenderer spriteRenderBody;
@@ -30,7 +25,6 @@ namespace Unrez
         private CameraController cameraController;
         [SerializeField]
         private Color[] _playerColorIDX = { Color.cyan, Color.magenta, Color.white, Color.gray, Color.cyan, Color.yellow, Color.blue, Color.magenta };
-
         private void Awake()
         {
             _healthController = GetComponent<HealthController>();
@@ -38,7 +32,6 @@ namespace Unrez
             _perksController = GetComponent<PerksController>();
             _motionController.OnDirectionChangedEvent += OnDirectionChangedHandler;
         }
-
         private void OnDirectionChangedHandler(Vector2 vector)
         {
             _perksController.UpdateSpawnBehindPosition(vector);

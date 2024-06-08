@@ -7,6 +7,16 @@ using Unity.Netcode.Transports.UTP;
 
 namespace Unrez
 {
+
+    /// <summary>
+    /// NetworkRigidbody is a component that sets the Rigidbody of the GameObject into kinematic mode on all non-authoritative instances
+    /// (except the instance that has authority). 
+    /// Authority is determined by the NetworkTransform component(required) attached to the same GameObject as the NetworkRigidbody.
+    /// Whether the NetworkTransform is server authoritative (default) or owner authoritative, the NetworkRigidBody authority model will mirror it.
+    /// That way, the physics simulation runs on the authoritative instance, and the resulting positions synchronize on the non-authoritative instances, 
+    /// each with their RigidBody being Kinematic, without any interference.
+    /// </summary>
+    
     [RequireComponent(typeof(NetworkManager))]
     public class NetworkHandler : MonoBehaviour
     {
