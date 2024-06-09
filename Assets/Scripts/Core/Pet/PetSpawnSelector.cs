@@ -8,27 +8,37 @@ namespace Unrez.Pets
     {
         [SerializeField]
         private GameObject _dog;
-        [SerializeField] 
+        [SerializeField]
         private GameObject _cat;
 
         public override void OnNetworkSpawn()
         {
             base.OnNetworkSpawn();
             PetProfile petProfile = PetsContainer.Instance.Pets[OwnerClientId];
-            if (petProfile.PetType == PetType.Cat)
+            SetPetServerRpc(petProfile.PetType);
+        }
+
+        [ServerRpc(RequireOwnership = false)]
+        private void SetPetServerRpc(PetType petType)
+        {
+            if (!IsOwner)
             {
-                Destroy(_dog);
-                _cat.SetActive(true);
-                _cat.transform.SetParent(null);
+                return;
             }
-            else
+            switch (petType)
             {
-                Destroy(_cat);
-                _dog.SetActive(true);
-                _dog.transform.SetParent(null);
+                case PetType.Cat:
+                    Destroy(_dog);
+                    _cat.SetActive(true);
+                    _cat.transform.SetParent(null);
+                    break;
+                case PetType.Dog:
+                    Destroy(_cat);
+                    _dog.SetActive(true);
+                    _dog.transform.SetParent(null);
+                    break;
             }
             Destroy(this.gameObject);
         }
-
     }
 }

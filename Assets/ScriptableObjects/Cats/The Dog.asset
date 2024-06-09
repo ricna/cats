@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PetType: 1
   Light: {fileID: 11400000, guid: fe1bbb22948f4ec4ebbf579ed5fa8d00, type: 2}
-  Color: {r: 0.5377358, g: 0, b: 0.47280604, a: 1}
-  SpeedSprint: 10
+  Color: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 1}
+  SpeedSprint: 11
   Acceleration: 5
-  Deceleration: 10
+  Deceleration: 5
   DashForce: 30
   DashCooldown: 3
   DashDuration: 0.25

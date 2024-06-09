@@ -17,7 +17,7 @@ MonoBehaviour:
   LightRadius: {x: 0, y: 20}
   LightIntensity: 1
   LightFalloffStrenght: 0.5
-  Shadows: 1
-  ShadowsStrenght: 1
+  Shadows: 0
+  ShadowsStrenght: 0
   ShadowsSoftness: 1
   ShadowsFalloffStrenght: 0.5

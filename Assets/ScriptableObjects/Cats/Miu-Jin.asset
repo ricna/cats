@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b7ae03fe9754c74c84b1fe2c7031d87, type: 3}
   m_Name: Miu-Jin
   m_EditorClassIdentifier: 
+  PetType: 0
   Light: {fileID: 11400000, guid: 4b02c9384f6d3f84b8588332145158f0, type: 2}
   Color: {r: 0.5377358, g: 0, b: 0.47280604, a: 1}
-  SpeedSprint: 0
+  SpeedSprint: 10
   Acceleration: 5
   Deceleration: 10
   DashForce: 30
