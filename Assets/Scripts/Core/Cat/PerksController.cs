@@ -2,50 +2,50 @@ using System.Collections;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace Unrez.Cats
+namespace Unrez.Pets.Cats
 {
     public class PerksController : NetworkBehaviour
     {
 
-        private Cat _cat;
+        protected Cat _cat;
 
         [Header("References")]
-        private Transform _transform;
+        protected Transform _transform;
 
         [Header("Perk: Dash")]
         [SerializeField]
-        private float _dashForce = 30;
+        protected float _dashForce = 30;
         [SerializeField]
         private float _dashDuration = 0.25f;
         [SerializeField]
-        private float _dashCooldown = 3;
+        protected float _dashCooldown = 3;
 
-        private bool _canDash = true;
-        private bool _isDashing = false;
-        private float _dashCharge;
+        protected bool _canDash = true;
+        protected bool _isDashing = false;
+        protected float _dashCharge;
 
         [Header("Perk: Hairball")]
         [SerializeField]
-        private Hairball _prefabHairball;
+        protected Hairball _prefabHairball;
         [SerializeField]
-        private Transform _spawnHairball;
+        protected Transform _spawnHairball;
         [SerializeField]
-        private float _spawnHairballOffset = 1.5f;
+        protected float _spawnHairballOffset = 1.5f;
         [SerializeField]
-        private float _hairballCooldown = 1;
+        protected float _hairballCooldown = 1;
 
-        private bool _canSpitHairball = true;
-        private bool _isSpittingUpHairball = false;
-        private float _hairballCharge;
+        protected bool _canSpitHairball = true;
+        protected bool _isSpittingUpHairball = false;
+        protected float _hairballCharge;
 
 
-        private void Awake()
+        protected virtual void Awake()
         {
             _cat = GetComponent<Cat>();
             _transform = GetComponent<Transform>();
         }
 
-        public void ApplyDash()
+        public virtual void ApplyDash()
         {
             if (!_canDash)
             {
@@ -55,7 +55,7 @@ namespace Unrez.Cats
 
         }
 
-        private IEnumerator Dashing()
+        protected IEnumerator Dashing()
         {
             _canDash = false;
             _isDashing = true;
@@ -73,7 +73,7 @@ namespace Unrez.Cats
             _canDash = true;
         }
 
-        public void CreateBarrier()
+        public virtual void CreateBarrier()
         {
             if (!_canSpitHairball)
             {
@@ -105,7 +105,7 @@ namespace Unrez.Cats
             Debug.Log($"CreateBarrierServerRpc IsServer:{IsServer}");
             Hairball barrier = Instantiate(_prefabHairball, spawn, Quaternion.identity);
             barrier.GetComponent<NetworkObject>().Spawn();
-            barrier.SetOwnerClientRpc(_cat.GetData().OwnerId, _cat.GetData().Color);
+            barrier.SetOwnerClientRpc(_cat.GetStatus().OwnerId, _cat.GetStatus().Color);
         }
 
         public void UpdateSpawnBehindPosition(Vector2 catDirection)

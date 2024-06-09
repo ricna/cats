@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Barrier",
+                    "name": "Ability01",
                     "type": "Button",
                     "id": "d4c1cdb0-32be-47c3-89c9-778776e4cded",
                     "expectedControlType": "",
@@ -24,9 +24,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Dash",
+                    "name": "Ability02",
                     "type": "Button",
                     "id": "dc85e87c-b22c-4a10-9579-4dbd1e33710a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Ability03",
+                    "type": "Button",
+                    "id": "0f40dfce-7788-4e44-be86-e4bbff3b7790",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Ability04",
+                    "type": "Button",
+                    "id": "d92c1e4e-c708-482e-b9e6-8f0f73467c24",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -41,7 +59,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Barrier",
+                    "action": "Ability01",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -106,8 +124,30 @@
                     "path": "<Keyboard>/p",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Dash",
+                    "groups": ";Keyboard",
+                    "action": "Ability02",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "422d8263-d04b-48cf-9701-f928b30829d8",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "Ability03",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fe14f600-390c-4bed-8654-54c66d5872ff",
+                    "path": "<Keyboard>/o",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "Ability04",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

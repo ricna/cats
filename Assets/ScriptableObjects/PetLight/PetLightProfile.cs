@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-namespace Unrez.Cats
+namespace Unrez.Pets
 {
-    [CreateAssetMenu(fileName = "New PetView", menuName = "Unrez/Cats/New PetView", order = 0)]
+    [CreateAssetMenu(fileName = "New Pet Light", menuName = "Unrez/Cats/Pet Light", order = 0)]
     public class PetLightProfile : ScriptableObject
     {
         public Light2D.LightType LightType;
@@ -12,8 +12,7 @@ namespace Unrez.Cats
         public float LightIntensity;
         [Range(0, 1)]
         public float LightFalloffStrenght;
-
-        
+ 
         public bool Shadows;
         [Range(0, 1)] 
         public float ShadowsStrenght;
@@ -21,7 +20,5 @@ namespace Unrez.Cats
         public float ShadowsSoftness;
         [Range(0, 1)] 
         public float ShadowsFalloffStrenght;
-        
-
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static CatControls;
 
-namespace Unrez.Cats
+namespace Unrez.Pets.Cats
 {
     [CreateAssetMenu(fileName = "New Input Reader", menuName = "Unrez/Input Reader")]
     public class CatInputReader : ScriptableObject, ICatActions
@@ -11,9 +11,14 @@ namespace Unrez.Cats
         private CatControls controls;
 
         public event Action<Vector2> OnMoveEvent;
-        public event Action<Vector2> OnAimEvent;
-        public event Action OnBarrierEvent;
-        public event Action OnDashEvent;
+
+        public event Action<bool> OnSprintEvent;
+        public event Action<bool> OnCrouchEvent;
+
+        public event Action OnAbility01Event;
+        public event Action OnAbility02Event;
+        public event Action OnAbility03Event;
+        public event Action OnAbility04Event;
 
         private void OnEnable()
         {
@@ -33,17 +38,38 @@ namespace Unrez.Cats
 
         public void OnBarrier(InputAction.CallbackContext context)
         {
-            if (context.performed)
-            {
-                OnBarrierEvent?.Invoke();
-            }
+
         }
 
-        public void OnDash(InputAction.CallbackContext context)
+        public void OnAbility01(InputAction.CallbackContext context)
         {
             if (context.performed)
             {
-                OnDashEvent?.Invoke();
+                OnAbility01Event?.Invoke();
+            }
+        }
+
+        public void OnAbility02(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                OnAbility02Event?.Invoke();
+            }
+        }
+
+        public void OnAbility03(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                OnAbility03Event?.Invoke();
+            }
+        }
+
+        public void OnAbility04(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                OnAbility04Event?.Invoke();
             }
         }
     }

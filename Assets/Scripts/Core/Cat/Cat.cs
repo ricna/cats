@@ -4,104 +4,17 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-namespace Unrez.Cats
+namespace Unrez.Pets.Cats
 {
-    [Serializable]
-    public struct CatStatus
+    public class Cat : Pet
     {
-        public ulong OwnerId;
-        public string Name;
-        public Color Color;
-        public float Health;
-    }
-    public class Cat : NetworkBehaviour
-    {
-        //private Dog _dog;
-        //private Cat[] _cats;
 
-        private Light2D _light;
-        [SerializeField]
-        private PetLightProfile _petLightProfile;
-        [SerializeField]
-        private CatProfile _catProfile;
-
-        private CatStatus _catStatus;
-        private HealthController _healthController;
-        private MotionController _motionController;
-        private PerksController _perksController;
-        [Header("References")]
-        [SerializeField]
-        private SpriteRenderer spriteRenderBody;
-        [SerializeField]
-        private CameraController cameraController;
-        [SerializeField]
-        private Color[] _playerColorIDX = { Color.cyan, Color.magenta, Color.white, Color.gray, Color.cyan, Color.yellow, Color.blue, Color.magenta };
-
-        private void Awake()
-        {
-            InitLight();
-            _healthController = GetComponent<HealthController>();
-            _motionController = GetComponent<MotionController>();
-            _perksController = GetComponent<PerksController>();
-            _motionController.OnDirectionChangedEvent += OnDirectionChangedHandler;
-        }
-
-        private void InitLight()
-        {
-            _light = (Light2D)FindAnyObjectByType(typeof(Light2D));
-            _light.name = "CatLight";
-            _light.enabled = true;
-            _light.gameObject.transform.SetParent(transform);
-            _light.gameObject.transform.position = Vector3.zero;
-
-            _light.lightType = _petLightProfile.LightType;
-            _light.color = _petLightProfile.LightColor;
-            _light.pointLightInnerRadius = _petLightProfile.LightRadius.x;
-            _light.pointLightOuterRadius = _petLightProfile.LightRadius.y;
-            _light.intensity = _petLightProfile.LightIntensity;
-            _light.falloffIntensity = _petLightProfile.LightFalloffStrenght;
-
-            _light.shadowsEnabled = _petLightProfile.Shadows;
-            _light.shadowIntensity = _petLightProfile.ShadowsStrenght;
-            _light.shadowSoftness = _petLightProfile.ShadowsSoftness;
-            _light.shadowSoftnessFalloffIntensity = _petLightProfile.ShadowsFalloffStrenght;
-        }
-
-        private void OnDirectionChangedHandler(Vector2 vector)
-        {
-            _perksController.UpdateSpawnBehindPosition(vector);
-        }
-
-        public override void OnNetworkSpawn()
-        {
-            Unbug.Log($"IsHost:{IsHost} IsOwner:{IsOwner} IsLocalPlayer:{IsLocalPlayer} NetworkBehaviourId:{NetworkBehaviourId} ", Uncolor.Black);
-            Unbug.Log($"OwnerClientId:{OwnerClientId}", Uncolor.Red);
-            _catStatus = new CatStatus();
-            _catStatus.OwnerId = OwnerClientId;
-            _catStatus.Color = _playerColorIDX[OwnerClientId];
-            _catStatus.Name = $"Cat_00{OwnerClientId}";
-            name = _catStatus.Name;
-            spriteRenderBody.color = _catStatus.Color;
-            if (!IsOwner)
-            {
-                return;
-            }
-            cameraController = FindFirstObjectByType<CameraController>();
-            cameraController.SetupCamera(gameObject, gameObject);
-
-        }
-
-        public void TakeDamage(int damage)
+        public override void TakeDamage(int damage)
         {
             _healthController.TakeDamage(damage);
         }
 
-        public Camera GetCamera()
-        {
-            return cameraController.GetCamera();
-        }
-
-        internal void Dash()
+        public override void TryAbility01()
         {
             if (_perksController.CanDash())
             {
@@ -111,59 +24,31 @@ namespace Unrez.Cats
             }
         }
 
+        public override void TryAbility02()
+        {
+            _perksController.CreateBarrier();
+        }
+
+        public override void TryAbility03()
+        {
+        }
+
+        public override void TryAbility04()
+        {
+        }
+
         private IEnumerator Dashing()
         {
             while (_perksController.IsDashing())
             {
                 yield return null;
             }
-            spriteRenderBody.color = _catStatus.Color;
+            spriteRenderBody.color = _petStatus.Color;
         }
 
         public bool IsDashing()
         {
             return _perksController.IsDashing();
-        }
-
-        public void CreateBarrier()
-        {
-            _perksController.CreateBarrier();
-        }
-
-        public Color GetColor()
-        {
-            return _catStatus.Color;
-        }
-
-        public CatStatus GetData()
-        {
-            return _catStatus;
-        }
-
-        public Vector2 GetCurrentDirection()
-        {
-            return _motionController.GetCurrentDirection();
-        }
-
-        public bool IsMoving()
-        {
-            return _motionController.IsMoving();
-        }
-
-
-        public void ApplyImpulse(float impulse, float newLinearDrag = -1, bool useNewDirection = false, float newDirX = 0, float newDirY = 0)
-        {
-            _motionController.ApplyImpulse(impulse, newLinearDrag, useNewDirection, newDirX, newDirY);
-        }
-
-        public void SetMovementInput(Vector2 movementInput)
-        {
-            _motionController.SetMovementInput(movementInput);
-        }
-
-        public CatProfile GetProfile()
-        {
-            return _catProfile;
         }
     }
 }

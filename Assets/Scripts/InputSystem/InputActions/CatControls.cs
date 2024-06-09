@@ -38,7 +38,7 @@ public partial class @CatControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Barrier"",
+                    ""name"": ""Ability01"",
                     ""type"": ""Button"",
                     ""id"": ""d4c1cdb0-32be-47c3-89c9-778776e4cded"",
                     ""expectedControlType"": """",
@@ -47,9 +47,27 @@ public partial class @CatControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Dash"",
+                    ""name"": ""Ability02"",
                     ""type"": ""Button"",
                     ""id"": ""dc85e87c-b22c-4a10-9579-4dbd1e33710a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ability03"",
+                    ""type"": ""Button"",
+                    ""id"": ""0f40dfce-7788-4e44-be86-e4bbff3b7790"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ability04"",
+                    ""type"": ""Button"",
+                    ""id"": ""d92c1e4e-c708-482e-b9e6-8f0f73467c24"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -64,7 +82,7 @@ public partial class @CatControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Barrier"",
+                    ""action"": ""Ability01"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -129,8 +147,30 @@ public partial class @CatControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/p"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Dash"",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Ability02"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""422d8263-d04b-48cf-9701-f928b30829d8"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Ability03"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fe14f600-390c-4bed-8654-54c66d5872ff"",
+                    ""path"": ""<Keyboard>/o"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Ability04"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -170,8 +210,10 @@ public partial class @CatControls: IInputActionCollection2, IDisposable
         // Cat
         m_Cat = asset.FindActionMap("Cat", throwIfNotFound: true);
         m_Cat_Move = m_Cat.FindAction("Move", throwIfNotFound: true);
-        m_Cat_Barrier = m_Cat.FindAction("Barrier", throwIfNotFound: true);
-        m_Cat_Dash = m_Cat.FindAction("Dash", throwIfNotFound: true);
+        m_Cat_Ability01 = m_Cat.FindAction("Ability01", throwIfNotFound: true);
+        m_Cat_Ability02 = m_Cat.FindAction("Ability02", throwIfNotFound: true);
+        m_Cat_Ability03 = m_Cat.FindAction("Ability03", throwIfNotFound: true);
+        m_Cat_Ability04 = m_Cat.FindAction("Ability04", throwIfNotFound: true);
     }
 
     ~@CatControls()
@@ -239,15 +281,19 @@ public partial class @CatControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Cat;
     private List<ICatActions> m_CatActionsCallbackInterfaces = new List<ICatActions>();
     private readonly InputAction m_Cat_Move;
-    private readonly InputAction m_Cat_Barrier;
-    private readonly InputAction m_Cat_Dash;
+    private readonly InputAction m_Cat_Ability01;
+    private readonly InputAction m_Cat_Ability02;
+    private readonly InputAction m_Cat_Ability03;
+    private readonly InputAction m_Cat_Ability04;
     public struct CatActions
     {
         private @CatControls m_Wrapper;
         public CatActions(@CatControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Cat_Move;
-        public InputAction @Barrier => m_Wrapper.m_Cat_Barrier;
-        public InputAction @Dash => m_Wrapper.m_Cat_Dash;
+        public InputAction @Ability01 => m_Wrapper.m_Cat_Ability01;
+        public InputAction @Ability02 => m_Wrapper.m_Cat_Ability02;
+        public InputAction @Ability03 => m_Wrapper.m_Cat_Ability03;
+        public InputAction @Ability04 => m_Wrapper.m_Cat_Ability04;
         public InputActionMap Get() { return m_Wrapper.m_Cat; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -260,12 +306,18 @@ public partial class @CatControls: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
-            @Barrier.started += instance.OnBarrier;
-            @Barrier.performed += instance.OnBarrier;
-            @Barrier.canceled += instance.OnBarrier;
-            @Dash.started += instance.OnDash;
-            @Dash.performed += instance.OnDash;
-            @Dash.canceled += instance.OnDash;
+            @Ability01.started += instance.OnAbility01;
+            @Ability01.performed += instance.OnAbility01;
+            @Ability01.canceled += instance.OnAbility01;
+            @Ability02.started += instance.OnAbility02;
+            @Ability02.performed += instance.OnAbility02;
+            @Ability02.canceled += instance.OnAbility02;
+            @Ability03.started += instance.OnAbility03;
+            @Ability03.performed += instance.OnAbility03;
+            @Ability03.canceled += instance.OnAbility03;
+            @Ability04.started += instance.OnAbility04;
+            @Ability04.performed += instance.OnAbility04;
+            @Ability04.canceled += instance.OnAbility04;
         }
 
         private void UnregisterCallbacks(ICatActions instance)
@@ -273,12 +325,18 @@ public partial class @CatControls: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
-            @Barrier.started -= instance.OnBarrier;
-            @Barrier.performed -= instance.OnBarrier;
-            @Barrier.canceled -= instance.OnBarrier;
-            @Dash.started -= instance.OnDash;
-            @Dash.performed -= instance.OnDash;
-            @Dash.canceled -= instance.OnDash;
+            @Ability01.started -= instance.OnAbility01;
+            @Ability01.performed -= instance.OnAbility01;
+            @Ability01.canceled -= instance.OnAbility01;
+            @Ability02.started -= instance.OnAbility02;
+            @Ability02.performed -= instance.OnAbility02;
+            @Ability02.canceled -= instance.OnAbility02;
+            @Ability03.started -= instance.OnAbility03;
+            @Ability03.performed -= instance.OnAbility03;
+            @Ability03.canceled -= instance.OnAbility03;
+            @Ability04.started -= instance.OnAbility04;
+            @Ability04.performed -= instance.OnAbility04;
+            @Ability04.canceled -= instance.OnAbility04;
         }
 
         public void RemoveCallbacks(ICatActions instance)
@@ -317,7 +375,9 @@ public partial class @CatControls: IInputActionCollection2, IDisposable
     public interface ICatActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnBarrier(InputAction.CallbackContext context);
-        void OnDash(InputAction.CallbackContext context);
+        void OnAbility01(InputAction.CallbackContext context);
+        void OnAbility02(InputAction.CallbackContext context);
+        void OnAbility03(InputAction.CallbackContext context);
+        void OnAbility04(InputAction.CallbackContext context);
     }
 }

@@ -1,6 +1,6 @@
-namespace Unrez.Cats
+namespace Unrez.Pets.Cats
 {
-    public enum CatSide
+    public enum PetSide
     {
         NO_SIDE = -1,
         CAT_UP = 0,

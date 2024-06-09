@@ -1,12 +1,12 @@
 using Unity.Netcode;
 using UnityEngine;
 
-namespace Unrez.Cats
+namespace Unrez.Pets.Cats
 {
     [RequireComponent(typeof(Cat))]
-    public class CatInputHandler : NetworkBehaviour
+    public class PetInputHandler : NetworkBehaviour
     {
-        private Cat _cat; 
+        private Pet _pet; 
         
         [Header("References")]
         [SerializeField]
@@ -15,7 +15,7 @@ namespace Unrez.Cats
 
         private void Awake()
         {
-            _cat = GetComponent<Cat>();
+            _pet = GetComponent<Cat>();
         }
 
         public override void OnNetworkSpawn()
@@ -26,8 +26,8 @@ namespace Unrez.Cats
                 return;
             }
             _inputReader.OnMoveEvent += OnMoveHandler;
-            _inputReader.OnDashEvent += OnDashHandler;
-            _inputReader.OnBarrierEvent += OnBarrierHandler;
+            _inputReader.OnAbility01Event += OnAbility01Handler;
+            _inputReader.OnAbility02Event += OnAbility02Handler;
         }
 
         public override void OnNetworkDespawn()
@@ -38,8 +38,8 @@ namespace Unrez.Cats
                 return;
             }
             _inputReader.OnMoveEvent -= OnMoveHandler;
-            _inputReader.OnDashEvent -= OnDashHandler;
-            _inputReader.OnBarrierEvent -= OnBarrierHandler;
+            _inputReader.OnAbility01Event -= OnAbility01Handler;
+            _inputReader.OnAbility02Event -= OnAbility02Handler;
         }
 
         private void OnMoveHandler(Vector2 movementInput)
@@ -51,26 +51,44 @@ namespace Unrez.Cats
             if (_movementInput != movementInput)
             {
                 _movementInput = movementInput;
-                _cat.SetMovementInput(_movementInput);
+                _pet.SetMovementInput(_movementInput);
             }
         }
 
-        private void OnDashHandler()
+        private void OnAbility01Handler()
         {
             if (!IsOwner)
             {
                 return;
             }
-            _cat.Dash();
+            _pet.TryAbility01();
         }
 
-        private void OnBarrierHandler()
+        private void OnAbility02Handler()
         {
             if (!IsOwner)
             {
                 return;
             }
-            _cat.CreateBarrier();
+            _pet.TryAbility02();
+        }
+
+        private void OnAbility03Handler()
+        {
+            if (!IsOwner)
+            {
+                return;
+            }
+            _pet.TryAbility03();
+        }
+
+        private void OnAbility04Handler()
+        {
+            if (!IsOwner)
+            {
+                return;
+            }
+            _pet.TryAbility04();
         }
     }
 
