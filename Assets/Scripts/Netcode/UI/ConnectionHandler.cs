@@ -23,11 +23,19 @@ namespace Unrez.Netcode.UI
             _buttonStartHost.onClick.RemoveAllListeners();
             _buttonStartClient.onClick.RemoveAllListeners();
         }
-
+        /*
+         * Using an IP address of 0.0.0.0 for the server listen address will make a server or host listen on all IP addresses assigned to the local system. 
+         * This can be particularly helpful if you are testing a client instance on the same system as well as one or more client instances 
+         * connecting from other systems on your local area network. 
+         * Another scenario is while developing and debugging you might sometimes test local client instances on the same system 
+         * and sometimes test client instances running on external systems.
+         */
         public void OnButtonStartHost()
         {
             Unbug.Log("OnButtonStartHost", Uncolor.Magenta);
+            //NetworkHandler.Instance.StartLocalHost();
             NetworkManager.Singleton.StartHost();
+
         }
 
         public void OnButtonStartClient()

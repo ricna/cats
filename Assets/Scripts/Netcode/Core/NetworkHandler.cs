@@ -4,6 +4,7 @@ using System;
 using UnityEngine;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
+using Unrez.Essential;
 
 namespace Unrez.Netcode
 {
@@ -16,27 +17,21 @@ namespace Unrez.Netcode
     /// That way, the physics simulation runs on the authoritative instance, and the resulting positions synchronize on the non-authoritative instances, 
     /// each with their RigidBody being Kinematic, without any interference.
     /// </summary>
-    
+
     [RequireComponent(typeof(NetworkManager))]
-    public class NetworkHandler : MonoBehaviour
+    public class NetworkHandler : Singleton<NetworkHandler>
     {
         [SerializeField]
-        private bool _lan;
-        [SerializeField]
-        private string _ip;
+        private string _ipLocal;
         [SerializeField]
         private ushort _port = 7777;
 
         private void Start()
         {
-            if (_lan)
-            {
-                _ip = GetLocalIPAddress();
-                InitialiseTransport(_ip, _port);
-            }
+            _ipLocal = GetLocalIPAddress();
         }
 
-        public static string GetLocalIPAddress()
+        public string GetLocalIPAddress()
         {
             var host = Dns.GetHostEntry(Dns.GetHostName());
             foreach (var ip in host.AddressList)
@@ -49,11 +44,17 @@ namespace Unrez.Netcode
             throw new Exception("No network adapters with an IPv4 address in the system!");
         }
 
-        private void InitialiseTransport(string ip, ushort port)
+        public void InitialiseTransport(string ip, ushort port)
         {
             UnityTransport unityTransport = NetworkManager.Singleton.GetComponent<UnityTransport>();
-
             unityTransport.SetConnectionData(ip, port);
+        }
+
+        public void StartLocalHost(ushort port = 7777)
+        {
+            UnityTransport unityTransport = NetworkManager.Singleton.GetComponent<UnityTransport>();
+            unityTransport.SetConnectionData(_ipLocal, port);
+            NetworkManager.Singleton.StartHost();
         }
     }
 }

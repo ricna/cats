@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 namespace Unrez.Cats
 {
@@ -15,6 +16,7 @@ namespace Unrez.Cats
     }
     public class Cat : NetworkBehaviour
     {
+        private Light2D _light;
         private CatStatus _catStatus;
         private HealthController _healthController;
         private MotionController _motionController;
@@ -28,6 +30,9 @@ namespace Unrez.Cats
         private Color[] _playerColorIDX = { Color.cyan, Color.magenta, Color.white, Color.gray, Color.cyan, Color.yellow, Color.blue, Color.magenta };
         private void Awake()
         {
+            _light = (Light2D)FindAnyObjectByType(typeof(Light2D));
+            _light.gameObject.transform.SetParent(transform);
+            _light.gameObject.transform.position = Vector3.zero;
             _healthController = GetComponent<HealthController>();
             _motionController = GetComponent<MotionController>();
             _perksController = GetComponent<PerksController>();
