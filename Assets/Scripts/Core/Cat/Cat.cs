@@ -16,7 +16,15 @@ namespace Unrez.Cats
     }
     public class Cat : NetworkBehaviour
     {
+        //private Dog _dog;
+        //private Cat[] _cats;
+
         private Light2D _light;
+        [SerializeField]
+        private PetLightProfile _petLightProfile;
+        [SerializeField]
+        private CatProfile _catProfile;
+
         private CatStatus _catStatus;
         private HealthController _healthController;
         private MotionController _motionController;
@@ -28,16 +36,35 @@ namespace Unrez.Cats
         private CameraController cameraController;
         [SerializeField]
         private Color[] _playerColorIDX = { Color.cyan, Color.magenta, Color.white, Color.gray, Color.cyan, Color.yellow, Color.blue, Color.magenta };
+        
         private void Awake()
         {
-            _light = (Light2D)FindAnyObjectByType(typeof(Light2D));
-            _light.gameObject.transform.SetParent(transform);
-            _light.gameObject.transform.position = Vector3.zero;
+            InitLight();
             _healthController = GetComponent<HealthController>();
             _motionController = GetComponent<MotionController>();
             _perksController = GetComponent<PerksController>();
             _motionController.OnDirectionChangedEvent += OnDirectionChangedHandler;
         }
+
+        private void InitLight()
+        {
+            _light = (Light2D)FindAnyObjectByType(typeof(Light2D));
+            _light.gameObject.transform.SetParent(transform);
+            _light.gameObject.transform.position = Vector3.zero;
+
+            _light.lightType = _petLightProfile.LightType;
+            _light.color = _petLightProfile.LightColor;
+            _light.pointLightInnerRadius = _petLightProfile.LightRadius.x;
+            _light.pointLightOuterRadius = _petLightProfile.LightRadius.y;
+            _light.intensity = _petLightProfile.LightIntensity;
+            _light.falloffIntensity = _petLightProfile.LightFalloffStrenght;
+            
+            _light.shadowsEnabled = _petLightProfile.Shadows;
+            _light.shadowIntensity = _petLightProfile.ShadowsStrenght;
+            _light.shadowSoftness = _petLightProfile.ShadowsSoftness;
+            _light.shadowSoftnessFalloffIntensity = _petLightProfile.ShadowsSoftness;
+        }
+
         private void OnDirectionChangedHandler(Vector2 vector)
         {
             _perksController.UpdateSpawnBehindPosition(vector);
@@ -130,6 +157,11 @@ namespace Unrez.Cats
         public void SetMovementInput(Vector2 movementInput)
         {
             _motionController.SetMovementInput(movementInput);
+        }
+
+        public CatProfile GetProfile()
+        {
+            return _catProfile;
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Unrez.Cats
         [SerializeField]
         private Animator _animator;
 
-        [Header("Settings")]
+        [Header("Settings (Replace by CatProfile)")]
         [SerializeField]
         [Tooltip("MaxVelocity. Force will be calculated to use with AddForce (_force = _maxVelocity * _rb.drag). Linear Drag should be > 0")]
         private float _maxVelocity = 10;
@@ -27,11 +27,9 @@ namespace Unrez.Cats
         [Tooltip("Linear Drag when !IsMoving (Input == 0)")]
         [SerializeField]
         private float _deceleration = 10;
-        [SerializeField]
-        private float _awayTime = 10;
-        private Vector2 _movementInput;
 
         [Header("Debugs")]
+        private Vector2 _movementInput;
         [SerializeField]
         private float _force;
         [SerializeField]
@@ -45,11 +43,16 @@ namespace Unrez.Cats
         [SerializeField]
         private Vector2 _currentDirection;
 
+        //Events
         public event Action<Vector2> OnDirectionChangedEvent;
 
         private void Awake()
         {
             _cat = GetComponent<Cat>();
+            CatProfile profile = _cat.GetProfile();
+            _maxVelocity = profile.Speed;
+            _acceleration = profile.Acceleration;
+            _deceleration = profile.Deceleration;
         }
 
         private void FixedUpdate()
