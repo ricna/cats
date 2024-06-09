@@ -4,10 +4,9 @@ using UnityEngine;
 
 namespace Unrez.Pets.Cats
 {
-    public class MotionController : NetworkBehaviour
+    public class PetMotion : NetworkBehaviour
     {
         protected Pet _pet;
-        protected PetProfile _petProfile;
 
         [Header("References")]
         [SerializeField]
@@ -37,7 +36,7 @@ namespace Unrez.Pets.Cats
 
         protected virtual void Awake()
         {
-            _pet = GetComponent<Cat>();
+            _pet = GetComponent<Pet>();
         }
 
         protected virtual void FixedUpdate()
@@ -46,17 +45,17 @@ namespace Unrez.Pets.Cats
             {
                 return;
             }
-            /*if (_pet.IsDashing())
+            if (_pet == null)
             {
                 return;
-            }*/
+            }
             _isMovingHorizontal = _movementInput.x != 0;
             _isMovingVertical = _movementInput.y != 0;
             _isMoving = _isMovingHorizontal || _isMovingVertical;
             if (_isMoving)
             {
-                _rb.drag = _petProfile.Acceleration;
-                _force = _petProfile.SpeedSprint * _rb.drag;
+                _rb.drag = _pet.Profile.Acceleration;
+                _force = _pet.Profile.SpeedSprint * _rb.drag;
                 if (_isMovingVertical)
                 {
                     _currentDirection = Vector2.up * _movementInput.y;
@@ -87,8 +86,8 @@ namespace Unrez.Pets.Cats
                 if (_currentDirection != Vector2.zero)
                 {
                     _currentDirection = Vector2.zero;
-                    _rb.drag = _petProfile.Deceleration;
-                    _force = _petProfile.SpeedSprint * _rb.drag;
+                    _rb.drag = _pet.Profile.Deceleration;
+                    _force = _pet.Profile.SpeedSprint * _rb.drag;
                     _rb.AddForce(Vector2.zero, ForceMode2D.Force);
                     OnDirectionChangedEvent?.Invoke(_currentDirection);
                 }

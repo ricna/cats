@@ -17,34 +17,27 @@ namespace Unrez.Pets
     }
     public abstract class Pet : NetworkBehaviour
     {
-        [SerializeField]
-        protected PetProfile _petProfile;
-        [SerializeField]
-        protected PetProfile[] _pets;
+        [field: SerializeField]
+        public PetProfile Profile { get; private set; }
 
         protected PetStatus _petStatus;
-        protected HealthController _healthController;
-        protected MotionController _motionController;
-        protected PerksController _perksController;
+        protected PetHealth _healthController;
+        protected PetMotion _motionController;
+        protected PetAbility _abilityController;
         protected Light2D _light;
+        protected PetCamera _cameraController;
 
         [Header("References")]
         [SerializeField]
-        protected SpriteRenderer spriteRenderBody;
-        [SerializeField]
-        protected CameraController cameraController;
-        [SerializeField]
-        protected Color[] _playerColorIDX = { Color.cyan, Color.magenta, Color.white, Color.gray, Color.cyan, Color.yellow, Color.blue, Color.magenta };
+        protected SpriteRenderer _spriteRenderBody;
 
         public event Action OnPetProfileLoaded;
 
-
         protected virtual void Awake()
         {
-            InitLight();
-            _healthController = GetComponent<HealthController>();
-            _motionController = GetComponent<MotionController>();
-            _perksController = GetComponent<PerksController>();
+            _motionController = GetComponent<PetMotion>();
+            _abilityController = GetComponent<PetAbility>();
+            _healthController = GetComponent<PetHealth>();
             _motionController.OnDirectionChangedEvent += OnDirectionChangedHandler;
         }
 
@@ -53,56 +46,58 @@ namespace Unrez.Pets
             base.OnNetworkSpawn();
             Unbug.Log($"IsHost:{IsHost} IsOwner:{IsOwner} IsLocalPlayer:{IsLocalPlayer} NetworkBehaviourId:{NetworkBehaviourId} ", Uncolor.Black);
             Unbug.Log($"OwnerClientId:{OwnerClientId}", Uncolor.Red);
+            Profile = PetsContainer.Instance.Pets[OwnerClientId];
             _petStatus = new PetStatus();
             _petStatus.OwnerId = OwnerClientId;
-            _petStatus.Color = _playerColorIDX[OwnerClientId];
-            _petProfile = _pets[OwnerClientId];
+            _petStatus.Color = Profile.Color;
             OnPetProfileLoaded?.Invoke();
             _petStatus.Name = $"Cat_00{OwnerClientId}";
             name = _petStatus.Name;
-            spriteRenderBody.color = _petStatus.Color;
+            _spriteRenderBody.color = _petStatus.Color;
             if (!IsOwner)
             {
                 return;
             }
-            cameraController = FindFirstObjectByType<CameraController>();
-            cameraController.SetupCamera(gameObject, gameObject);
+            _cameraController = FindFirstObjectByType<PetCamera>();
+            _cameraController.SetupCamera(gameObject, gameObject);
+            InitLight();
         }
 
         public override void OnNetworkDespawn()
         {
             base.OnNetworkDespawn();
+
         }
 
         protected virtual void InitLight()
         {
             _light = (Light2D)FindAnyObjectByType(typeof(Light2D));
-            _light.name = $"PetLight [{_petProfile.name}]";
+            _light.name = $"PetLight [{Profile.name}]";
             _light.enabled = true;
             _light.gameObject.transform.SetParent(transform);
             _light.gameObject.transform.position = Vector3.zero;
 
-            _light.lightType = _petProfile.Light.LightType;
-            _light.color = _petProfile.Light.LightColor;
-            _light.pointLightInnerRadius = _petProfile.Light.LightRadius.x;
-            _light.pointLightOuterRadius = _petProfile.Light.LightRadius.y;
-            _light.intensity = _petProfile.Light.LightIntensity;
-            _light.falloffIntensity = _petProfile.Light.LightFalloffStrenght;
+            _light.lightType = Profile.Light.LightType;
+            _light.color = Profile.Light.LightColor;
+            _light.pointLightInnerRadius = Profile.Light.LightRadius.x;
+            _light.pointLightOuterRadius = Profile.Light.LightRadius.y;
+            _light.intensity = Profile.Light.LightIntensity;
+            _light.falloffIntensity = Profile.Light.LightFalloffStrenght;
 
-            _light.shadowsEnabled = _petProfile.Light.Shadows;
-            _light.shadowIntensity = _petProfile.Light.ShadowsStrenght;
-            _light.shadowSoftness = _petProfile.Light.ShadowsSoftness;
-            _light.shadowSoftnessFalloffIntensity = _petProfile.Light.ShadowsFalloffStrenght;
+            _light.shadowsEnabled = Profile.Light.Shadows;
+            _light.shadowIntensity = Profile.Light.ShadowsStrenght;
+            _light.shadowSoftness = Profile.Light.ShadowsSoftness;
+            _light.shadowSoftnessFalloffIntensity = Profile.Light.ShadowsFalloffStrenght;
         }
 
         protected virtual void OnDirectionChangedHandler(Vector2 vector)
         {
-            _perksController.UpdateSpawnBehindPosition(vector);
+            _abilityController.UpdateSpawnBehindPosition(vector);
         }
 
         public virtual PetProfile GetProfile()
         {
-            return _petProfile;
+            return Profile;
         }
 
         public virtual PetStatus GetStatus()
@@ -112,7 +107,7 @@ namespace Unrez.Pets
 
         public virtual Camera GetCamera()
         {
-            return cameraController.GetCamera();
+            return _cameraController.GetCamera();
         }
 
         public abstract void TryAbility01();

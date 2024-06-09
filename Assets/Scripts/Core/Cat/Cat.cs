@@ -16,17 +16,17 @@ namespace Unrez.Pets.Cats
 
         public override void TryAbility01()
         {
-            if (_perksController.CanDash())
+            if (_abilityController.CanDash())
             {
-                spriteRenderBody.color = Color.red;
-                _perksController.ApplyDash();
+                _spriteRenderBody.color = Color.red;
+                _abilityController.ApplyDash();
                 StartCoroutine(Dashing());
             }
         }
 
         public override void TryAbility02()
         {
-            _perksController.CreateBarrier();
+            _abilityController.CreateBarrier();
         }
 
         public override void TryAbility03()
@@ -39,16 +39,16 @@ namespace Unrez.Pets.Cats
 
         private IEnumerator Dashing()
         {
-            while (_perksController.IsDashing())
+            while (_abilityController.IsDashing())
             {
                 yield return null;
             }
-            spriteRenderBody.color = _petStatus.Color;
+            _spriteRenderBody.color = _petStatus.Color;
         }
 
         public bool IsDashing()
         {
-            return _perksController.IsDashing();
+            return _abilityController.IsDashing();
         }
     }
 }

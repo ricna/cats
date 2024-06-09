@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b7ae03fe9754c74c84b1fe2c7031d87, type: 3}
   m_Name: Qualy
   m_EditorClassIdentifier: 
-  Color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0}
-  Speed: 12
+  Light: {fileID: 11400000, guid: 4b02c9384f6d3f84b8588332145158f0, type: 2}
+  Color: {r: 1, g: 1, b: 1, a: 0}
+  SpeedSprint: 0
   Acceleration: 4
   Deceleration: 8
   DashForce: 30

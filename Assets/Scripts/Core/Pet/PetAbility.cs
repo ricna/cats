@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Unrez.Pets.Cats
 {
-    public class PerksController : NetworkBehaviour
+    public class PetAbility : NetworkBehaviour
     {
 
         protected Cat _cat;

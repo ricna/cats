@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Unrez.Pets.Cats
 {
-    public class CameraController : MonoBehaviour
+    public class PetCamera : MonoBehaviour
     {
         [Header("References")]
         [SerializeField]

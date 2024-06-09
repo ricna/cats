@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Unrez.Pets.Cats
 {
-    public class HealthController : NetworkBehaviour
+    public class PetHealth : NetworkBehaviour
     {
         [field: SerializeField]
         public int MaxHealth { get; private set; } = 100;
@@ -14,7 +14,7 @@ namespace Unrez.Pets.Cats
         [field: SerializeField]
         public NetworkVariable<bool> IsDead { get; private set; }
 
-        public event Action<HealthController> OnDeath;
+        public event Action<PetHealth> OnDeath;
 
         public override void OnNetworkSpawn()
         {

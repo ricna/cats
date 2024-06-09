@@ -5,6 +5,7 @@ namespace Unrez.Pets
     [CreateAssetMenu(fileName = "New CatProfile", menuName = "Unrez/Cats/New Cat", order = 0)]
     public class PetProfile : ScriptableObject
     {
+        public PetType PetType;
         public PetLightProfile Light;
         public Color Color;
         public float SpeedSprint;
