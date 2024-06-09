@@ -36,7 +36,7 @@ namespace Unrez.Cats
         private CameraController cameraController;
         [SerializeField]
         private Color[] _playerColorIDX = { Color.cyan, Color.magenta, Color.white, Color.gray, Color.cyan, Color.yellow, Color.blue, Color.magenta };
-        
+
         private void Awake()
         {
             InitLight();
@@ -49,6 +49,8 @@ namespace Unrez.Cats
         private void InitLight()
         {
             _light = (Light2D)FindAnyObjectByType(typeof(Light2D));
+            _light.name = "CatLight";
+            _light.enabled = true;
             _light.gameObject.transform.SetParent(transform);
             _light.gameObject.transform.position = Vector3.zero;
 
@@ -58,11 +60,11 @@ namespace Unrez.Cats
             _light.pointLightOuterRadius = _petLightProfile.LightRadius.y;
             _light.intensity = _petLightProfile.LightIntensity;
             _light.falloffIntensity = _petLightProfile.LightFalloffStrenght;
-            
+
             _light.shadowsEnabled = _petLightProfile.Shadows;
             _light.shadowIntensity = _petLightProfile.ShadowsStrenght;
             _light.shadowSoftness = _petLightProfile.ShadowsSoftness;
-            _light.shadowSoftnessFalloffIntensity = _petLightProfile.ShadowsSoftness;
+            _light.shadowSoftnessFalloffIntensity = _petLightProfile.ShadowsFalloffStrenght;
         }
 
         private void OnDirectionChangedHandler(Vector2 vector)

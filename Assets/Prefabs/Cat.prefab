@@ -264,6 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _petLightProfile: {fileID: 11400000, guid: 4b02c9384f6d3f84b8588332145158f0, type: 2}
+  _catProfile: {fileID: 11400000, guid: 836f0071c2345444db6618be42b1dca4, type: 2}
   spriteRenderBody: {fileID: 5698381062905369433}
   cameraController: {fileID: 0}
   _playerColorIDX:
@@ -302,7 +303,6 @@ MonoBehaviour:
   _maxVelocity: 10
   _acceleration: 5
   _deceleration: 10
-  _awayTime: 10
   _force: 0
   _catSide: 0
   _lastCatSide: 0
