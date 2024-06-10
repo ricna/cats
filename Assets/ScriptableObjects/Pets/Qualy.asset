@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b7ae03fe9754c74c84b1fe2c7031d87, type: 3}
   m_Name: Qualy
   m_EditorClassIdentifier: 
+  PetType: 0
   Light: {fileID: 11400000, guid: 4b02c9384f6d3f84b8588332145158f0, type: 2}
+  Abilities: []
   Color: {r: 1, g: 1, b: 1, a: 0}
-  SpeedSprint: 0
-  Acceleration: 4
-  Deceleration: 8
+  SpeedSprint: 10
+  Acceleration: 5
+  Deceleration: 10
   DashForce: 30
-  DashCooldown: 5
-  DashDuration: 0.3
-  HairballCooldown: 2
+  DashCooldown: 3
+  DashDuration: 0.25
+  HairballCooldown: 1
