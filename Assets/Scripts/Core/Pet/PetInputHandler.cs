@@ -3,19 +3,19 @@ using UnityEngine;
 
 namespace Unrez.Pets.Cats
 {
-    [RequireComponent(typeof(Cat))]
+    [RequireComponent(typeof(Pet))]
     public class PetInputHandler : NetworkBehaviour
     {
         private Pet _pet; 
         
         [Header("References")]
         [SerializeField]
-        private CatInputReader _inputReader;
+        private InputReader _inputReader;
         private Vector2 _movementInput;
 
         private void Awake()
         {
-            _pet = GetComponent<Cat>();
+            _pet = GetComponent<Pet>();
         }
 
         public override void OnNetworkSpawn()
@@ -26,8 +26,7 @@ namespace Unrez.Pets.Cats
                 return;
             }
             _inputReader.OnMoveEvent += OnMoveHandler;
-            _inputReader.OnAbility01Event += OnAbility01Handler;
-            _inputReader.OnAbility02Event += OnAbility02Handler;
+            _inputReader.OnAbilityEvent += OnAbilityHandler;
         }
 
         public override void OnNetworkDespawn()
@@ -38,8 +37,7 @@ namespace Unrez.Pets.Cats
                 return;
             }
             _inputReader.OnMoveEvent -= OnMoveHandler;
-            _inputReader.OnAbility01Event -= OnAbility01Handler;
-            _inputReader.OnAbility02Event -= OnAbility02Handler;
+            _inputReader.OnAbilityEvent -= OnAbilityHandler;
         }
 
         private void OnMoveHandler(Vector2 movementInput)
@@ -55,41 +53,13 @@ namespace Unrez.Pets.Cats
             }
         }
 
-        private void OnAbility01Handler()
+        private void OnAbilityHandler(int idx)
         {
             if (!IsOwner)
             {
                 return;
             }
-            _pet.TryAbility01();
-        }
-
-        private void OnAbility02Handler()
-        {
-            if (!IsOwner)
-            {
-                return;
-            }
-            _pet.TryAbility02();
-        }
-
-        private void OnAbility03Handler()
-        {
-            if (!IsOwner)
-            {
-                return;
-            }
-            _pet.TryAbility03();
-        }
-
-        private void OnAbility04Handler()
-        {
-            if (!IsOwner)
-            {
-                return;
-            }
-            _pet.TryAbility04();
+            _pet.TryAbility(idx);
         }
     }
-
 }

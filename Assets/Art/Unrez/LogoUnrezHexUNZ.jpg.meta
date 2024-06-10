@@ -145,7 +145,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      LogoUnrezHexUNZ_0: 9209629209336211278
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

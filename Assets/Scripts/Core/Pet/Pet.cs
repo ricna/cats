@@ -1,8 +1,11 @@
 using System;
 using System.Collections;
+using System.Threading;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using Unrez.Netcode;
+using Unrez.Pets.Abilities;
 using Unrez.Pets.Cats;
 
 namespace Unrez.Pets
@@ -23,20 +26,22 @@ namespace Unrez.Pets
         protected PetStatus _petStatus;
         protected PetHealth _healthController;
         protected PetMotion _motionController;
-        protected PetAbility _abilityController;
+        protected PetAbilities _abilitiesController;
         protected Light2D _light;
         protected PetCamera _cameraController;
 
         [Header("References")]
         [SerializeField]
         protected SpriteRenderer _spriteRenderBody;
+        [SerializeField]
+        private Transform _transformParent;
 
         public event Action OnPetProfileLoaded;
 
         protected virtual void Awake()
         {
             _motionController = GetComponent<PetMotion>();
-            _abilityController = GetComponent<PetAbility>();
+            _abilitiesController = GetComponent<PetAbilities>();
             _healthController = GetComponent<PetHealth>();
             _motionController.OnDirectionChangedEvent += OnDirectionChangedHandler;
         }
@@ -47,6 +52,10 @@ namespace Unrez.Pets
             Unbug.Log($"IsHost:{IsHost} IsOwner:{IsOwner} IsLocalPlayer:{IsLocalPlayer} NetworkBehaviourId:{NetworkBehaviourId} ", Uncolor.Black);
             Unbug.Log($"OwnerClientId:{OwnerClientId}", Uncolor.Red);
             Profile = PetsContainer.Instance.Pets[OwnerClientId];
+            for (int i = 0; i < Profile.Abilities.Length; i++)
+            {
+                _abilitiesController.SetAbility(i, Profile.Abilities[i]);
+            }
             _petStatus = new PetStatus();
             _petStatus.OwnerId = OwnerClientId;
             _petStatus.Color = Profile.Color;
@@ -66,7 +75,6 @@ namespace Unrez.Pets
         public override void OnNetworkDespawn()
         {
             base.OnNetworkDespawn();
-
         }
 
         protected virtual void InitLight()
@@ -92,12 +100,7 @@ namespace Unrez.Pets
 
         protected virtual void OnDirectionChangedHandler(Vector2 vector)
         {
-            _abilityController.UpdateSpawnBehindPosition(vector);
-        }
-
-        public virtual PetProfile GetProfile()
-        {
-            return Profile;
+            Debug.Log($"<color=gray> [{name}] - Direction Changed {vector}</color>");
         }
 
         public virtual PetStatus GetStatus()
@@ -110,11 +113,8 @@ namespace Unrez.Pets
             return _cameraController.GetCamera();
         }
 
-        public abstract void TryAbility01();
-        public abstract void TryAbility02();
-        public abstract void TryAbility03();
-        public abstract void TryAbility04();
-        public abstract void TakeDamage(int damage);
+        public abstract void TryAbility(int idx);
+        public abstract void TakeHit(int damage);
 
         public virtual Color GetColor()
         {
@@ -141,9 +141,10 @@ namespace Unrez.Pets
             _motionController.SetMovementInput(movementInput);
         }
 
-
+        public Ability GetAbilityByType(Type abilityType)
+        {
+            return _abilitiesController.GetAbilityByType(abilityType);
+        }
 
     }
-
-
 }

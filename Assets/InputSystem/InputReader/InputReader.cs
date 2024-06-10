@@ -1,30 +1,27 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static CatControls;
+using static Controls;
 
 namespace Unrez.Pets.Cats
 {
     [CreateAssetMenu(fileName = "New Input Reader", menuName = "Unrez/Input Reader")]
-    public class CatInputReader : ScriptableObject, ICatActions
+    public class InputReader : ScriptableObject, ICatActions
     {
-        private CatControls controls;
+        private Controls controls;
 
         public event Action<Vector2> OnMoveEvent;
 
         public event Action<bool> OnSprintEvent;
         public event Action<bool> OnCrouchEvent;
 
-        public event Action OnAbility01Event;
-        public event Action OnAbility02Event;
-        public event Action OnAbility03Event;
-        public event Action OnAbility04Event;
+        public event Action<int> OnAbilityEvent;
 
         private void OnEnable()
         {
             if (controls == null)
             {
-                controls = new CatControls();
+                controls = new Controls();
                 controls.Cat.SetCallbacks(this);
             }
             controls.Cat.Enable();
@@ -45,7 +42,7 @@ namespace Unrez.Pets.Cats
         {
             if (context.performed)
             {
-                OnAbility01Event?.Invoke();
+                OnAbilityEvent?.Invoke(1);
             }
         }
 
@@ -53,7 +50,7 @@ namespace Unrez.Pets.Cats
         {
             if (context.performed)
             {
-                OnAbility02Event?.Invoke();
+                OnAbilityEvent?.Invoke(2);
             }
         }
 
@@ -61,7 +58,7 @@ namespace Unrez.Pets.Cats
         {
             if (context.performed)
             {
-                OnAbility03Event?.Invoke();
+                OnAbilityEvent?.Invoke(3);
             }
         }
 
@@ -69,7 +66,7 @@ namespace Unrez.Pets.Cats
         {
             if (context.performed)
             {
-                OnAbility04Event?.Invoke();
+                OnAbilityEvent?.Invoke(4);
             }
         }
     }
