@@ -6,8 +6,8 @@ namespace Unrez.Pets.Cats
     [RequireComponent(typeof(Pet))]
     public class PetInputHandler : NetworkBehaviour
     {
-        private Pet _pet; 
-        
+        private Pet _pet;
+
         [Header("References")]
         [SerializeField]
         private InputReader _inputReader;
@@ -53,13 +53,13 @@ namespace Unrez.Pets.Cats
             }
         }
 
-        private void OnAbilityHandler(int idx)
+        private void OnAbilityHandler(int abilityID)
         {
             if (!IsOwner)
             {
                 return;
             }
-            _pet.TryAbility(idx);
+            _pet.TryAbility(abilityID);
         }
     }
 }

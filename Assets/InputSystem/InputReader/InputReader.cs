@@ -42,7 +42,7 @@ namespace Unrez.Pets.Cats
         {
             if (context.performed)
             {
-                OnAbilityEvent?.Invoke(1);
+                OnAbilityEvent?.Invoke(0);
             }
         }
 
@@ -50,7 +50,7 @@ namespace Unrez.Pets.Cats
         {
             if (context.performed)
             {
-                OnAbilityEvent?.Invoke(2);
+                OnAbilityEvent?.Invoke(1);
             }
         }
 
@@ -58,7 +58,7 @@ namespace Unrez.Pets.Cats
         {
             if (context.performed)
             {
-                OnAbilityEvent?.Invoke(3);
+                OnAbilityEvent?.Invoke(2);
             }
         }
 
@@ -66,7 +66,7 @@ namespace Unrez.Pets.Cats
         {
             if (context.performed)
             {
-                OnAbilityEvent?.Invoke(4);
+                OnAbilityEvent?.Invoke(3);
             }
         }
     }

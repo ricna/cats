@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2530593966750574000}
   - component: {fileID: 1561932522807824142}
   - component: {fileID: 376582561524254509}
-  - component: {fileID: 4783008662402901506}
+  - component: {fileID: -8743158011315201117}
   - component: {fileID: 2637803149825943490}
   - component: {fileID: 4645575780272570944}
   - component: {fileID: 7309397374055780338}
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2479862564
+  GlobalObjectIdHash: 1257078804
   InScenePlacedSourceGlobalObjectIdHash: 4199737136
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TransitionStateInfoList: []
   m_Animator: {fileID: 4410445312345493856}
---- !u!114 &4783008662402901506
+--- !u!114 &-8743158011315201117
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -259,11 +259,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3132002317318474520}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38fbebbfb5cf72b41abd94dae73eaf5d, type: 3}
+  m_Script: {fileID: 11500000, guid: 8683790668b85e5499ea027c68a0cdbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Profile>k__BackingField: {fileID: 0}
   _spriteRenderBody: {fileID: 8060715614537492126}
+  _transformParent: {fileID: 0}
 --- !u!114 &2637803149825943490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,13 +327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 544161b719e50254bac2edb952545422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dashForce: 30
-  _dashDuration: 0.25
-  _dashCooldown: 0.1
-  _prefabHairball: {fileID: 6132515797593101152, guid: b723e7fc5e01d484ca29095d19e1e4a3, type: 3}
-  _spawnHairball: {fileID: 1088108280339971136}
-  _spawnHairballOffset: 1.5
-  _hairballCooldown: 0.1
+  _abilities: []
 --- !u!1 &6392836907747852429
 GameObject:
   m_ObjectHideFlags: 0

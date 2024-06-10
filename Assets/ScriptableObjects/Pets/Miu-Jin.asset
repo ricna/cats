@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PetType: 0
   Light: {fileID: 11400000, guid: 4b02c9384f6d3f84b8588332145158f0, type: 2}
+  Abilities:
+  - {fileID: 1199748626020003285, guid: 2fe63e0e00cbf264591dea58496e68a5, type: 3}
+  - {fileID: -4546934776620563410, guid: 64a3863e279b2954fbe75e17803e7f19, type: 3}
   Color: {r: 0.5377358, g: 0, b: 0.47280604, a: 1}
   SpeedSprint: 10
   Acceleration: 5

@@ -1,7 +1,8 @@
 using Unity.Netcode;
 using UnityEngine;
+using Unrez.Pets.Cats;
 
-namespace Unrez.Pets.Cats
+namespace Unrez.Pets.Abilities
 {
     public class Hairball : NetworkBehaviour
     {
@@ -50,9 +51,13 @@ namespace Unrez.Pets.Cats
         {
             if (collider.TryGetComponent(out Cat cat))
             {
-                if (cat.IsDashing())
+                Ability dashAbility = cat.GetAbilityByType(typeof(AbilityDash));
+                if (dashAbility != null)
                 {
-                    DestroyHairballServerRpc();
+                    if (dashAbility.IsExecuting())
+                    {
+                        DestroyHairballServerRpc();
+                    }
                 }
             }
         }

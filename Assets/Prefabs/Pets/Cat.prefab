@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 4199737136
+  GlobalObjectIdHash: 170000700
   InScenePlacedSourceGlobalObjectIdHash: 4199737136
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -262,13 +262,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38fbebbfb5cf72b41abd94dae73eaf5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _petProfile: {fileID: 0}
-  _pets:
-  - {fileID: 11400000, guid: 836f0071c2345444db6618be42b1dca4, type: 2}
-  - {fileID: 11400000, guid: 92d358ebfc241f743bbc8321a853ea95, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
+  <Profile>k__BackingField: {fileID: 0}
   _spriteRenderBody: {fileID: 5698381062905369433}
+  _transformParent: {fileID: 0}
 --- !u!114 &311459463207981573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,13 +327,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 544161b719e50254bac2edb952545422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dashForce: 30
-  _dashDuration: 0.25
-  _dashCooldown: 0.1
-  _prefabHairball: {fileID: 6132515797593101152, guid: b723e7fc5e01d484ca29095d19e1e4a3, type: 3}
-  _spawnHairball: {fileID: 3445361403599849863}
-  _spawnHairballOffset: 1.5
-  _hairballCooldown: 0.1
+  _abilities:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &8682436550340605258
 GameObject:
   m_ObjectHideFlags: 0

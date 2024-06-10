@@ -1,54 +1,27 @@
 using System;
-using System.Collections;
-using Unity.Netcode;
-using UnityEngine;
-using UnityEngine.Rendering.Universal;
+using Unrez.Pets.Abilities;
 
 namespace Unrez.Pets.Cats
 {
     public class Cat : Pet
     {
-
-        public override void TakeDamage(int damage)
+        public override void TakeHit(int damage)
         {
             _healthController.TakeDamage(damage);
         }
 
-        public override void TryAbility01()
+        public override void TryAbility(int idxAbility)
         {
-            if (_abilityController.CanDash())
+            if (_abilitiesController.CanUseAbility(idxAbility))
             {
-                _spriteRenderBody.color = Color.red;
-                _abilityController.ApplyDash();
-                StartCoroutine(Dashing());
+                _abilitiesController.ExecuteAbility(idxAbility);
             }
         }
 
-        public override void TryAbility02()
+        public  bool IsExecutingSomeAbility()
         {
-            _abilityController.CreateBarrier();
+            return _abilitiesController.Busy();
         }
 
-        public override void TryAbility03()
-        {
-        }
-
-        public override void TryAbility04()
-        {
-        }
-
-        private IEnumerator Dashing()
-        {
-            while (_abilityController.IsDashing())
-            {
-                yield return null;
-            }
-            _spriteRenderBody.color = _petStatus.Color;
-        }
-
-        public bool IsDashing()
-        {
-            return _abilityController.IsDashing();
-        }
     }
 }

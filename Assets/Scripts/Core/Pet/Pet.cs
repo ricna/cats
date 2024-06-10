@@ -83,7 +83,7 @@ namespace Unrez.Pets
             _light.name = $"PetLight [{Profile.name}]";
             _light.enabled = true;
             _light.gameObject.transform.SetParent(transform);
-            _light.gameObject.transform.position = Vector3.zero;
+            _light.gameObject.transform.localPosition = Vector3.zero;
 
             _light.lightType = Profile.Light.LightType;
             _light.color = Profile.Light.LightColor;
@@ -113,7 +113,7 @@ namespace Unrez.Pets
             return _cameraController.GetCamera();
         }
 
-        public abstract void TryAbility(int idx);
+        public abstract void TryAbility(int abilityId);
         public abstract void TakeHit(int damage);
 
         public virtual Color GetColor()

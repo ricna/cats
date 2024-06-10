@@ -9,11 +9,11 @@ namespace Unrez.Pets.Dogs
             //_healthController.TakeDamage(damage);
         }
 
-        public override void TryAbility(int idxAbility)
+        public override void TryAbility(int abilityId)
         {
-            if (_abilitiesController.CanUseAbility(idxAbility))
+            if (_abilitiesController.CanUseAbility(abilityId))
             {
-                _abilitiesController.ExecuteAbility(idxAbility);
+                _abilitiesController.ExecuteAbility(abilityId);
             }
         }
     }

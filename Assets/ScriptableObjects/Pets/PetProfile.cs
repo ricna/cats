@@ -1,12 +1,14 @@
 using UnityEngine;
+using Unrez.Pets.Abilities;
 
 namespace Unrez.Pets
 {
-    [CreateAssetMenu(fileName = "New CatProfile", menuName = "Unrez/Cats/New Cat", order = 0)]
+    [CreateAssetMenu(fileName = "New CatProfile", menuName = "Unrez/Cats/Cat", order = 0)]
     public class PetProfile : ScriptableObject
     {
         public PetType PetType;
         public PetLightProfile Light;
+        public Ability[] Abilities;
         public Color Color;
         public float SpeedSprint;
         public float Acceleration;

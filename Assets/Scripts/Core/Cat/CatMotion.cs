@@ -13,7 +13,7 @@ namespace Unrez.Pets.Cats
 
         protected override void FixedUpdate()
         {
-            if (_cat.IsDashing())
+            if (_cat.IsExecutingSomeAbility())
             {
                 return;
             }
