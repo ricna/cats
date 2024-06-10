@@ -1,10 +1,7 @@
 using System;
-using System.Collections;
-using System.Threading;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
-using Unrez.Netcode;
 using Unrez.Pets.Abilities;
 using Unrez.Pets.Cats;
 
@@ -23,6 +20,7 @@ namespace Unrez.Pets
         [field: SerializeField]
         public PetProfile Profile { get; private set; }
 
+        [SerializeField]
         protected PetStatus _petStatus;
         protected PetHealth _healthController;
         protected PetMotion _motionController;
@@ -52,6 +50,7 @@ namespace Unrez.Pets
             Unbug.Log($"IsHost:{IsHost} IsOwner:{IsOwner} IsLocalPlayer:{IsLocalPlayer} NetworkBehaviourId:{NetworkBehaviourId} ", Uncolor.Black);
             Unbug.Log($"OwnerClientId:{OwnerClientId}", Uncolor.Red);
             Profile = PetsContainer.Instance.Pets[OwnerClientId];
+            _abilitiesController.Allocate(Profile.Abilities.Length);
             for (int i = 0; i < Profile.Abilities.Length; i++)
             {
                 _abilitiesController.SetAbility(i, Profile.Abilities[i]);
@@ -100,7 +99,7 @@ namespace Unrez.Pets
 
         protected virtual void OnDirectionChangedHandler(Vector2 vector)
         {
-            Debug.Log($"<color=gray> [{name}] - Direction Changed {vector}</color>");
+            //Debug.Log($"[{name}] -> Direction Changed {vector}");
         }
 
         public virtual PetStatus GetStatus()

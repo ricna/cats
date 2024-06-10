@@ -13,11 +13,13 @@ namespace Unrez.Pets.Abilities
 
         protected override void Prepare()
         {
-            _spriteRenderBody = GetComponent<SpriteRenderer>();
+            Debug.Log("Dash Prepared");
+            _spriteRenderBody = _pet.GetComponent<SpriteRenderer>();
         }
 
         protected override IEnumerator Executing()
         {
+            Debug.Log("Dash - IEnumerator Executing();");
             _spriteRenderBody.color = _pet.GetStatus().Color;
             _pet.ApplyImpulse(_dashForce);
             yield return new WaitForSeconds(_abilityDuration);
