@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ddbe53ced0578245b252795928349c0, type: 3}
-  m_Name: LightDog
+  m_Name: DogView
   m_EditorClassIdentifier: 
   LightType: 3
   LightColor: {r: 1, g: 1, b: 1, a: 1}
-  LightRadius: {x: 0, y: 20}
+  LightRadius: {x: 12, y: 36}
   LightIntensity: 1
   LightFalloffStrenght: 0.5
   Shadows: 1

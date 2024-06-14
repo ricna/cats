@@ -9,6 +9,8 @@ namespace Unrez.Pets
     public class AbilityStore : ScriptableObject
     {
         public PetType Type;
+        public Type abt;
+       // public TypedReference abtReference;
         public Ability[] Abilities;
     }
 }

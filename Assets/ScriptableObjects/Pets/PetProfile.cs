@@ -7,7 +7,7 @@ namespace Unrez.Pets
     public class PetProfile : ScriptableObject
     {
         public PetType PetType;
-        public PetLightProfile Light;
+        public PetViewProfile Light;
         public Ability[] Abilities;
         public Color Color;
         public float SpeedSprint;
