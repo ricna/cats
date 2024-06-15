@@ -17,8 +17,8 @@ GameObject:
   - component: {fileID: -5375956426882729271}
   - component: {fileID: 2733753823464567530}
   - component: {fileID: 7109341369543300037}
+  - component: {fileID: 3687823899086678351}
   - component: {fileID: 311459463207981573}
-  - component: {fileID: 6967556572343187335}
   - component: {fileID: 5024310094305606197}
   - component: {fileID: -5177556667852182973}
   m_Layer: 0
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 4199737136
+  GlobalObjectIdHash: 170000700
   InScenePlacedSourceGlobalObjectIdHash: 4199737136
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -263,8 +263,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Profile>k__BackingField: {fileID: 0}
+  _petStatus:
+    OwnerId: 0
+    Name: 
+    Color: {r: 0, g: 0, b: 0, a: 0}
+    Health: 0
   _spriteRenderBody: {fileID: 5698381062905369433}
   _transformParent: {fileID: 0}
+  _spotDetected: 0
+  _isDigging: 0
+  _digSpot: {fileID: 0}
+--- !u!114 &3687823899086678351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846332329567583967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25a4ea511a1ede14da74b53d898fdcee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 3113102540206626565}
+  _rb: {fileID: 6407681758990779862}
+  _animator: {fileID: 2160832692526638247}
+  _force: 0
+  _petSide: 0
+  _lastPetSide: 0
+  _isMoving: 0
+  _currentDirection: {x: 0, y: 0}
 --- !u!114 &311459463207981573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,26 +306,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 11400000, guid: 957eac0e969caf64caedbcddd7a11d3b, type: 2}
---- !u!114 &6967556572343187335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 846332329567583967}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5afc169404c6644c97a8b2340ae7133, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _transform: {fileID: 3113102540206626565}
-  _rb: {fileID: 6407681758990779862}
-  _animator: {fileID: 2160832692526638247}
-  _force: 0
-  _petSide: 0
-  _lastPetSide: 0
-  _isMoving: 0
-  _currentDirection: {x: 0, y: 0}
 --- !u!114 &5024310094305606197
 MonoBehaviour:
   m_ObjectHideFlags: 0

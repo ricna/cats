@@ -1,4 +1,6 @@
 
+using UnityEngine;
+
 namespace Unrez.Pets.Cats
 {
     public class CatMotion : PetMotion
@@ -15,6 +17,14 @@ namespace Unrez.Pets.Cats
         {
             if (_cat.IsExecutingSomeAbility())
             {
+                return;
+            }
+            if (_cat.IsDigging())
+            {
+
+                //_rb.velocity = Vector2.zero;
+                //_currentDirection = Vector2.zero;
+                //_movementInput = Vector2.zero;
                 return;
             }
             base.FixedUpdate();

@@ -79,5 +79,10 @@ namespace Unrez.Pets.Cats
                 }
             }
         }
+
+        public bool IsDigging()
+        {
+            return _isDigging;
+        }
     }
 }

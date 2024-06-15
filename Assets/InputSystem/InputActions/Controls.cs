@@ -205,7 +205,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""c96ed6d2-5aa5-4d8c-8fde-9dea1ca2386c"",
                     ""path"": ""<Keyboard>/f"",
-                    ""interactions"": ""Press(pressPoint=1,behavior=2)"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard"",
                     ""action"": ""Interact"",
