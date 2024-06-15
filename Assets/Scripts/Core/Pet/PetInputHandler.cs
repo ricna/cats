@@ -29,6 +29,7 @@ namespace Unrez.Pets
             }
             _inputReader.OnMoveEvent += OnMoveHandler;
             _inputReader.OnAbilityEvent += OnAbilityHandler;
+            _inputReader.OnInteractEvent += OnInteractHandler;
         }
 
         public override void OnNetworkDespawn()
@@ -40,6 +41,7 @@ namespace Unrez.Pets
             }
             _inputReader.OnMoveEvent -= OnMoveHandler;
             _inputReader.OnAbilityEvent -= OnAbilityHandler;
+            _inputReader.OnInteractEvent -= OnInteractHandler;
         }
 
         private void OnMoveHandler(Vector2 movementInput)
@@ -62,6 +64,15 @@ namespace Unrez.Pets
                 return;
             }
             _pet.TryAbility(abilityID);
+        }
+
+        private void OnInteractHandler(bool pressing)
+        {
+            if (!IsOwner)
+            {
+                return;
+            }
+            _pet.ProcessInteractInput(pressing);
         }
     }
 }

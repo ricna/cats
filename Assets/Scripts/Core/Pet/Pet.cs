@@ -150,5 +150,6 @@ namespace Unrez.Pets
         public abstract void OnDigSpotEnter();
         public abstract void OnDigSpotExit();
 
+        public abstract void ProcessInteractInput(bool pressing);
     }
 }

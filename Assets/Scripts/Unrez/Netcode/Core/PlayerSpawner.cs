@@ -1,6 +1,7 @@
 using System;
 using Unity.Netcode;
 using UnityEngine;
+using Unrez.Pets;
 
 namespace Unrez.Netcode
 {
@@ -12,6 +13,8 @@ namespace Unrez.Netcode
     public class PlayerSpawner : NetworkBehaviour
     {
         [Header("References")]
+        [SerializeField]
+        private bool _testCatOnly = false;
         [SerializeField]
         private GameObject _dog;
         [SerializeField]
@@ -25,11 +28,16 @@ namespace Unrez.Netcode
         [SerializeField]
         private Transform[] _spawnPointVariation;
 
-        public event Action<ulong> OnPlayerSpawn;
+        public event Action<ulong, Pet> OnPlayerSpawn;
         public event Action<ulong> OnPlayerDespawn;
 
         public override void OnNetworkSpawn()
         {
+            if (_testCatOnly)
+            {
+                SpawnPlayerServerRpc(NetworkManager.Singleton.LocalClientId, false);
+                return;
+            }
             if (IsServer)
             {
                 SpawnPlayerServerRpc(NetworkManager.Singleton.LocalClientId, true);
@@ -38,7 +46,7 @@ namespace Unrez.Netcode
             {
                 SpawnPlayerServerRpc(NetworkManager.Singleton.LocalClientId, false);
             }
-            OnPlayerSpawn?.Invoke(OwnerClientId);
+
 
         }
 
@@ -62,7 +70,7 @@ namespace Unrez.Netcode
             {
                 newPlayer = Instantiate(_cat);
             }
-
+            OnPlayerSpawn?.Invoke(OwnerClientId, newPlayer.GetComponent<Pet>());
             newPlayer.transform.position = _spawnPointVariation[clientId + 1].position;
             NetworkObject networkObject = newPlayer.GetComponent<NetworkObject>();
             newPlayer.SetActive(true);

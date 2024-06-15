@@ -14,6 +14,11 @@ namespace Unrez.Pets.Dogs
             //throw new System.NotImplementedException();
         }
 
+        public override void ProcessInteractInput(bool pressing)
+        {
+            //Debug.Log()
+        }
+
         public override void TakeHit(int damage)
         {
             //_healthController.TakeDamage(damage);

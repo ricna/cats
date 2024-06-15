@@ -14,6 +14,7 @@ namespace Unrez.Pets
         public event Action<bool> OnSprintEvent;
         public event Action<bool> OnCrouchEvent;
         public event Action<int> OnAbilityEvent;
+        public event Action<bool> OnInteractEvent;
 
         private void OnEnable()
         {
@@ -29,11 +30,6 @@ namespace Unrez.Pets
         {
             //Vector2 input = context.ReadValue<Vector2>();
             OnMoveEvent?.Invoke(context.ReadValue<Vector2>());
-        }
-
-        public void OnBarrier(InputAction.CallbackContext context)
-        {
-
         }
 
         public void OnAbility01(InputAction.CallbackContext context)
@@ -65,6 +61,42 @@ namespace Unrez.Pets
             if (context.performed)
             {
                 OnAbilityEvent?.Invoke(3);
+            }
+        }
+
+        public void OnInteract(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                OnInteractEvent?.Invoke(true);
+            }
+            else if (context.canceled)
+            {
+                OnInteractEvent?.Invoke(false);
+            }
+        }
+
+        public void OnSprint(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                OnSprintEvent?.Invoke(true);
+            }
+            else if (context.canceled)
+            {
+                OnSprintEvent?.Invoke(false);
+            }
+        }
+
+        public void OnCrouch(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                OnCrouchEvent?.Invoke(true);
+            }
+            else if (context.canceled)
+            {
+                OnCrouchEvent?.Invoke(false);
             }
         }
     }

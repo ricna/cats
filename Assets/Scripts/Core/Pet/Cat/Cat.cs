@@ -33,23 +33,6 @@ namespace Unrez.Pets.Cats
             }
         }
 
-        public void OnDigInput(bool pressed)
-        {
-            if (pressed)
-            {
-                if (_spotDetected)
-                {
-                    _digSpot.Interact(this);
-                }
-            }
-            else
-            {
-                if (_isDigging && _digSpot != null)
-                {
-                    _digSpot.Release();
-                }
-            }
-        }
 
         public override void TakeHit(int damage)
         {
@@ -78,6 +61,24 @@ namespace Unrez.Pets.Cats
         {
             _isDigging = false;
 
+        }
+
+        public override void ProcessInteractInput(bool pressing)
+        {
+            if (pressing)
+            {
+                if (_spotDetected)
+                {
+                    _digSpot.Interact(this);
+                }
+            }
+            else
+            {
+                if (_isDigging && _digSpot != null)
+                {
+                    _digSpot.Release();
+                }
+            }
         }
     }
 }

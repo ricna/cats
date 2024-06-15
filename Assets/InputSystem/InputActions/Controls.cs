@@ -72,6 +72,33 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""1f97a621-3d03-44ba-8036-12d3cbda40db"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""eed07ad4-4446-4947-823b-c40d0da09cc7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Crouch"",
+                    ""type"": ""Button"",
+                    ""id"": ""a51a22b3-3930-4eb3-b40e-2ecc58fa3d41"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -173,6 +200,39 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Ability04"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c96ed6d2-5aa5-4d8c-8fde-9dea1ca2386c"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a2f77951-41b8-4803-9d44-fe9411b541c3"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""be64ea6e-ba56-43d6-ad67-81cc5063a0d3"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -214,6 +274,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Cat_Ability02 = m_Cat.FindAction("Ability02", throwIfNotFound: true);
         m_Cat_Ability03 = m_Cat.FindAction("Ability03", throwIfNotFound: true);
         m_Cat_Ability04 = m_Cat.FindAction("Ability04", throwIfNotFound: true);
+        m_Cat_Interact = m_Cat.FindAction("Interact", throwIfNotFound: true);
+        m_Cat_Sprint = m_Cat.FindAction("Sprint", throwIfNotFound: true);
+        m_Cat_Crouch = m_Cat.FindAction("Crouch", throwIfNotFound: true);
     }
 
     ~@Controls()
@@ -285,6 +348,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Cat_Ability02;
     private readonly InputAction m_Cat_Ability03;
     private readonly InputAction m_Cat_Ability04;
+    private readonly InputAction m_Cat_Interact;
+    private readonly InputAction m_Cat_Sprint;
+    private readonly InputAction m_Cat_Crouch;
     public struct CatActions
     {
         private @Controls m_Wrapper;
@@ -294,6 +360,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Ability02 => m_Wrapper.m_Cat_Ability02;
         public InputAction @Ability03 => m_Wrapper.m_Cat_Ability03;
         public InputAction @Ability04 => m_Wrapper.m_Cat_Ability04;
+        public InputAction @Interact => m_Wrapper.m_Cat_Interact;
+        public InputAction @Sprint => m_Wrapper.m_Cat_Sprint;
+        public InputAction @Crouch => m_Wrapper.m_Cat_Crouch;
         public InputActionMap Get() { return m_Wrapper.m_Cat; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -318,6 +387,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Ability04.started += instance.OnAbility04;
             @Ability04.performed += instance.OnAbility04;
             @Ability04.canceled += instance.OnAbility04;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
+            @Sprint.started += instance.OnSprint;
+            @Sprint.performed += instance.OnSprint;
+            @Sprint.canceled += instance.OnSprint;
+            @Crouch.started += instance.OnCrouch;
+            @Crouch.performed += instance.OnCrouch;
+            @Crouch.canceled += instance.OnCrouch;
         }
 
         private void UnregisterCallbacks(ICatActions instance)
@@ -337,6 +415,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Ability04.started -= instance.OnAbility04;
             @Ability04.performed -= instance.OnAbility04;
             @Ability04.canceled -= instance.OnAbility04;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
+            @Sprint.started -= instance.OnSprint;
+            @Sprint.performed -= instance.OnSprint;
+            @Sprint.canceled -= instance.OnSprint;
+            @Crouch.started -= instance.OnCrouch;
+            @Crouch.performed -= instance.OnCrouch;
+            @Crouch.canceled -= instance.OnCrouch;
         }
 
         public void RemoveCallbacks(ICatActions instance)
@@ -379,5 +466,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnAbility02(InputAction.CallbackContext context);
         void OnAbility03(InputAction.CallbackContext context);
         void OnAbility04(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
+        void OnCrouch(InputAction.CallbackContext context);
     }
 }
