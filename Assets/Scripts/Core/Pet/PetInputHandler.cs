@@ -1,7 +1,9 @@
+using System;
 using Unity.Netcode;
 using UnityEngine;
+using Unrez.Pets.Cats;
 
-namespace Unrez.Pets.Cats
+namespace Unrez.Pets
 {
     [RequireComponent(typeof(Pet))]
     public class PetInputHandler : NetworkBehaviour

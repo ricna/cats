@@ -1,7 +1,6 @@
-using System.Collections;
+using System;
 using Unity.Netcode;
 using UnityEngine;
-using Unrez.Pets.Cats;
 
 namespace Unrez.Netcode
 {
@@ -26,9 +25,11 @@ namespace Unrez.Netcode
         [SerializeField]
         private Transform[] _spawnPointVariation;
 
+        public event Action<ulong> OnPlayerSpawn;
+        public event Action<ulong> OnPlayerDespawn;
+
         public override void OnNetworkSpawn()
         {
-
             if (IsServer)
             {
                 SpawnPlayerServerRpc(NetworkManager.Singleton.LocalClientId, true);
@@ -37,13 +38,21 @@ namespace Unrez.Netcode
             {
                 SpawnPlayerServerRpc(NetworkManager.Singleton.LocalClientId, false);
             }
+            OnPlayerSpawn?.Invoke(OwnerClientId);
+
+        }
+
+        public override void OnNetworkDespawn()
+        {
+            base.OnNetworkDespawn();
+            OnPlayerDespawn?.Invoke(OwnerClientId);
         }
 
         [ServerRpc(RequireOwnership = false)] //server owns this object but client can request a spawn
         public void SpawnPlayerServerRpc(ulong clientId, bool dog)
         {
             GameObject newPlayer;
-            _spawnPointVariation = _spawnPoints[Random.Range(0, _spawnPoints.Length)].GetComponentsInChildren<Transform>();
+            _spawnPointVariation = _spawnPoints[UnityEngine.Random.Range(0, _spawnPoints.Length)].GetComponentsInChildren<Transform>();
             Debug.Log($"<color=black>SpawnPlayerServerRpc IsServer:{dog}</color>");
             if (dog)
             {

@@ -23,19 +23,15 @@ namespace Unrez.Pets
         [Range(0, 1)]
         public float ShadowsFalloffStrenght;
 
-        [Header("Camera")]
-        public float OrthographicSize = 16;
-        public float ScareZoom = 16;
-        public float DogBuryingBoneZoom = 8;
-
-        [Header("FOV (x,y) (OrtographicSize,LightRadius.Outer)")]
-        [Tooltip("The  and ")]
+        [Header("FOV (OrtographicSize & LightRadius.Outer)")]
         public float CatView = 16;
         public float DogView = 24;
         [Header("FOV In Chase")]
         public float CatChaseView = 12;
-        public float DogInChase = 16;
-        [Header("FOV In Panic")]
+        public float DogChaseView = 16;
+
+        [Header("Non-Shared")]
+        public float DogBuryingView = 8;
         public float CatPanicView = 8;
         public float CatTreeView = 36;
 

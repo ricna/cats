@@ -1,4 +1,6 @@
 
+using System;
+using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -8,26 +10,49 @@ namespace Unrez.Pets.Cats
     {
         [Header("References")]
         [SerializeField]
-        private Camera cam;
+        private Camera _mainCamera;
         [SerializeField]
-        private CinemachineCamera cinemachineCamera;
+        private CinemachineCamera _cinemachineCamera;
 
-        private void Start()
+        private void Awake()
         {
-
+            _mainCamera = GetComponentInChildren<Camera>();
+            _cinemachineCamera = GetComponentInChildren<CinemachineCamera>();
         }
-
         public void SetupCamera(GameObject toLook, GameObject toFollow)
         {
-            cinemachineCamera.enabled = true;
-            cam.enabled = true;
-            cinemachineCamera.LookAt = toLook.transform;
-            cinemachineCamera.Follow = toFollow.transform;
+            _cinemachineCamera.enabled = true;
+            _mainCamera.enabled = true;
+            _cinemachineCamera.LookAt = toLook.transform;
+            _cinemachineCamera.Follow = toFollow.transform;
         }
 
         public Camera GetCamera()
         {
-            return cam;
+            return _mainCamera;
+        }
+
+        private Coroutine _coroutineOrthoSizeTween;
+        public void SetOrthoSize(float size, float duration)
+        {
+            if (_coroutineOrthoSizeTween != null)
+            {
+                StopCoroutine(_coroutineOrthoSizeTween);
+            }
+            _coroutineOrthoSizeTween = StartCoroutine(TweenToOrthoSize(size, duration));
+        }
+
+        private IEnumerator TweenToOrthoSize(float size, float duration)
+        {
+            float currentSize = _cinemachineCamera.Lens.OrthographicSize;
+            float t = 0;
+            while (t < 1)
+            {
+                _cinemachineCamera.Lens.OrthographicSize = Mathf.Lerp(currentSize, size, t);
+                t += Time.deltaTime / duration;
+                yield return null;
+            }
+            _cinemachineCamera.Lens.OrthographicSize = size;
         }
     }
 }

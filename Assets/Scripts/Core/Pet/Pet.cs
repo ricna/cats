@@ -68,7 +68,7 @@ namespace Unrez.Pets
             }
             _cameraController = FindFirstObjectByType<PetCamera>();
             _cameraController.SetupCamera(gameObject, gameObject);
-            InitLight();
+            InitializePet();
         }
 
         public override void OnNetworkDespawn()
@@ -76,7 +76,7 @@ namespace Unrez.Pets
             base.OnNetworkDespawn();
         }
 
-        protected virtual void InitLight()
+        protected virtual void InitializePet()
         {
             _light = (Light2D)FindAnyObjectByType(typeof(Light2D));
             _light.name = $"PetLight [{Profile.name}]";
@@ -95,6 +95,8 @@ namespace Unrez.Pets
             _light.shadowIntensity = Profile.Light.ShadowsStrenght;
             _light.shadowSoftness = Profile.Light.ShadowsSoftness;
             _light.shadowSoftnessFalloffIntensity = Profile.Light.ShadowsFalloffStrenght;
+            
+            _cameraController.SetOrthoSize(Profile.Light.CatView, 0.1f);
         }
 
         protected virtual void OnDirectionChangedHandler(Vector2 vector)
@@ -144,6 +146,9 @@ namespace Unrez.Pets
         {
             return _abilitiesController.GetAbilityByType(abilityType);
         }
+
+        public abstract void OnDigSpotEnter();
+        public abstract void OnDigSpotExit();
 
     }
 }

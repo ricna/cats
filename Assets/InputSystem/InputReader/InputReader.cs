@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static Controls;
 
-namespace Unrez.Pets.Cats
+namespace Unrez.Pets
 {
     [CreateAssetMenu(fileName = "New Input Reader", menuName = "Unrez/Input Reader")]
     public class InputReader : ScriptableObject, ICatActions
@@ -11,10 +11,8 @@ namespace Unrez.Pets.Cats
         private Controls controls;
 
         public event Action<Vector2> OnMoveEvent;
-
         public event Action<bool> OnSprintEvent;
         public event Action<bool> OnCrouchEvent;
-
         public event Action<int> OnAbilityEvent;
 
         private void OnEnable()
