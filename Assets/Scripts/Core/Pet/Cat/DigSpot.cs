@@ -50,15 +50,14 @@ namespace Unrez
             }
             _isAvailable = false;
             _petInteracting = pet;
-            _petInteracting.OnDigSpotEnter();
             OnInteracting?.Invoke(_petInteracting, BoneSpot, true);
         }
         
         public void Release()
         {
-            _isAvailable = true;
-            _petInteracting.OnDigSpotExit();
             OnInteracting?.Invoke(_petInteracting, BoneSpot, false);
+            _petInteracting = null;
+            _isAvailable = true;
         }
 
         public void OnSpotDigged(BoneSpot boneSpot)

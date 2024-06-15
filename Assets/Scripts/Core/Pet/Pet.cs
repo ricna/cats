@@ -49,7 +49,12 @@ namespace Unrez.Pets
             base.OnNetworkSpawn();
             Unbug.Log($"IsHost:{IsHost} IsOwner:{IsOwner} IsLocalPlayer:{IsLocalPlayer} NetworkBehaviourId:{NetworkBehaviourId} ", Uncolor.Black);
             Unbug.Log($"OwnerClientId:{OwnerClientId}", Uncolor.Red);
+            
             Profile = PetsContainer.Instance.Pets[OwnerClientId];
+            if (this is Cat && OwnerClientId == 0)
+            {
+                Profile = PetsContainer.Instance.Pets[1];
+            }
             _abilitiesController.Allocate(Profile.Abilities.Length);
             for (int i = 0; i < Profile.Abilities.Length; i++)
             {
@@ -59,7 +64,7 @@ namespace Unrez.Pets
             _petStatus.OwnerId = OwnerClientId;
             _petStatus.Color = Profile.Color;
             OnPetProfileLoaded?.Invoke();
-            _petStatus.Name = $"Cat_00{OwnerClientId}";
+            _petStatus.Name = $"[PET] {Profile.name}_00{OwnerClientId}";
             name = _petStatus.Name;
             _spriteRenderBody.color = _petStatus.Color;
             if (!IsOwner)
@@ -147,8 +152,8 @@ namespace Unrez.Pets
             return _abilitiesController.GetAbilityByType(abilityType);
         }
 
-        public abstract void OnDigSpotEnter();
-        public abstract void OnDigSpotExit();
+        //public abstract void OnDigSpotEnter();
+        //public abstract void OnDigSpotExit();
 
         public abstract void ProcessInteractInput(bool pressing);
     }

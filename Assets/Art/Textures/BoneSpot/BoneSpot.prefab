@@ -74,6 +74,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _digs: 90
   _reburyCost: 0.25
+  _spriteRenderer: {fileID: 1087426246502022505}
   _progress:
     m_InternalValue: 0
   _catsDigging: 0
@@ -437,7 +438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec363f5de9881240950ef3ba90f1cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: 0
+  _id: 2
   <BoneSpot>k__BackingField: {fileID: 7191937154867191963}
   _isAvailable: 1
   _petInteracting: {fileID: 0}
@@ -532,7 +533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec363f5de9881240950ef3ba90f1cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: 0
+  _id: 3
   <BoneSpot>k__BackingField: {fileID: 7191937154867191963}
   _isAvailable: 1
   _petInteracting: {fileID: 0}

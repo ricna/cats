@@ -15,7 +15,8 @@ namespace Unrez
         private float _digs = 90;
         [SerializeField]
         private float _reburyCost = 0.25f;
-
+        [SerializeField]
+        private SpriteRenderer _spriteRenderer;
         [Header("Debugs")]
         [SerializeField]
         public NetworkVariable<float> _progress = new NetworkVariable<float>(); // the % of the progress (using the _elapsingDigs)
@@ -32,7 +33,7 @@ namespace Unrez
         private void Awake()
         {
             _elapsingDigs = _digs;
-            _digSpots = GetComponentsInParent<DigSpot>();
+            _digSpots = GetComponentsInChildren<DigSpot>();
             foreach (DigSpot digSpot in _digSpots)
             {
                 digSpot.OnInteracting += OnDigSpotInteracting;
@@ -66,7 +67,6 @@ namespace Unrez
             }
         }
 
-
         private void OnDigSpotInteracting(Pet pet, BoneSpot spot, bool interacting)
         {
             if (pet is Cat)
@@ -79,7 +79,15 @@ namespace Unrez
                 {
                     _catsDigging--;
                 }
-                Debug.Log($"OnDigSpotInteracting -> _catsDigging:{_catsDigging}");
+                //Debug.Log($"OnDigSpotInteracting -> _catsDigging:{_catsDigging}");
+                if (_catsDigging > 0)
+                {
+                    _spriteRenderer.color = Color.red;
+                }
+                else
+                {
+                    _spriteRenderer.color = Color.white;
+                }
             }
             else
             {
