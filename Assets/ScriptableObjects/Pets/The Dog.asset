@@ -16,7 +16,9 @@ MonoBehaviour:
   Light: {fileID: 11400000, guid: fe1bbb22948f4ec4ebbf579ed5fa8d00, type: 2}
   Abilities: []
   Color: {r: 0.49019608, g: 0, b: 0.106020026, a: 1}
+  Speed: 11
   SpeedSprint: 11
+  SpeedCrouch: 11
   Acceleration: 5
   Deceleration: 5
   DashForce: 30

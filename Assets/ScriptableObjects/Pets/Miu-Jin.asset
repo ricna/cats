@@ -18,7 +18,9 @@ MonoBehaviour:
   - {fileID: 1199748626020003285, guid: 2fe63e0e00cbf264591dea58496e68a5, type: 3}
   - {fileID: -4546934776620563410, guid: 64a3863e279b2954fbe75e17803e7f19, type: 3}
   Color: {r: 0.0754717, g: 0.0754717, b: 0.0754717, a: 1}
+  Speed: 4
   SpeedSprint: 10
+  SpeedCrouch: 1
   Acceleration: 5
   Deceleration: 10
   DashForce: 30

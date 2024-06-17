@@ -1,7 +1,9 @@
 using System;
 using Unity.Netcode;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using Unrez.Netcode;
 using Unrez.Pets.Abilities;
 using Unrez.Pets.Cats;
 
@@ -36,6 +38,7 @@ namespace Unrez.Pets
 
         public event Action OnPetProfileLoaded;
 
+
         protected virtual void Awake()
         {
             _motionController = GetComponent<PetMotion>();
@@ -49,11 +52,14 @@ namespace Unrez.Pets
             base.OnNetworkSpawn();
             Unbug.Log($"IsHost:{IsHost} IsOwner:{IsOwner} IsLocalPlayer:{IsLocalPlayer} NetworkBehaviourId:{NetworkBehaviourId} ", Uncolor.Black);
             Unbug.Log($"OwnerClientId:{OwnerClientId}", Uncolor.Red);
-            
+            PlayerSpawner playerSpawner = FindAnyObjectByType<PlayerSpawner>();
             Profile = PetsContainer.Instance.Pets[OwnerClientId];
-            if (this is Cat && OwnerClientId == 0)
+            if (playerSpawner.TestCatOnly)
             {
-                Profile = PetsContainer.Instance.Pets[1];
+                if (this is Cat && OwnerClientId == 0)
+                {
+                    Profile = PetsContainer.Instance.Pets[PetsContainer.Instance.Pets.Length];
+                }
             }
             _abilitiesController.Allocate(Profile.Abilities.Length);
             for (int i = 0; i < Profile.Abilities.Length; i++)
@@ -147,6 +153,14 @@ namespace Unrez.Pets
             _motionController.SetMovementInput(movementInput);
         }
 
+        public virtual void SetCrouchInput(bool pressing)
+        {
+        }
+
+        public virtual void SetSprintInput(bool pressing)
+        {
+        }
+
         public Ability GetAbilityByType(Type abilityType)
         {
             return _abilitiesController.GetAbilityByType(abilityType);
@@ -156,5 +170,7 @@ namespace Unrez.Pets
         //public abstract void OnDigSpotExit();
 
         public abstract void ProcessInteractInput(bool pressing);
+
+
     }
 }

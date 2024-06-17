@@ -80,6 +80,16 @@ namespace Unrez.Pets.Cats
             }
         }
 
+        public override void SetSprintInput(bool pressing)
+        {
+            _motionController.SetCrouchInput(pressing);
+        }
+        
+        public override void SetCrouchInput(bool crouch)
+        {
+            _motionController.SetCrouchInput(crouch);
+        }
+
         public bool IsDigging()
         {
             return _isDigging;

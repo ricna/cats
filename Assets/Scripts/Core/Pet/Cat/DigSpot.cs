@@ -16,7 +16,7 @@ namespace Unrez
         [field: SerializeField]
         public BoneSpot BoneSpot { get; private set; }
         [SerializeField]
-        private bool _isAvailable = true;
+        private NetworkVariable<bool> _isAvailable = new NetworkVariable<bool>();
         [SerializeField]
         private Pet _petInteracting;
         private Collider2D _collider;
@@ -35,47 +35,49 @@ namespace Unrez
         public bool IsAvailable()
         {
             //aveilebol
-            return _isAvailable;
+            return _isAvailable.Value;
         }
 
         public void Interact(Pet pet)
         {
-            if (!IsOwner)
+            if (!IsServer)
             {
                 return;
             }
-            if (!_isAvailable)
+            if (!_isAvailable.Value)
             {
                 return;
             }
-            _isAvailable = false;
+
+            _isAvailable.Value = false;
             _petInteracting = pet;
             OnInteracting?.Invoke(_petInteracting, BoneSpot, true);
         }
-        
+
         public void Release()
         {
             OnInteracting?.Invoke(_petInteracting, BoneSpot, false);
             _petInteracting = null;
-            _isAvailable = true;
+            _isAvailable.Value = true;
         }
 
         public void OnSpotDigged(BoneSpot boneSpot)
         {
-            _isAvailable = false;
             if (IsServer)
             {
-                DestroyColliderServerRpc();
+                BoneSpotDiggedEventServerRpc();
             }
         }
 
         [ServerRpc]
-        private void DestroyColliderServerRpc()
+        private void BoneSpotDiggedEventServerRpc()
         {
-            DestroyColliderClientRpc();
+            _isAvailable.Value = false;
+            BoneSpotDiggedClientRpc();
         }
+
         [ClientRpc]
-        private void DestroyColliderClientRpc()
+        private void BoneSpotDiggedClientRpc()
         {
             Destroy(_collider);
         }

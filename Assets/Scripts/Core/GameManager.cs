@@ -44,12 +44,12 @@ namespace Unrez
                 // Inicialização do jogo, spawn de jogadores, etc.
                 foreach (BoneSpot boneSpot in _map.BoneSpots)
                 {
-                    boneSpot.OnBoneSpotDigged += HandleBoneSpotDigged;
+                    boneSpot.OnBoneSpotDigged += BoneSpotDiggedHandle;
                 }
             }
         }
 
-        private void HandleBoneSpotDigged(BoneSpot boneSpot)
+        private void BoneSpotDiggedHandle(BoneSpot boneSpot)
         {
             Debug.Log("BoneSpot Digged!!!");
         }

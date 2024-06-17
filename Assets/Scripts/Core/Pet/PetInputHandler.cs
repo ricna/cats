@@ -28,6 +28,8 @@ namespace Unrez.Pets
                 return;
             }
             _inputReader.OnMoveEvent += OnMoveHandler;
+            _inputReader.OnSprintEvent += OnSprintHandler;
+            _inputReader.OnCrouchEvent += OnCrouchHandler;
             _inputReader.OnAbilityEvent += OnAbilityHandler;
             _inputReader.OnInteractEvent += OnInteractHandler;
         }
@@ -40,6 +42,8 @@ namespace Unrez.Pets
                 return;
             }
             _inputReader.OnMoveEvent -= OnMoveHandler;
+            _inputReader.OnSprintEvent -= OnSprintHandler;
+            _inputReader.OnCrouchEvent -= OnCrouchHandler;
             _inputReader.OnAbilityEvent -= OnAbilityHandler;
             _inputReader.OnInteractEvent -= OnInteractHandler;
         }
@@ -55,6 +59,25 @@ namespace Unrez.Pets
                 _movementInput = movementInput;
                 _pet.SetMovementInput(_movementInput);
             }
+        }
+
+        private void OnSprintHandler(bool pressing)
+        {
+            if (!IsOwner)
+            {
+                return;
+            }
+
+            _pet.SetSprintInput(pressing);
+        }
+
+        private void OnCrouchHandler(bool pressing)
+        {
+            if (!IsOwner)
+            {
+                return;
+            }
+            _pet.SetCrouchInput(pressing);
         }
 
         private void OnAbilityHandler(int abilityID)

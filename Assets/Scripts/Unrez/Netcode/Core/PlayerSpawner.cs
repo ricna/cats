@@ -13,8 +13,8 @@ namespace Unrez.Netcode
     public class PlayerSpawner : NetworkBehaviour
     {
         [Header("References")]
-        [SerializeField]
-        private bool _testCatOnly = false;
+        [field: SerializeField]
+        public bool TestCatOnly { get; private set; }
         [SerializeField]
         private GameObject _dog;
         [SerializeField]
@@ -33,7 +33,7 @@ namespace Unrez.Netcode
 
         public override void OnNetworkSpawn()
         {
-            if (_testCatOnly)
+            if (TestCatOnly)
             {
                 SpawnPlayerServerRpc(NetworkManager.Singleton.LocalClientId, false);
                 return;

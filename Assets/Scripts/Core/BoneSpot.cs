@@ -21,24 +21,14 @@ namespace Unrez
         [SerializeField]
         public NetworkVariable<float> _progress = new NetworkVariable<float>(); // the % of the progress (using the _elapsingDigs)
         [SerializeField]
-        private int _catsDigging = 0;
+        private NetworkVariable<int> _catsDigging = new NetworkVariable<int>();
         [SerializeField]
-        private float _elapsingDigs = 90;
+        private NetworkVariable<float> _elapsingDigs = new NetworkVariable<float>();
         [SerializeField]
         private DigSpot[] _digSpots;
 
         public event Action<BoneSpot> OnBoneSpotDigged;
 
-
-        private void Awake()
-        {
-            _elapsingDigs = _digs;
-            _digSpots = GetComponentsInChildren<DigSpot>();
-            foreach (DigSpot digSpot in _digSpots)
-            {
-                digSpot.OnInteracting += OnDigSpotInteracting;
-            }
-        }
 
         public override void OnNetworkSpawn()
         {
@@ -46,6 +36,13 @@ namespace Unrez
             if (IsServer)
             {
                 _progress.Value = 0f;
+                _catsDigging.Value = 0;
+                _elapsingDigs.Value = _digs;
+            }
+            _digSpots = GetComponentsInChildren<DigSpot>();
+            foreach (DigSpot digSpot in _digSpots)
+            {
+                digSpot.OnInteracting += OnDigSpotInteracting;
             }
         }
 
@@ -60,27 +57,32 @@ namespace Unrez
 
         public void Update()
         {
-            if (_catsDigging > 0)
+            if (!IsServer)
             {
-                _elapsingDigs -= Time.deltaTime;
-                _progress.Value = _elapsingDigs / _digs * 100;
+                return;
+            }
+            if (_catsDigging.Value > 0)
+            {
+                _elapsingDigs.Value -= Time.deltaTime;
+                _progress.Value = _elapsingDigs.Value / _digs * 100;
             }
         }
 
         private void OnDigSpotInteracting(Pet pet, BoneSpot spot, bool interacting)
         {
+            Debug.Log($"OnDigSpotInteracting -> _catsDigging:{_catsDigging.Value}");
+
             if (pet is Cat)
             {
                 if (interacting)
                 {
-                    _catsDigging++;
+                    _catsDigging.Value++;
                 }
                 else
                 {
-                    _catsDigging--;
+                    _catsDigging.Value--;
                 }
-                //Debug.Log($"OnDigSpotInteracting -> _catsDigging:{_catsDigging}");
-                if (_catsDigging > 0)
+                if (_catsDigging.Value > 0)
                 {
                     _spriteRenderer.color = Color.red;
                 }

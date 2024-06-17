@@ -26,6 +26,10 @@ namespace Unrez.Pets.Cats
         protected PetSide _lastPetSide;
         [SerializeField]
         protected bool _isMoving;
+        [SerializeField]
+        protected bool _isCrouched;
+        [SerializeField]
+        protected bool _isSprinting;
         protected bool _isMovingVertical = false;
         protected bool _isMovingHorizontal = false;
         [SerializeField]
@@ -55,7 +59,23 @@ namespace Unrez.Pets.Cats
             if (_isMoving)
             {
                 _rb.drag = _pet.Profile.Acceleration;
-                _force = _pet.Profile.SpeedSprint * _rb.drag;
+                bool notWalking = _isCrouched || _isSprinting;
+                if (notWalking)
+                {
+                    if (_isSprinting)
+                    {
+                        _force = _pet.Profile.SpeedSprint * _rb.drag;
+                    }
+                    else if (_isCrouched)
+                    {
+                        _force = _pet.Profile.SpeedCrouch * _rb.drag;
+                    }
+                }
+                else
+                {
+                    _force = _pet.Profile.Speed * _rb.drag; // walking
+                }
+
                 if (_isMovingVertical)
                 {
                     _currentDirection = Vector2.up * _movementInput.y;
@@ -98,6 +118,8 @@ namespace Unrez.Pets.Cats
         protected virtual void Animate()
         {
             _animator.SetBool(AnimatorParameter.IS_MOVING, _isMoving);
+            _animator.SetBool(AnimatorParameter.IS_CROUCHED, _isCrouched);
+            _animator.SetBool(AnimatorParameter.IS_SPRINTING, _isSprinting);
             _animator.SetFloat(AnimatorParameter.CAT_SIDE, (int)_lastPetSide);
         }
 
@@ -154,6 +176,14 @@ namespace Unrez.Pets.Cats
         public void SetMovementInput(Vector2 movementInput)
         {
             _movementInput = movementInput;
+        }
+
+        public virtual void SetSprintInput(bool sprint)
+        {
+        }
+
+        public virtual void SetCrouchInput(bool crouch)
+        {
         }
     }
 }
