@@ -19,7 +19,7 @@ MonoBehaviour:
   Color: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 1}
   Speed: 4
   SpeedSprint: 10
-  SpeedCrouch: 1
+  SpeedCrouch: 2
   Acceleration: 5
   Deceleration: 10
   DashForce: 30

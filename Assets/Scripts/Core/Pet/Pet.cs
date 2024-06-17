@@ -77,8 +77,6 @@ namespace Unrez.Pets
             {
                 return;
             }
-            _cameraController = FindFirstObjectByType<PetCamera>();
-            _cameraController.SetupCamera(gameObject, gameObject);
             InitializePet();
         }
 
@@ -89,6 +87,10 @@ namespace Unrez.Pets
 
         protected virtual void InitializePet()
         {
+            _cameraController = FindFirstObjectByType<PetCamera>();
+            _cameraController.SetupCamera(gameObject, gameObject);
+            this.gameObject.AddComponent<AudioListener>();
+
             _light = (Light2D)FindAnyObjectByType(typeof(Light2D));
             _light.name = $"PetLight [{Profile.name}]";
             _light.enabled = true;

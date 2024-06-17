@@ -7,7 +7,7 @@ namespace Unrez.Pets.Cats
     {
         [Header("Debugs - Cat")]
         [SerializeField]
-        private bool _spotDetected = false;
+        private bool _spotDetectedAvailable = false;
         [SerializeField]
         private bool _isDigging = false;
         [SerializeField]
@@ -20,7 +20,7 @@ namespace Unrez.Pets.Cats
                 //Debug.Log($"TryGetComponent(out DigSpot digSpot) {digSpot.IsAvailable()}");
                 if (digSpot.BoneSpot.GetProgress() < 100 && digSpot.IsAvailable())
                 {
-                    _spotDetected = true;
+                    _spotDetectedAvailable = true;
                     _digSpot = digSpot;
                 }
             }
@@ -28,7 +28,7 @@ namespace Unrez.Pets.Cats
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            _spotDetected = false;
+            _spotDetectedAvailable = false;
             //_digSpot = null;
         }
 
@@ -60,11 +60,11 @@ namespace Unrez.Pets.Cats
             return _abilitiesController.Busy();
         }
 
-        public override void ProcessInteractInput(bool pressing)
+        public override void ProcessInteractInput(bool interact)
         {
-            if (pressing)
+            if (interact)
             {
-                if (_spotDetected)
+                if (_spotDetectedAvailable)
                 {
                     _isDigging = true;
                     _digSpot.Interact(this);

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -21,6 +22,23 @@ namespace Unrez.Essential.Audio
             {
                 _audioSourceMusic.PlayOneShot(clip);
             }
+        }
+        public void Play(AudioSource audioSource, AudioClip audioClip, bool sfx = true, bool loop = false)
+        {
+            if (audioSource.isPlaying)
+            {
+                Debug.Log("AudioSource was Playing");
+                audioSource.Stop();
+            }
+            audioSource.outputAudioMixerGroup = sfx ? _groupSFX : _groupMusic;
+            audioSource.loop = loop;
+            audioSource.clip = audioClip;
+            audioSource.Play();
+        }
+
+        public void Stop(AudioSource audioSource)
+        {
+            audioSource.Stop();
         }
     }
 }

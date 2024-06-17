@@ -1,6 +1,8 @@
 ﻿using System;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using Unrez.Essential.Audio;
 using Unrez.Pets;
 using Unrez.Pets.Cats;
 using Unrez.Pets.Dogs;
@@ -17,6 +19,21 @@ namespace Unrez
         private float _reburyCost = 0.25f;
         [SerializeField]
         private SpriteRenderer _spriteRenderer;
+
+        [Header("Effects")]
+        [SerializeField]
+        private ParticleSystem _particleRebury;
+
+        [Header("Audio")]
+        [SerializeField]
+        private AudioSource _audioSource;
+        [SerializeField]
+        private AudioClip _audioClipRebury;
+        [SerializeField]
+        private AudioClip _audioClipDigging;
+        [SerializeField]
+        private AudioClip _audioClipDigged;
+
         [Header("Debugs")]
         [SerializeField]
         public NetworkVariable<float> _progress = new NetworkVariable<float>(); // the % of the progress (using the _elapsingDigs)
@@ -66,13 +83,36 @@ namespace Unrez
                 _elapsingDigs.Value -= Time.deltaTime;
                 _progress.Value = _elapsingDigs.Value / _digs * 100;
             }
+            if (_progress.Value >= _digs)
+            {
+                DiggedClientRpc();
+            }
         }
 
-        private void OnDigSpotInteracting(Pet pet, BoneSpot spot, bool interacting)
+        [ClientRpc]
+        private void DiggedClientRpc()
         {
-            Debug.Log($"OnDigSpotInteracting -> _catsDigging:{_catsDigging.Value}");
+            if (!IsOwner)
+            {
+                return;
+            }
+            AudioManager.Instance.Play(_audioSource, _audioClipDigged);
+            OnBoneSpotDigged?.Invoke(this);
+        }
+        private void OnDigSpotInteracting(bool isCat, bool interacting)
+        {
+            if (!IsOwner)
+            {
+                return;
+            }
+            OnDigSpotInteractingServerRpc(isCat, interacting);
+        }
 
-            if (pet is Cat)
+        [ServerRpc]
+        private void OnDigSpotInteractingServerRpc(bool isCat, bool interacting)
+        {
+
+            if (isCat)
             {
                 if (interacting)
                 {
@@ -93,22 +133,43 @@ namespace Unrez
             }
             else
             {
-                if (pet is Dog)
-                {
+                ReburyServerRpc();
+            }
+            OnDigSpotInteractingClientRpc(_catsDigging.Value > 0);
+        }
 
-                }
+        [ClientRpc]
+        private void OnDigSpotInteractingClientRpc(bool catsAreDigging)
+        {
+            if (!IsOwner)
+            {
+                return;
+            }
+            if (catsAreDigging)
+            {
+                _spriteRenderer.color = Color.red;
+                AudioManager.Instance.Play(_audioSource, _audioClipDigging, true, true);
+            }
+            else
+            {
+                AudioManager.Instance.Stop(_audioSource);
+                _spriteRenderer.color = Color.white;
             }
         }
 
-        public void Rebury()
+        [ServerRpc]
+        public void ReburyServerRpc()
         {
             _progress.Value = Mathf.Clamp(_progress.Value + _digs * _reburyCost, 0, _digs);
-            ReburyEffects();
+            ReburyEffectsClientRpc();
         }
 
-        private void ReburyEffects()
+        [ClientRpc]
+        private void ReburyEffectsClientRpc()
         {
             Debug.Log($"ReburyEffects");
+            AudioManager.Instance.Play(_audioSource, _audioClipRebury, true);
+            _particleRebury.Play();
         }
 
         public float GetProgress()

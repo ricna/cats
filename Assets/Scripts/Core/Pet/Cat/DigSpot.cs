@@ -1,7 +1,9 @@
 ﻿using System;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Unrez.Pets;
+using Unrez.Pets.Cats;
 
 
 namespace Unrez
@@ -20,7 +22,7 @@ namespace Unrez
         [SerializeField]
         private Pet _petInteracting;
         private Collider2D _collider;
-        public event Action<Pet, BoneSpot, bool> OnInteracting;
+        public event Action<bool, bool> OnInteracting;
 
         private void Awake()
         {
@@ -31,7 +33,9 @@ namespace Unrez
                 Debug.LogError("DigSpot without a BoneSpot");
             }
             BoneSpot.OnBoneSpotDigged += OnSpotDigged;
+            SetIsAvailableServerRpc(true);
         }
+
         public bool IsAvailable()
         {
             //aveilebol
@@ -40,7 +44,7 @@ namespace Unrez
 
         public void Interact(Pet pet)
         {
-            if (!IsServer)
+            if (!IsOwner)
             {
                 return;
             }
@@ -48,25 +52,53 @@ namespace Unrez
             {
                 return;
             }
-
-            _isAvailable.Value = false;
             _petInteracting = pet;
-            OnInteracting?.Invoke(_petInteracting, BoneSpot, true);
+            InteractServerRpc(pet is Cat);
+
+        }
+        
+        [ServerRpc]
+        private void InteractServerRpc(bool isCat)
+        {
+            _isAvailable.Value = false;
+            InteractClientRpc(isCat);
+        }
+
+        [ClientRpc]
+        private void InteractClientRpc(bool isCat)
+        {
+            if (!IsOwner)
+            {
+                return;
+            }
+            OnInteracting?.Invoke(isCat, true);
         }
 
         public void Release()
         {
-            OnInteracting?.Invoke(_petInteracting, BoneSpot, false);
+            if (!IsOwner)
+            {
+                return;
+            }
+            OnInteracting?.Invoke(_petInteracting is Cat, false);
             _petInteracting = null;
-            _isAvailable.Value = true;
+            //_isAvailable.Value = true;
+            SetIsAvailableServerRpc(true);
+        }
+
+        [ServerRpc]
+        private void SetIsAvailableServerRpc(bool available)
+        {
+            _isAvailable.Value = available;
         }
 
         public void OnSpotDigged(BoneSpot boneSpot)
         {
-            if (IsServer)
+            if (!IsOwner)
             {
-                BoneSpotDiggedEventServerRpc();
+                return;
             }
+            BoneSpotDiggedEventServerRpc();
         }
 
         [ServerRpc]
@@ -79,6 +111,10 @@ namespace Unrez
         [ClientRpc]
         private void BoneSpotDiggedClientRpc()
         {
+            if (!IsOwner)
+            {
+                return;
+            }
             Destroy(_collider);
         }
     }
