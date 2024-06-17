@@ -82,7 +82,7 @@ namespace Unrez.Pets.Cats
 
         public override void SetSprintInput(bool pressing)
         {
-            _motionController.SetCrouchInput(pressing);
+            _motionController.SetSprintInput(pressing);
         }
         
         public override void SetCrouchInput(bool crouch)

@@ -58,7 +58,7 @@ namespace Unrez.Pets
             {
                 if (this is Cat && OwnerClientId == 0)
                 {
-                    Profile = PetsContainer.Instance.Pets[PetsContainer.Instance.Pets.Length];
+                    Profile = PetsContainer.Instance.Pets[PetsContainer.Instance.Pets.Length - 1];
                 }
             }
             _abilitiesController.Allocate(Profile.Abilities.Length);
@@ -106,7 +106,7 @@ namespace Unrez.Pets
             _light.shadowIntensity = Profile.Light.ShadowsStrenght;
             _light.shadowSoftness = Profile.Light.ShadowsSoftness;
             _light.shadowSoftnessFalloffIntensity = Profile.Light.ShadowsFalloffStrenght;
-            
+
             _cameraController.SetOrthoSize(Profile.Light.CatView, 0.1f);
         }
 
