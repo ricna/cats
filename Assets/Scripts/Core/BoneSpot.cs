@@ -48,10 +48,9 @@ namespace Unrez
 
         private void Awake()
         {
-            _progress.Value = 0f;
             _catsDigging.Value = 0;
             _elapsingDigs.Value = _digs;
-            _progress.Value = (_elapsingDigs.Value / _digs * 100) - 100;
+            _progress.Value = 100 - (_elapsingDigs.Value / _digs * 100);
 
         }
         public override void OnNetworkSpawn()
@@ -59,9 +58,10 @@ namespace Unrez
             base.OnNetworkSpawn();
             if (IsServer)
             {
-                _progress.Value = 0f;
                 _catsDigging.Value = 0;
                 _elapsingDigs.Value = _digs;
+                _progress.Value = 100 - (_elapsingDigs.Value / _digs * 100);
+                _progress.OnValueChanged += CheckProgress;
             }
             _digSpots = GetComponentsInChildren<DigSpot>();
             foreach (DigSpot digSpot in _digSpots)
@@ -88,24 +88,23 @@ namespace Unrez
             if (_catsDigging.Value > 0)
             {
                 _elapsingDigs.Value -= Time.deltaTime;
-                _progress.Value = (_elapsingDigs.Value / _digs * 100) - 100;
+                _progress.Value = 100 - (_elapsingDigs.Value / _digs * 100);
             }
         }
 
         private bool _isDigged = false;
-        private void LateUpdate()
+        private void CheckProgress(float previousValue, float newValue)
         {
             if (_isDigged)
             {
                 return;
             }
-            if (_progress.Value >= _digs)
+            if (newValue >= 100)
             {
                 _isDigged = true;
                 DiggedClientRpc();
             }
         }
-
 
         [ClientRpc]
         private void DiggedClientRpc()
@@ -140,14 +139,6 @@ namespace Unrez
                 else
                 {
                     _catsDigging.Value--;
-                }
-                if (_catsDigging.Value > 0)
-                {
-                    _spriteRenderer.color = Color.red;
-                }
-                else
-                {
-                    _spriteRenderer.color = Color.white;
                 }
             }
             else
