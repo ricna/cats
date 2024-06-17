@@ -24,8 +24,9 @@ namespace Unrez
         private Collider2D _collider;
         public event Action<bool, bool> OnInteracting;
 
-        private void Awake()
+        public override void OnNetworkSpawn()
         {
+            base.OnNetworkSpawn();
             BoneSpot = GetComponentInParent<BoneSpot>();
             _collider = GetComponent<Collider2D>();
             if (BoneSpot == null)
@@ -34,12 +35,6 @@ namespace Unrez
             }
             BoneSpot.OnBoneSpotDigged += OnSpotDigged;
             SetIsAvailableServerRpc(true);
-        }
-
-        public bool IsAvailable()
-        {
-            //aveilebol
-            return _isAvailable.Value;
         }
 
         public void Interact(Pet pet)
@@ -56,7 +51,7 @@ namespace Unrez
             InteractServerRpc(pet is Cat);
 
         }
-        
+
         [ServerRpc]
         private void InteractServerRpc(bool isCat)
         {
@@ -117,5 +112,12 @@ namespace Unrez
             }
             Destroy(_collider);
         }
+
+        public bool IsAvailable()
+        {
+            //aveilebol
+            return _isAvailable.Value;
+        }
+
     }
 }

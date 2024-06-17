@@ -46,7 +46,14 @@ namespace Unrez
 
         public event Action<BoneSpot> OnBoneSpotDigged;
 
+        private void Awake()
+        {
+            _progress.Value = 0f;
+            _catsDigging.Value = 0;
+            _elapsingDigs.Value = _digs;
+            _progress.Value = (_elapsingDigs.Value / _digs * 100) - 100;
 
+        }
         public override void OnNetworkSpawn()
         {
             base.OnNetworkSpawn();
@@ -81,13 +88,24 @@ namespace Unrez
             if (_catsDigging.Value > 0)
             {
                 _elapsingDigs.Value -= Time.deltaTime;
-                _progress.Value = _elapsingDigs.Value / _digs * 100;
+                _progress.Value = (_elapsingDigs.Value / _digs * 100) - 100;
+            }
+        }
+
+        private bool _isDigged = false;
+        private void LateUpdate()
+        {
+            if (_isDigged)
+            {
+                return;
             }
             if (_progress.Value >= _digs)
             {
+                _isDigged = true;
                 DiggedClientRpc();
             }
         }
+
 
         [ClientRpc]
         private void DiggedClientRpc()
@@ -99,6 +117,7 @@ namespace Unrez
             AudioManager.Instance.Play(_audioSource, _audioClipDigged);
             OnBoneSpotDigged?.Invoke(this);
         }
+
         private void OnDigSpotInteracting(bool isCat, bool interacting)
         {
             if (!IsOwner)

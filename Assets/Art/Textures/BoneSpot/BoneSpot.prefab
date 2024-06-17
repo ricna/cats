@@ -77,10 +77,10 @@ MonoBehaviour:
   _reburyCost: 0.25
   _spriteRenderer: {fileID: 1087426246502022505}
   _particleRebury: {fileID: 0}
-  _audioSource: {fileID: 0}
-  _audioClipRebury: {fileID: 0}
-  _audioClipDigging: {fileID: 0}
-  _audioClipDigged: {fileID: 0}
+  _audioSource: {fileID: 7453164504298591220}
+  _audioClipRebury: {fileID: 8300000, guid: 211c23441a7707a4ea40e8a1895cecbe, type: 3}
+  _audioClipDigging: {fileID: 8300000, guid: 4a095363776181346a5dad61e9259990, type: 3}
+  _audioClipDigged: {fileID: 8300000, guid: ce6ef14e911bf7244adfdf0161d67945, type: 3}
   _progress:
     m_InternalValue: 0
   _catsDigging:
