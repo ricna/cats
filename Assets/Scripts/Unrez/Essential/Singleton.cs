@@ -1,8 +1,9 @@
+using Unity.Netcode;
 using UnityEngine;
 
 namespace Unrez.Essential
 {
-    public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+    public class Singleton<T> : NetworkBehaviour where T : NetworkBehaviour
     {
         private static bool _shuttingDown = false;
         private static readonly object _lock = new();

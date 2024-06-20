@@ -29,9 +29,24 @@ namespace Unrez.Pets.Cats
         private void OnTriggerExit2D(Collider2D collision)
         {
             _spotDetectedAvailable = false;
-            //_digSpot = null;
+            if (_isDigging)
+            {
+                _digSpot.Release();
+            }
         }
 
+        protected override void InitializePet()
+        {
+            base.InitializePet();
+            //_light.pointLightOuterRadius = Profile.Light.CatView;
+            //_cameraController.SetOrthoSize(Profile.Light.CatView, 0.1f);
+        }
+
+
+        private void LateUpdate()
+        {
+            
+        }
         public override void TakeHit(int damage)
         {
             _healthController.TakeDamage(damage);

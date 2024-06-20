@@ -21,3 +21,10 @@ MonoBehaviour:
   ShadowsStrenght: 1
   ShadowsSoftness: 1
   ShadowsFalloffStrenght: 0.5
+  CatView: 24
+  DogView: 36
+  CatChaseView: 12
+  DogChaseView: 16
+  DogBuryingView: 8
+  CatPanicView: 8
+  CatTreeView: 36

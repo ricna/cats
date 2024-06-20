@@ -33,8 +33,13 @@ namespace Unrez.Pets.Cats
         }
 
         private Coroutine _coroutineOrthoSizeTween;
-        public void SetOrthoSize(float size, float duration)
+        public void SetOrthoSize(float size, float duration = 0)
         {
+            if (duration == 0)
+            {
+                _cinemachineCamera.Lens.OrthographicSize = size;
+                return;
+            }
             if (_coroutineOrthoSizeTween != null)
             {
                 StopCoroutine(_coroutineOrthoSizeTween);

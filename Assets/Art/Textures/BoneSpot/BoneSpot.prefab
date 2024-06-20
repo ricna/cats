@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3789121112360551747}
   - component: {fileID: 8477014270986294111}
-  - component: {fileID: 7191937154867191963}
   - component: {fileID: 1673906990658086593}
   - component: {fileID: 7453164504298591220}
+  - component: {fileID: 7191937154867191963}
   m_Layer: 0
   m_Name: BoneSpot
   m_TagString: Untagged
@@ -61,33 +61,6 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &7191937154867191963
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1176436333730099124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d08408147ed037e49afc9cdd11a80922, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _digs: 90
-  _reburyCost: 0.25
-  _spriteRenderer: {fileID: 1087426246502022505}
-  _particleRebury: {fileID: 0}
-  _audioSource: {fileID: 7453164504298591220}
-  _audioClipRebury: {fileID: 8300000, guid: 211c23441a7707a4ea40e8a1895cecbe, type: 3}
-  _audioClipDigging: {fileID: 8300000, guid: 4a095363776181346a5dad61e9259990, type: 3}
-  _audioClipDigged: {fileID: 8300000, guid: ce6ef14e911bf7244adfdf0161d67945, type: 3}
-  _progress:
-    m_InternalValue: 0
-  _catsDigging:
-    m_InternalValue: 0
-  _elapsingDigs:
-    m_InternalValue: 0
-  _digSpots: []
 --- !u!58 &1673906990658086593
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -221,6 +194,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7191937154867191963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176436333730099124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d08408147ed037e49afc9cdd11a80922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _digs: 90
+  _reburyCost: 0.25
+  _spriteRenderer: {fileID: 1087426246502022505}
+  _particleRebury: {fileID: 0}
+  _audioSource: {fileID: 7453164504298591220}
+  _audioClipRebury: {fileID: 8300000, guid: 211c23441a7707a4ea40e8a1895cecbe, type: 3}
+  _audioClipDigging: {fileID: 8300000, guid: 4a095363776181346a5dad61e9259990, type: 3}
+  _audioClipDigged: {fileID: 8300000, guid: ce6ef14e911bf7244adfdf0161d67945, type: 3}
+  _progress:
+    m_InternalValue: 0
+  _catsDigging:
+    m_InternalValue: 0
+  _elapsingDigs:
+    m_InternalValue: 0
+  _digSpots: []
 --- !u!1 &3784294403508206225
 GameObject:
   m_ObjectHideFlags: 0

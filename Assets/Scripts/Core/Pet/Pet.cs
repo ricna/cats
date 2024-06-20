@@ -1,4 +1,5 @@
 using System;
+using Unity.IO.LowLevel.Unsafe;
 using Unity.Netcode;
 using UnityEditor;
 using UnityEngine;
@@ -16,7 +17,15 @@ namespace Unrez.Pets
         public string Name;
         public Color Color;
         public float Health;
+        public float Speed;
     }
+    public enum PetViewStatus
+    {
+        Default,
+        Chase,
+        ChaseLevel02,
+    }
+
     public abstract class Pet : NetworkBehaviour
     {
         [field: SerializeField]
@@ -38,9 +47,16 @@ namespace Unrez.Pets
 
         public event Action OnPetProfileLoaded;
 
+        [Header("Debug - FOV")]
+        [SerializeField]
+        private float _targetFOV;
+        [SerializeField]
+        private float _currentFOV;
 
         protected virtual void Awake()
         {
+            _currentFOV = 48;
+            _targetFOV = 36;
             _motionController = GetComponent<PetMotion>();
             _abilitiesController = GetComponent<PetAbilities>();
             _healthController = GetComponent<PetHealth>();
@@ -87,6 +103,10 @@ namespace Unrez.Pets
 
         protected virtual void InitializePet()
         {
+            if (!IsOwner)
+            {
+                return;
+            }
             _cameraController = FindFirstObjectByType<PetCamera>();
             _cameraController.SetupCamera(gameObject, gameObject);
             this.gameObject.AddComponent<AudioListener>();
@@ -110,6 +130,43 @@ namespace Unrez.Pets
             _light.shadowSoftnessFalloffIntensity = Profile.Light.ShadowsFalloffStrenght;
 
             _cameraController.SetOrthoSize(Profile.Light.CatView, 0.1f);
+        }
+
+
+        public virtual void SetFOV(float fov)
+        {
+            SetFOVClientRpc(fov);
+        }
+
+        [ClientRpc]
+        private void SetFOVClientRpc(float fov)
+        {
+            if (!IsOwner)
+            {
+                return;
+            }
+            _targetFOV = fov;
+        }
+
+        protected void UpdateView()
+        {
+            if (!IsOwner)
+            {
+                return;
+            }
+            _light.pointLightOuterRadius = _currentFOV;
+            _cameraController.SetOrthoSize(_currentFOV);
+        }
+
+        private float _fovSpeed = 1;
+        protected virtual void Update()
+        {
+            if (!IsOwner)
+            {
+                return;
+            }
+            _currentFOV = Mathf.Lerp(_currentFOV, _targetFOV, Time.deltaTime * _fovSpeed);
+            UpdateView();
         }
 
         protected virtual void OnDirectionChangedHandler(Vector2 vector)

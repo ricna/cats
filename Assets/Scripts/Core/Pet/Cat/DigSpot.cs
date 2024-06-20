@@ -75,10 +75,12 @@ namespace Unrez
             {
                 return;
             }
-            OnInteracting?.Invoke(_petInteracting is Cat, false);
-            _petInteracting = null;
-            //_isAvailable.Value = true;
-            SetIsAvailableServerRpc(true);
+            if (_petInteracting != null)
+            {
+                OnInteracting?.Invoke(_petInteracting is Cat, false);
+                _petInteracting = null;
+                SetIsAvailableServerRpc(true);
+            }
         }
 
         [ServerRpc]

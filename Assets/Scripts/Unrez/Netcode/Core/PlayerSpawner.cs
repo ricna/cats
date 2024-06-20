@@ -2,6 +2,8 @@ using System;
 using Unity.Netcode;
 using UnityEngine;
 using Unrez.Pets;
+using Unrez.Pets.Cats;
+using Unrez.Pets.Dogs;
 
 namespace Unrez.Netcode
 {
@@ -16,9 +18,9 @@ namespace Unrez.Netcode
         [field: SerializeField]
         public bool TestCatOnly { get; private set; }
         [SerializeField]
-        private GameObject _dog;
+        private GameObject _prefabDog;
         [SerializeField]
-        private GameObject _cat;
+        private GameObject _prefabCat;
         [SerializeField]
         private Transform[] _spawnPoints;
         [SerializeField]
@@ -64,11 +66,13 @@ namespace Unrez.Netcode
             Debug.Log($"<color=black>SpawnPlayerServerRpc IsServer:{dog}</color>");
             if (dog)
             {
-                newPlayer = Instantiate(_dog);
+                newPlayer = Instantiate(_prefabDog);
+                GameManager.Instance.SetDog(newPlayer.GetComponent<Dog>());
             }
             else
             {
-                newPlayer = Instantiate(_cat);
+                newPlayer = Instantiate(_prefabCat);
+                GameManager.Instance.AddCat(newPlayer.GetComponent<Cat>());
             }
             OnPlayerSpawn?.Invoke(OwnerClientId, newPlayer.GetComponent<Pet>());
             newPlayer.transform.position = _spawnPointVariation[clientId + 1].position;
