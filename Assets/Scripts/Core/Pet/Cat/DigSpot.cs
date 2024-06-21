@@ -52,7 +52,7 @@ namespace Unrez
 
         }
 
-        [ServerRpc]
+        [ServerRpc(RequireOwnership = false)]
         private void InteractServerRpc(bool isCat)
         {
             _isAvailable.Value = false;
@@ -83,7 +83,7 @@ namespace Unrez
             }
         }
 
-        [ServerRpc]
+        [ServerRpc(RequireOwnership = false)]
         private void SetIsAvailableServerRpc(bool available)
         {
             _isAvailable.Value = available;

@@ -73,21 +73,33 @@ namespace Unrez
                 {
                     if (_distance > 24)
                     {
-                        cat.SetFOV(25f);
+                        cat.SetFOV(24);
                     }
-                    else if (_distance > 16)
+                    else if (_distance < 16)
                     {
-                        cat.SetFOV(17);
-                    }
-                    else if (_distance > 12)
-                    {
-                        cat.SetFOV(13);
+                        cat.SetFOV(16);
                     }
                     else
                     {
                         if (_distance < 12)
                         {
-                            cat.SetFOV(_distance + 1);
+                            Vector3 dir = (cat.transform.position - _dog.transform.position).normalized;
+                            RaycastHit2D hit = Physics2D.Raycast(cat.transform.position, dir, 12);
+                            Debug.DrawLine(cat.transform.position, _dog.transform.position, Color.magenta);
+                            if (hit)
+                            {
+
+                                if (hit.transform.GetComponent<Dog>() != null)
+                                {
+                                    Debug.Log("INCHASE");
+                                    cat.SetFOV(12);
+                                    _dog.SetFOV(12);
+                                }
+                                else
+                                {
+                                    Debug.DrawLine(cat.transform.position, hit.point, Color.red);
+                                }
+                            }
                         }
                     }
                 }
