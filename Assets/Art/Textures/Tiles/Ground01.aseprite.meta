@@ -124,7 +124,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Ground01
     originalName: 
-    pivot: {x: 0.5555556, y: 0}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -132,7 +132,7 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 144
+      width: 160
       height: 48
     spriteID: b513086151f66354dab34f1f095e8f93
     spriteBone: []
@@ -158,7 +158,7 @@ ScriptedImporter:
       cellRect:
         x: 0
         y: 0
-        width: 144
+        width: 160
         height: 48
       spriteId: b513086151f66354dab34f1f095e8f93
     linkedCells: []
