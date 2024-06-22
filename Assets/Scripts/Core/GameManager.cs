@@ -88,7 +88,6 @@ namespace Unrez
                             Debug.DrawLine(cat.transform.position, _dog.transform.position, Color.magenta);
                             if (hit)
                             {
-
                                 if (hit.transform.GetComponent<Dog>() != null)
                                 {
                                     Debug.Log("INCHASE");
