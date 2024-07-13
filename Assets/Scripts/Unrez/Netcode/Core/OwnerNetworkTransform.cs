@@ -2,7 +2,7 @@ using Unity.Netcode;
 using Unity.Netcode.Components;
 using UnityEngine;
 
-namespace Unrez.Netcode
+namespace Unrez.Networking
 {
     [RequireComponent(typeof(NetworkObject))]
     public class OwnerNetworkTransform : NetworkTransform

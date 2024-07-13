@@ -2,7 +2,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Unrez.Netcode.UI
+namespace Unrez.Networking.UI
 {
     public class ConnectionHandler : MonoBehaviour
     {

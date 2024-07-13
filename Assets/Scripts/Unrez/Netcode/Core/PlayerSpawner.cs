@@ -5,7 +5,7 @@ using Unrez.Pets;
 using Unrez.Pets.Cats;
 using Unrez.Pets.Dogs;
 
-namespace Unrez.Netcode
+namespace Unrez.Networking
 {
     /// <summary>
     /// Spawn a differente Prefab as desired.
@@ -67,12 +67,12 @@ namespace Unrez.Netcode
             if (dog)
             {
                 newPlayer = Instantiate(_prefabDog);
-                GameManager.Instance.SetDog(newPlayer.GetComponent<Dog>());
+                ChaseManager.Instance.SetDog(newPlayer.GetComponent<Dog>());
             }
             else
             {
                 newPlayer = Instantiate(_prefabCat);
-                GameManager.Instance.AddCat(newPlayer.GetComponent<Cat>());
+                ChaseManager.Instance.AddCat(newPlayer.GetComponent<Cat>());
             }
             OnPlayerSpawn?.Invoke(OwnerClientId, newPlayer.GetComponent<Pet>());
             newPlayer.transform.position = _spawnPointVariation[clientId + 1].position;

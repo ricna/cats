@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Cats.unity
+    path: Assets/Scenes/Cats_LAN.unity
     guid: 7e300a88b49a6844d913cd54c6f58080
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 0e19aa1e5176a11459aed696a95501ae, type: 3}

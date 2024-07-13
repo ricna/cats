@@ -4,7 +4,7 @@ using Unity.Netcode;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
-using Unrez.Netcode;
+using Unrez.Networking;
 using Unrez.Pets.Abilities;
 using Unrez.Pets.Cats;
 

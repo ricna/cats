@@ -6,7 +6,7 @@ using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using Unrez.Essential;
 
-namespace Unrez.Netcode
+namespace Unrez.Networking
 {
 
     /// <summary>

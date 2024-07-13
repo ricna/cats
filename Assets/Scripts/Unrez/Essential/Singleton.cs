@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Unrez.Essential
 {
-    public class Singleton<T> : NetworkBehaviour where T : NetworkBehaviour
+    public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         private static bool _shuttingDown = false;
         private static readonly object _lock = new();
