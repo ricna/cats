@@ -100,15 +100,7 @@ namespace Unrez
 
         public override void OnNetworkSpawn()
         {
-            base.OnNetworkSpawn();
-            if (IsServer)
-            {
-                // Inicialização do jogo, spawn de jogadores, etc.
-                foreach (BoneSpot boneSpot in _map.BoneSpots)
-                {
-                    boneSpot.OnBoneSpotDigged += BoneSpotDiggedHandle;
-                }
-            }
+
         }
 
         public override void OnNetworkDespawn()
@@ -187,10 +179,6 @@ namespace Unrez
             }
         }
 
-        private void BoneSpotDiggedHandle(BoneSpot boneSpot)
-        {
-            Debug.Log("BoneSpot Digged!!!");
-        }
 
         public void SetDog(Dog dog)
         {
