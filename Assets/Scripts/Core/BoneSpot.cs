@@ -63,7 +63,7 @@ namespace Unrez
             }
         }
 
-        public override void OnNetworkDespawn() 
+        public override void OnNetworkDespawn()
         {
             base.OnNetworkDespawn();
             foreach (DigSpot digSpot in _digSpots)
