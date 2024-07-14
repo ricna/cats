@@ -31,6 +31,7 @@ namespace Unrez.Networking
 
         public override void OnNetworkSpawn()
         {
+            Debug.Log("NetworkSpawn");
             if (TestCatOnly)
             {
                 SpawnPlayerServerRpc(NetworkManager.Singleton.LocalClientId, false);

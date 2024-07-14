@@ -14,10 +14,11 @@ GameObject:
   - component: {fileID: 992329243679777635}
   - component: {fileID: 8657455438807134225}
   - component: {fileID: 2530593966750574000}
+  - component: {fileID: 8785497829865740131}
   - component: {fileID: 1561932522807824142}
   - component: {fileID: 376582561524254509}
-  - component: {fileID: -8743158011315201117}
   - component: {fileID: 2637803149825943490}
+  - component: {fileID: -8743158011315201117}
   - component: {fileID: 4645575780272570944}
   - component: {fileID: 7309397374055780338}
   - component: {fileID: 1795883889953939332}
@@ -86,7 +87,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -76161853
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 1651835671, guid: 1cf9b27cbf6d0d246a2dc54d93a7064e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -196,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1257078804
+  GlobalObjectIdHash: 1342575987
   InScenePlacedSourceGlobalObjectIdHash: 4199737136
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -205,6 +206,18 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+--- !u!114 &8785497829865740131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3132002317318474520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80d7c879794dfda4687da0e400131852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1561932522807824142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,21 +263,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TransitionStateInfoList: []
   m_Animator: {fileID: 4410445312345493856}
---- !u!114 &-8743158011315201117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3132002317318474520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8683790668b85e5499ea027c68a0cdbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Profile>k__BackingField: {fileID: 0}
-  _spriteRenderBody: {fileID: 8060715614537492126}
-  _transformParent: {fileID: 0}
 --- !u!114 &2637803149825943490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,6 +276,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 11400000, guid: 957eac0e969caf64caedbcddd7a11d3b, type: 2}
+--- !u!114 &-8743158011315201117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3132002317318474520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8683790668b85e5499ea027c68a0cdbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Profile>k__BackingField: {fileID: 0}
+  _petStatus:
+    OwnerId: 0
+    Name: 
+    Color: {r: 0, g: 0, b: 0, a: 0}
+    Health: 0
+    Speed: 0
+  _spriteRenderBody: {fileID: 8060715614537492126}
+  _transformParent: {fileID: 0}
+  _targetFOV: 0
+  _currentFOV: 0
 --- !u!114 &4645575780272570944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,6 +318,8 @@ MonoBehaviour:
   _petSide: 0
   _lastPetSide: 0
   _isMoving: 0
+  _isCrouched: 0
+  _isSprinting: 0
   _currentDirection: {x: 0, y: 0}
 --- !u!114 &7309397374055780338
 MonoBehaviour:
@@ -402,7 +425,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -76161853
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.003921569}

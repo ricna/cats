@@ -186,7 +186,7 @@ MonoBehaviour:
   m_CastsShadows: 1
   m_SelfShadows: 0
   m_AlphaCutoff: 0.1
-  m_ApplyToSortingLayers: 67e3ed9900000000650c0362
+  m_ApplyToSortingLayers: 67e3ed9900000000
   m_ShapePath:
   - {x: -1, y: -1, z: 0}
   - {x: -1, y: 1, z: 0}
@@ -492,7 +492,7 @@ MonoBehaviour:
   m_CastsShadows: 1
   m_SelfShadows: 0
   m_AlphaCutoff: 0.1
-  m_ApplyToSortingLayers: 67e3ed9900000000650c0362
+  m_ApplyToSortingLayers: 67e3ed9900000000
   m_ShapePath:
   - {x: -1, y: -1, z: 0}
   - {x: -1, y: 1, z: 0}
@@ -1140,7 +1140,7 @@ MonoBehaviour:
   m_CastsShadows: 1
   m_SelfShadows: 0
   m_AlphaCutoff: 0.1
-  m_ApplyToSortingLayers: 67e3ed9900000000650c0362
+  m_ApplyToSortingLayers: 67e3ed9900000000
   m_ShapePath:
   - {x: -1, y: -1, z: 0}
   - {x: -1, y: 1, z: 0}
@@ -1275,7 +1275,7 @@ MonoBehaviour:
   m_CastsShadows: 1
   m_SelfShadows: 0
   m_AlphaCutoff: 0.1
-  m_ApplyToSortingLayers: 67e3ed9900000000650c0362
+  m_ApplyToSortingLayers: 67e3ed9900000000
   m_ShapePath:
   - {x: -1, y: -1, z: 0}
   - {x: -1, y: 1, z: 0}
@@ -1668,7 +1668,7 @@ MonoBehaviour:
   m_CastsShadows: 1
   m_SelfShadows: 0
   m_AlphaCutoff: 0.1
-  m_ApplyToSortingLayers: 67e3ed9900000000650c0362
+  m_ApplyToSortingLayers: 67e3ed9900000000
   m_ShapePath:
   - {x: -1, y: -1, z: 0}
   - {x: -1, y: 1, z: 0}
@@ -2345,7 +2345,7 @@ MonoBehaviour:
   m_CastsShadows: 1
   m_SelfShadows: 0
   m_AlphaCutoff: 0.1
-  m_ApplyToSortingLayers: 67e3ed9900000000650c0362
+  m_ApplyToSortingLayers: 67e3ed9900000000
   m_ShapePath:
   - {x: -1, y: -4, z: 0}
   - {x: -1, y: 3.999998, z: 0}
@@ -2431,7 +2431,7 @@ MonoBehaviour:
   m_CastsShadows: 1
   m_SelfShadows: 0
   m_AlphaCutoff: 0.1
-  m_ApplyToSortingLayers: 67e3ed9900000000650c0362
+  m_ApplyToSortingLayers: 67e3ed9900000000
   m_ShapePath:
   - {x: -1, y: -2, z: 0}
   - {x: -1, y: 2, z: 0}
@@ -2447,7 +2447,7 @@ MonoBehaviour:
     m_Mesh: {fileID: 0}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 1, y: 2, z: 0}
+      m_Extent: {x: 1, y: 4, z: 0}
     m_EdgeProcessing: 1
     m_TrimEdge: 0
     m_FlipX: 0
@@ -2457,7 +2457,7 @@ MonoBehaviour:
   m_PreviousTrimEdge: 0
   m_PreviousEdgeProcessing: 1
   m_PreviousShadowCastingSource: 2
-  m_PreviousShadowShape2DSource: {fileID: 0}
+  m_PreviousShadowShape2DSource: {fileID: 1886304042065086781}
   references:
     version: 2
     RefIds:
@@ -2696,7 +2696,7 @@ MonoBehaviour:
   m_CastsShadows: 1
   m_SelfShadows: 0
   m_AlphaCutoff: 0.1
-  m_ApplyToSortingLayers: 67e3ed9900000000650c0362
+  m_ApplyToSortingLayers: 67e3ed9900000000
   m_ShapePath:
   - {x: -1, y: -1, z: 0}
   - {x: -1, y: 1, z: 0}
@@ -3316,7 +3316,7 @@ MonoBehaviour:
   m_CastsShadows: 1
   m_SelfShadows: 0
   m_AlphaCutoff: 0.1
-  m_ApplyToSortingLayers: 67e3ed9900000000650c0362
+  m_ApplyToSortingLayers: 67e3ed9900000000
   m_ShapePath:
   - {x: -1, y: -1, z: 0}
   - {x: -1, y: 1, z: 0}
@@ -3659,7 +3659,7 @@ MonoBehaviour:
   m_CastsShadows: 1
   m_SelfShadows: 0
   m_AlphaCutoff: 0.1
-  m_ApplyToSortingLayers: 67e3ed9900000000650c0362
+  m_ApplyToSortingLayers: 67e3ed9900000000
   m_ShapePath:
   - {x: -1, y: -1, z: 0}
   - {x: -1, y: 1, z: 0}

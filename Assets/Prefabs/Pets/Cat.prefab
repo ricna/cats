@@ -14,11 +14,12 @@ GameObject:
   - component: {fileID: 3246157958940841636}
   - component: {fileID: 6407681758990779862}
   - component: {fileID: 276870807812051063}
+  - component: {fileID: 3430128125790000280}
   - component: {fileID: -5375956426882729271}
   - component: {fileID: 2733753823464567530}
+  - component: {fileID: 311459463207981573}
   - component: {fileID: 7109341369543300037}
   - component: {fileID: 3687823899086678351}
-  - component: {fileID: 311459463207981573}
   - component: {fileID: 5024310094305606197}
   - component: {fileID: -5177556667852182973}
   m_Layer: 0
@@ -205,6 +206,18 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+--- !u!114 &3430128125790000280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846332329567583967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80d7c879794dfda4687da0e400131852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-5375956426882729271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,6 +263,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TransitionStateInfoList: []
   m_Animator: {fileID: 2160832692526638247}
+--- !u!114 &311459463207981573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846332329567583967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0554dece81d442343b29a0a9dccc1ecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputReader: {fileID: 11400000, guid: 957eac0e969caf64caedbcddd7a11d3b, type: 2}
 --- !u!114 &7109341369543300037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,7 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38fbebbfb5cf72b41abd94dae73eaf5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Profile>k__BackingField: {fileID: 11400000, guid: 836f0071c2345444db6618be42b1dca4, type: 2}
+  <Profile>k__BackingField: {fileID: 0}
   _petStatus:
     OwnerId: 0
     Name: 
@@ -298,19 +324,6 @@ MonoBehaviour:
   _isCrouched: 0
   _isSprinting: 0
   _currentDirection: {x: 0, y: 0}
---- !u!114 &311459463207981573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 846332329567583967}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0554dece81d442343b29a0a9dccc1ecb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _inputReader: {fileID: 11400000, guid: 957eac0e969caf64caedbcddd7a11d3b, type: 2}
 --- !u!114 &5024310094305606197
 MonoBehaviour:
   m_ObjectHideFlags: 0
