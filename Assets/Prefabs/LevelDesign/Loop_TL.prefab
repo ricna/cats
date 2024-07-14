@@ -186,7 +186,7 @@ MonoBehaviour:
   m_CastsShadows: 1
   m_SelfShadows: 0
   m_AlphaCutoff: 0.1
-  m_ApplyToSortingLayers: 67e3ed99c3dc75fb
+  m_ApplyToSortingLayers: 67e3ed9900000000650c0362
   m_ShapePath:
   - {x: -1, y: -1, z: 0}
   - {x: -1, y: 1, z: 0}
@@ -492,7 +492,7 @@ MonoBehaviour:
   m_CastsShadows: 1
   m_SelfShadows: 0
   m_AlphaCutoff: 0.1
-  m_ApplyToSortingLayers: 67e3ed99c3dc75fb
+  m_ApplyToSortingLayers: 67e3ed9900000000650c0362
   m_ShapePath:
   - {x: -1, y: -1, z: 0}
   - {x: -1, y: 1, z: 0}
@@ -1140,7 +1140,7 @@ MonoBehaviour:
   m_CastsShadows: 1
   m_SelfShadows: 0
   m_AlphaCutoff: 0.1
-  m_ApplyToSortingLayers: 67e3ed99c3dc75fb
+  m_ApplyToSortingLayers: 67e3ed9900000000650c0362
   m_ShapePath:
   - {x: -1, y: -1, z: 0}
   - {x: -1, y: 1, z: 0}
@@ -1275,7 +1275,7 @@ MonoBehaviour:
   m_CastsShadows: 1
   m_SelfShadows: 0
   m_AlphaCutoff: 0.1
-  m_ApplyToSortingLayers: 67e3ed99c3dc75fb
+  m_ApplyToSortingLayers: 67e3ed9900000000650c0362
   m_ShapePath:
   - {x: -1, y: -1, z: 0}
   - {x: -1, y: 1, z: 0}
@@ -1668,7 +1668,7 @@ MonoBehaviour:
   m_CastsShadows: 1
   m_SelfShadows: 0
   m_AlphaCutoff: 0.1
-  m_ApplyToSortingLayers: 67e3ed99c3dc75fb
+  m_ApplyToSortingLayers: 67e3ed9900000000650c0362
   m_ShapePath:
   - {x: -1, y: -1, z: 0}
   - {x: -1, y: 1, z: 0}
@@ -2345,7 +2345,7 @@ MonoBehaviour:
   m_CastsShadows: 1
   m_SelfShadows: 0
   m_AlphaCutoff: 0.1
-  m_ApplyToSortingLayers: 67e3ed99c3dc75fb
+  m_ApplyToSortingLayers: 67e3ed9900000000650c0362
   m_ShapePath:
   - {x: -1, y: -4, z: 0}
   - {x: -1, y: 3.999998, z: 0}
@@ -2431,7 +2431,7 @@ MonoBehaviour:
   m_CastsShadows: 1
   m_SelfShadows: 0
   m_AlphaCutoff: 0.1
-  m_ApplyToSortingLayers: 67e3ed99c3dc75fb
+  m_ApplyToSortingLayers: 67e3ed9900000000650c0362
   m_ShapePath:
   - {x: -1, y: -2, z: 0}
   - {x: -1, y: 2, z: 0}
@@ -2439,9 +2439,9 @@ MonoBehaviour:
   - {x: 1, y: -2, z: 0}
   m_ShapePathHash: 0
   m_InstanceId: 0
-  m_ShadowShape2DComponent: {fileID: 0}
+  m_ShadowShape2DComponent: {fileID: 1886304042065086781}
   m_ShadowShape2DProvider:
-    rid: 301563257897091299
+    rid: 7500218832780263507
   m_ShadowCastingSource: 2
   m_ShadowMesh:
     m_Mesh: {fileID: 0}
@@ -2461,8 +2461,8 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 301563257897091299
-      type: {class: ShadowShape2DProvider_SpriteRenderer, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
+    - rid: 7500218832780263507
+      type: {class: ShadowShape2DProvider_Collider2D, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data: 
 --- !u!61 &1886304042065086781
 BoxCollider2D:
@@ -2696,7 +2696,7 @@ MonoBehaviour:
   m_CastsShadows: 1
   m_SelfShadows: 0
   m_AlphaCutoff: 0.1
-  m_ApplyToSortingLayers: 67e3ed99c3dc75fb
+  m_ApplyToSortingLayers: 67e3ed9900000000650c0362
   m_ShapePath:
   - {x: -1, y: -1, z: 0}
   - {x: -1, y: 1, z: 0}
@@ -3316,7 +3316,7 @@ MonoBehaviour:
   m_CastsShadows: 1
   m_SelfShadows: 0
   m_AlphaCutoff: 0.1
-  m_ApplyToSortingLayers: 67e3ed99c3dc75fb
+  m_ApplyToSortingLayers: 67e3ed9900000000650c0362
   m_ShapePath:
   - {x: -1, y: -1, z: 0}
   - {x: -1, y: 1, z: 0}
@@ -3659,7 +3659,7 @@ MonoBehaviour:
   m_CastsShadows: 1
   m_SelfShadows: 0
   m_AlphaCutoff: 0.1
-  m_ApplyToSortingLayers: 67e3ed99c3dc75fb
+  m_ApplyToSortingLayers: 67e3ed9900000000650c0362
   m_ShapePath:
   - {x: -1, y: -1, z: 0}
   - {x: -1, y: 1, z: 0}
