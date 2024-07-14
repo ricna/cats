@@ -46,13 +46,6 @@ namespace Unrez
 
         public event Action<BoneSpot> OnBoneSpotDigged;
 
-        private void Awake()
-        {
-            _catsDigging.Value = 0;
-            _elapsingDigs.Value = _digs;
-            _progress.Value = 100 - (_elapsingDigs.Value / _digs * 100);
-
-        }
         public override void OnNetworkSpawn()
         {
             base.OnNetworkSpawn();

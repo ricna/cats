@@ -147,6 +147,28 @@
                 },
                 {
                     "name": "",
+                    "id": "3e68912f-b37e-4008-90ca-b4a41a5ca975",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fe273dad-9c2b-46c3-a1b5-4c330cf7978f",
+                    "path": "<Gamepad>/dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "670907f2-a79d-43fc-b355-8faf8ed1598d",
                     "path": "<Keyboard>/p",
                     "interactions": "",
@@ -191,6 +213,17 @@
                 },
                 {
                     "name": "",
+                    "id": "439185b7-f692-459d-93d5-c44bf99c6871",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "a2f77951-41b8-4803-9d44-fe9411b541c3",
                     "path": "<Keyboard>/shift",
                     "interactions": "",
@@ -202,11 +235,33 @@
                 },
                 {
                     "name": "",
+                    "id": "5da8fd9d-74b7-4b6d-a391-7db82a449344",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "be64ea6e-ba56-43d6-ad67-81cc5063a0d3",
                     "path": "<Keyboard>/c",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
+                    "action": "Crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b6a18e71-bdfb-48c1-be3e-e54fb0fe8068",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
                     "action": "Crouch",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -241,6 +296,11 @@
                     "isOR": false
                 }
             ]
+        },
+        {
+            "name": "Phone",
+            "bindingGroup": "Phone",
+            "devices": []
         }
     ]
 }

@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 1994843839072030719}
   - component: {fileID: 8194670399353006818}
   m_Layer: 0
-  m_Name: DigSpot_01
+  m_Name: DigSpot_South
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -353,7 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec363f5de9881240950ef3ba90f1cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: 0
+  _id: 1
   <BoneSpot>k__BackingField: {fileID: 7191937154867191963}
   _isAvailable:
     m_InternalValue: 0
@@ -416,7 +416,7 @@ GameObject:
   - component: {fileID: 4218553682827670817}
   - component: {fileID: 269296999868434803}
   m_Layer: 0
-  m_Name: DigSpot_00
+  m_Name: DigSpot_North
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 2155874018672657254}
   - component: {fileID: 7151579382701343164}
   m_Layer: 0
-  m_Name: DigSpot_02
+  m_Name: DigSpot_East
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -608,7 +608,7 @@ GameObject:
   - component: {fileID: 3770571556149583137}
   - component: {fileID: 3763604613954056103}
   m_Layer: 0
-  m_Name: DigSpot_03
+  m_Name: DigSpot_West
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

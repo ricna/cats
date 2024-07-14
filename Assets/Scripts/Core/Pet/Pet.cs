@@ -154,8 +154,11 @@ namespace Unrez.Pets
             {
                 return;
             }
-            _light.pointLightOuterRadius = _currentFOV;
-            _cameraController.SetOrthoSize(_currentFOV);
+            if (ChaseManager.Instance.ApplyChaseStatus)
+            {
+                _light.pointLightOuterRadius = _currentFOV;
+                _cameraController.SetOrthoSize(_currentFOV * 0.5f);
+            }
         }
 
         private float _fovSpeed = 1;

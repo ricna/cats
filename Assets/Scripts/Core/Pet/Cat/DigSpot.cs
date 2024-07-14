@@ -120,6 +120,5 @@ namespace Unrez
             //aveilebol
             return _isAvailable.Value;
         }
-
     }
 }

@@ -14,10 +14,20 @@ namespace Unrez
 
     public class ChaseManager : NetworkBehaviour
     {
+        [SerializeField]
+        public bool ApplyChaseStatus = true;
+        [SerializeField]
+        private bool _dynamicFOV = false;
+
+
         public Map _map;
         public List<Cat> _cats;
         public Dog _dog;
         private PlayerSpawner _playerSpawner;
+
+        private Cat closerCat = null;
+        private float _distance;
+        private float _lastDistance;
 
         //-----------------------------------------------------------------------------------------------------------
         #region SINGLETON
@@ -74,6 +84,10 @@ namespace Unrez
 
         private void Update()
         {
+            if (!ApplyChaseStatus)
+            {
+                return;
+            }
             if (!IsServer)
             {
                 return;
@@ -114,11 +128,7 @@ namespace Unrez
             }
         }
 
-        [SerializeField]
-        private bool dynamicFOV = false;
-        private Cat closerCat = null;
-        private float _distance;
-        private float _lastDistance;
+
         private void CheckPetStatus()
         {
             _distance = _lastDistance = float.MaxValue;
@@ -129,7 +139,7 @@ namespace Unrez
                 {
                     _lastDistance = _distance;
                 }
-                if (dynamicFOV)
+                if (_dynamicFOV)
                 {
                     cat.SetFOV(_distance + 2f);
                 }
