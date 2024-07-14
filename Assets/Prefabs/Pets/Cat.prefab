@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 170000700
+  GlobalObjectIdHash: 4199737136
   InScenePlacedSourceGlobalObjectIdHash: 4199737136
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -262,7 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38fbebbfb5cf72b41abd94dae73eaf5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Profile>k__BackingField: {fileID: 0}
+  <Profile>k__BackingField: {fileID: 11400000, guid: 836f0071c2345444db6618be42b1dca4, type: 2}
   _petStatus:
     OwnerId: 0
     Name: 

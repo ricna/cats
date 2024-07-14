@@ -22,13 +22,9 @@ namespace Unrez.Networking
         [SerializeField]
         private GameObject _prefabCat;
         [SerializeField]
-        private Transform[] _spawnPoints;
+        private SpawnPoints[] _spawnPoints;
         [SerializeField]
         private Transform _transformParent;
-
-        [Header("Debugs")]
-        [SerializeField]
-        private Transform[] _spawnPointVariation;
 
         public event Action<ulong, Pet> OnPlayerSpawn;
         public event Action<ulong> OnPlayerDespawn;
@@ -48,8 +44,6 @@ namespace Unrez.Networking
             {
                 SpawnPlayerServerRpc(NetworkManager.Singleton.LocalClientId, false);
             }
-
-
         }
 
         public override void OnNetworkDespawn()
@@ -62,8 +56,11 @@ namespace Unrez.Networking
         public void SpawnPlayerServerRpc(ulong clientId, bool dog)
         {
             GameObject newPlayer;
-            _spawnPointVariation = _spawnPoints[UnityEngine.Random.Range(0, _spawnPoints.Length)].GetComponentsInChildren<Transform>();
-            Debug.Log($"<color=black>SpawnPlayerServerRpc IsServer:{dog}</color>");
+            int idxSpawns = UnityEngine.Random.Range(0, _spawnPoints.Length);
+            _spawnPoints = FindObjectsByType(typeof(SpawnPoints), FindObjectsSortMode.InstanceID) as SpawnPoints[];
+            Transform[] spawns = _spawnPoints[idxSpawns].Spawns;
+
+            Debug.Log($"<color=black>SpawnPlayerServerRpc IsServer:{dog} clientId:{clientId}</color>");
             if (dog)
             {
                 newPlayer = Instantiate(_prefabDog);
@@ -75,7 +72,7 @@ namespace Unrez.Networking
                 ChaseManager.Instance.AddCat(newPlayer.GetComponent<Cat>());
             }
             OnPlayerSpawn?.Invoke(OwnerClientId, newPlayer.GetComponent<Pet>());
-            newPlayer.transform.position = _spawnPointVariation[clientId + 1].position;
+            newPlayer.transform.position = spawns[clientId].position;
             NetworkObject networkObject = newPlayer.GetComponent<NetworkObject>();
             newPlayer.SetActive(true);
             networkObject.SpawnAsPlayerObject(clientId, true);

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7ae03fe9754c74c84b1fe2c7031d87, type: 3}
+  m_Name: Miu-Jin
+  m_EditorClassIdentifier: 
+  PetType: 0
+  PetView: {fileID: 11400000, guid: 4b02c9384f6d3f84b8588332145158f0, type: 2}
+  Abilities:
+  - {fileID: 1199748626020003285, guid: 2fe63e0e00cbf264591dea58496e68a5, type: 3}
+  - {fileID: -4546934776620563410, guid: 64a3863e279b2954fbe75e17803e7f19, type: 3}
+  Color: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 1}
+  Speed: 4
+  SpeedSprint: 10
+  SpeedCrouch: 2
+  Acceleration: 10
+  Deceleration: 10
+  DashForce: 30
+  DashCooldown: 3
+  DashDuration: 0.25
+  HairballCooldown: 1

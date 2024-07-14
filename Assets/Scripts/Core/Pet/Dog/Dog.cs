@@ -7,12 +7,10 @@ namespace Unrez.Pets.Dogs
 
         public override void ProcessInteractInput(bool pressing)
         {
-            //Debug.Log()
         }
 
-        public override void TakeHit(int damage)
+         public override void TakeHit(int damage)
         {
-            //_healthController.TakeDamage(damage);
         }
 
         public override void TryAbility(int abilityId)

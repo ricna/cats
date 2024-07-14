@@ -38,8 +38,8 @@ namespace Unrez.Pets.Cats
         protected override void InitializePet()
         {
             base.InitializePet();
-            //_light.pointLightOuterRadius = Profile.Light.CatView;
-            //_cameraController.SetOrthoSize(Profile.Light.CatView, 0.1f);
+            //_light.pointLightOuterRadius = Profile.PetView.FOV;
+            //_cameraController.SetOrthoSize(Profile.PetView.FOV, 0.1f);
         }
 
 

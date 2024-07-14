@@ -64,8 +64,8 @@ namespace Unrez.Networking
             }
             else
             {
-                HostSingleton.Instance.Initialize(_connectionTypeString, 2, MAX_PLAYERS, "RoomName", "HostName");
-                ClientSingleton.Instance.Initialize(_connectionTypeString, "MyClientName");
+                NetHandlerHost.Instance.Initialize(_connectionTypeString, 2, MAX_PLAYERS, "RoomName", "HostName");
+                NetHandlerClient.Instance.Initialize(_connectionTypeString, "MyClientName");
                 bool authenticated = await InitAsync();
                 if (authenticated)
                 {

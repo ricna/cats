@@ -54,7 +54,7 @@ namespace Unrez.Networking
             {
                 Lobby joiningLobby = await Unity.Services.Lobbies.Lobbies.Instance.JoinLobbyByIdAsync(lobby.Id);
                 string joinCode = joiningLobby.Data["JoinCode"].Value;
-                await ClientSingleton.Instance.JoinGameAsync(joinCode);
+                await NetHandlerClient.Instance.JoinGameAsync(joinCode);
             }
             catch (LobbyServiceException ex)
             {

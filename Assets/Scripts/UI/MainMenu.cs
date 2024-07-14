@@ -28,12 +28,12 @@ namespace Unrez.Networking
 
         public async void OnButtonStartHost()
         {
-            await HostSingleton.Instance.StartHostAsync();
+            await NetHandlerHost.Instance.StartHostAsync();
         }
 
         public async void OnButtonJoinServer()
         {
-            await ClientSingleton.Instance.JoinGameAsync(_inputFieldJoinCode.text);
+            await NetHandlerClient.Instance.JoinGameAsync(_inputFieldJoinCode.text);
         }
 
         public void OnButtonShowLobbies()

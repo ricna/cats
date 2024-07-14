@@ -117,19 +117,20 @@ namespace Unrez.Pets
             _light.gameObject.transform.SetParent(transform);
             _light.gameObject.transform.localPosition = Vector3.zero;
 
-            _light.lightType = Profile.Light.LightType;
-            _light.color = Profile.Light.LightColor;
-            _light.pointLightInnerRadius = Profile.Light.LightRadius.x;
-            _light.pointLightOuterRadius = Profile.Light.LightRadius.y;
-            _light.intensity = Profile.Light.LightIntensity;
-            _light.falloffIntensity = Profile.Light.LightFalloffStrenght;
+            _light.lightType = Profile.PetView.LightType;
+            _light.color = Profile.PetView.LightColor;
+            _light.pointLightInnerRadius = Profile.PetView.LightRadius.x;
+            _light.pointLightOuterRadius = Profile.PetView.LightRadius.y;
+            _light.intensity = Profile.PetView.LightIntensity;
+            _light.falloffIntensity = Profile.PetView.LightFalloffStrenght;
 
-            _light.shadowsEnabled = Profile.Light.Shadows;
-            _light.shadowIntensity = Profile.Light.ShadowsStrenght;
-            _light.shadowSoftness = Profile.Light.ShadowsSoftness;
-            _light.shadowSoftnessFalloffIntensity = Profile.Light.ShadowsFalloffStrenght;
+            _light.shadowsEnabled = Profile.PetView.Shadows;
+            _light.shadowIntensity = Profile.PetView.ShadowsStrenght;
+            _light.shadowSoftness = Profile.PetView.ShadowsSoftness;
+            _light.shadowSoftnessFalloffIntensity = Profile.PetView.ShadowsFalloffStrenght;
 
-            _cameraController.SetOrthoSize(Profile.Light.CatView, 0.1f);
+            _cameraController.SetOrthoSize(Profile.PetView.OrthoSize, 0.1f);
+
         }
 
 
