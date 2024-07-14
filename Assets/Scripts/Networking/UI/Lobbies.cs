@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Unrez.Networking
 {
-    public class LobbiesList : MonoBehaviour
+    public class Lobbies : MonoBehaviour
     {
 
         [Header("References")]
@@ -52,7 +52,7 @@ namespace Unrez.Networking
             _isJoining = true;
             try
             {
-                Lobby joiningLobby = await Lobbies.Instance.JoinLobbyByIdAsync(lobby.Id);
+                Lobby joiningLobby = await Unity.Services.Lobbies.Lobbies.Instance.JoinLobbyByIdAsync(lobby.Id);
                 string joinCode = joiningLobby.Data["JoinCode"].Value;
                 await ClientSingleton.Instance.JoinGameAsync(joinCode);
             }
@@ -96,7 +96,7 @@ namespace Unrez.Networking
                     ),
                 };
                 queryLobbiesOptions.Order = new List<QueryOrder>() { new QueryOrder(asc: false, field: QueryOrder.FieldOptions.Created) };
-                QueryResponse lobbies = await Lobbies.Instance.QueryLobbiesAsync(queryLobbiesOptions);
+                QueryResponse lobbies = await Unity.Services.Lobbies.Lobbies.Instance.QueryLobbiesAsync(queryLobbiesOptions);
                 foreach (Lobby lobby in lobbies.Results)
                 {
                     LobbyItem lobbyItem = Instantiate(_lobbyItemPrefab, _lobbyItemParent);

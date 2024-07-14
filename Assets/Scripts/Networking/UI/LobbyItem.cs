@@ -10,7 +10,7 @@ namespace Unrez.Networking
     {
 
         private Lobby _lobby;
-        private LobbiesList _lobbiesList;
+        private Lobbies _lobbies;
         [SerializeField]
         private TMP_Text _textLobbyName;
         [SerializeField]
@@ -26,12 +26,12 @@ namespace Unrez.Networking
 
         private void Join()
         {
-            _lobbiesList.JoinAsync(_lobby);
+            _lobbies.JoinAsync(_lobby);
         }
 
-        public void Initialize(LobbiesList lobbiesList, Lobby lobby)
+        public void Initialize(Lobbies lobbiesList, Lobby lobby)
         {
-            _lobbiesList = lobbiesList;
+            _lobbies = lobbiesList;
             _lobby = lobby;
             _textLobbyName.text = _lobby.Name + $" [Time: {Time.time} ]";
             _textLobbyPlayers.text = _lobby.Players.Count + "/" + _lobby.MaxPlayers;

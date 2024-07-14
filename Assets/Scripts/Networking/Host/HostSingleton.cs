@@ -76,7 +76,7 @@ namespace Unrez.Networking
                         "JoinCode", new DataObject(visibility:DataObject.VisibilityOptions.Member, value:_joinCode)
                     }
                 };
-                _lobby = await Lobbies.Instance.CreateLobbyAsync(_userName, _maxPlayers, createLobbyOptions);
+                _lobby = await Unity.Services.Lobbies.Lobbies.Instance.CreateLobbyAsync(_userName, _maxPlayers, createLobbyOptions);
                 HostSingleton.Instance.StartCoroutine(HeartbeatLobby(15));
             }
             catch (LobbyServiceException lobbyException)
@@ -93,7 +93,7 @@ namespace Unrez.Networking
             WaitForSecondsRealtime delay = new WaitForSecondsRealtime(heartbeat);
             while (true)
             {
-                Lobbies.Instance.SendHeartbeatPingAsync(_lobby.Id);
+                Unity.Services.Lobbies.Lobbies.Instance.SendHeartbeatPingAsync(_lobby.Id);
                 yield return delay;
             }
         }
