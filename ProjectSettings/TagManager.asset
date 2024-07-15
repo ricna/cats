@@ -11,11 +11,11 @@ TagManager:
   - 
   - Water
   - UI
-  - Pet
+  - Cat
+  - Dog
   - BoneSpot
   - Structures
-  - Tree
-  - 
+  - ScareTree
   - 
   - 
   - 
@@ -46,6 +46,12 @@ TagManager:
     locked: 0
   - name: Structures
     uniqueID: 1644366949
+    locked: 0
+  - name: BoneSpot
+    uniqueID: 2929964727
+    locked: 0
+  - name: Pet
+    uniqueID: 2398963311
     locked: 0
   m_RenderingLayers:
   - Default

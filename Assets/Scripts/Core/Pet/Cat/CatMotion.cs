@@ -1,4 +1,5 @@
 
+using System.Collections;
 using UnityEngine;
 
 namespace Unrez.Pets.Cats
@@ -6,6 +7,8 @@ namespace Unrez.Pets.Cats
     public class CatMotion : PetMotion
     {
         private Cat _cat;
+        [SerializeField]
+        private ParticleSystem _particleDustTrail;
 
         protected override void Awake()
         {
@@ -34,6 +37,20 @@ namespace Unrez.Pets.Cats
         public override void SetSprintInput(bool sprint)
         {
             _isSprinting = sprint;
+            if (_isSprinting)
+            {
+                if (!_particleDustTrail.isPlaying)
+                {
+                    _particleDustTrail.Play();
+                }
+            }
+            else
+            {
+                if (_particleDustTrail.isPlaying)
+                {
+                    _particleDustTrail.Stop();
+                }
+            }
         }
     }
 }
