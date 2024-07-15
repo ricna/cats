@@ -1,6 +1,8 @@
 
 using System.Collections;
+using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.InputSystem.EnhancedTouch;
 
 namespace Unrez.Pets.Cats
 {
@@ -31,13 +33,37 @@ namespace Unrez.Pets.Cats
 
         public override void SetCrouchInput(bool crouch)
         {
-            _isCrouched = crouch;
+            if (!CanCrouch())
+            {
+                crouch = false;
+            }
+            _inputCrouch = crouch;
         }
 
         public override void SetSprintInput(bool sprint)
         {
-            _isSprinting = sprint;
-            if (_isSprinting)
+            if (!CanSprint())
+            {
+                sprint = false;
+            }
+            _inputSprint = sprint;
+            ToggleDustTrailServerRpc(_inputSprint);
+        }
+
+        [ServerRpc(RequireOwnership = false)]
+        private void ToggleDustTrailServerRpc(bool enable)
+        {
+            ToggleDustTrailClientRpc(enable);
+        }
+
+        [ClientRpc]
+        private void ToggleDustTrailClientRpc(bool enable)
+        {
+            if (!IsOwner)
+            {
+                return;
+            }
+            if (enable)
             {
                 if (!_particleDustTrail.isPlaying)
                 {

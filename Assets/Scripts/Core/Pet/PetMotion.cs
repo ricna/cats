@@ -27,7 +27,11 @@ namespace Unrez.Pets.Cats
         [SerializeField]
         protected bool _isMoving;
         [SerializeField]
+        protected bool _inputCrouch = false;
+        [SerializeField]
         protected bool _isCrouched;
+        [SerializeField]
+        protected bool _inputSprint = false;
         [SerializeField]
         protected bool _isSprinting;
         protected bool _isMovingVertical = false;
@@ -53,26 +57,53 @@ namespace Unrez.Pets.Cats
             {
                 return;
             }
+            CheckMotionInputs();
+            Animate();
+        }
+
+        public virtual bool CanSprint()
+        {
+            return true;
+        }
+
+        public virtual bool CanCrouch()
+        {
+            return true;
+        }
+
+        private void CheckMotionInputs()
+        {
+            if (!CanSprint() && !CanCrouch())
+            {
+                _isSprinting = false;
+                _isCrouched = false;
+                return;
+            }
+
             _isMovingHorizontal = _movementInput.x != 0;
             _isMovingVertical = _movementInput.y != 0;
             _isMoving = _isMovingHorizontal || _isMovingVertical;
             if (_isMoving)
             {
                 _rb.drag = _pet.Profile.Acceleration;
-                bool notWalking = _isCrouched || _isSprinting;
+                bool notWalking = _inputCrouch || _inputSprint;
                 if (notWalking)
                 {
-                    if (_isSprinting)
+                    if (_inputSprint)
                     {
+                        _isSprinting = true;
                         _force = _pet.Profile.SpeedSprint * _rb.drag;
                     }
-                    else if (_isCrouched)
+                    else if (_inputCrouch)
                     {
+                        _isCrouched = true;
                         _force = _pet.Profile.SpeedCrouch * _rb.drag;
                     }
                 }
                 else
                 {
+                    _isCrouched = false;
+                    _isSprinting = false;
                     _force = _pet.Profile.Speed * _rb.drag; // walking
                 }
 
@@ -111,8 +142,9 @@ namespace Unrez.Pets.Cats
                     _rb.AddForce(Vector2.zero, ForceMode2D.Force);
                     OnDirectionChangedEvent?.Invoke(_currentDirection);
                 }
+                _isCrouched = false;
+                _isSprinting = false;
             }
-            Animate();
         }
 
         protected virtual void Animate()
