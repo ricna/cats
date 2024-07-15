@@ -16,6 +16,14 @@ namespace Unrez.Pets.Cats
         {
             base.Awake();
             _cat = GetComponent<Cat>();
+
+            OnSprintChangedEvent += OnSprintChangedHandler;
+
+        }
+
+        private void OnDisable()
+        {
+            OnSprintChangedEvent -= OnSprintChangedHandler;
         }
 
         protected override void FixedUpdate()
@@ -47,7 +55,14 @@ namespace Unrez.Pets.Cats
                 sprint = false;
             }
             _inputSprint = sprint;
-            ToggleDustTrailServerRpc(_inputSprint);
+        }
+
+        private void OnSprintChangedHandler(bool enable)
+        {
+            if (IsOwner)
+            {
+                ToggleDustTrailServerRpc(enable);
+            }
         }
 
         [ServerRpc(RequireOwnership = false)]
