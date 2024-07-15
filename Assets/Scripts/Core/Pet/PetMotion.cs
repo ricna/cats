@@ -2,7 +2,7 @@
 using Unity.Netcode;
 using UnityEngine;
 
-namespace Unrez.Pets.Cats
+namespace Unrez.Pets
 {
     public class PetMotion : NetworkBehaviour
     {

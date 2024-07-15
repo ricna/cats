@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 311459463207981573}
   - component: {fileID: 7109341369543300037}
   - component: {fileID: 3687823899086678351}
+  - component: {fileID: 452170149191694173}
   - component: {fileID: 5024310094305606197}
   - component: {fileID: -5177556667852182973}
   m_Layer: 6
@@ -327,6 +328,19 @@ MonoBehaviour:
   _inputSprint: 0
   _isSprinting: 0
   _currentDirection: {x: 0, y: 0}
+--- !u!114 &452170149191694173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846332329567583967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a80c00412bd9094e91cec25241b4624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _motion: {fileID: 3687823899086678351}
   _particleDustTrail: {fileID: 1108508029905673707}
 --- !u!114 &5024310094305606197
 MonoBehaviour:

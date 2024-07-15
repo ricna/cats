@@ -1,4 +1,4 @@
-namespace Unrez.Pets.Cats
+namespace Unrez.Pets
 {
     public static class AnimatorParameter
     {
