@@ -47,6 +47,7 @@ namespace Unrez.Pets.Cats
         {
             
         }
+
         public override void TakeHit(int damage)
         {
             _healthController.TakeDamage(damage);

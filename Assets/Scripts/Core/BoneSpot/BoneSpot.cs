@@ -13,9 +13,10 @@ namespace Unrez
     {
         [Header("Settings")]
         [SerializeField]
-        [Tooltip("Amount of 'digs' needed (each catDig decrease 1 dig. Each dogRebury will '_reburyCost%' of this value")]
+        [Tooltip("Amount of 'digs' needed (each catDig decrease 1 dig")]
         private float _digs = 90;
         [SerializeField]
+        [Tooltip("Rebury ")]
         private float _reburyCost = 0.25f;
         [SerializeField]
         private SpriteRenderer _spriteRenderer;
@@ -36,7 +37,7 @@ namespace Unrez
 
         [Header("Debugs")]
         [SerializeField]
-        public NetworkVariable<float> _progress = new NetworkVariable<float>(); // the % of the progress (using the _elapsingDigs)
+        public NetworkVariable<float> _diggingProgrees = new NetworkVariable<float>(); // the % of the progress (using the _elapsingDigs)
         [SerializeField]
         private NetworkVariable<int> _catsDigging = new NetworkVariable<int>();
         [SerializeField]
@@ -53,8 +54,8 @@ namespace Unrez
             {
                 _catsDigging.Value = 0;
                 _elapsingDigs.Value = _digs;
-                _progress.Value = 100 - (_elapsingDigs.Value / _digs * 100);
-                _progress.OnValueChanged += CheckProgress;
+                _diggingProgrees.Value = 100 - (_elapsingDigs.Value / _digs * 100);
+                _diggingProgrees.OnValueChanged += CheckProgress;
             }
             _digSpots = GetComponentsInChildren<DigSpot>();
             foreach (DigSpot digSpot in _digSpots)
@@ -81,8 +82,13 @@ namespace Unrez
             if (_catsDigging.Value > 0)
             {
                 _elapsingDigs.Value -= Time.deltaTime;
-                _progress.Value = 100 - (_elapsingDigs.Value / _digs * 100);
+                UpdateDiggingProgress();
             }
+        }
+
+        private void UpdateDiggingProgress()
+        {
+            _diggingProgrees.Value = 100 - (_elapsingDigs.Value / _digs * 100);
         }
 
         private bool _isDigged = false;
@@ -163,7 +169,9 @@ namespace Unrez
         [ServerRpc]
         public void ReburyServerRpc()
         {
-            _progress.Value = Mathf.Clamp(_progress.Value + _digs * _reburyCost, 0, _digs);
+            _elapsingDigs.Value += _reburyCost;
+            //_diggingProgrees.Value = Mathf.Clamp(_diggingProgrees.Value + _digs * _reburyCost, 0, _digs);
+            UpdateDiggingProgress();
             ReburyEffectsClientRpc();
         }
 
@@ -177,7 +185,7 @@ namespace Unrez
 
         public float GetProgress()
         {
-            return _progress.Value;
+            return _diggingProgrees.Value;
         }
     }
 }

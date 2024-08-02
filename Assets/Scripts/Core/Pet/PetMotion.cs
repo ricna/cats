@@ -139,7 +139,7 @@ namespace Unrez.Pets
                 if (_isMovingVertical)
                 {
                     _currentDirection = Vector2.up * _movementInput.y;
-                    _petSide = _movementInput.y > 0 ? PetSide.CAT_UP : PetSide.CAT_DOWN;
+                    _petSide = _movementInput.y > 0 ? PetSide.North : PetSide.South;
                 }
                 if (_isMovingHorizontal)
                 {
@@ -152,7 +152,7 @@ namespace Unrez.Pets
                     {
                         _currentDirection = Vector2.right * _movementInput.x;
                     }
-                    _petSide = _movementInput.x > 0 ? PetSide.CAT_RIGHT : PetSide.CAT_LEFT;
+                    _petSide = _movementInput.x > 0 ? PetSide.East : PetSide.West;
                 }
                 if (_lastPetSide != _petSide)
                 {
@@ -189,7 +189,7 @@ namespace Unrez.Pets
             _animator.SetBool(AnimatorParameter.IS_MOVING, _isMoving);
             _animator.SetBool(AnimatorParameter.IS_CROUCHED, _isCrouched);
             _animator.SetBool(AnimatorParameter.IS_SPRINTING, _isSprinting);
-            _animator.SetFloat(AnimatorParameter.CAT_SIDE, (int)_lastPetSide);
+            _animator.SetFloat(AnimatorParameter.PET_SIDE, (int)_lastPetSide);
         }
 
         public virtual void ApplyImpulse(float impulse, float newLinearDrag = -1, bool useNewDirection = false, float newDirX = 0, float newDirY = 0)
@@ -213,16 +213,16 @@ namespace Unrez.Pets
                 {
                     switch (_lastPetSide)
                     {
-                        case PetSide.CAT_UP:
+                        case PetSide.North:
                             direction = new Vector2(1, 0);
                             break;
-                        case PetSide.CAT_DOWN:
+                        case PetSide.South:
                             direction = new Vector2(-1, 0);
                             break;
-                        case PetSide.CAT_RIGHT:
+                        case PetSide.East:
                             direction = new Vector2(1, 0);
                             break;
-                        case PetSide.CAT_LEFT:
+                        case PetSide.West:
                             direction = new Vector2(-1, 0);
                             break;
                         default:
