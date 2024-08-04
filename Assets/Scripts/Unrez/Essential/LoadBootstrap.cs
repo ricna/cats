@@ -4,7 +4,15 @@ using UnityEngine.SceneManagement;
 
 public class LoadBootstrap : MonoBehaviour
 {
-    void Start()
+    [SerializeField]
+    private GameObject _goMatchManager;
+
+    private void Awake()
+    {
+        _goMatchManager.SetActive(false);
+    }
+
+    private void Start()
     {
         NetworkManager networkManager = FindAnyObjectByType<NetworkManager>();
         if (networkManager == null)
@@ -13,6 +21,7 @@ public class LoadBootstrap : MonoBehaviour
         }
         else
         {
+            _goMatchManager.SetActive(true);
             Destroy(this.gameObject);
         }
     }

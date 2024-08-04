@@ -62,14 +62,6 @@ namespace Unrez
             }
         }
         #endregion
-        //-----------------------------------------------------------------------------------------------------------
-
-        private void Awake()
-        {
-            _playerSpawner = GetComponent<PlayerSpawner>();
-            _playerSpawner.OnPlayerSpawn += OnPlayerSpawnHandler;
-            _cats = new List<Cat>();
-        }
 
         private void OnApplicationQuit()
         {
@@ -100,7 +92,9 @@ namespace Unrez
 
         public override void OnNetworkSpawn()
         {
-
+            _playerSpawner = GetComponent<PlayerSpawner>();
+            _playerSpawner.OnPlayerSpawn += OnPlayerSpawnHandler;
+            _cats = new List<Cat>();
         }
 
         public override void OnNetworkDespawn()

@@ -43,13 +43,17 @@ namespace Unrez.Pets
         [SerializeField]
         private Transform _transformParent;
 
-        public event Action OnPetProfileLoaded;
+        [Header("Settings")]
+        protected float _fovSpeed = 1;
+
 
         [Header("Debug - FOV")]
         [SerializeField]
         private float _targetFOV;
         [SerializeField]
         private float _currentFOV;
+
+        public event Action OnPetProfileLoaded;
 
         protected virtual void Awake()
         {
@@ -128,9 +132,32 @@ namespace Unrez.Pets
             _light.shadowSoftnessFalloffIntensity = Profile.PetView.ShadowsFalloffStrenght;
 
             _cameraController.SetOrthoSize(Profile.PetView.OrthoSize, 0.1f);
-
         }
 
+        protected virtual void Update()
+        {
+            if (!IsOwner)
+            {
+                return;
+            }
+            UpdateView();
+        }
+        protected void UpdateView()
+        {
+            if (!IsOwner)
+            {
+                return;
+            }
+            if (_currentFOV != _targetFOV)
+            {
+                _currentFOV = Mathf.Lerp(_currentFOV, _targetFOV, Time.deltaTime * _fovSpeed);
+                if (ChaseManager.Instance.ApplyChaseStatus)
+                {
+                    _light.pointLightOuterRadius = _currentFOV;
+                    _cameraController.SetOrthoSize(_currentFOV * 0.5f);
+                }
+            }
+        }
 
         public virtual void SetFOV(float fov)
         {
@@ -145,30 +172,6 @@ namespace Unrez.Pets
                 return;
             }
             _targetFOV = fov;
-        }
-
-        protected void UpdateView()
-        {
-            if (!IsOwner)
-            {
-                return;
-            }
-            if (ChaseManager.Instance.ApplyChaseStatus)
-            {
-                _light.pointLightOuterRadius = _currentFOV;
-                _cameraController.SetOrthoSize(_currentFOV * 0.5f);
-            }
-        }
-
-        private float _fovSpeed = 1;
-        protected virtual void Update()
-        {
-            if (!IsOwner)
-            {
-                return;
-            }
-            _currentFOV = Mathf.Lerp(_currentFOV, _targetFOV, Time.deltaTime * _fovSpeed);
-            UpdateView();
         }
 
         protected virtual void OnDirectionChangedHandler(Vector2 vector)
