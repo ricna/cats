@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-namespace Unrez.Backyard.Cats
+namespace Unrez.BackyardShowdown
 {
     public class Cat : Pet
     {

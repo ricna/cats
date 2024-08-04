@@ -1,8 +1,7 @@
-using System.Globalization;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace Unrez.Backyard.Cats
+namespace Unrez.BackyardShowdown
 {
     public class CatEffects : NetworkBehaviour
     {

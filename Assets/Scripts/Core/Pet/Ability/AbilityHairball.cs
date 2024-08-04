@@ -3,7 +3,7 @@ using TMPro;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace Unrez.Backyard.Abilities
+namespace Unrez.BackyardShowdown
 {
 
     public class AbilityHairball : Ability

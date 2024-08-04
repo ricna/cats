@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-namespace Unrez.Backyard
+namespace Unrez.BackyardShowdown
 {
     [CreateAssetMenu(fileName = "New Pet View", menuName = "Unrez/Cats/Pet View", order = 0)]
     public class PetViewProfile : ScriptableObject

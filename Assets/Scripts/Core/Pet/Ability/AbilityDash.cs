@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Unrez.Backyard.Abilities
+namespace Unrez.BackyardShowdown
 {
     public class AbilityDash : Ability
     {

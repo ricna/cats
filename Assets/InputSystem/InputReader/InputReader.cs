@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static Controls;
 
-namespace Unrez.Backyard
+namespace Unrez.BackyardShowdown
 {
     [CreateAssetMenu(fileName = "New Input Reader", menuName = "Unrez/Input Reader")]
     public class InputReader : ScriptableObject, ICatActions

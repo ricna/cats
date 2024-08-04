@@ -1,10 +1,8 @@
 ﻿using System;
 using Unity.Netcode;
 using UnityEngine;
-using Unrez.Backyard.Cats;
 
-
-namespace Unrez.Backyard
+namespace Unrez.BackyardShowdown
 {
     public class DigSpot : NetworkBehaviour, IInteractable
     {

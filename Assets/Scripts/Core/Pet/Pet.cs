@@ -3,10 +3,9 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using Unrez.Networking;
-using Unrez.Backyard.Abilities;
-using Unrez.Backyard.Cats;
 
-namespace Unrez.Backyard
+
+namespace Unrez.BackyardShowdown
 {
     [Serializable]
     public struct PetStatus

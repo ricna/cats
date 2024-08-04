@@ -1,6 +1,6 @@
 ﻿using Unrez.Essential;
 
-namespace Unrez.Backyard
+namespace Unrez.BackyardShowdown
 {
     public class PetsContainer : Singleton<PetsContainer>
     {

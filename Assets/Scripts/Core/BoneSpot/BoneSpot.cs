@@ -3,8 +3,7 @@ using Unity.Netcode;
 using UnityEngine;
 using Unrez.Essential.Audio;
 
-
-namespace Unrez.Backyard
+namespace Unrez.BackyardShowdown
 {
     public class BoneSpot : NetworkBehaviour
     {

@@ -1,9 +1,9 @@
 using System;
 using Unity.Netcode;
 using UnityEngine;
-using Unrez.Backyard.Cats;
+using Unrez.BackyardShowdown;
 
-namespace Unrez.Backyard
+namespace Unrez.BackyardShowdown
 {
     [RequireComponent(typeof(Pet))]
     public class PetInputHandler : NetworkBehaviour

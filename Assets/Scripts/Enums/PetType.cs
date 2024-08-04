@@ -1,4 +1,4 @@
-namespace Unrez.Backyard
+namespace Unrez.BackyardShowdown
 {
     public enum PetType
     {

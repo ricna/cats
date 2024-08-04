@@ -2,11 +2,8 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 using Unrez.Networking;
-using Unrez.Backyard.Cats;
-using Unrez.Backyard.Dogs;
 
-
-namespace Unrez.Backyard
+namespace Unrez.BackyardShowdown
 {
 
     public class ChaseManager : NetworkBehaviour

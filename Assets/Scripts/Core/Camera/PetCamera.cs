@@ -4,7 +4,7 @@ using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
 
-namespace Unrez.Backyard.Cats
+namespace Unrez.BackyardShowdown
 {
     public class PetCamera : MonoBehaviour
     {

@@ -1,6 +1,5 @@
-using UnityEngine;
 
-namespace Unrez.Backyard.Dogs
+namespace Unrez.BackyardShowdown
 {
     public class Dog : Pet
     {

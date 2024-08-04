@@ -1,7 +1,7 @@
 using UnityEngine;
-using Unrez.Backyard.Abilities;
+using Unrez.BackyardShowdown;
 
-namespace Unrez.Backyard
+namespace Unrez.BackyardShowdown
 {
     [CreateAssetMenu(fileName = "New PetProfile", menuName = "Unrez/Cats/Pet", order = 0)]
     public class PetProfile : ScriptableObject

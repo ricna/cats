@@ -2,7 +2,7 @@ using System;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace Unrez.Backyard
+namespace Unrez.BackyardShowdown
 {
     public class PetHealth : NetworkBehaviour
     {

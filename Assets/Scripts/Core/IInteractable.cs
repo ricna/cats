@@ -1,5 +1,5 @@
 ﻿
-namespace Unrez.Backyard
+namespace Unrez.BackyardShowdown
 {
     public interface IInteractable
     {

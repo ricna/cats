@@ -1,9 +1,9 @@
 using System;
 using Unity.Netcode;
 using UnityEngine;
-using Unrez.Backyard.Abilities;
+using Unrez.BackyardShowdown;
 
-namespace Unrez.Backyard
+namespace Unrez.BackyardShowdown
 {
     public class PetAbilities : NetworkBehaviour
     {

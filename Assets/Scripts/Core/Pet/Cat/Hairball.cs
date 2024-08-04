@@ -1,8 +1,8 @@
 using Unity.Netcode;
 using UnityEngine;
-using Unrez.Backyard.Cats;
+using Unrez.BackyardShowdown;
 
-namespace Unrez.Backyard.Abilities
+namespace Unrez.BackyardShowdown
 {
     public class Hairball : NetworkBehaviour
     {

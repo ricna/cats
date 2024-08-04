@@ -3,7 +3,7 @@ using System.Collections;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace Unrez.Backyard.Abilities
+namespace Unrez.BackyardShowdown
 {
     public abstract class Ability : NetworkBehaviour
     {
