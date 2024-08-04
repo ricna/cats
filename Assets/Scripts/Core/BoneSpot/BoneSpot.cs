@@ -40,6 +40,8 @@ namespace Unrez.BackyardShowdown
         private NetworkVariable<float> _elapsingDigs = new NetworkVariable<float>();
         [SerializeField]
         private DigSpot[] _digSpots;
+        [SerializeField]
+        private bool _isDugUp = false;
 
         public event Action<BoneSpot> OnBoneSpotDugUp;
 
@@ -87,7 +89,6 @@ namespace Unrez.BackyardShowdown
             _diggingProgrees.Value = 100 - (_elapsingDigs.Value / _digs * 100);
         }
 
-        private bool _isDugUp = false;
         private void CheckProgress(float previousValue, float newValue)
         {
             if (_isDugUp)
@@ -124,7 +125,6 @@ namespace Unrez.BackyardShowdown
         [ServerRpc]
         private void OnDigSpotInteractingServerRpc(bool isCat, bool interacting)
         {
-
             if (isCat)
             {
                 if (interacting)
@@ -182,6 +182,11 @@ namespace Unrez.BackyardShowdown
         public float GetProgress()
         {
             return _diggingProgrees.Value;
+        }
+
+        public bool HasCats()
+        {
+            return _catsDigging.Value > 0;
         }
     }
 }

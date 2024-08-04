@@ -8,19 +8,13 @@ using Unrez.Networking;
 namespace Unrez.BackyardShowdown
 {
     [Serializable]
-    public struct PetStatus
+    public struct PetNetInfo
     {
         public ulong OwnerId;
         public string Name;
         public Color Color;
         public float Health;
         public float Speed;
-    }
-    public enum PetViewStatus
-    {
-        Default,
-        Chase,
-        ChaseLevel02,
     }
 
     public abstract class Pet : NetworkBehaviour
@@ -29,12 +23,13 @@ namespace Unrez.BackyardShowdown
         public PetProfile Profile { get; private set; }
 
         [SerializeField]
-        protected PetStatus _petStatus;
+        protected PetNetInfo _petNetInfo;
         protected PetHealth _healthController;
         protected PetMotion _motionController;
         protected PetAbilities _abilitiesController;
         protected Light2D _light;
         protected PetCamera _cameraController;
+        protected Animator _animator;
 
         [Header("References")]
         [SerializeField]
@@ -56,17 +51,29 @@ namespace Unrez.BackyardShowdown
 
         protected virtual void Awake()
         {
-            _currentFOV = 48;
-            _targetFOV = 36;
+            _animator = GetComponent<Animator>();
             _motionController = GetComponent<PetMotion>();
             _abilitiesController = GetComponent<PetAbilities>();
             _healthController = GetComponent<PetHealth>();
-            _motionController.OnDirectionChangedEvent += OnDirectionChangedHandler;
         }
+
+        protected virtual void OnTriggerEnter2D(Collider2D collision) { }
+
+        protected virtual void OnTriggerExit2D(Collider2D collision) { }
 
         public override void OnNetworkSpawn()
         {
             base.OnNetworkSpawn();
+            SpawnPet();
+            if (!IsOwner)
+            {
+                return;
+            }
+            InitializeLocalPet();
+        }
+
+        private void SpawnPet()
+        {
             Unbug.Log($"IsHost:{IsHost} IsOwner:{IsOwner} IsLocalPlayer:{IsLocalPlayer} NetworkBehaviourId:{NetworkBehaviourId} ", Uncolor.Black);
             Unbug.Log($"OwnerClientId:{OwnerClientId}", Uncolor.Red);
             PlayerSpawner playerSpawner = FindAnyObjectByType<PlayerSpawner>();
@@ -83,26 +90,16 @@ namespace Unrez.BackyardShowdown
             {
                 _abilitiesController.SetAbility(i, Profile.Abilities[i]);
             }
-            _petStatus = new PetStatus();
-            _petStatus.OwnerId = OwnerClientId;
-            _petStatus.Color = Profile.Color;
-            OnPetProfileLoaded?.Invoke();
-            _petStatus.Name = $"[PET] {Profile.name}_00{OwnerClientId}";
-            name = _petStatus.Name;
-            _spriteRenderBody.color = _petStatus.Color;
-            if (!IsOwner)
-            {
-                return;
-            }
-            InitializePet();
+            _petNetInfo = new PetNetInfo();
+            _petNetInfo.OwnerId = OwnerClientId;
+            _petNetInfo.Color = Profile.Color;
+            _petNetInfo.Name = $"[PET] {Profile.name}_00{OwnerClientId}";
+            //OnPetProfileLoaded?.Invoke(); //TODO - Share info with others? Abilities?
+            name = _petNetInfo.Name;
+            _spriteRenderBody.color = _petNetInfo.Color;
         }
 
-        public override void OnNetworkDespawn()
-        {
-            base.OnNetworkDespawn();
-        }
-
-        protected virtual void InitializePet()
+        protected virtual void InitializeLocalPet()
         {
             if (!IsOwner)
             {
@@ -110,27 +107,25 @@ namespace Unrez.BackyardShowdown
             }
             _cameraController = FindFirstObjectByType<PetCamera>();
             _cameraController.SetupCamera(gameObject, gameObject);
+            _cameraController.SetOrthoSize(128, 0f);
             this.gameObject.AddComponent<AudioListener>();
-
             _light = (Light2D)FindAnyObjectByType(typeof(Light2D));
             _light.name = $"PetLight [{Profile.name}]";
             _light.enabled = true;
             _light.gameObject.transform.SetParent(transform);
             _light.gameObject.transform.localPosition = Vector3.zero;
-
             _light.lightType = Profile.PetView.LightType;
             _light.color = Profile.PetView.LightColor;
             _light.pointLightInnerRadius = Profile.PetView.LightRadius.x;
             _light.pointLightOuterRadius = Profile.PetView.LightRadius.y;
             _light.intensity = Profile.PetView.LightIntensity;
             _light.falloffIntensity = Profile.PetView.LightFalloffStrenght;
-
             _light.shadowsEnabled = Profile.PetView.Shadows;
             _light.shadowIntensity = Profile.PetView.ShadowsStrenght;
             _light.shadowSoftness = Profile.PetView.ShadowsSoftness;
             _light.shadowSoftnessFalloffIntensity = Profile.PetView.ShadowsFalloffStrenght;
 
-            _cameraController.SetOrthoSize(Profile.PetView.OrthoSize, 0.1f);
+            _cameraController.SetOrthoSize(Profile.PetView.OrthoSize, 3f);
         }
 
         protected virtual void Update()
@@ -141,6 +136,7 @@ namespace Unrez.BackyardShowdown
             }
             UpdateView();
         }
+
         protected void UpdateView()
         {
             if (!IsOwner)
@@ -151,9 +147,10 @@ namespace Unrez.BackyardShowdown
             {
                 _currentFOV = Mathf.Lerp(_currentFOV, _targetFOV, Time.deltaTime * _fovSpeed);
                 _cameraController.SetOrthoSize(_currentFOV * 0.5f);
-
+                _light.pointLightOuterRadius = _currentFOV;
                 if (ChaseManager.Instance.ApplyChaseStatus)
                 {
+                    _cameraController.SetOrthoSize(_currentFOV * 0.5f);
                     _light.pointLightOuterRadius = _currentFOV;
                 }
             }
@@ -174,14 +171,9 @@ namespace Unrez.BackyardShowdown
             _targetFOV = fov;
         }
 
-        protected virtual void OnDirectionChangedHandler(Vector2 vector)
+        public virtual PetNetInfo GetStatus()
         {
-            //Debug.Log($"[{name}] -> Direction Changed {vector}");
-        }
-
-        public virtual PetStatus GetStatus()
-        {
-            return _petStatus;
+            return _petNetInfo;
         }
 
         public virtual Camera GetCamera()
@@ -194,7 +186,7 @@ namespace Unrez.BackyardShowdown
 
         public virtual Color GetColor()
         {
-            return _petStatus.Color;
+            return _petNetInfo.Color;
         }
 
         public virtual Vector2 GetCurrentDirection()
@@ -214,24 +206,36 @@ namespace Unrez.BackyardShowdown
 
         public virtual void SetMovementInput(Vector2 movementInput)
         {
+            if (!CanMove())
+            {
+                return;
+            }
             _motionController.SetMovementInput(movementInput);
+        }
+
+        public virtual bool CanMove()
+        {
+            if (_healthController.IsTakingHit())
+            {
+                return false;
+            }
+            return true;
         }
 
         public virtual void SetCrouchInput(bool pressing)
         {
+            _motionController.SetCrouchInput(pressing);
         }
 
         public virtual void SetSprintInput(bool pressing)
         {
+            _motionController.SetSprintInput(pressing);
         }
 
         public Ability GetAbilityByType(Type abilityType)
         {
             return _abilitiesController.GetAbilityByType(abilityType);
         }
-
-        //public abstract void OnDigSpotEnter();
-        //public abstract void OnDigSpotExit();
 
         public abstract void ProcessInteractInput(bool pressing);
 

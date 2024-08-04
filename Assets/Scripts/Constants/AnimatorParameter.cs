@@ -8,5 +8,8 @@ namespace Unrez.BackyardShowdown
         public static readonly string IS_CROUCHED = "IsCrouched";
         public static readonly string AWAY = "Away";
         public static readonly string SLEEPING = "Sleeping";
+
+        public static readonly string IS_DIGGING = "IsDigging";
+        public static readonly string IS_REBURYING = "IsDigging";
     }
 }

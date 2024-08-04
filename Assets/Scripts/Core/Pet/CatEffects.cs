@@ -33,7 +33,9 @@ namespace Unrez.BackyardShowdown
         {
             if (IsOwner)
             {
-                ToggleDustTrailServerRpc(enable);
+                ToggleDustTrail(enable);//display immediately
+                ToggleDustTrailServerRpc(enable);//call to display for others
+                
             }
         }
 
@@ -46,10 +48,15 @@ namespace Unrez.BackyardShowdown
         [ClientRpc]
         private void ToggleDustTrailClientRpc(bool enable)
         {
-            if (!IsOwner)
+            if (IsOwner)
             {
                 return;
             }
+            ToggleDustTrail(enable);
+        }
+
+        private void ToggleDustTrail(bool enable)
+        {
             if (enable)
             {
                 _particleDustTrail.Play();

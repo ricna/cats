@@ -15,10 +15,10 @@ MonoBehaviour:
   PetType: 1
   PetView: {fileID: 11400000, guid: fe1bbb22948f4ec4ebbf579ed5fa8d00, type: 2}
   Abilities: []
-  Color: {r: 0.8301887, g: 0, b: 0, a: 1}
-  Speed: 11
-  SpeedSprint: 11
-  SpeedCrouch: 11
+  Color: {r: 1, g: 1, b: 1, a: 1}
+  Speed: 22
+  SpeedSprint: 22
+  SpeedCrouch: 22
   Acceleration: 5
   Deceleration: 5
   DashForce: 30

@@ -12,11 +12,11 @@ namespace Unrez.BackyardShowdown
         [SerializeField]
         private DigSpot _digSpot;
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        protected override void OnTriggerEnter2D(Collider2D collision)
         {
+            base.OnTriggerEnter2D(collision);
             if (collision.TryGetComponent(out DigSpot digSpot))
             {
-                //Debug.Log($"TryGetComponent(out DigSpot digSpot) {digSpot.IsAvailable()}");
                 if (digSpot.BoneSpot.GetProgress() < 100 && digSpot.IsAvailable())
                 {
                     _spotDetectedAvailable = true;
@@ -25,26 +25,17 @@ namespace Unrez.BackyardShowdown
             }
         }
 
-        private void OnTriggerExit2D(Collider2D collision)
+        protected override void OnTriggerExit2D(Collider2D collision)
         {
-            _spotDetectedAvailable = false;
-            if (_isDigging)
+            base.OnTriggerExit2D(collision);
+            if (!_isDigging)
             {
-                _digSpot.Release();
+                return;
             }
-        }
-
-        protected override void InitializePet()
-        {
-            base.InitializePet();
-            //_light.pointLightOuterRadius = Profile.PetView.FOV;
-            //_cameraController.SetOrthoSize(Profile.PetView.FOV, 0.1f);
-        }
-
-
-        private void LateUpdate()
-        {
-            
+            if (collision.TryGetComponent(out DigSpot digSpot))
+            {
+                CancelDigging();
+            }
         }
 
         public override void TakeHit(int damage)
@@ -81,28 +72,36 @@ namespace Unrez.BackyardShowdown
             {
                 if (_spotDetectedAvailable)
                 {
-                    _isDigging = true;
-                    _digSpot.Interact(this);
+                    StartDigging();
                 }
             }
             else
             {
                 if (_isDigging)
                 {
-                    _isDigging = false;
-                    _digSpot.Release();
+                    CancelDigging();
                 }
             }
         }
 
-        public override void SetSprintInput(bool pressing)
+        private void StartDigging()
         {
-            _motionController.SetSprintInput(pressing);
+            _isDigging = true;
+            _digSpot.Interact(this);
+            CheckDiggingAnimation();
         }
-        
-        public override void SetCrouchInput(bool crouch)
+
+        private void CancelDigging()
         {
-            _motionController.SetCrouchInput(crouch);
+            _spotDetectedAvailable = false;
+            _isDigging = false;
+            _digSpot.Release();
+            CheckDiggingAnimation();
+        }
+
+        private void CheckDiggingAnimation()
+        {
+            _animator.SetBool(AnimatorParameter.IS_DIGGING, _isDigging);
         }
 
         public bool IsDigging()
