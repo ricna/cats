@@ -17,15 +17,15 @@ namespace Unrez
         [SerializeField]
         public bool ApplyChaseStatus = true;
         [SerializeField]
+        private PlayerSpawner _playerSpawner;
+        [SerializeField]
         private bool _dynamicFOV = false;
+        [SerializeField]
+        private Map _map;
 
-
-        public Map _map;
         public List<Cat> _cats;
         public Dog _dog;
-        private PlayerSpawner _playerSpawner;
 
-        private Cat closerCat = null;
         private float _distance;
         private float _lastDistance;
 
@@ -92,7 +92,6 @@ namespace Unrez
 
         public override void OnNetworkSpawn()
         {
-            _playerSpawner = GetComponent<PlayerSpawner>();
             _playerSpawner.OnPlayerSpawn += OnPlayerSpawnHandler;
             _cats = new List<Cat>();
         }

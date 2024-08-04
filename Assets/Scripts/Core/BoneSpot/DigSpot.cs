@@ -33,7 +33,7 @@ namespace Unrez
             {
                 Debug.LogError("DigSpot without a BoneSpot");
             }
-            BoneSpot.OnBoneSpotDigged += OnSpotDigged;
+            BoneSpot.OnBoneSpotDugUp += OnSpotDugUp;
             SetIsAvailableServerRpc(true);
         }
 
@@ -89,24 +89,24 @@ namespace Unrez
             _isAvailable.Value = available;
         }
 
-        public void OnSpotDigged(BoneSpot boneSpot)
+        public void OnSpotDugUp(BoneSpot boneSpot)
         {
             if (!IsOwner)
             {
                 return;
             }
-            BoneSpotDiggedEventServerRpc();
+            BoneSpotDugUpEventServerRpc();
         }
 
         [ServerRpc]
-        private void BoneSpotDiggedEventServerRpc()
+        private void BoneSpotDugUpEventServerRpc()
         {
             _isAvailable.Value = false;
-            BoneSpotDiggedClientRpc();
+            BoneSpotDugUpClientRpc();
         }
 
         [ClientRpc]
-        private void BoneSpotDiggedClientRpc()
+        private void BoneSpotDugUpClientRpc()
         {
             if (!IsOwner)
             {

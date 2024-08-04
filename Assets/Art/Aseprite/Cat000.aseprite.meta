@@ -139,14 +139,14 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Cat000_Frame_0
     originalName: 
-    pivot: {x: 0.42857146, y: -0.2}
+    pivot: {x: 0.54285717, y: -0.10000001}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 63
-      y: 46
+      y: 91
       width: 35
       height: 40
     spriteID: 9620fa0dcf7ed664dad1eadc0631267b
@@ -157,10 +157,10 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 63, y: 46}
+    uvTransform: {x: 63, y: 91}
   - name: Cat000_Frame_1
     originalName: 
-    pivot: {x: 0.4651163, y: -0.19512196}
+    pivot: {x: 0.55813956, y: -0.09756097}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -181,7 +181,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 98}
   - name: Cat000_Frame_2
     originalName: 
-    pivot: {x: 0.5098039, y: -0.2}
+    pivot: {x: 0.5882353, y: -0.10000001}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -202,7 +202,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: Cat000_Frame_3
     originalName: 
-    pivot: {x: 0.44827586, y: -0.4117647}
+    pivot: {x: 0.51724136, y: -0.29411766}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -223,7 +223,7 @@ ScriptedImporter:
     uvTransform: {x: 63, y: 4}
   - name: Cat000_Frame_4
     originalName: 
-    pivot: {x: 0.41666666, y: -0.21052632}
+    pivot: {x: 0.5, y: -0.10526316}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -244,7 +244,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 52}
   - name: Cat000_Frame_5
     originalName: 
-    pivot: {x: 0.35555553, y: -0.20512822}
+    pivot: {x: 0.44444445, y: -0.10256411}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -265,14 +265,14 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 147}
   - name: Cat000_Frame_6
     originalName: 
-    pivot: {x: 0.37142858, y: -0.125}
+    pivot: {x: 0.4857143, y: -0.025000002}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 63
-      y: 94
+      y: 139
       width: 35
       height: 40
     spriteID: d0ecf2c1615c51940b5226228675b6dd
@@ -283,17 +283,17 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 63, y: 94}
+    uvTransform: {x: 63, y: 139}
   - name: Cat000_Frame_7
     originalName: 
-    pivot: {x: 0.23076926, y: -0.13513514}
+    pivot: {x: 0.33333334, y: -0.027027026}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
-      x: 4
-      y: 194
+      x: 63
+      y: 46
       width: 39
       height: 37
     spriteID: 920b0615efb3a7b4d9d2bb36c270b356
@@ -304,19 +304,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 194}
+    uvTransform: {x: 63, y: 46}
   - name: Cat000_Frame_8
     originalName: 
-    pivot: {x: 0.20588237, y: -0.15}
+    pivot: {x: 0.32352942, y: -0.04651163}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
-      x: 63
-      y: 142
+      x: 4
+      y: 194
       width: 34
-      height: 40
+      height: 43
     spriteID: 38ed5e309ccdcbb48b2d1f1119b6d5fb
     spriteBone: []
     spriteOutline: []
@@ -325,7 +325,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 63, y: 142}
+    uvTransform: {x: 4, y: 194}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -339,8 +339,8 @@ ScriptedImporter:
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 25
-        y: 8
+        x: 13
+        y: 4
         width: 35
         height: 40
       spriteId: 9620fa0dcf7ed664dad1eadc0631267b
@@ -348,8 +348,8 @@ ScriptedImporter:
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 8
+        x: 8
+        y: 4
         width: 43
         height: 41
       spriteId: 6a9847fec0e6437479c2068c5e6ef6a0
@@ -357,8 +357,8 @@ ScriptedImporter:
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
-        x: 14
-        y: 8
+        x: 2
+        y: 4
         width: 51
         height: 40
       spriteId: c55dfa10c7690d444be9a2d730cbbb86
@@ -366,8 +366,8 @@ ScriptedImporter:
       frameIndex: 3
       additiveSortOrder: 0
       cellRect:
-        x: 14
-        y: 14
+        x: 2
+        y: 10
         width: 58
         height: 34
       spriteId: 4a7a6c58d6a76c244b4fd061530c939b
@@ -375,8 +375,8 @@ ScriptedImporter:
       frameIndex: 4
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 8
+        x: 8
+        y: 4
         width: 48
         height: 38
       spriteId: 1810ab6ae70384940a2e9f001f9fc6fc
@@ -384,8 +384,8 @@ ScriptedImporter:
       frameIndex: 5
       additiveSortOrder: 0
       cellRect:
-        x: 24
-        y: 8
+        x: 12
+        y: 4
         width: 45
         height: 39
       spriteId: d26a4ba11c8a8344ab13d83746b64b42
@@ -393,8 +393,8 @@ ScriptedImporter:
       frameIndex: 6
       additiveSortOrder: 0
       cellRect:
-        x: 27
-        y: 5
+        x: 15
+        y: 1
         width: 35
         height: 40
       spriteId: d0ecf2c1615c51940b5226228675b6dd
@@ -402,8 +402,8 @@ ScriptedImporter:
       frameIndex: 7
       additiveSortOrder: 0
       cellRect:
-        x: 31
-        y: 5
+        x: 19
+        y: 1
         width: 39
         height: 37
       spriteId: 920b0615efb3a7b4d9d2bb36c270b356
@@ -411,10 +411,10 @@ ScriptedImporter:
       frameIndex: 8
       additiveSortOrder: 0
       cellRect:
-        x: 33
-        y: 6
+        x: 21
+        y: 2
         width: 34
-        height: 40
+        height: 43
       spriteId: 38ed5e309ccdcbb48b2d1f1119b6d5fb
     linkedCells: []
     parentIndex: -1
@@ -458,4 +458,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 80, y: 56}
+  canvasSize: {x: 64, y: 48}

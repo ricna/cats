@@ -33,14 +33,14 @@ namespace Unrez
                     {
                         boneSpot.GetComponent<NetworkObject>().Spawn();
                     }
-                    boneSpot.OnBoneSpotDigged += BoneSpotDiggedHandle;
+                    boneSpot.OnBoneSpotDugUp += BoneSpotDugHandle;
                 }
             }
         }
 
-        private void BoneSpotDiggedHandle(BoneSpot boneSpot)
+        private void BoneSpotDugHandle(BoneSpot boneSpot)
         {
-            Debug.Log("BoneSpot Digged!!!");
+            Debug.Log("BoneSpot Dug!!!");
         }
 
     }

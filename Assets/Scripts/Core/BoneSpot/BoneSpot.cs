@@ -33,7 +33,7 @@ namespace Unrez
         [SerializeField]
         private AudioClip _audioClipDigging;
         [SerializeField]
-        private AudioClip _audioClipDigged;
+        private AudioClip _audioClipDugUp;
 
         [Header("Debugs")]
         [SerializeField]
@@ -45,7 +45,7 @@ namespace Unrez
         [SerializeField]
         private DigSpot[] _digSpots;
 
-        public event Action<BoneSpot> OnBoneSpotDigged;
+        public event Action<BoneSpot> OnBoneSpotDugUp;
 
         public override void OnNetworkSpawn()
         {
@@ -91,29 +91,29 @@ namespace Unrez
             _diggingProgrees.Value = 100 - (_elapsingDigs.Value / _digs * 100);
         }
 
-        private bool _isDigged = false;
+        private bool _isDugUp = false;
         private void CheckProgress(float previousValue, float newValue)
         {
-            if (_isDigged)
+            if (_isDugUp)
             {
                 return;
             }
             if (newValue >= 100)
             {
-                _isDigged = true;
-                DiggedClientRpc();
+                _isDugUp = true;
+                DugUpClientRpc();
             }
         }
 
         [ClientRpc]
-        private void DiggedClientRpc()
+        private void DugUpClientRpc()
         {
             if (!IsOwner)
             {
                 return;
             }
-            AudioManager.Instance.Play(_audioSource, _audioClipDigged);
-            OnBoneSpotDigged?.Invoke(this);
+            AudioManager.Instance.Play(_audioSource, _audioClipDugUp);
+            OnBoneSpotDugUp?.Invoke(this);
         }
 
         private void OnDigSpotInteracting(bool isCat, bool interacting)
