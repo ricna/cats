@@ -16,8 +16,8 @@ TagManager:
   - BoneSpot
   - Structures
   - ScareTree
-  - 
-  - 
+  - PetLight
+  - Minimap
   - 
   - 
   - 
@@ -50,8 +50,14 @@ TagManager:
   - name: BoneSpot
     uniqueID: 2929964727
     locked: 0
-  - name: Pet
+  - name: Cat
+    uniqueID: 4235830769
+    locked: 0
+  - name: Dog
     uniqueID: 2398963311
+    locked: 0
+  - name: Minimap
+    uniqueID: 2348686067
     locked: 0
   m_RenderingLayers:
   - Default

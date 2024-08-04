@@ -40,14 +40,14 @@ namespace Unrez.BackyardShowdown
 
         public override void TakeHit(int damage)
         {
-            _healthController.TakeDamage(damage);
+            _petHealth.TakeDamage(damage);
         }
 
         public override void TryAbility(int idxAbility)
         {
-            if (_abilitiesController.CanUseAbility(idxAbility))
+            if (_petAbilities.CanUseAbility(idxAbility))
             {
-                _abilitiesController.ExecuteAbility(idxAbility);
+                _petAbilities.ExecuteAbility(idxAbility);
             }
         }
 
@@ -63,7 +63,7 @@ namespace Unrez.BackyardShowdown
 
         public bool IsExecutingSomeAbility()
         {
-            return _abilitiesController.Busy();
+            return _petAbilities.Busy();
         }
 
         public override void ProcessInteractInput(bool interact)

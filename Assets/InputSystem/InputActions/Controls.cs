@@ -38,6 +38,33 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""1f97a621-3d03-44ba-8036-12d3cbda40db"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""eed07ad4-4446-4947-823b-c40d0da09cc7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Crouch"",
+                    ""type"": ""Button"",
+                    ""id"": ""a51a22b3-3930-4eb3-b40e-2ecc58fa3d41"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Ability01"",
                     ""type"": ""Button"",
                     ""id"": ""d4c1cdb0-32be-47c3-89c9-778776e4cded"",
@@ -74,27 +101,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Interact"",
+                    ""name"": ""Minimap"",
                     ""type"": ""Button"",
-                    ""id"": ""1f97a621-3d03-44ba-8036-12d3cbda40db"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Sprint"",
-                    ""type"": ""Button"",
-                    ""id"": ""eed07ad4-4446-4947-823b-c40d0da09cc7"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Crouch"",
-                    ""type"": ""Button"",
-                    ""id"": ""a51a22b3-3930-4eb3-b40e-2ecc58fa3d41"",
+                    ""id"": ""9fe1d713-6d04-4dd0-8ff3-519aa6be0fc6"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -288,6 +297,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Crouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a9423508-e20b-4287-b03e-310133784f5e"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Minimap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -330,13 +350,14 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         // Cat
         m_Cat = asset.FindActionMap("Cat", throwIfNotFound: true);
         m_Cat_Move = m_Cat.FindAction("Move", throwIfNotFound: true);
+        m_Cat_Interact = m_Cat.FindAction("Interact", throwIfNotFound: true);
+        m_Cat_Sprint = m_Cat.FindAction("Sprint", throwIfNotFound: true);
+        m_Cat_Crouch = m_Cat.FindAction("Crouch", throwIfNotFound: true);
         m_Cat_Ability01 = m_Cat.FindAction("Ability01", throwIfNotFound: true);
         m_Cat_Ability02 = m_Cat.FindAction("Ability02", throwIfNotFound: true);
         m_Cat_Ability03 = m_Cat.FindAction("Ability03", throwIfNotFound: true);
         m_Cat_Ability04 = m_Cat.FindAction("Ability04", throwIfNotFound: true);
-        m_Cat_Interact = m_Cat.FindAction("Interact", throwIfNotFound: true);
-        m_Cat_Sprint = m_Cat.FindAction("Sprint", throwIfNotFound: true);
-        m_Cat_Crouch = m_Cat.FindAction("Crouch", throwIfNotFound: true);
+        m_Cat_Minimap = m_Cat.FindAction("Minimap", throwIfNotFound: true);
     }
 
     ~@Controls()
@@ -404,25 +425,27 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Cat;
     private List<ICatActions> m_CatActionsCallbackInterfaces = new List<ICatActions>();
     private readonly InputAction m_Cat_Move;
+    private readonly InputAction m_Cat_Interact;
+    private readonly InputAction m_Cat_Sprint;
+    private readonly InputAction m_Cat_Crouch;
     private readonly InputAction m_Cat_Ability01;
     private readonly InputAction m_Cat_Ability02;
     private readonly InputAction m_Cat_Ability03;
     private readonly InputAction m_Cat_Ability04;
-    private readonly InputAction m_Cat_Interact;
-    private readonly InputAction m_Cat_Sprint;
-    private readonly InputAction m_Cat_Crouch;
+    private readonly InputAction m_Cat_Minimap;
     public struct CatActions
     {
         private @Controls m_Wrapper;
         public CatActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Cat_Move;
+        public InputAction @Interact => m_Wrapper.m_Cat_Interact;
+        public InputAction @Sprint => m_Wrapper.m_Cat_Sprint;
+        public InputAction @Crouch => m_Wrapper.m_Cat_Crouch;
         public InputAction @Ability01 => m_Wrapper.m_Cat_Ability01;
         public InputAction @Ability02 => m_Wrapper.m_Cat_Ability02;
         public InputAction @Ability03 => m_Wrapper.m_Cat_Ability03;
         public InputAction @Ability04 => m_Wrapper.m_Cat_Ability04;
-        public InputAction @Interact => m_Wrapper.m_Cat_Interact;
-        public InputAction @Sprint => m_Wrapper.m_Cat_Sprint;
-        public InputAction @Crouch => m_Wrapper.m_Cat_Crouch;
+        public InputAction @Minimap => m_Wrapper.m_Cat_Minimap;
         public InputActionMap Get() { return m_Wrapper.m_Cat; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -435,6 +458,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
+            @Sprint.started += instance.OnSprint;
+            @Sprint.performed += instance.OnSprint;
+            @Sprint.canceled += instance.OnSprint;
+            @Crouch.started += instance.OnCrouch;
+            @Crouch.performed += instance.OnCrouch;
+            @Crouch.canceled += instance.OnCrouch;
             @Ability01.started += instance.OnAbility01;
             @Ability01.performed += instance.OnAbility01;
             @Ability01.canceled += instance.OnAbility01;
@@ -447,15 +479,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Ability04.started += instance.OnAbility04;
             @Ability04.performed += instance.OnAbility04;
             @Ability04.canceled += instance.OnAbility04;
-            @Interact.started += instance.OnInteract;
-            @Interact.performed += instance.OnInteract;
-            @Interact.canceled += instance.OnInteract;
-            @Sprint.started += instance.OnSprint;
-            @Sprint.performed += instance.OnSprint;
-            @Sprint.canceled += instance.OnSprint;
-            @Crouch.started += instance.OnCrouch;
-            @Crouch.performed += instance.OnCrouch;
-            @Crouch.canceled += instance.OnCrouch;
+            @Minimap.started += instance.OnMinimap;
+            @Minimap.performed += instance.OnMinimap;
+            @Minimap.canceled += instance.OnMinimap;
         }
 
         private void UnregisterCallbacks(ICatActions instance)
@@ -463,6 +489,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
+            @Sprint.started -= instance.OnSprint;
+            @Sprint.performed -= instance.OnSprint;
+            @Sprint.canceled -= instance.OnSprint;
+            @Crouch.started -= instance.OnCrouch;
+            @Crouch.performed -= instance.OnCrouch;
+            @Crouch.canceled -= instance.OnCrouch;
             @Ability01.started -= instance.OnAbility01;
             @Ability01.performed -= instance.OnAbility01;
             @Ability01.canceled -= instance.OnAbility01;
@@ -475,15 +510,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Ability04.started -= instance.OnAbility04;
             @Ability04.performed -= instance.OnAbility04;
             @Ability04.canceled -= instance.OnAbility04;
-            @Interact.started -= instance.OnInteract;
-            @Interact.performed -= instance.OnInteract;
-            @Interact.canceled -= instance.OnInteract;
-            @Sprint.started -= instance.OnSprint;
-            @Sprint.performed -= instance.OnSprint;
-            @Sprint.canceled -= instance.OnSprint;
-            @Crouch.started -= instance.OnCrouch;
-            @Crouch.performed -= instance.OnCrouch;
-            @Crouch.canceled -= instance.OnCrouch;
+            @Minimap.started -= instance.OnMinimap;
+            @Minimap.performed -= instance.OnMinimap;
+            @Minimap.canceled -= instance.OnMinimap;
         }
 
         public void RemoveCallbacks(ICatActions instance)
@@ -531,12 +560,13 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     public interface ICatActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
+        void OnCrouch(InputAction.CallbackContext context);
         void OnAbility01(InputAction.CallbackContext context);
         void OnAbility02(InputAction.CallbackContext context);
         void OnAbility03(InputAction.CallbackContext context);
         void OnAbility04(InputAction.CallbackContext context);
-        void OnInteract(InputAction.CallbackContext context);
-        void OnSprint(InputAction.CallbackContext context);
-        void OnCrouch(InputAction.CallbackContext context);
+        void OnMinimap(InputAction.CallbackContext context);
     }
 }

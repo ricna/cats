@@ -32,6 +32,7 @@ namespace Unrez.BackyardShowdown
             _inputReader.OnCrouchEvent += OnCrouchHandler;
             _inputReader.OnAbilityEvent += OnAbilityHandler;
             _inputReader.OnInteractEvent += OnInteractHandler;
+            _inputReader.OnMinimapEvent += OnMinimapHandler;
         }
 
         public override void OnNetworkDespawn()
@@ -46,6 +47,8 @@ namespace Unrez.BackyardShowdown
             _inputReader.OnCrouchEvent -= OnCrouchHandler;
             _inputReader.OnAbilityEvent -= OnAbilityHandler;
             _inputReader.OnInteractEvent -= OnInteractHandler;
+            _inputReader.OnMinimapEvent += OnMinimapHandler;
+
         }
 
         private void OnMoveHandler(Vector2 movementInput)
@@ -96,6 +99,15 @@ namespace Unrez.BackyardShowdown
                 return;
             }
             _pet.ProcessInteractInput(pressing);
+        }
+
+        private void OnMinimapHandler()
+        {
+            if (!IsOwner)
+            {
+                return;
+            }
+            _pet.ToggleMinimap();
         }
     }
 }

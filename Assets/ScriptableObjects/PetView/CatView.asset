@@ -21,4 +21,4 @@ MonoBehaviour:
   ShadowsStrenght: 0
   ShadowsSoftness: 1
   ShadowsFalloffStrenght: 0.5
-  OrthoSize: 8
+  OrthoSize: 16

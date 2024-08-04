@@ -15,6 +15,7 @@ namespace Unrez.BackyardShowdown
         public event Action<bool> OnCrouchEvent;
         public event Action<int> OnAbilityEvent;
         public event Action<bool> OnInteractEvent;
+        public event Action OnMinimapEvent;
 
         private void OnEnable()
         {
@@ -97,6 +98,14 @@ namespace Unrez.BackyardShowdown
             else if (context.canceled)
             {
                 OnCrouchEvent?.Invoke(false);
+            }
+        }
+
+        public void OnMinimap(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                OnMinimapEvent?.Invoke();
             }
         }
     }

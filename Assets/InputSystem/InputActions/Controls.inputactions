@@ -15,6 +15,33 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "1f97a621-3d03-44ba-8036-12d3cbda40db",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Sprint",
+                    "type": "Button",
+                    "id": "eed07ad4-4446-4947-823b-c40d0da09cc7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Crouch",
+                    "type": "Button",
+                    "id": "a51a22b3-3930-4eb3-b40e-2ecc58fa3d41",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Ability01",
                     "type": "Button",
                     "id": "d4c1cdb0-32be-47c3-89c9-778776e4cded",
@@ -51,27 +78,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Interact",
+                    "name": "Minimap",
                     "type": "Button",
-                    "id": "1f97a621-3d03-44ba-8036-12d3cbda40db",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Sprint",
-                    "type": "Button",
-                    "id": "eed07ad4-4446-4947-823b-c40d0da09cc7",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Crouch",
-                    "type": "Button",
-                    "id": "a51a22b3-3930-4eb3-b40e-2ecc58fa3d41",
+                    "id": "9fe1d713-6d04-4dd0-8ff3-519aa6be0fc6",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -263,6 +272,17 @@
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "Crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a9423508-e20b-4287-b03e-310133784f5e",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "Minimap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

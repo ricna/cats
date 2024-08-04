@@ -17,7 +17,7 @@ namespace Unrez.BackyardShowdown
         protected override void InitializeLocalPet()
         {
             base.InitializeLocalPet();
-            _motionController.SetSprintInput(_alwaysSprinting);
+            _petMotion.SetSprintInput(_alwaysSprinting);
         }
 
         protected override void OnTriggerEnter2D(Collider2D collision)
@@ -89,9 +89,9 @@ namespace Unrez.BackyardShowdown
 
         public override void TryAbility(int abilityId)
         {
-            if (_abilitiesController.CanUseAbility(abilityId))
+            if (_petAbilities.CanUseAbility(abilityId))
             {
-                _abilitiesController.ExecuteAbility(abilityId);
+                _petAbilities.ExecuteAbility(abilityId);
             }
         }
 

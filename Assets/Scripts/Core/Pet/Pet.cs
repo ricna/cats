@@ -1,6 +1,8 @@
 using System;
 using Unity.Netcode;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.Rendering.Universal;
 using Unrez.Networking;
 
@@ -22,15 +24,18 @@ namespace Unrez.BackyardShowdown
         [field: SerializeField]
         public PetProfile Profile { get; private set; }
 
-        [SerializeField]
-        protected PetNetInfo _petNetInfo;
-        protected PetHealth _healthController;
-        protected PetMotion _motionController;
-        protected PetAbilities _abilitiesController;
-        protected Light2D _light;
-        protected PetCamera _cameraController;
         protected Animator _animator;
 
+        [SerializeField]
+        protected PetNetInfo _petNetInfo;
+        protected PetHealth _petHealth;
+        protected PetMotion _petMotion;
+        protected PetAbilities _petAbilities;
+        protected PetCamera _petCamera;
+        protected PetMap _petMap;
+        protected PetLight _petLight;
+        protected bool _minimapEnabled = false;
+ 
         [Header("References")]
         [SerializeField]
         protected SpriteRenderer _spriteRenderBody;
@@ -53,9 +58,9 @@ namespace Unrez.BackyardShowdown
         protected virtual void Awake()
         {
             _animator = GetComponent<Animator>();
-            _motionController = GetComponent<PetMotion>();
-            _abilitiesController = GetComponent<PetAbilities>();
-            _healthController = GetComponent<PetHealth>();
+            _petMotion = GetComponent<PetMotion>();
+            _petAbilities = GetComponent<PetAbilities>();
+            _petHealth = GetComponent<PetHealth>();
         }
 
         protected virtual void OnTriggerEnter2D(Collider2D collision) { }
@@ -86,10 +91,10 @@ namespace Unrez.BackyardShowdown
                     Profile = PetsContainer.Instance.Pets[PetsContainer.Instance.Pets.Length - 1];
                 }
             }
-            _abilitiesController.Allocate(Profile.Abilities.Length);
+            _petAbilities.Allocate(Profile.Abilities.Length);
             for (int i = 0; i < Profile.Abilities.Length; i++)
             {
-                _abilitiesController.SetAbility(i, Profile.Abilities[i]);
+                _petAbilities.SetAbility(i, Profile.Abilities[i]);
             }
             _petNetInfo = new PetNetInfo();
             _petNetInfo.OwnerId = OwnerClientId;
@@ -106,27 +111,26 @@ namespace Unrez.BackyardShowdown
             {
                 return;
             }
-            _cameraController = FindFirstObjectByType<PetCamera>();
-            _cameraController.SetupCamera(gameObject, gameObject);
-            _cameraController.SetOrthoSize(128, 0f);
+            //Audio
             this.gameObject.AddComponent<AudioListener>();
-            _light = (Light2D)FindAnyObjectByType(typeof(Light2D));
-            _light.name = $"PetLight [{Profile.name}]";
-            _light.enabled = true;
-            _light.gameObject.transform.SetParent(transform);
-            _light.gameObject.transform.localPosition = _colliderOffset;
-            _light.lightType = Profile.PetView.LightType;
-            _light.color = Profile.PetView.LightColor;
-            _light.pointLightInnerRadius = Profile.PetView.LightRadius.x;
-            _light.pointLightOuterRadius = Profile.PetView.LightRadius.y;
-            _light.intensity = Profile.PetView.LightIntensity;
-            _light.falloffIntensity = Profile.PetView.LightFalloffStrenght;
-            _light.shadowsEnabled = Profile.PetView.Shadows;
-            _light.shadowIntensity = Profile.PetView.ShadowsStrenght;
-            _light.shadowSoftness = Profile.PetView.ShadowsSoftness;
-            _light.shadowSoftnessFalloffIntensity = Profile.PetView.ShadowsFalloffStrenght;
 
-            _cameraController.SetOrthoSize(Profile.PetView.OrthoSize, 3f);
+            //Map
+            _petMap = FindFirstObjectByType<PetMap>();
+            _minimapEnabled = false;
+            ToggleMinimap();
+
+            //Camera
+            _petCamera = FindFirstObjectByType<PetCamera>();
+            _petCamera.SetupCamera(gameObject, gameObject);
+            _petCamera.SetOrthoSize(128, 0f);
+            _currentFOV = 128;
+
+            //Light
+            _petLight = (PetLight)FindAnyObjectByType(typeof(PetLight));
+            _petLight.SetUp(Profile, _colliderOffset);
+
+            //Start FOV
+            _targetFOV = Profile.PetView.OrthoSize;
         }
 
         protected virtual void Update()
@@ -138,7 +142,7 @@ namespace Unrez.BackyardShowdown
             UpdateView();
         }
 
-        protected void UpdateView()
+        protected virtual void UpdateView()
         {
             if (!IsOwner)
             {
@@ -147,13 +151,25 @@ namespace Unrez.BackyardShowdown
             if (_currentFOV != _targetFOV)
             {
                 _currentFOV = Mathf.Lerp(_currentFOV, _targetFOV, Time.deltaTime * _fovSpeed);
-                _cameraController.SetOrthoSize(_currentFOV * 0.5f);
-                _light.pointLightOuterRadius = _currentFOV;
-                if (ChaseManager.Instance.ApplyChaseStatus)
+                if (Mathf.Abs(_currentFOV - _targetFOV) < 0.01)
                 {
-                    _cameraController.SetOrthoSize(_currentFOV * 0.5f);
-                    _light.pointLightOuterRadius = _currentFOV;
+                    _currentFOV = _targetFOV;
                 }
+                _petCamera.SetOrthoSize(_currentFOV);
+                if (this is Cat)
+                {
+                    _light.pointLightOuterRadius = _currentFOV * 3;
+                }
+                else
+                {
+                    _light.pointLightOuterRadius = _currentFOV * 4;
+                }
+
+                /*if (ChaseManager.Instance.ApplyChaseStatus)
+                {
+                    _cameraController.SetOrthoSize(_currentFOV);
+                    _light.pointLightOuterRadius = _currentFOV * 4;
+                }*/
             }
         }
 
@@ -179,7 +195,7 @@ namespace Unrez.BackyardShowdown
 
         public virtual Camera GetCamera()
         {
-            return _cameraController.GetCamera();
+            return _petCamera.GetCamera();
         }
 
         public abstract void TryAbility(int abilityId);
@@ -192,17 +208,17 @@ namespace Unrez.BackyardShowdown
 
         public virtual Vector2 GetCurrentDirection()
         {
-            return _motionController.GetCurrentDirection();
+            return _petMotion.GetCurrentDirection();
         }
 
         public virtual bool IsMoving()
         {
-            return _motionController.IsMoving();
+            return _petMotion.IsMoving();
         }
 
         public virtual void ApplyImpulse(float impulse, float newLinearDrag = -1, bool useNewDirection = false, float newDirX = 0, float newDirY = 0)
         {
-            _motionController.ApplyImpulse(impulse, newLinearDrag, useNewDirection, newDirX, newDirY);
+            _petMotion.ApplyImpulse(impulse, newLinearDrag, useNewDirection, newDirX, newDirY);
         }
 
         public virtual void SetMovementInput(Vector2 movementInput)
@@ -211,12 +227,12 @@ namespace Unrez.BackyardShowdown
             {
                 return;
             }
-            _motionController.SetMovementInput(movementInput);
+            _petMotion.SetMovementInput(movementInput);
         }
 
         public virtual bool CanMove()
         {
-            if (_healthController.IsTakingHit())
+            if (_petHealth.IsTakingHit())
             {
                 return false;
             }
@@ -225,17 +241,30 @@ namespace Unrez.BackyardShowdown
 
         public virtual void SetCrouchInput(bool pressing)
         {
-            _motionController.SetCrouchInput(pressing);
+            _petMotion.SetCrouchInput(pressing);
         }
 
         public virtual void SetSprintInput(bool pressing)
         {
-            _motionController.SetSprintInput(pressing);
+            _petMotion.SetSprintInput(pressing);
         }
 
         public Ability GetAbilityByType(Type abilityType)
         {
-            return _abilitiesController.GetAbilityByType(abilityType);
+            return _petAbilities.GetAbilityByType(abilityType);
+        }
+
+        public virtual void ToggleMinimap()
+        {
+            _minimapEnabled = !_minimapEnabled;
+            if (_minimapEnabled)
+            {
+                _petMap.Display(true);
+            }
+            else
+            {
+                _petMap.Display(false);
+            }
         }
 
         public abstract void ProcessInteractInput(bool pressing);
