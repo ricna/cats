@@ -1,15 +1,12 @@
-using System;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
-using Unrez.Essential;
 using Unrez.Networking;
-using Unrez.Pets;
-using Unrez.Pets.Cats;
-using Unrez.Pets.Dogs;
+using Unrez.Backyard.Cats;
+using Unrez.Backyard.Dogs;
 
 
-namespace Unrez
+namespace Unrez.Backyard
 {
 
     public class ChaseManager : NetworkBehaviour

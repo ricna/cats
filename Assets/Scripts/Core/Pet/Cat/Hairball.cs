@@ -1,8 +1,8 @@
 using Unity.Netcode;
 using UnityEngine;
-using Unrez.Pets.Cats;
+using Unrez.Backyard.Cats;
 
-namespace Unrez.Pets.Abilities
+namespace Unrez.Backyard.Abilities
 {
     public class Hairball : NetworkBehaviour
     {

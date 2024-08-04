@@ -1,6 +1,5 @@
-﻿using Unrez.Pets;
-
-namespace Unrez
+﻿
+namespace Unrez.Backyard
 {
     public interface IInteractable
     {

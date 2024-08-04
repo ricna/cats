@@ -3,7 +3,7 @@ using TMPro;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace Unrez.Pets.Abilities
+namespace Unrez.Backyard.Abilities
 {
 
     public class AbilityHairball : Ability

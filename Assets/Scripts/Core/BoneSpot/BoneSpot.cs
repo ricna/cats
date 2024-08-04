@@ -1,13 +1,10 @@
 ﻿using System;
 using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using Unrez.Essential.Audio;
-using Unrez.Pets;
-using Unrez.Pets.Cats;
-using Unrez.Pets.Dogs;
 
-namespace Unrez
+
+namespace Unrez.Backyard
 {
     public class BoneSpot : NetworkBehaviour
     {

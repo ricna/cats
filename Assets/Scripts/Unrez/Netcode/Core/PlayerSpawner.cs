@@ -1,9 +1,9 @@
 using System;
 using Unity.Netcode;
 using UnityEngine;
-using Unrez.Pets;
-using Unrez.Pets.Cats;
-using Unrez.Pets.Dogs;
+using Unrez.Backyard;
+using Unrez.Backyard.Cats;
+using Unrez.Backyard.Dogs;
 
 namespace Unrez.Networking
 {

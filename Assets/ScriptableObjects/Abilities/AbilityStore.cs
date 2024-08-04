@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
-using Unrez.Pets.Abilities;
+using Unrez.Backyard.Abilities;
 
-namespace Unrez.Pets
+namespace Unrez.Backyard
 {
     [CreateAssetMenu(fileName = "New Pet Ability", menuName = "Unrez/Cats/Pet Ability", order = 0)]
     public class AbilityStore : ScriptableObject

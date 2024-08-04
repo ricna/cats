@@ -1,12 +1,10 @@
 ﻿using System;
 using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using Unrez.Pets;
-using Unrez.Pets.Cats;
+using Unrez.Backyard.Cats;
 
 
-namespace Unrez
+namespace Unrez.Backyard
 {
     public class DigSpot : NetworkBehaviour, IInteractable
     {

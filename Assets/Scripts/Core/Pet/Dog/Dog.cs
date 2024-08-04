@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Unrez.Pets.Dogs
+namespace Unrez.Backyard.Dogs
 {
     public class Dog : Pet
     {
@@ -9,7 +9,7 @@ namespace Unrez.Pets.Dogs
         {
         }
 
-         public override void TakeHit(int damage)
+        public override void TakeHit(int damage)
         {
         }
 

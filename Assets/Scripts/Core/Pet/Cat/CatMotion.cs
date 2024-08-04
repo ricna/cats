@@ -1,5 +1,5 @@
 
-namespace Unrez.Pets.Cats
+namespace Unrez.Backyard.Cats
 {
     public class CatMotion : PetMotion
     {

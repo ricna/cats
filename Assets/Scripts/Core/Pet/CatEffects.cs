@@ -2,7 +2,7 @@ using System.Globalization;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace Unrez.Pets.Cats
+namespace Unrez.Backyard.Cats
 {
     public class CatEffects : NetworkBehaviour
     {

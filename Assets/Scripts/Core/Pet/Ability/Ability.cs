@@ -3,7 +3,7 @@ using System.Collections;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace Unrez.Pets.Abilities
+namespace Unrez.Backyard.Abilities
 {
     public abstract class Ability : NetworkBehaviour
     {

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Unrez.Pets.Abilities
+namespace Unrez.Backyard.Abilities
 {
     public class AbilityDash : Ability
     {

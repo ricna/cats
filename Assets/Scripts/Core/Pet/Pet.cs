@@ -3,10 +3,10 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using Unrez.Networking;
-using Unrez.Pets.Abilities;
-using Unrez.Pets.Cats;
+using Unrez.Backyard.Abilities;
+using Unrez.Backyard.Cats;
 
-namespace Unrez.Pets
+namespace Unrez.Backyard
 {
     [Serializable]
     public struct PetStatus
@@ -151,10 +151,11 @@ namespace Unrez.Pets
             if (_currentFOV != _targetFOV)
             {
                 _currentFOV = Mathf.Lerp(_currentFOV, _targetFOV, Time.deltaTime * _fovSpeed);
+                _cameraController.SetOrthoSize(_currentFOV * 0.5f);
+
                 if (ChaseManager.Instance.ApplyChaseStatus)
                 {
                     _light.pointLightOuterRadius = _currentFOV;
-                    _cameraController.SetOrthoSize(_currentFOV * 0.5f);
                 }
             }
         }
