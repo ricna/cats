@@ -8,11 +8,11 @@ namespace Unrez.BackyardShowdown
         [SerializeField]
         protected Light2D _light;
 
-        public void SetUp(PetProfile profile, Vector2 _colliderOffset)
+        public void SetUp(Pet pet, PetProfile profile, Vector2 _colliderOffset)
         {
             _light.name = $"PetLight [{profile.name}]";
             _light.enabled = true;
-            _light.gameObject.transform.SetParent(transform);
+            _light.gameObject.transform.SetParent(pet.transform);
             _light.gameObject.transform.localPosition = _colliderOffset;
             _light.lightType = profile.PetView.LightType;
             _light.color = profile.PetView.LightColor;
@@ -24,6 +24,10 @@ namespace Unrez.BackyardShowdown
             _light.shadowIntensity = profile.PetView.ShadowsStrenght;
             _light.shadowSoftness = profile.PetView.ShadowsSoftness;
             _light.shadowSoftnessFalloffIntensity = profile.PetView.ShadowsFalloffStrenght;
+        }
+        public void SetOuterRadius(float radius)
+        {
+            _light.pointLightOuterRadius = radius;
         }
     }
 }

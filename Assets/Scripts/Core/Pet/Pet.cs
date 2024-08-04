@@ -35,7 +35,7 @@ namespace Unrez.BackyardShowdown
         protected PetMap _petMap;
         protected PetLight _petLight;
         protected bool _minimapEnabled = false;
- 
+
         [Header("References")]
         [SerializeField]
         protected SpriteRenderer _spriteRenderBody;
@@ -127,7 +127,7 @@ namespace Unrez.BackyardShowdown
 
             //Light
             _petLight = (PetLight)FindAnyObjectByType(typeof(PetLight));
-            _petLight.SetUp(Profile, _colliderOffset);
+            _petLight.SetUp(this, Profile, _colliderOffset);
 
             //Start FOV
             _targetFOV = Profile.PetView.OrthoSize;
@@ -158,11 +158,11 @@ namespace Unrez.BackyardShowdown
                 _petCamera.SetOrthoSize(_currentFOV);
                 if (this is Cat)
                 {
-                    _light.pointLightOuterRadius = _currentFOV * 3;
+                    _petLight.SetOuterRadius(_currentFOV * 3);
                 }
                 else
                 {
-                    _light.pointLightOuterRadius = _currentFOV * 4;
+                    _petLight.SetOuterRadius(_currentFOV * 4);
                 }
 
                 /*if (ChaseManager.Instance.ApplyChaseStatus)
