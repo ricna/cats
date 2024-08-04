@@ -39,7 +39,8 @@ namespace Unrez.BackyardShowdown
 
         [Header("Settings")]
         protected float _fovSpeed = 1;
-
+        [SerializeField]
+        private Vector2 _colliderOffset = new Vector2(0, 1.2f);
 
         [Header("Debug - FOV")]
         [SerializeField]
@@ -113,7 +114,7 @@ namespace Unrez.BackyardShowdown
             _light.name = $"PetLight [{Profile.name}]";
             _light.enabled = true;
             _light.gameObject.transform.SetParent(transform);
-            _light.gameObject.transform.localPosition = Vector3.zero;
+            _light.gameObject.transform.localPosition = _colliderOffset;
             _light.lightType = Profile.PetView.LightType;
             _light.color = Profile.PetView.LightColor;
             _light.pointLightInnerRadius = Profile.PetView.LightRadius.x;

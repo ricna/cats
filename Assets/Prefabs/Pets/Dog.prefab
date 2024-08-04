@@ -89,7 +89,7 @@ SpriteRenderer:
   m_SortingLayerID: -1896003985
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1651835671, guid: 1cf9b27cbf6d0d246a2dc54d93a7064e, type: 3}
+  m_Sprite: {fileID: 7867681320421581043, guid: f2b07e62a8797b74b898bf648997fa67, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -156,8 +156,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Offset: {x: 0, y: 1.2}
+  m_Radius: 1
 --- !u!50 &8657455438807134225
 Rigidbody2D:
   serializedVersion: 4
@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Profile>k__BackingField: {fileID: 0}
-  _petStatus:
+  _petNetInfo:
     OwnerId: 0
     Name: 
     Color: {r: 0, g: 0, b: 0, a: 0}
@@ -297,8 +297,13 @@ MonoBehaviour:
     Speed: 0
   _spriteRenderBody: {fileID: 8060715614537492126}
   _transformParent: {fileID: 0}
+  _colliderOffset: {x: 0, y: 1.2}
   _targetFOV: 0
   _currentFOV: 0
+  _alwaysSprinting: 1
+  _spotDetectedAvailable: 0
+  _isReburying: 0
+  _digSpot: {fileID: 0}
 --- !u!114 &4645575780272570944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,11 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efc6f9978df1d614599f14d38d84bddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 100
-  Health:
-    m_InternalValue: 0
-  <IsDead>k__BackingField:
-    m_InternalValue: 0
+  _isTakingHit: 0
 --- !u!114 &1795883889953939332
 MonoBehaviour:
   m_ObjectHideFlags: 0

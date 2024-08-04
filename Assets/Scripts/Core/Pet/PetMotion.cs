@@ -214,10 +214,10 @@ namespace Unrez.BackyardShowdown
                     switch (_lastPetSide)
                     {
                         case PetSide.North:
-                            direction = new Vector2(1, 0);
+                            direction = new Vector2(0, 1);
                             break;
                         case PetSide.South:
-                            direction = new Vector2(-1, 0);
+                            direction = new Vector2(0, -1);
                             break;
                         case PetSide.East:
                             direction = new Vector2(1, 0);
@@ -249,10 +249,20 @@ namespace Unrez.BackyardShowdown
 
         public virtual void SetSprintInput(bool sprint)
         {
+            if (!CanSprint())
+            {
+                sprint = false;
+            }
+            _inputSprint = sprint;
         }
 
         public virtual void SetCrouchInput(bool crouch)
         {
+            if (!CanCrouch())
+            {
+                crouch = false;
+            }
+            _inputCrouch = crouch;
         }
     }
 }

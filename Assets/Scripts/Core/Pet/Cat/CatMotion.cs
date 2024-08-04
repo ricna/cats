@@ -23,24 +23,5 @@ namespace Unrez.BackyardShowdown
             }
             base.FixedUpdate();
         }
-
-        public override void SetCrouchInput(bool crouch)
-        {
-            if (!CanCrouch())
-            {
-                crouch = false;
-            }
-            _inputCrouch = crouch;
-        }
-
-        public override void SetSprintInput(bool sprint)
-        {
-            if (!CanSprint())
-            {
-                sprint = false;
-            }
-            _inputSprint = sprint;
-        }
-
     }
 }

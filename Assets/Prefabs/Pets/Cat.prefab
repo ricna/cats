@@ -91,12 +91,12 @@ SpriteRenderer:
   m_SortingLayerID: -1896003985
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1651835671, guid: 1cf9b27cbf6d0d246a2dc54d93a7064e, type: 3}
+  m_Sprite: {fileID: 7867681320421581043, guid: f2b07e62a8797b74b898bf648997fa67, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.25, y: 1.58}
+  m_Size: {x: 4, y: 3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -158,8 +158,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Offset: {x: 0, y: 1.2}
+  m_Radius: 1
 --- !u!50 &6407681758990779862
 Rigidbody2D:
   serializedVersion: 4
@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Profile>k__BackingField: {fileID: 0}
-  _petStatus:
+  _petNetInfo:
     OwnerId: 0
     Name: 
     Color: {r: 0, g: 0, b: 0, a: 0}
@@ -354,11 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efc6f9978df1d614599f14d38d84bddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 100
-  Health:
-    m_InternalValue: 0
-  <IsDead>k__BackingField:
-    m_InternalValue: 0
+  _isTakingHit: 0
 --- !u!114 &-5177556667852182973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -388,7 +384,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3445361403599849863
 Transform:
   m_ObjectHideFlags: 0
