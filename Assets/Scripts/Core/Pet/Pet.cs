@@ -240,6 +240,24 @@ namespace Unrez.BackyardShowdown
 
         public abstract void ProcessInteractInput(bool pressing);
 
-
+        public virtual void Flip(PetSide petSide)
+        {
+            switch (petSide)
+            {
+                case PetSide.West:
+                case PetSide.SouthWest:
+                case PetSide.NorthWest:
+                    _spriteRenderBody.flipX = true;
+                    break;
+                default:
+                case PetSide.East:
+                case PetSide.NorthEast:
+                case PetSide.SouthEast:
+                case PetSide.North:
+                case PetSide.South:
+                    _spriteRenderBody.flipX = false;
+                    break;
+            }
+        }
     }
 }

@@ -140,6 +140,7 @@ namespace Unrez.BackyardShowdown
                 {
                     _currentDirection = Vector2.up * _movementInput.y;
                     _petSide = _movementInput.y > 0 ? PetSide.North : PetSide.South;
+                    _pet.Flip(_petSide);
                 }
                 if (_isMovingHorizontal)
                 {
@@ -153,6 +154,7 @@ namespace Unrez.BackyardShowdown
                         _currentDirection = Vector2.right * _movementInput.x;
                     }
                     _petSide = _movementInput.x > 0 ? PetSide.East : PetSide.West;
+                    _pet.Flip(_petSide);
                 }
                 if (_lastPetSide != _petSide)
                 {
