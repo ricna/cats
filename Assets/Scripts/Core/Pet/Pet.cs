@@ -179,7 +179,7 @@ namespace Unrez.BackyardShowdown
         }
 
         [ClientRpc]
-        private void SetFOVClientRpc(float fov)
+        private void SetFOVClientRpc(float fov)// security? why ClientRpc? A: Came from ChaseManager and its only server script ;)
         {
             if (!IsOwner)
             {
@@ -268,8 +268,33 @@ namespace Unrez.BackyardShowdown
         }
 
         public abstract void ProcessInteractInput(bool pressing);
-
+        
+        #region Flip
+        
         public virtual void Flip(PetSide petSide)
+        {
+            FlipFinally(petSide);
+            FlipServerRpc(petSide);
+        }
+        
+        [ServerRpc(RequireOwnership = false)]
+        public virtual void FlipServerRpc(PetSide petSide)
+        {
+            Debug.Log($"<color=blue>FlipServerRpc by {name}</color>");
+            FlipClientRpc(petSide);
+        }
+
+        [ClientRpc]
+        public virtual void FlipClientRpc(PetSide petSide)
+        {
+            if (IsOwner)
+            {
+                return;
+            }
+            FlipFinally(petSide);
+        }
+
+        public virtual void FlipFinally(PetSide petSide)
         {
             switch (petSide)
             {
@@ -288,5 +313,6 @@ namespace Unrez.BackyardShowdown
                     break;
             }
         }
+        #endregion
     }
 }

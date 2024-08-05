@@ -1,5 +1,8 @@
+using System;
+
 namespace Unrez.BackyardShowdown
 {
+    [Serializable]
     public enum PetSide
     {
         None = -1,

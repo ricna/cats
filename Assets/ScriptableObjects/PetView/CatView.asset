@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LightType: 3
   LightColor: {r: 1, g: 1, b: 1, a: 1}
-  LightRadius: {x: 0, y: 32}
+  LightRadius: {x: 16, y: 64}
   LightIntensity: 1
   LightFalloffStrenght: 1
   Shadows: 0
