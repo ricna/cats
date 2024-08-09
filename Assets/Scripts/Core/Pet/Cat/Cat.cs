@@ -84,6 +84,12 @@ namespace Unrez.BackyardShowdown
             }
         }
 
+        public override void ToggleMinimap()
+        {
+            _petMap.Display(false);
+            //base.ToggleMinimap();
+        }
+
         private void StartDigging()
         {
             _isDigging = true;
