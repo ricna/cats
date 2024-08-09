@@ -119,8 +119,8 @@ namespace Unrez.BackyardShowdown
             //Camera
             _petCamera = FindFirstObjectByType<PetCamera>();
             _petCamera.SetupCamera(gameObject, gameObject);
-            _petCamera.SetOrthoSize(128, 0f);
-            _currentFOV = 128;
+            //_petCamera.SetOrthoSize(64, 0f);
+            //_currentFOV = 64;
 
             //Light
             _petLight = (PetLight)FindAnyObjectByType(typeof(PetLight));
@@ -155,11 +155,11 @@ namespace Unrez.BackyardShowdown
                 _petCamera.SetOrthoSize(_currentFOV);
                 if (this is Cat)
                 {
-                    _petLight.SetOuterRadius(_currentFOV * 3);
+                    _petLight.SetRadius(new Vector2(_currentFOV, _currentFOV * 2));
                 }
                 else
                 {
-                    _petLight.SetOuterRadius(_currentFOV * 4);
+                    _petLight.SetRadius(new Vector2(_currentFOV * 2, _currentFOV * 4));
                 }
 
                 /*if (ChaseManager.Instance.ApplyChaseStatus)

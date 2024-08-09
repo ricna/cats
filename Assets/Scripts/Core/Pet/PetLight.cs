@@ -29,5 +29,15 @@ namespace Unrez.BackyardShowdown
         {
             _light.pointLightOuterRadius = radius;
         }
+        public void SetInnerRadius(float radius)
+        {
+            _light.pointLightInnerRadius = radius;
+        }
+        public void SetRadius(Vector2 radius)
+        {
+            _light.pointLightInnerRadius = radius.x;
+            _light.pointLightOuterRadius = radius.y;
+
+        }
     }
 }

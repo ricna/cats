@@ -16,13 +16,28 @@ namespace Unrez.BackyardShowdown
         {
             _mainCamera = GetComponentInChildren<Camera>();
             _cinemachineCamera = GetComponentInChildren<CinemachineCamera>();
+            _mainCamera.enabled = false;
+            _cinemachineCamera.enabled = false;
         }
         public void SetupCamera(GameObject toLook, GameObject toFollow)
         {
-            _cinemachineCamera.enabled = true;
             _mainCamera.enabled = true;
+            _cinemachineCamera.enabled = true;
             _cinemachineCamera.LookAt = toLook.transform;
             _cinemachineCamera.Follow = toFollow.transform;
+            StartCoroutine(RestartConfiner());
+
+        }
+
+        private IEnumerator RestartConfiner()
+        {
+            
+            CinemachineConfiner2D confiner = _cinemachineCamera.GetComponent<CinemachineConfiner2D>();
+            confiner.enabled = false;
+            yield return new WaitForSeconds(5f);
+            confiner.enabled = true;
+            confiner.InvalidateLensCache();
+            confiner.InvalidateBoundingShapeCache();
         }
 
         public Camera GetCamera()
