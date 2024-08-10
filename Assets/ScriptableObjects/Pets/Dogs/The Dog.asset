@@ -19,8 +19,8 @@ MonoBehaviour:
   Speed: 10
   SpeedSprint: 22
   SpeedCrouch: 8
-  Acceleration: 5
-  Deceleration: 5
+  Acceleration: 8
+  Deceleration: 8
   DashForce: 30
   DashCooldown: 3
   DashDuration: 0.25

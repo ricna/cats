@@ -8,7 +8,6 @@ namespace Unrez.BackyardShowdown
     {
         public PetType PetType;
         public PetViewProfile PetView;
-        public Ability[] Abilities;
         public Color Color;
         public float Speed;
         public float SpeedSprint;
@@ -19,5 +18,7 @@ namespace Unrez.BackyardShowdown
         public float DashCooldown;
         public float DashDuration;
         public float HairballCooldown;
+
+        public Ability[] Abilities;
     }
 }

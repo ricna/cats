@@ -160,9 +160,9 @@ namespace Unrez.BackyardShowdown
                 {
                     _lastDirection = _currentDirection;
                     _currentDirection = Vector2.zero;
-                    _rb.drag = _pet.Profile.Deceleration;
-                    _force = _pet.Profile.SpeedSprint * _rb.drag;
-                    _rb.AddForce(Vector2.zero, ForceMode2D.Force);
+                    _rb.drag = _pet.Profile.Deceleration; //Set Deceleration
+                    //_force = _pet.Profile.SpeedSprint * _rb.drag;
+                    //_rb.AddForce(Vector2.zero, ForceMode2D.Force);
                     OnDirectionChangedEvent?.Invoke(_currentDirection);
                 }
                 if (_isCrouched)

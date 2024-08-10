@@ -335,7 +335,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 56
-      y: 159
+      y: 111
       width: 23
       height: 47
     spriteID: 7aa9a04c2a241ab4e932bf37afe34793
@@ -346,19 +346,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 56, y: 159}
+    uvTransform: {x: 56, y: 111}
   - name: Cat000_Frame_20
     originalName: 
-    pivot: {x: 0.42857143, y: -0.09090909}
+    pivot: {x: 0.42857143, y: -0.114285715}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
-      x: 105
+      x: 104
       y: 111
       width: 21
-      height: 44
+      height: 35
     spriteID: ee506128123c5254cab9fb59d6a1aaa3
     spriteBone: []
     spriteOutline: []
@@ -367,19 +367,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 105, y: 111}
+    uvTransform: {x: 104, y: 111}
   - name: Cat000_Frame_21
     originalName: 
-    pivot: {x: 0.40909094, y: -0.13953488}
+    pivot: {x: 0.40909094, y: -0.18181817}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
-      x: 80
-      y: 199
+      x: 104
+      y: 146
       width: 22
-      height: 43
+      height: 33
     spriteID: d8513f13f83e39f48ab4513ea95010b4
     spriteBone: []
     spriteOutline: []
@@ -388,7 +388,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 80, y: 199}
+    uvTransform: {x: 104, y: 146}
   - name: Cat000_Frame_22
     originalName: 
     pivot: {x: 0.4166667, y: 0}
@@ -397,10 +397,10 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 56
-      y: 111
+      x: 79
+      y: 151
       width: 24
-      height: 48
+      height: 40
     spriteID: 6df6c37b3ac495d4aa5c28ed388fd44a
     spriteBone: []
     spriteOutline: []
@@ -409,19 +409,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 56, y: 111}
+    uvTransform: {x: 79, y: 151}
   - name: Cat000_Frame_23
     originalName: 
-    pivot: {x: 0.42857143, y: -0.020408163}
+    pivot: {x: 0.42857143, y: -0.02631579}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 56
-      y: 206
+      y: 196
       width: 21
-      height: 49
+      height: 38
     spriteID: a5bcd2563c96b5349816fe5ce39d3124
     spriteBone: []
     spriteOutline: []
@@ -430,19 +430,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 56, y: 206}
+    uvTransform: {x: 56, y: 196}
   - name: Cat000_Frame_24
     originalName: 
-    pivot: {x: 0.44, y: -0.04347826}
+    pivot: {x: 0.44, y: -0.05}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
-      x: 80
+      x: 79
       y: 111
       width: 25
-      height: 46
+      height: 40
     spriteID: 32026fd3e9949d744bc21bbefc92f066
     spriteBone: []
     spriteOutline: []
@@ -451,19 +451,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 80, y: 111}
+    uvTransform: {x: 79, y: 111}
   - name: Cat000_Frame_25
     originalName: 
-    pivot: {x: 0.42857143, y: -0.09090909}
+    pivot: {x: 0.42857143, y: -0.102564104}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
-      x: 105
-      y: 155
+      x: 107
+      y: 71
       width: 21
-      height: 44
+      height: 39
     spriteID: 5ad01a4bd30308e4eb51ff08a8f90570
     spriteBone: []
     spriteOutline: []
@@ -472,19 +472,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 105, y: 155}
+    uvTransform: {x: 107, y: 71}
   - name: Cat000_Frame_26
     originalName: 
-    pivot: {x: 0.43478262, y: -0.14285715}
+    pivot: {x: 0.43478262, y: -0.15789475}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
-      x: 80
-      y: 157
+      x: 56
+      y: 158
       width: 23
-      height: 42
+      height: 38
     spriteID: 902403e6889b41c408ee45c0e9c1fec5
     spriteBone: []
     spriteOutline: []
@@ -493,7 +493,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 80, y: 157}
+    uvTransform: {x: 56, y: 158}
   - name: Cat000_Frame_27
     originalName: 
     pivot: {x: 0.43478262, y: -0.225}
@@ -502,8 +502,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 105
-      y: 199
+      x: 79
+      y: 191
       width: 23
       height: 40
     spriteID: 3d11291b655b0934db2ebfbf6541cdcd
@@ -514,7 +514,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 105, y: 199}
+    uvTransform: {x: 79, y: 191}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -621,7 +621,7 @@ ScriptedImporter:
         x: 23
         y: 4
         width: 21
-        height: 44
+        height: 35
       spriteId: ee506128123c5254cab9fb59d6a1aaa3
     - name: Cat000_Frame_21
       frameIndex: 21
@@ -630,7 +630,7 @@ ScriptedImporter:
         x: 23
         y: 6
         width: 22
-        height: 43
+        height: 33
       spriteId: d8513f13f83e39f48ab4513ea95010b4
     - name: Cat000_Frame_22
       frameIndex: 22
@@ -639,7 +639,7 @@ ScriptedImporter:
         x: 22
         y: 0
         width: 24
-        height: 48
+        height: 40
       spriteId: 6df6c37b3ac495d4aa5c28ed388fd44a
     - name: Cat000_Frame_23
       frameIndex: 23
@@ -648,7 +648,7 @@ ScriptedImporter:
         x: 23
         y: 1
         width: 21
-        height: 49
+        height: 38
       spriteId: a5bcd2563c96b5349816fe5ce39d3124
     - name: Cat000_Frame_24
       frameIndex: 24
@@ -657,7 +657,7 @@ ScriptedImporter:
         x: 21
         y: 2
         width: 25
-        height: 46
+        height: 40
       spriteId: 32026fd3e9949d744bc21bbefc92f066
     - name: Cat000_Frame_25
       frameIndex: 25
@@ -666,7 +666,7 @@ ScriptedImporter:
         x: 23
         y: 4
         width: 21
-        height: 44
+        height: 39
       spriteId: 5ad01a4bd30308e4eb51ff08a8f90570
     - name: Cat000_Frame_26
       frameIndex: 26
@@ -675,7 +675,7 @@ ScriptedImporter:
         x: 22
         y: 6
         width: 23
-        height: 42
+        height: 38
       spriteId: 902403e6889b41c408ee45c0e9c1fec5
     - name: Cat000_Frame_27
       frameIndex: 27
