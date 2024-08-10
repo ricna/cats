@@ -140,7 +140,7 @@ namespace Unrez.BackyardShowdown
         public void OnDrawGizmos()
         {
             Gizmos.color = Color.red; 
-            Gizmos.DrawLine(GetCenter(), GetPointForward(_hitDetectionDistance));
+            Gizmos.DrawLine(GetCenter(), GetPointForward(1));
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(GetCenter(), 0.1f);
             Gizmos.color = Color.magenta;

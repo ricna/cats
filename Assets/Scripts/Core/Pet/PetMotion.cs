@@ -38,7 +38,7 @@ namespace Unrez.BackyardShowdown
         protected bool _isMovingHorizontal = false;
         [SerializeField]
         protected Vector2 _currentDirection;
-
+        protected Vector2 _lastDirection;
 
         //Events
         public event Action<Vector2> OnDirectionChangedEvent;
@@ -135,24 +135,14 @@ namespace Unrez.BackyardShowdown
                     }
                     _force = _pet.Profile.Speed * _rb.drag; // walking
                 }
-
+                //Direction
+                _currentDirection = _lastDirection = Vector2.up * _movementInput.y + Vector2.right * _movementInput.x;
                 if (_isMovingVertical)
                 {
-                    _currentDirection = Vector2.up * _movementInput.y;
                     _petSide = _movementInput.y > 0 ? PetSide.North : PetSide.South;
-                    _pet.Flip(_petSide);
                 }
                 if (_isMovingHorizontal)
                 {
-                    if (_isMovingVertical)
-                    {
-                        _currentDirection = Vector2.up * _movementInput.y + Vector2.right * _movementInput.x;
-
-                    }
-                    else
-                    {
-                        _currentDirection = Vector2.right * _movementInput.x;
-                    }
                     _petSide = _movementInput.x > 0 ? PetSide.East : PetSide.West;
                     _pet.Flip(_petSide);
                 }
@@ -160,6 +150,7 @@ namespace Unrez.BackyardShowdown
                 {
                     _lastPetSide = _petSide;
                 }
+                _pet.Flip(_petSide);
                 _rb.AddForce(_force * _currentDirection, ForceMode2D.Force);
                 OnDirectionChangedEvent?.Invoke(_currentDirection);
             }
@@ -167,6 +158,7 @@ namespace Unrez.BackyardShowdown
             {
                 if (_currentDirection != Vector2.zero)
                 {
+                    _lastDirection = _currentDirection;
                     _currentDirection = Vector2.zero;
                     _rb.drag = _pet.Profile.Deceleration;
                     _force = _pet.Profile.SpeedSprint * _rb.drag;
@@ -207,31 +199,7 @@ namespace Unrez.BackyardShowdown
             }
             else
             {
-                if (_pet.IsMoving())
-                {
-                    direction = _currentDirection;
-                }
-                else
-                {
-                    switch (_lastPetSide)
-                    {
-                        case PetSide.North:
-                            direction = new Vector2(0, 1);
-                            break;
-                        case PetSide.South:
-                            direction = new Vector2(0, -1);
-                            break;
-                        case PetSide.East:
-                            direction = new Vector2(1, 0);
-                            break;
-                        case PetSide.West:
-                            direction = new Vector2(-1, 0);
-                            break;
-                        default:
-                            direction = _currentDirection;
-                            break;
-                    }
-                }
+                direction = _lastDirection;
             }
             _rb.AddForce(direction * impulse, ForceMode2D.Impulse);
         }
@@ -240,10 +208,12 @@ namespace Unrez.BackyardShowdown
         {
             return _isMoving;
         }
-        public Vector2 GetCurrentDirection()
+
+        public Vector2 GetDirection()
         {
-            return _currentDirection;
+            return _lastDirection;
         }
+
         public void SetMovementInput(Vector2 movementInput)
         {
             _movementInput = movementInput;

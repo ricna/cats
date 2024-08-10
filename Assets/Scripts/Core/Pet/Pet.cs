@@ -212,13 +212,13 @@ namespace Unrez.BackyardShowdown
 
         public virtual Vector2 GetCurrentDirection()
         {
-            return _petMotion.GetCurrentDirection();
+            return _petMotion.GetDirection();
         }
 
         public virtual Vector2 GetPointForward(float distance)
         {
-            return new Vector2((GetCenter().x + _petMotion.GetCurrentDirection().x) * distance,
-                (GetCenter().y + _petMotion.GetCurrentDirection().y) * distance);
+            return new Vector2(GetCenter().x + (_petMotion.GetDirection().x * distance),
+                GetCenter().y + (_petMotion.GetDirection().y) * distance);
         }
 
         public virtual bool IsMoving()
