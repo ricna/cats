@@ -22,6 +22,7 @@ namespace Unrez.BackyardShowdown
         public PetProfile Profile { get; private set; }
 
         protected Animator _animator;
+        protected Collider2D _collider;
 
         [SerializeField]
         protected PetNetInfo _petNetInfo;
@@ -58,6 +59,7 @@ namespace Unrez.BackyardShowdown
             _petMotion = GetComponent<PetMotion>();
             _petAbilities = GetComponent<PetAbilities>();
             _petHealth = GetComponent<PetHealth>();
+            _collider = GetComponent<Collider2D>();
         }
 
         protected virtual void OnTriggerEnter2D(Collider2D collision) { }
@@ -155,11 +157,11 @@ namespace Unrez.BackyardShowdown
                 _petCamera.SetOrthoSize(_currentFOV);
                 if (this is Cat)
                 {
-                    _petLight.SetRadius(new Vector2(_currentFOV, _currentFOV * 2));
+                    _petLight.SetRadius(new Vector2(_currentFOV * 4, _currentFOV * 8));
                 }
                 else
                 {
-                    _petLight.SetRadius(new Vector2(_currentFOV * 2, _currentFOV * 4));
+                    _petLight.SetRadius(new Vector2(_currentFOV * 4, _currentFOV * 8));
                 }
 
                 /*if (ChaseManager.Instance.ApplyChaseStatus)
@@ -168,6 +170,11 @@ namespace Unrez.BackyardShowdown
                     _light.pointLightOuterRadius = _currentFOV * 4;
                 }*/
             }
+        }
+
+        public Vector2 GetCenter()
+        {
+            return _collider.bounds.center;
         }
 
         public virtual void SetFOV(float fov)
@@ -206,6 +213,12 @@ namespace Unrez.BackyardShowdown
         public virtual Vector2 GetCurrentDirection()
         {
             return _petMotion.GetCurrentDirection();
+        }
+
+        public virtual Vector2 GetPointForward(float distance)
+        {
+            return new Vector2((GetCenter().x + _petMotion.GetCurrentDirection().x) * distance,
+                (GetCenter().y + _petMotion.GetCurrentDirection().y) * distance);
         }
 
         public virtual bool IsMoving()
@@ -265,19 +278,19 @@ namespace Unrez.BackyardShowdown
         }
 
         public abstract void ProcessInteractInput(bool pressing);
-        
+
         #region Flip
-        
+
         public virtual void Flip(PetSide petSide)
         {
             FlipFinally(petSide);
             FlipServerRpc(petSide);
         }
-        
+
         [ServerRpc(RequireOwnership = false)]
         public virtual void FlipServerRpc(PetSide petSide)
         {
-            Debug.Log($"<color=blue>FlipServerRpc by {name}</color>");
+            //Debug.Log($"<color=blue>FlipServerRpc by {name}</color>");
             FlipClientRpc(petSide);
         }
 

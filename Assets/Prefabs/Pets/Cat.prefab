@@ -464,22 +464,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3113102540206626565}
     m_Modifications:
-    - target: {fileID: 1855448250437365542, guid: f993c17142eddb748be7cd1b41338bbe, type: 3}
-      propertyPath: GlobalObjectIdHash
-      value: 170000700
-      objectReference: {fileID: 0}
-    - target: {fileID: 2399263839186427782, guid: f993c17142eddb748be7cd1b41338bbe, type: 3}
-      propertyPath: m_SortingLayer
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2399263839186427782, guid: f993c17142eddb748be7cd1b41338bbe, type: 3}
-      propertyPath: m_SortingOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2399263839186427782, guid: f993c17142eddb748be7cd1b41338bbe, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -1896003985
-      objectReference: {fileID: 0}
     - target: {fileID: 4394636857800614876, guid: f993c17142eddb748be7cd1b41338bbe, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 170000700
@@ -526,11 +510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8215208775291561630, guid: f993c17142eddb748be7cd1b41338bbe, type: 3}
       propertyPath: m_Name
-      value: VFX_DustTrail
-      objectReference: {fileID: 0}
-    - target: {fileID: 8215208775291561630, guid: f993c17142eddb748be7cd1b41338bbe, type: 3}
-      propertyPath: m_Layer
-      value: 6
+      value: VFX_DustTrail_Cat
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

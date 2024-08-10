@@ -305,6 +305,11 @@ MonoBehaviour:
   _spotDetectedAvailable: 0
   _isReburying: 0
   _digSpot: {fileID: 0}
+  _catDetected: {fileID: 0}
+  _hitDetectionDistance: 1
+  _layerHitDetection:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &4645575780272570944
 MonoBehaviour:
   m_ObjectHideFlags: 0

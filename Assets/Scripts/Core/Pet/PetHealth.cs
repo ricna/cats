@@ -28,6 +28,24 @@ namespace Unrez.BackyardShowdown
 
         public virtual void TakeDamage(int damage)
         {
+            if (IsServer)
+            {
+                TakeDamageFinally(damage);
+            }
+            else
+            {
+                TakeDamageServerRpc(damage);
+            }
+        }
+
+        [ServerRpc (RequireOwnership = false)]
+        private void TakeDamageServerRpc(int damage)
+        {
+            TakeDamageFinally(damage);
+        }
+
+        private void TakeDamageFinally(int damage)
+        {
             ModifyHealth(-damage);
         }
 

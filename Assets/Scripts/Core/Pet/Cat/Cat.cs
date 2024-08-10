@@ -38,7 +38,7 @@ namespace Unrez.BackyardShowdown
             }
         }
 
-        public override void TakeHit(int damage)
+        public override void TakeHit(int damage = 1)
         {
             _petHealth.TakeDamage(damage);
         }

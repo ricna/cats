@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Production/03_Match.unity
     guid: b59250db309240b46b79b9fb46c678a2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LAN/Cats_LAN.unity
     guid: 7e300a88b49a6844d913cd54c6f58080
   m_configObjects:
