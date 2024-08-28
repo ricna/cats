@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4095143722328331798}
   - component: {fileID: 2399263839186427782}
   - component: {fileID: 4394636857800614876}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: VFX_DustTrail_Cat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
