@@ -129,7 +129,9 @@ namespace Unrez.BackyardShowdown
             _petLight.SetUp(this, Profile, _colliderOffset);
 
             //Start FOV
-            _targetFOV = Profile.PetView.OrthoSize;
+            _targetFOV = _currentFOV = Profile.PetView.OrthoSize;
+            _petCamera.SetOrthoSize(_currentFOV);
+
         }
 
         protected virtual void Update()

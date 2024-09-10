@@ -12,6 +12,8 @@ namespace Unrez.BackyardShowdown
         [SerializeField]
         private CinemachineCamera _cinemachineCamera;
 
+        private Coroutine _coroutineOrthoSizeTween;
+
         private void Awake()
         {
             _mainCamera = GetComponentInChildren<Camera>();
@@ -19,6 +21,7 @@ namespace Unrez.BackyardShowdown
             _mainCamera.enabled = false;
             _cinemachineCamera.enabled = false;
         }
+
         public void SetupCamera(GameObject toLook, GameObject toFollow)
         {
             _mainCamera.enabled = true;
@@ -31,10 +34,9 @@ namespace Unrez.BackyardShowdown
 
         private IEnumerator RestartConfiner()
         {
-            
             CinemachineConfiner2D confiner = _cinemachineCamera.GetComponent<CinemachineConfiner2D>();
             confiner.enabled = false;
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(1f);
             confiner.enabled = true;
             confiner.InvalidateLensCache();
             confiner.InvalidateBoundingShapeCache();
@@ -45,7 +47,6 @@ namespace Unrez.BackyardShowdown
             return _mainCamera;
         }
 
-        private Coroutine _coroutineOrthoSizeTween;
         public void SetOrthoSize(float size, float duration = 0)
         {
             if (duration == 0)
