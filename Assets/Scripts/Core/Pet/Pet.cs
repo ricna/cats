@@ -44,12 +44,17 @@ namespace Unrez.BackyardShowdown
         protected float _fovSpeed = 1;
         [SerializeField]
         private Vector2 _colliderOffset = new Vector2(0, 1.2f);
+        [SerializeField]
+        private float _ratioFOVLightInner = 4;
+        [SerializeField]
+        private float _ratioFOVLightOuter = 8;
 
         [Header("Debug - FOV")]
         [SerializeField]
         private float _targetFOV;
         [SerializeField]
         private float _currentFOV;
+
 
         public event Action OnPetProfileLoaded;
 
@@ -159,11 +164,11 @@ namespace Unrez.BackyardShowdown
                 _petCamera.SetOrthoSize(_currentFOV);
                 if (this is Cat)
                 {
-                    _petLight.SetRadius(new Vector2(_currentFOV * 4, _currentFOV * 8));
+                    _petLight.SetRadius(new Vector2(_currentFOV * _ratioFOVLightInner, _currentFOV * _ratioFOVLightOuter));
                 }
                 else
                 {
-                    _petLight.SetRadius(new Vector2(_currentFOV * 4, _currentFOV * 8));
+                    _petLight.SetRadius(new Vector2(_currentFOV * _ratioFOVLightInner, _currentFOV * _ratioFOVLightOuter));
                 }
 
                 /*if (ChaseManager.Instance.ApplyChaseStatus)

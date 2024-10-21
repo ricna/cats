@@ -76,7 +76,7 @@ namespace Unrez.BackyardShowdown
         }
 
         /// <summary>
-        /// To reset the behaviour and 
+        /// Called after Cooldown. This method should reset the Ability behaviour, attributes, etc, to let the Abiltity Ready to be used again.
         /// </summary>
         protected abstract void Ready();
 

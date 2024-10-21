@@ -1,5 +1,4 @@
 using UnityEngine;
-using Unrez.BackyardShowdown;
 
 namespace Unrez.BackyardShowdown
 {
