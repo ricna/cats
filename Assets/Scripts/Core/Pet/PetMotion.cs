@@ -165,11 +165,7 @@ namespace Unrez.BackyardShowdown
                     //_rb.AddForce(Vector2.zero, ForceMode2D.Force);
                     OnDirectionChangedEvent?.Invoke(_currentDirection);
                 }
-                /*if (_isCrouched)
-                {
-                    _isCrouched = false;
-                    OnCrouchChangedEvent?.Invoke(_isCrouched);
-                }*/
+
                 if (_isSprinting)
                 {
                     _isSprinting = false;
