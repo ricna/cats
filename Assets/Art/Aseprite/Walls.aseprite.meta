@@ -124,7 +124,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Walls
     originalName: 
-    pivot: {x: 0.48654246, y: -0.033402923}
+    pivot: {x: 0.51417005, y: -0.03245436}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -132,8 +132,8 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 483
-      height: 479
+      width: 494
+      height: 493
     spriteID: 2b95c04a0de530b4a9f0194812fee82a
     spriteBone: []
     spriteOutline: []
@@ -156,10 +156,10 @@ ScriptedImporter:
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 21
+        x: 2
         y: 16
-        width: 483
-        height: 479
+        width: 494
+        height: 493
       spriteId: 2b95c04a0de530b4a9f0194812fee82a
     linkedCells: []
     parentIndex: -1
