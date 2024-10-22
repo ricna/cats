@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _color: {r: 0.78431374, g: 0, b: 1, a: 1}
-  _structureData: {fileID: 0}
+  _structureData: {fileID: 11400000, guid: 82ed0f714061145419a0c9d647775196, type: 2}
 --- !u!1001 &608672747546499532
 PrefabInstance:
   m_ObjectHideFlags: 0

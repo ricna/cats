@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4617344887733591993}
   - component: {fileID: 2254640088552112742}
+  - component: {fileID: 4822343949642490137}
   m_Layer: 0
   m_Name: Wall_CornerBottom
   m_TagString: Untagged
@@ -87,3 +88,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4822343949642490137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596495989581624556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91d3103152f15c644a87a136c8b9e43d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 0}
+  _pieceId: 0
