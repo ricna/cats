@@ -13,15 +13,15 @@ namespace Unrez.Networking
             CanCommitToTransform = IsOwner;
         }
 
-        protected override void Update()
+        public override void OnUpdate()
         {
             CanCommitToTransform = IsOwner;
-            base.Update();
+            base.OnUpdate();
             if (IsHost)
             {
                 return;
             }
-            if (NetworkManager != null)
+            /*if (NetworkManager != null)
             {
                 if (NetworkManager.IsConnectedClient || NetworkManager.IsListening)
                 {
@@ -30,7 +30,7 @@ namespace Unrez.Networking
                         TryCommitTransformToServer(transform, NetworkManager.LocalTime.Time);
                     }
                 }
-            }
+            }*/
         }
 
         protected override bool OnIsServerAuthoritative()
