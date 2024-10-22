@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 257362576875011241}
   - component: {fileID: 5694241305798041422}
+  - component: {fileID: 715628274849448354}
   m_Layer: 0
   m_Name: Struct_T_Top
   m_TagString: Untagged
@@ -53,6 +54,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ShadowGroup: 0
   m_Priority: 0
+--- !u!114 &715628274849448354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7865049332135980528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35f04a605f7f76d419804893baad7ccf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _color: {r: 0.78431374, g: 0, b: 1, a: 1}
+  _structureData: {fileID: 0}
 --- !u!1001 &608672747546499532
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -103,7 +118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5848932392390082548, guid: c225f6cabfbce354da86cfbea222280e, type: 3}
       propertyPath: m_Name
-      value: Wall_RepeatHorizontalRight
+      value: RepeatHorizontalRight
       objectReference: {fileID: 0}
     - target: {fileID: 7056805915853884481, guid: c225f6cabfbce354da86cfbea222280e, type: 3}
       propertyPath: m_Size.x
@@ -133,7 +148,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 722744124855164022, guid: b6225289d87f41a47aad4029b29aa132, type: 3}
       propertyPath: m_Name
-      value: Wall_T_Horizontal
+      value: TTop
       objectReference: {fileID: 0}
     - target: {fileID: 6508913751863109414, guid: b6225289d87f41a47aad4029b29aa132, type: 3}
       propertyPath: m_LocalPosition.x
@@ -215,7 +230,7 @@ MonoBehaviour:
   m_CastsShadows: 1
   m_SelfShadows: 0
   m_AlphaCutoff: 0.1
-  m_ApplyToSortingLayers: 67e3ed9900000000b7b6a3aef1a579fcf31afe8b
+  m_ApplyToSortingLayers: 00000000b7b6a3aef1a579fc67e3ed99
   m_ShapePath:
   - {x: -1.5, y: 0, z: 0}
   - {x: -1.5, y: 3.5625, z: 0}
@@ -230,15 +245,15 @@ MonoBehaviour:
   m_ShadowMesh:
     m_Mesh: {fileID: 0}
     m_LocalBounds:
-      m_Center: {x: 0, y: 1, z: 0}
-      m_Extent: {x: 8.399994, y: 0.8999939, z: 0}
+      m_Center: {x: 0, y: 1.75, z: 0}
+      m_Extent: {x: 8.5, y: 1.75, z: 0}
     m_EdgeProcessing: 1
-    m_TrimEdge: 0.1
+    m_TrimEdge: 0
     m_FlipX: 0
     m_FlipY: 0
     m_InitialTrim: 0
   m_CastingOption: 2
-  m_PreviousTrimEdge: 0.1
+  m_PreviousTrimEdge: 0
   m_PreviousEdgeProcessing: 1
   m_PreviousShadowCastingSource: 2
   m_PreviousShadowShape2DSource: {fileID: 6486141058564672631}
@@ -282,7 +297,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 1}
+  m_Offset: {x: 0, y: 1.75}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -292,7 +307,7 @@ BoxCollider2D:
     drawMode: 2
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 17, y: 2}
+  m_Size: {x: 17, y: 3.5}
   m_EdgeRadius: 0
 --- !u!4 &5323252912729647878 stripped
 Transform:
@@ -309,7 +324,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 604934407927567132, guid: 7c44369d7b89c874498a46952b41bb1c, type: 3}
       propertyPath: m_Name
-      value: Wall_EndBottom
+      value: EndBottom
       objectReference: {fileID: 0}
     - target: {fileID: 1265859792161151568, guid: 7c44369d7b89c874498a46952b41bb1c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -406,7 +421,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 7}
+  m_Offset: {x: 0, y: 7.3881965}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -416,7 +431,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2, y: 14}
+  m_Size: {x: 2, y: 14.776393}
   m_EdgeRadius: 0
 --- !u!114 &7346629351554633448
 MonoBehaviour:
@@ -438,7 +453,7 @@ MonoBehaviour:
   m_CastsShadows: 1
   m_SelfShadows: 0
   m_AlphaCutoff: 0.1
-  m_ApplyToSortingLayers: 00000000b7b6a3aef1a579fcf31afe8b67e3ed99
+  m_ApplyToSortingLayers: 00000000b7b6a3aef1a579fc67e3ed99
   m_ShapePath:
   - {x: -1, y: 0, z: 0}
   - {x: -1, y: 2, z: 0}
@@ -453,15 +468,15 @@ MonoBehaviour:
   m_ShadowMesh:
     m_Mesh: {fileID: 0}
     m_LocalBounds:
-      m_Center: {x: 0, y: 7, z: 0}
-      m_Extent: {x: 0.8999939, y: 6.899994, z: 0}
+      m_Center: {x: 0, y: 7.388191, z: 0}
+      m_Extent: {x: 1, y: 7.388191, z: 0}
     m_EdgeProcessing: 1
-    m_TrimEdge: 0.1
+    m_TrimEdge: 0
     m_FlipX: 0
     m_FlipY: 0
     m_InitialTrim: 0
   m_CastingOption: 1
-  m_PreviousTrimEdge: 0.1
+  m_PreviousTrimEdge: 0
   m_PreviousEdgeProcessing: 1
   m_PreviousShadowCastingSource: 2
   m_PreviousShadowShape2DSource: {fileID: 819376783460259487}
@@ -521,7 +536,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3815030470364654181, guid: 25fc4c2c2d48bfb43a4bf1da3d0dfb36, type: 3}
       propertyPath: m_Name
-      value: Wall_EndCenterRight
+      value: EndCenterRight
       objectReference: {fileID: 0}
     - target: {fileID: 8263574552897352244, guid: 25fc4c2c2d48bfb43a4bf1da3d0dfb36, type: 3}
       propertyPath: m_FlipX
@@ -587,7 +602,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3815030470364654181, guid: 25fc4c2c2d48bfb43a4bf1da3d0dfb36, type: 3}
       propertyPath: m_Name
-      value: Wall_EndCenterLeft
+      value: EndCenterLeft
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -649,7 +664,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5848932392390082548, guid: c225f6cabfbce354da86cfbea222280e, type: 3}
       propertyPath: m_Name
-      value: Wall_RepeatHorizontalLeft
+      value: RepeatHorizontalLeft
       objectReference: {fileID: 0}
     - target: {fileID: 7056805915853884481, guid: c225f6cabfbce354da86cfbea222280e, type: 3}
       propertyPath: m_Size.x
@@ -679,7 +694,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 722744124855164022, guid: 38740daac5a4e2649a527f45f9a435c4, type: 3}
       propertyPath: m_Name
-      value: Wall_RepeatVertical
+      value: RepeatVertical
       objectReference: {fileID: 0}
     - target: {fileID: 6508913751863109414, guid: 38740daac5a4e2649a527f45f9a435c4, type: 3}
       propertyPath: m_LocalScale.x
