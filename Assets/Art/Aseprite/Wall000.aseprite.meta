@@ -153,7 +153,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 84
+      y: 164
       width: 48
       height: 57
     spriteID: 9dac525fa5fa457438646e3949d6408e
@@ -174,7 +174,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 68
-      y: 84
+      y: 164
       width: 48
       height: 57
     spriteID: 46db71ee66d3ab6429fe933660f7e45b
@@ -195,7 +195,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 132
-      y: 84
+      y: 164
       width: 48
       height: 57
     spriteID: d0e2f4aed77b77a41b94ddc923f080fe
@@ -216,7 +216,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 212
-      y: 100
+      y: 180
       width: 32
       height: 32
     spriteID: 5c05277b29b19d442a3620c5cedd4e85
@@ -237,7 +237,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 4
+      y: 84
       width: 48
       height: 57
     spriteID: 30dbc63af79efce4b84762e36f8c7bc6
@@ -258,7 +258,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 68
-      y: 4
+      y: 84
       width: 48
       height: 64
     spriteID: d8c76aff5767a7e47b7dd3c136fa6dd1
@@ -279,7 +279,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 132
-      y: 4
+      y: 84
       width: 48
       height: 64
     spriteID: 7f1428d4ab6c9034c94ab269bd08f80a
@@ -300,7 +300,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 212
-      y: 52
+      y: 132
       width: 32
       height: 32
     spriteID: 160c868fd6775e543a973f8a980a7d96
@@ -321,10 +321,31 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 212
-      y: 4
+      y: 84
       width: 32
       height: 32
     spriteID: 96d26bf4cac33b24ba33169aa6cbaf0f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Wall000_9
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 48
+      height: 64
+    spriteID: aa642e8f7b191af41a801f58bc20d516
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -348,7 +369,7 @@ ScriptedImporter:
         x: 16
         y: 16
         width: 240
-        height: 137
+        height: 217
       spriteId: 9feb0fa714a660f4492e244f65e5c85e
     linkedCells: []
     parentIndex: -1
@@ -392,4 +413,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 272, y: 160}
+  canvasSize: {x: 272, y: 240}
