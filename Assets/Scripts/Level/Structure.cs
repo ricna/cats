@@ -35,12 +35,38 @@ namespace Unrez.BackyardShowdown
             {
                 switch (piece.GetPieceId())
                 {
-                    case StructurePieceId.CornerBottom  :
+                    case StructurePieceId.CornerBottom:
                         piece.UpdateSprite(_structureData.CornerBottom);
+                        break;
+                    case StructurePieceId.CornerTop:
+                        piece.UpdateSprite(_structureData.CornerTop);
+                        break;
+                    case StructurePieceId.EndBottom:
+                        piece.UpdateSprite(_structureData.EndBottom);
+                        break;
+                    case StructurePieceId.EndCenter:
+                        piece.UpdateSprite(_structureData.EndCenter);
+                        break;
+                    case StructurePieceId.EndTop:
+                        piece.UpdateSprite(_structureData.EndTop);
+                        break;
+                    case StructurePieceId.RepeatHorizontal:
+                        piece.UpdateSprite(_structureData.RepeatHorizontal);
+                        break;
+                    case StructurePieceId.RepeatVertical:
+                        piece.UpdateSprite(_structureData.RepeatVertical);
+                        break;
+                    case StructurePieceId.TBottom:
+                        piece.UpdateSprite(_structureData.TBottom);
+                        break;
+                    case StructurePieceId.TCenter:
+                        piece.UpdateSprite(_structureData.TCenter);
+                        break;
+                    case StructurePieceId.TTop:
+                        piece.UpdateSprite(_structureData.TTop);
                         break;
                 }
             }
-
             _color = _structureData.Color;
             UpdateColor();
         }

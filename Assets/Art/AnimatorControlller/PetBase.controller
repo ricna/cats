@@ -750,7 +750,7 @@ BlendTree:
   m_Name: BlendIdle
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: -6939705761454608338, guid: f2b07e62a8797b74b898bf648997fa67, type: 3}
+    m_Motion: {fileID: 8156108557548757020, guid: f2b07e62a8797b74b898bf648997fa67, type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1

@@ -21,5 +21,5 @@ MonoBehaviour:
   RepeatHorizontal: {fileID: -4176555499061137641, guid: 8a4a39d0c285fcf4ea2f732443de1af9, type: 3}
   RepeatVertical: {fileID: -7674418870496040877, guid: 8a4a39d0c285fcf4ea2f732443de1af9, type: 3}
   TBottom: {fileID: -1508112082403197428, guid: 8a4a39d0c285fcf4ea2f732443de1af9, type: 3}
-  TSide: {fileID: 2286435606011287283, guid: 8a4a39d0c285fcf4ea2f732443de1af9, type: 3}
+  TCenter: {fileID: 2286435606011287283, guid: 8a4a39d0c285fcf4ea2f732443de1af9, type: 3}
   TTop: {fileID: 2567001461931889018, guid: 8a4a39d0c285fcf4ea2f732443de1af9, type: 3}

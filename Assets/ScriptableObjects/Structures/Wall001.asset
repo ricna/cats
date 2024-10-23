@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f1d793e465faea4eb2985ad2c4f6266, type: 3}
+  m_Name: Wall001
+  m_EditorClassIdentifier: 
+  Color: {r: 0.78431374, g: 0, b: 1, a: 1}
+  CornerBottom: {fileID: -7089170038997184816, guid: 54f1c59bd5a6b79469c79738fd58edc5, type: 3}
+  CornerTop: {fileID: -8079220562993571832, guid: 54f1c59bd5a6b79469c79738fd58edc5, type: 3}
+  EndBottom: {fileID: -801459057581135786, guid: 54f1c59bd5a6b79469c79738fd58edc5, type: 3}
+  EndCenter: {fileID: 373822291394233041, guid: 54f1c59bd5a6b79469c79738fd58edc5, type: 3}
+  EndTop: {fileID: -928286537248702807, guid: 54f1c59bd5a6b79469c79738fd58edc5, type: 3}
+  RepeatHorizontal: {fileID: 1095016158990988961, guid: 54f1c59bd5a6b79469c79738fd58edc5, type: 3}
+  RepeatVertical: {fileID: -785500175256027515, guid: 54f1c59bd5a6b79469c79738fd58edc5, type: 3}
+  TBottom: {fileID: 7622295332719764455, guid: 54f1c59bd5a6b79469c79738fd58edc5, type: 3}
+  TCenter: {fileID: -3535177650650549572, guid: 54f1c59bd5a6b79469c79738fd58edc5, type: 3}
+  TTop: {fileID: -1356202478276334370, guid: 54f1c59bd5a6b79469c79738fd58edc5, type: 3}

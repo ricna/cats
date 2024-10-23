@@ -15,7 +15,7 @@ namespace Unrez.BackyardShowdown
         public Sprite RepeatHorizontal;
         public Sprite RepeatVertical;
         public Sprite TBottom;
-        public Sprite TSide;
+        public Sprite TCenter;
         public Sprite TTop;
     }
 }
