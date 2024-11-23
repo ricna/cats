@@ -92,7 +92,7 @@ namespace Unrez.Networking
 
         public void GoToMenu()
         {
-            SceneManager.LoadScene(NetworkingScenes.SCENE_MAIN_MENU_NAME);
+            SceneManager.LoadScene(NetworkingScenes.SCENE_MAIN_MENU);
         }
     }
 }

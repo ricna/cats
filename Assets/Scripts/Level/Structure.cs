@@ -9,10 +9,12 @@ namespace Unrez.BackyardShowdown
         [SerializeField]
         private StructureData _structureData;
 
+        [Header("Debug")]
         [SerializeField]
         private StructurePiece[] _pieces;
 
         private Color _color;
+        
         /*
         private ShadowCaster2D[] _shadowCasters;
         [SerializeField]
@@ -26,7 +28,7 @@ namespace Unrez.BackyardShowdown
             _shadowCasters = GetComponentsInChildren<ShadowCaster2D>();
             foreach (ShadowCaster2D caster2D in _shadowCasters)
             {
-                //caster2D.sortingLayer; ;
+                caster2D.sortingLayer; ;
             }
             */
 

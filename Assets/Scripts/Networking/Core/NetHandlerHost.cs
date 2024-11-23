@@ -76,7 +76,7 @@ namespace Unrez.Networking
                     }
                 };
                 _lobby = await Unity.Services.Lobbies.Lobbies.Instance.CreateLobbyAsync(_userName, _maxPlayers, createLobbyOptions);
-                NetHandlerHost.Instance.StartCoroutine(HeartbeatLobby(15));
+                StartCoroutine(HeartbeatLobby(15));
             }
             catch (LobbyServiceException lobbyException)
             {
@@ -96,6 +96,5 @@ namespace Unrez.Networking
                 yield return delay;
             }
         }
-
     }
 }

@@ -1,8 +1,9 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Unrez.Networking;
 
-namespace Unrez.Networking
+namespace Unrez.BackyardShowdown
 {
     public class MainMenu : MonoBehaviour
     {

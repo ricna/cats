@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
@@ -22,14 +23,40 @@ namespace Unrez.Networking
         [SerializeField]
         private CanvasGroup _canvasGroupLobbies;
 
-        private bool _isJoining = false;
-        private bool _isRefreshing = false;
+        [Header("Settings")]
+        [SerializeField]
+        private float _minTimeToRefresh = 5;
+        [SerializeField]
+        private bool _autoRefresh = false;
+        [SerializeField]
+        private float _autoRefreshRate = 30;
 
+        [Header("Debug")]
+        [SerializeField]
+        private bool _isJoining = false;
+        [SerializeField]
+        private bool _isRefreshing = false;
+        private float _lastRefresh;
+
+        private Coroutine _coroutineAutoRefresh;
         private void OnEnable()
         {
+
             _buttonRefresh.onClick.AddListener(Refresh);
             _buttonQuit.onClick.AddListener(Quit);
+
+            _isRefreshing = false;
+            _isJoining = false;
+
             Refresh();
+            if (_autoRefresh)
+            {
+                if (_coroutineAutoRefresh != null)
+                {
+                    StopCoroutine(_coroutineAutoRefresh);
+                }
+                _coroutineAutoRefresh = StartCoroutine(AutoRefresh());
+            }
         }
 
         private void OnDisable()
@@ -38,8 +65,23 @@ namespace Unrez.Networking
             _buttonQuit.onClick.RemoveListener(Quit);
         }
 
+        private IEnumerator AutoRefresh()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(_autoRefreshRate);
+                Refresh();
+            }
+        }
+
         private void Quit()
         {
+            if (_coroutineAutoRefresh != null)
+            {
+                StopCoroutine(_coroutineAutoRefresh);
+            }
+            _isRefreshing = false;
+            _isJoining = false;
             UnCanvas.ToggleCanvasGroup(_canvasGroupLobbies);
         }
 
@@ -65,13 +107,19 @@ namespace Unrez.Networking
 
         private async void Refresh()
         {
-            
             if (_isRefreshing)
             {
                 Debug.Log("Already Refreshing");
                 return;
             }
+            float elapsedTime = Time.time - _lastRefresh;
+            if (elapsedTime < _minTimeToRefresh)
+            {
+                Debug.Log("Too many requests to refresh... Wait a few seconds.");
+                return;
+            }
             _isRefreshing = true;
+            _lastRefresh = Time.time;
             try
             {
                 Debug.Log("Start Refreshing");

@@ -18,7 +18,7 @@ namespace Unrez.Networking
         [SerializeField]
         private Button _buttonJoinLobby;
 
-        
+
         private void Start()
         {
             _buttonJoinLobby.onClick.AddListener(Join);
@@ -34,7 +34,7 @@ namespace Unrez.Networking
             _lobbies = lobbiesList;
             _lobby = lobby;
             _textLobbyName.text = _lobby.Name + $" [Time: {Time.time} ]";
-            _textLobbyPlayers.text = _lobby.Players.Count + "/" + _lobby.MaxPlayers;
+            _textLobbyPlayers.text = $"( {_lobby.Players.Count}/{_lobby.MaxPlayers})";
         }
     }
 }

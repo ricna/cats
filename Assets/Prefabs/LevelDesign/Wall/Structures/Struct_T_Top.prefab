@@ -66,8 +66,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35f04a605f7f76d419804893baad7ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _color: {r: 0.78431374, g: 0, b: 1, a: 1}
   _structureData: {fileID: 11400000, guid: 82ed0f714061145419a0c9d647775196, type: 2}
+  _pieces: []
 --- !u!1001 &608672747546499532
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76,6 +76,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 257362576875011241}
     m_Modifications:
+    - target: {fileID: 459054286188375219, guid: c225f6cabfbce354da86cfbea222280e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.3333334
+      objectReference: {fileID: 0}
     - target: {fileID: 459054286188375219, guid: c225f6cabfbce354da86cfbea222280e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.5
@@ -126,7 +130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7056805915853884481, guid: c225f6cabfbce354da86cfbea222280e, type: 3}
       propertyPath: m_DrawMode
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -192,7 +196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7087291771234759617, guid: b6225289d87f41a47aad4029b29aa132, type: 3}
       propertyPath: m_DrawMode
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -304,7 +308,7 @@ BoxCollider2D:
     oldSize: {x: 3, y: 3.5625}
     newSize: {x: 3, y: 3.5625}
     adaptiveTilingThreshold: 0.5
-    drawMode: 2
+    drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Size: {x: 17, y: 3.5}
@@ -623,6 +627,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 257362576875011241}
     m_Modifications:
     - target: {fileID: 459054286188375219, guid: c225f6cabfbce354da86cfbea222280e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.3333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 459054286188375219, guid: c225f6cabfbce354da86cfbea222280e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.5
       objectReference: {fileID: 0}
@@ -672,7 +680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7056805915853884481, guid: c225f6cabfbce354da86cfbea222280e, type: 3}
       propertyPath: m_DrawMode
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -702,7 +710,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6508913751863109414, guid: 38740daac5a4e2649a527f45f9a435c4, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6508913751863109414, guid: 38740daac5a4e2649a527f45f9a435c4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -754,7 +762,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7087291771234759617, guid: 38740daac5a4e2649a527f45f9a435c4, type: 3}
       propertyPath: m_DrawMode
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
