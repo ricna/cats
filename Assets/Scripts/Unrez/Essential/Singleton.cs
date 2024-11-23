@@ -30,6 +30,11 @@ namespace Unrez.Essential
                             singletonObject.name = typeof(T).ToString() + "_SingletonInstance";
                             DontDestroyOnLoad(singletonObject);
                         }
+                        else
+                        {
+                            DontDestroyOnLoad(_instance.gameObject);
+                        }
+
                     }
                     return _instance;
                 }

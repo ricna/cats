@@ -55,6 +55,7 @@ namespace Unrez.BackyardShowdown
         [SerializeField]
         private float _currentFOV;
 
+        private int _idxPet = 0;
 
         public event Action OnPetProfileLoaded;
 
@@ -84,10 +85,14 @@ namespace Unrez.BackyardShowdown
 
         private void SpawnPet()
         {
-            Unbug.Log($"IsHost:{IsHost} IsOwner:{IsOwner} IsLocalPlayer:{IsLocalPlayer} NetworkBehaviourId:{NetworkBehaviourId} ", Uncolor.Black);
-            Unbug.Log($"OwnerClientId:{OwnerClientId}", Uncolor.Red);
+            Debug.Log($"IsHost:{IsHost} IsOwner:{IsOwner} IsLocalPlayer:{IsLocalPlayer} NetworkBehaviourId:{NetworkBehaviourId} ");
+            Debug.Log($"OwnerClientId:{OwnerClientId}");
             PlayerSpawner playerSpawner = FindAnyObjectByType<PlayerSpawner>();
+
+            //Load Character
+            //_idxPet = IsHost ? 0 : NetHandlerClient.Instance.GetNextId();
             Profile = PetsContainer.Instance.Pets[OwnerClientId];
+
             if (playerSpawner.TestCatOnly)
             {
                 if (this is Cat && OwnerClientId == 0)

@@ -7,6 +7,8 @@ using Unity.Services.Relay;
 using Unrez.Essential;
 using System.Threading.Tasks;
 using UnityEngine;
+using Unity.Services.Lobbies.Models;
+using Unity.Services.Lobbies;
 
 namespace Unrez.Networking
 {
@@ -15,7 +17,7 @@ namespace Unrez.Networking
         private JoinAllocation _joinAllocation;
         private string _userName;
         private string _connectionType;
-
+        private Lobby _lobby;
         public void Initialize(string connectionType, string userName = "ClientUserName")
         {
             _connectionType = connectionType;
@@ -38,6 +40,21 @@ namespace Unrez.Networking
             RelayServerData relayServerData = new RelayServerData(_joinAllocation, _connectionType);
             unityTransport.SetRelayServerData(relayServerData);
             NetworkManager.Singleton.StartClient();
+        }
+
+        public void SetLobby(Lobby lobby)
+        {
+            _lobby = lobby;
+        }
+
+        public Lobby GetLobby()
+        {
+            return _lobby;
+        }
+
+        public int GetNextId()
+        {
+            return _lobby.Players.Count - 1;
         }
     }
 }

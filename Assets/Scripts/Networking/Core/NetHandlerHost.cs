@@ -87,6 +87,11 @@ namespace Unrez.Networking
             NetworkManager.Singleton.SceneManager.LoadScene(NetworkingScenes.SCENE_MATCH_NAME, LoadSceneMode.Single);
         }
 
+        public Lobby GetLobby()
+        {
+            return _lobby;
+        }
+
         private IEnumerator HeartbeatLobby(float heartbeat)
         {
             WaitForSecondsRealtime delay = new WaitForSecondsRealtime(heartbeat);

@@ -64,7 +64,7 @@ namespace Unrez.Networking
             }
             else
             {
-                NetHandlerHost.Instance.Initialize(_connectionTypeString, 2, MAX_PLAYERS, "RoomName", "HostName");
+                NetHandlerHost.Instance.Initialize(_connectionTypeString, MIN_PLAYERS, MAX_PLAYERS, "RoomName", "HostName");
                 NetHandlerClient.Instance.Initialize(_connectionTypeString, "MyClientName");
                 bool authenticated = await InitAsync();
                 if (authenticated)
@@ -79,13 +79,13 @@ namespace Unrez.Networking
         {
             await UnityServices.InitializeAsync();
             AuthState authState = await AuthenticationWrapper.DoAuth();
+            Debug.Log($"<color=black>UnityServices.InitializeAsync();AuthenticationWrapper.DoAuth() -> AuthState:{authState}</color>");
             if (authState == AuthState.Authenticated)
             {
                 return true;
             }
             else
             {
-
                 return false;
             }
         }

@@ -108,6 +108,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""886909c2-7408-47eb-ad75-e9581809bf7f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -341,6 +350,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Minimap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""604b6fa6-ebf6-4957-96b7-437402b5c5b9"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""ToggleMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c614629d-79c7-4c07-9519-7f98ce84c582"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""ToggleMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -391,6 +422,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Cat_Ability03 = m_Cat.FindAction("Ability03", throwIfNotFound: true);
         m_Cat_Ability04 = m_Cat.FindAction("Ability04", throwIfNotFound: true);
         m_Cat_Minimap = m_Cat.FindAction("Minimap", throwIfNotFound: true);
+        m_Cat_ToggleMenu = m_Cat.FindAction("ToggleMenu", throwIfNotFound: true);
     }
 
     ~@Controls()
@@ -466,6 +498,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Cat_Ability03;
     private readonly InputAction m_Cat_Ability04;
     private readonly InputAction m_Cat_Minimap;
+    private readonly InputAction m_Cat_ToggleMenu;
     public struct CatActions
     {
         private @Controls m_Wrapper;
@@ -479,6 +512,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Ability03 => m_Wrapper.m_Cat_Ability03;
         public InputAction @Ability04 => m_Wrapper.m_Cat_Ability04;
         public InputAction @Minimap => m_Wrapper.m_Cat_Minimap;
+        public InputAction @ToggleMenu => m_Wrapper.m_Cat_ToggleMenu;
         public InputActionMap Get() { return m_Wrapper.m_Cat; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -515,6 +549,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Minimap.started += instance.OnMinimap;
             @Minimap.performed += instance.OnMinimap;
             @Minimap.canceled += instance.OnMinimap;
+            @ToggleMenu.started += instance.OnToggleMenu;
+            @ToggleMenu.performed += instance.OnToggleMenu;
+            @ToggleMenu.canceled += instance.OnToggleMenu;
         }
 
         private void UnregisterCallbacks(ICatActions instance)
@@ -546,6 +583,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Minimap.started -= instance.OnMinimap;
             @Minimap.performed -= instance.OnMinimap;
             @Minimap.canceled -= instance.OnMinimap;
+            @ToggleMenu.started -= instance.OnToggleMenu;
+            @ToggleMenu.performed -= instance.OnToggleMenu;
+            @ToggleMenu.canceled -= instance.OnToggleMenu;
         }
 
         public void RemoveCallbacks(ICatActions instance)
@@ -601,5 +641,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnAbility03(InputAction.CallbackContext context);
         void OnAbility04(InputAction.CallbackContext context);
         void OnMinimap(InputAction.CallbackContext context);
+        void OnToggleMenu(InputAction.CallbackContext context);
     }
 }

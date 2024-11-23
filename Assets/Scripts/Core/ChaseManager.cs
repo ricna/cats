@@ -33,38 +33,18 @@ namespace Unrez.BackyardShowdown
         {
             get
             {
-                if (_shuttingDown)
-                {
-                    Debug.LogAssertion($"[Singleton] Instance ' {typeof(ChaseManager)} already destroyed. Returning null.");
-                    return null;
-                }
-                lock (_lock)
-                {
                     if (_instance == null)
                     {
                         _instance = (ChaseManager)FindAnyObjectByType(typeof(ChaseManager));
-                        if (_instance == null)
-                        {
-                            GameObject singletonObject = new GameObject();
-                            _instance = singletonObject.AddComponent<ChaseManager>();
-                            singletonObject.name = typeof(ChaseManager).ToString() + "_SingletonInstance";
-                            DontDestroyOnLoad(singletonObject);
-                        }
                     }
                     return _instance;
-                }
+                
             }
         }
         #endregion
 
-        private void OnApplicationQuit()
-        {
-            _shuttingDown = true;
-        }
-
         public override void OnDestroy()
         {
-            _shuttingDown = true;
             base.OnDestroy();
         }
 

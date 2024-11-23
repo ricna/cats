@@ -3,6 +3,9 @@ using UnityEngine.UI;
 using Unity.Netcode;
 using UnityEngine.SceneManagement;
 using Unrez.Networking;
+using System;
+using Unity.Services.Authentication;
+using Unity.Services.Lobbies;
 
 namespace Unrez.BackyardShowdown
 {
@@ -10,15 +13,51 @@ namespace Unrez.BackyardShowdown
     {
         [Header("References")]
         [SerializeField]
+        private InputReader _inputReader;
+        [SerializeField]
+        private GameObject _panelMain;
+        [SerializeField]
         private Button _buttonLeaveMatch;
         [SerializeField]
         private Button _buttonSettings;
+        [Header("SubMenus")]
+        [SerializeField]
+        private GameObject _panelSettings;
+        private bool _inSettings;
 
+
+        private bool _isVisible = false;
 
         private void Start()
         {
             _buttonLeaveMatch.onClick.AddListener(OnButtonLeaveMatch);
             _buttonSettings.onClick.AddListener(OnButtonSettings);
+            _inputReader.OnToggleMenuEvent += OnToggleMenuHandler;
+            ToggleMenu(false);
+        }
+
+        private void OnDestroy()
+        {
+            _buttonLeaveMatch.onClick.RemoveListener(OnButtonLeaveMatch);
+            _buttonSettings.onClick.RemoveListener(OnButtonSettings);
+            _inputReader.OnToggleMenuEvent -= OnToggleMenuHandler;
+        }
+
+        private void ToggleMenu(bool show)
+        {
+            _isVisible = show;
+            _panelMain.SetActive(_isVisible);
+        }
+
+        private void OnToggleMenuHandler()
+        {
+            if (_inSettings)
+            {
+                _inSettings = false;
+                _panelSettings.SetActive(_inSettings);
+                return;
+            }
+            ToggleMenu(!_isVisible);
         }
 
         public void OnButtonLeaveMatch()
@@ -26,49 +65,67 @@ namespace Unrez.BackyardShowdown
             LeaveMatch();
         }
 
-        public async void OnButtonSettings()
+        public void OnButtonSettings()
         {
-            
+            _inSettings = true;
+            _panelSettings.SetActive(_inSettings);
         }
 
-        public void LeaveMatch()
+        public async void LeaveMatch()
         {
-            // If the local player is the host
-            if (NetworkManager.Singleton.IsHost)
+
+            // Shutdown Netcode
+            if (NetworkManager.Singleton.IsHost || NetworkManager.Singleton.IsClient)
             {
-                Debug.Log("Host is shutting down the server...");
-                NetworkManager.Singleton.Shutdown(); // Shutdown the server and disconnect all clients
+                Debug.Log("Shutting down the network...");
+                NetworkManager.Singleton.Shutdown();
             }
-            // If the local player is a client
-            else if (NetworkManager.Singleton.IsClient)
+
+            // If the player is the host, delete the lobby
+            if (NetworkManager.Singleton.IsServer)
             {
-                Debug.Log("Client is disconnecting...");
-                NetworkManager.Singleton.Shutdown(); // Disconnect the client
+                try
+                {
+                    Debug.Log("Deleting the lobby...");
+                    await LobbyService.Instance.DeleteLobbyAsync(NetHandlerHost.Instance.GetLobby().Id);
+                    Debug.Log("Lobby deleted successfully.");
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError($"Failed to delete the lobby: {ex}");
+                }
             }
             else
             {
-                Debug.LogWarning("Not connected to a match.");
+                try
+                {
+                    Debug.Log("Removing player from the lobby...");
+                    await LobbyService.Instance.RemovePlayerAsync(NetHandlerClient.Instance.GetLobby().Id, AuthenticationService.Instance.PlayerId);
+                    Debug.Log("Player removed from the lobby.");
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError($"Failed to leave the lobby: {ex}");
+                }
             }
 
-            // Clean up any game-specific data if necessary
+            // Clean up local state
             CleanupAfterLeave();
 
-            // Optionally return to a menu scene
+            // Optionally load the main menu or other scene
             LoadMainMenu();
         }
 
         private void CleanupAfterLeave()
         {
-            // Example: Clear any local data or UI related to the match
-            Debug.Log("Cleaning up after leaving the match...");
+            Debug.Log("Cleaning up resources...");
         }
 
         private void LoadMainMenu()
         {
-            Debug.Log("Returning to the main menu...");
-            // Load the main menu scene if you have one
-            // Replace "MainMenu" with your actual scene name
-            NetworkManager.Singleton.SceneManager.LoadScene(NetworkingScenes.SCENE_MAIN_MENU, LoadSceneMode.Single);
+            Debug.Log("Loading main menu...");
+            //NetworkManager.Singleton.SceneManager.LoadScene(NetworkingScenes.SCENE_MAIN_MENU, LoadSceneMode.Single);
+            SceneManager.LoadScene(NetworkingScenes.SCENE_MAIN_MENU);
         }
     }
 }

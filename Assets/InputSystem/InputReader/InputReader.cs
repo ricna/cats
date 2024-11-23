@@ -15,6 +15,7 @@ namespace Unrez.BackyardShowdown
         public event Action<bool> OnCrouchEvent;
         public event Action<int> OnAbilityEvent;
         public event Action<bool> OnInteractEvent;
+        public event Action OnToggleMenuEvent;
         public event Action OnMinimapEvent;
 
         private void OnEnable()
@@ -106,6 +107,14 @@ namespace Unrez.BackyardShowdown
             if (context.performed)
             {
                 OnMinimapEvent?.Invoke();
+            }
+        }
+
+        public void OnToggleMenu(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                OnToggleMenuEvent?.Invoke();
             }
         }
     }

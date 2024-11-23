@@ -3259,6 +3259,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2067837295}
     m_Modifications:
+    - target: {fileID: 497069434581214008, guid: 603c7cc8836b8954d953afb65df7af1b, type: 3}
+      propertyPath: m_text
+      value: Play as Cat
+      objectReference: {fileID: 0}
     - target: {fileID: 3367439185955792192, guid: 603c7cc8836b8954d953afb65df7af1b, type: 3}
       propertyPath: m_Name
       value: ButtonClient(Lobbies)

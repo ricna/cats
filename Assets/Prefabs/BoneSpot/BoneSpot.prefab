@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3789121112360551747}
-  - component: {fileID: 8477014270986294111}
   - component: {fileID: 7453164504298591220}
   - component: {fileID: 6229664539557107767}
+  - component: {fileID: -8268785662588898861}
   - component: {fileID: 7191937154867191963}
   m_Layer: 8
   m_Name: BoneSpot
@@ -41,27 +41,6 @@ Transform:
   - {fileID: 558837989691190471}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8477014270986294111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1176436333730099124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1964816536
-  InScenePlacedSourceGlobalObjectIdHash: 0
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
-  SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
 --- !u!82 &7453164504298591220
 AudioSource:
   m_ObjectHideFlags: 0
@@ -205,6 +184,31 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.7, y: 0.7}
   m_EdgeRadius: 0
+--- !u!114 &-8268785662588898861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176436333730099124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 3698469344
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!114 &7191937154867191963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,6 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d08408147ed037e49afc9cdd11a80922, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   _digs: 90
   _reburyCost: 0.25
   _spriteRenderer: {fileID: 1087426246502022505}
@@ -539,6 +544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec363f5de9881240950ef3ba90f1cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   _id: 1
   <BoneSpot>k__BackingField: {fileID: 7191937154867191963}
   _isAvailable:
@@ -1110,6 +1116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec363f5de9881240950ef3ba90f1cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   _id: 0
   <BoneSpot>k__BackingField: {fileID: 7191937154867191963}
   _isAvailable:
@@ -1206,6 +1213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec363f5de9881240950ef3ba90f1cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   _id: 2
   <BoneSpot>k__BackingField: {fileID: 7191937154867191963}
   _isAvailable:
@@ -1476,6 +1484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec363f5de9881240950ef3ba90f1cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   _id: 3
   <BoneSpot>k__BackingField: {fileID: 7191937154867191963}
   _isAvailable:

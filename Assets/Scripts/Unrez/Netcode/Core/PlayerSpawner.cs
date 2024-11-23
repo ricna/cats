@@ -59,7 +59,7 @@ namespace Unrez.Networking
             _spawnPoints = FindObjectsByType(typeof(SpawnPoints), FindObjectsSortMode.InstanceID) as SpawnPoints[];
             Transform[] spawns = _spawnPoints[idxSpawns].Spawns;
 
-            Debug.Log($"<color=black>SpawnPlayerServerRpc IsServer:{dog} clientId:{clientId}</color>");
+            Debug.Log($"<color=green>SpawnPlayerServerRpc IsServer:{dog} clientId:{clientId}</color>");
             if (dog)
             {
                 newPlayer = Instantiate(_prefabDog);

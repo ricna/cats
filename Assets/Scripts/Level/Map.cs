@@ -23,14 +23,14 @@ namespace Unrez.BackyardShowdown
                 // Inicialização do jogo, spawn de jogadores, etc.
                 foreach (BoneSpot boneSpot in BoneSpots)
                 {
-                    if (boneSpot.IsSpawned)
+                    /*if (boneSpot.IsSpawned)
                     {
                         Debug.Log($"BoneSpot Spawned {boneSpot.name}");
                     }
                     else
                     {
                         boneSpot.GetComponent<NetworkObject>().Spawn();
-                    }
+                    }*/
                     boneSpot.OnBoneSpotDugUp += BoneSpotDugHandle;
                 }
             }
