@@ -5,8 +5,6 @@ namespace Unrez.BackyardShowdown
 {
     public class Dog : Pet
     {
-        [SerializeField]
-        private bool _alwaysSprinting = true;
         [Header("Debugs - Dog")]
         [SerializeField]
         private bool _spotDetectedAvailable = false;
@@ -18,7 +16,8 @@ namespace Unrez.BackyardShowdown
         protected override void InitializeLocalPet()
         {
             base.InitializeLocalPet();
-            _petMotion.SetSprintInput(_alwaysSprinting);
+            _petMotion.SetSprintInput(true);
+            _petMotion.SetCrouchInput(false);
         }
 
         protected override void OnTriggerEnter2D(Collider2D collision)
@@ -88,6 +87,17 @@ namespace Unrez.BackyardShowdown
             base.SetMovementInput(movementInput);
         }
 
+        public override void SetCrouchInput(bool pressing)
+        {
+            _petMotion.SetCrouchInput(false);
+        }
+
+        public override void SetSprintInput(bool pressing)
+        {
+            _petMotion.SetSprintInput(true);
+        }
+
+
         [Header("Hit Detection")]
         [SerializeField]
         private Cat _catDetected;
@@ -124,7 +134,7 @@ namespace Unrez.BackyardShowdown
             }
             if (abilityId == 3)
             {
-                
+
             }
             /*if (_petAbilities.CanUseAbility(abilityId))
             {
@@ -139,7 +149,7 @@ namespace Unrez.BackyardShowdown
 
         public void OnDrawGizmos()
         {
-            Gizmos.color = Color.red; 
+            Gizmos.color = Color.red;
             Gizmos.DrawLine(GetCenter(), GetPointForward(1));
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(GetCenter(), 0.1f);
