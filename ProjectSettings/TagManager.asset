@@ -38,23 +38,11 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Soil
+  - name: Ground
     uniqueID: 2582504295
     locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Structures
-    uniqueID: 1644366949
-    locked: 0
-  - name: BoneSpot
-    uniqueID: 2929964727
-    locked: 0
-  - name: Cat
-    uniqueID: 4235830769
-    locked: 0
-  - name: Dog
-    uniqueID: 2398963311
     locked: 0
   - name: Minimap
     uniqueID: 2348686067

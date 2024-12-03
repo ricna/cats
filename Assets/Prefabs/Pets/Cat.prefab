@@ -88,8 +88,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -59136527
-  m_SortingLayer: 3
+  m_SortingLayerID: 1857558075
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 7867681320421581043, guid: f2b07e62a8797b74b898bf648997fa67, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -162,7 +162,7 @@ CircleCollider2D:
   m_Radius: 1
 --- !u!50 &6407681758990779862
 Rigidbody2D:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -173,8 +173,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 10
-  m_AngularDrag: 0
+  m_LinearDamping: 10
+  m_AngularDamping: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 170000700
+  GlobalObjectIdHash: 4199737136
   InScenePlacedSourceGlobalObjectIdHash: 4199737136
   DeferredDespawnTick: 0
   Ownership: 1
@@ -363,7 +363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   _motion: {fileID: 3687823899086678351}
-  _psFootsteps: {fileID: 0}
+  _psFootsteps: {fileID: 1108508029905673707}
 --- !u!114 &5024310094305606197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -466,7 +466,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -59136527
-  m_SortingLayer: 3
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.003921569}
@@ -544,6 +544,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f993c17142eddb748be7cd1b41338bbe, type: 3}
+--- !u!198 &1108508029905673707 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4095143722328331798, guid: f993c17142eddb748be7cd1b41338bbe, type: 3}
+  m_PrefabInstance: {fileID: 4014653036897963005}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5960869837362103077 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7282226186979117272, guid: f993c17142eddb748be7cd1b41338bbe, type: 3}

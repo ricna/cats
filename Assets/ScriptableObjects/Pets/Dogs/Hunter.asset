@@ -16,10 +16,10 @@ MonoBehaviour:
   PetView: {fileID: 11400000, guid: fe1bbb22948f4ec4ebbf579ed5fa8d00, type: 2}
   Color: {r: 1, g: 1, b: 1, a: 1}
   Speed: 10
-  SpeedSprint: 22
+  SpeedSprint: 20
   SpeedCrouch: 8
-  Acceleration: 8
-  Deceleration: 8
+  Acceleration: 1
+  Deceleration: 2
   DashForce: 30
   DashCooldown: 3
   DashDuration: 0.25

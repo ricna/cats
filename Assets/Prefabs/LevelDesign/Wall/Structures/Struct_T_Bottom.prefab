@@ -66,8 +66,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35f04a605f7f76d419804893baad7ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _color: {r: 0, g: 0.5019608, b: 1, a: 1}
   _structureData: {fileID: 11400000, guid: 82ed0f714061145419a0c9d647775196, type: 2}
+  _pieces: []
 --- !u!1001 &248597396670498687
 PrefabInstance:
   m_ObjectHideFlags: 0

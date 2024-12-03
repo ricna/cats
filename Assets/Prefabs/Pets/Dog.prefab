@@ -87,8 +87,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1896003985
-  m_SortingLayer: 4
+  m_SortingLayerID: 270596665
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 7867681320421581043, guid: f2b07e62a8797b74b898bf648997fa67, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -161,7 +161,7 @@ CircleCollider2D:
   m_Radius: 1
 --- !u!50 &8657455438807134225
 Rigidbody2D:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -172,8 +172,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 10
-  m_AngularDrag: 0
+  m_LinearDamping: 10
+  m_AngularDamping: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -198,8 +198,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1257078804
+  GlobalObjectIdHash: 1342575987
   InScenePlacedSourceGlobalObjectIdHash: 4199737136
+  DeferredDespawnTick: 0
+  Ownership: 1
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
@@ -207,6 +209,8 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!114 &8785497829865740131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,6 +223,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80d7c879794dfda4687da0e400131852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkRigidbodyBaseExpanded: 0
+  UseRigidBodyForMotion: 0
+  AutoUpdateKinematicState: 1
+  AutoSetKinematicOnDespawn: 1
 --- !u!114 &1561932522807824142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,6 +240,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 803ac51dbc1327b43aac9c905d9d5c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 0
+  AuthorityMode: 0
+  TickSyncChildren: 0
   UseUnreliableDeltas: 0
   SyncPositionX: 1
   SyncPositionY: 1
@@ -248,6 +261,7 @@ MonoBehaviour:
   UseQuaternionCompression: 0
   UseHalfFloatPrecision: 0
   InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
   Interpolate: 1
   SlerpPosition: 0
 --- !u!114 &376582561524254509
@@ -262,6 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f1fb9ea26d7df344a1b9608678e5031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   TransitionStateInfoList: []
   m_Animator: {fileID: 4410445312345493856}
 --- !u!114 &2637803149825943490
@@ -276,6 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0554dece81d442343b29a0a9dccc1ecb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   _inputReader: {fileID: 11400000, guid: 957eac0e969caf64caedbcddd7a11d3b, type: 2}
 --- !u!114 &-8743158011315201117
 MonoBehaviour:
@@ -289,6 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8683790668b85e5499ea027c68a0cdbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   <Profile>k__BackingField: {fileID: 0}
   _petNetInfo:
     OwnerId: 0
@@ -299,9 +316,10 @@ MonoBehaviour:
   _spriteRenderBody: {fileID: 8060715614537492126}
   _transformParent: {fileID: 0}
   _colliderOffset: {x: 0, y: 1.2}
+  _ratioFOVLightInner: 4
+  _ratioFOVLightOuter: 8
   _targetFOV: 0
   _currentFOV: 0
-  _alwaysSprinting: 1
   _spotDetectedAvailable: 0
   _isReburying: 0
   _digSpot: {fileID: 0}
@@ -322,6 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5afc169404c6644c97a8b2340ae7133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   _transform: {fileID: 863049567474279106}
   _rb: {fileID: 8657455438807134225}
   _animator: {fileID: 4410445312345493856}
@@ -346,6 +365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efc6f9978df1d614599f14d38d84bddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   _isTakingHit: 0
 --- !u!114 &1795883889953939332
 MonoBehaviour:
@@ -359,6 +379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 544161b719e50254bac2edb952545422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   _abilities: []
 --- !u!1 &3348033559246719383
 GameObject:
@@ -434,7 +455,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1946281229
-  m_SortingLayer: 5
+  m_SortingLayer: 2
   m_SortingOrder: 10
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}

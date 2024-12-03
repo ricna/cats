@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class PlayBootstrap
 {
     [SerializeField]
-    private static bool _online = false;
+    private static bool _online = true;
     static PlayBootstrap()
     {
         EditorApplication.playModeStateChanged += OnPlayModeChanged;
