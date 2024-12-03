@@ -4493,7 +4493,7 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: Cat000_Frame_0
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -4502,7 +4502,7 @@ ScriptedImporter:
         width: 56
         height: 40
       spriteId: 7617342a49240a446a7062f47e330a9c
-    - name: Cat000_Frame_1
+    - name: Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
@@ -4511,7 +4511,7 @@ ScriptedImporter:
         width: 53
         height: 41
       spriteId: 3e39fb2088019394b90b2570f12fa009
-    - name: Cat000_Frame_2
+    - name: Frame_2
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
@@ -4520,7 +4520,7 @@ ScriptedImporter:
         width: 53
         height: 40
       spriteId: 91e88b769150a8c47aed6bb3cbb1ef0b
-    - name: Cat000_Frame_3
+    - name: Frame_3
       frameIndex: 3
       additiveSortOrder: 0
       cellRect:
@@ -4529,7 +4529,7 @@ ScriptedImporter:
         width: 62
         height: 34
       spriteId: 54e118f3e7e90d344a833027669d894e
-    - name: Cat000_Frame_4
+    - name: Frame_4
       frameIndex: 4
       additiveSortOrder: 0
       cellRect:
@@ -4538,7 +4538,7 @@ ScriptedImporter:
         width: 55
         height: 38
       spriteId: 02fcdf232c673c5488aa537afce662ce
-    - name: Cat000_Frame_5
+    - name: Frame_5
       frameIndex: 5
       additiveSortOrder: 0
       cellRect:
@@ -4547,7 +4547,7 @@ ScriptedImporter:
         width: 55
         height: 39
       spriteId: 9fbe0e65f10f6894481a3c6362bcb2d4
-    - name: Cat000_Frame_6
+    - name: Frame_6
       frameIndex: 6
       additiveSortOrder: 0
       cellRect:
@@ -4556,7 +4556,7 @@ ScriptedImporter:
         width: 51
         height: 40
       spriteId: bfa20bf994769f249a1582255a7be7a7
-    - name: Cat000_Frame_7
+    - name: Frame_7
       frameIndex: 7
       additiveSortOrder: 0
       cellRect:
@@ -4565,7 +4565,7 @@ ScriptedImporter:
         width: 56
         height: 37
       spriteId: 2f75e9d005163bd48bdcfcb76dcd97b8
-    - name: Cat000_Frame_8
+    - name: Frame_8
       frameIndex: 8
       additiveSortOrder: 0
       cellRect:
@@ -4574,7 +4574,7 @@ ScriptedImporter:
         width: 52
         height: 43
       spriteId: a1f29f1c965753240ac5731abf045256
-    - name: Cat000_Frame_10
+    - name: Frame_10
       frameIndex: 10
       additiveSortOrder: 0
       cellRect:
@@ -4583,7 +4583,7 @@ ScriptedImporter:
         width: 23
         height: 47
       spriteId: 7aa9a04c2a241ab4e932bf37afe34793
-    - name: Cat000_Frame_11
+    - name: Frame_11
       frameIndex: 11
       additiveSortOrder: 0
       cellRect:
@@ -4592,7 +4592,7 @@ ScriptedImporter:
         width: 21
         height: 35
       spriteId: ee506128123c5254cab9fb59d6a1aaa3
-    - name: Cat000_Frame_12
+    - name: Frame_12
       frameIndex: 12
       additiveSortOrder: 0
       cellRect:
@@ -4601,7 +4601,7 @@ ScriptedImporter:
         width: 22
         height: 33
       spriteId: d8513f13f83e39f48ab4513ea95010b4
-    - name: Cat000_Frame_13
+    - name: Frame_13
       frameIndex: 13
       additiveSortOrder: 0
       cellRect:
@@ -4610,7 +4610,7 @@ ScriptedImporter:
         width: 24
         height: 40
       spriteId: 6df6c37b3ac495d4aa5c28ed388fd44a
-    - name: Cat000_Frame_14
+    - name: Frame_14
       frameIndex: 14
       additiveSortOrder: 0
       cellRect:
@@ -4619,7 +4619,7 @@ ScriptedImporter:
         width: 21
         height: 38
       spriteId: a5bcd2563c96b5349816fe5ce39d3124
-    - name: Cat000_Frame_15
+    - name: Frame_15
       frameIndex: 15
       additiveSortOrder: 0
       cellRect:
@@ -4628,7 +4628,7 @@ ScriptedImporter:
         width: 25
         height: 40
       spriteId: 32026fd3e9949d744bc21bbefc92f066
-    - name: Cat000_Frame_16
+    - name: Frame_16
       frameIndex: 16
       additiveSortOrder: 0
       cellRect:
@@ -4637,7 +4637,7 @@ ScriptedImporter:
         width: 21
         height: 39
       spriteId: 5ad01a4bd30308e4eb51ff08a8f90570
-    - name: Cat000_Frame_17
+    - name: Frame_17
       frameIndex: 17
       additiveSortOrder: 0
       cellRect:
@@ -4646,7 +4646,7 @@ ScriptedImporter:
         width: 23
         height: 38
       spriteId: 902403e6889b41c408ee45c0e9c1fec5
-    - name: Cat000_Frame_18
+    - name: Frame_18
       frameIndex: 18
       additiveSortOrder: 0
       cellRect:
@@ -4655,7 +4655,7 @@ ScriptedImporter:
         width: 23
         height: 40
       spriteId: 3d11291b655b0934db2ebfbf6541cdcd
-    - name: Cat000_Frame_20
+    - name: Frame_20
       frameIndex: 20
       additiveSortOrder: 0
       cellRect:
@@ -4664,7 +4664,7 @@ ScriptedImporter:
         width: 23
         height: 50
       spriteId: 3e532a2e0892ad44ba3a4ed65ac7e210
-    - name: Cat000_Frame_21
+    - name: Frame_21
       frameIndex: 21
       additiveSortOrder: 0
       cellRect:
@@ -4673,7 +4673,7 @@ ScriptedImporter:
         width: 21
         height: 47
       spriteId: a4c04312aa76d9f46a2ef1a66ae7df06
-    - name: Cat000_Frame_22
+    - name: Frame_22
       frameIndex: 22
       additiveSortOrder: 0
       cellRect:
@@ -4682,7 +4682,7 @@ ScriptedImporter:
         width: 21
         height: 41
       spriteId: 5e4838ca72fd8d445b984f3ad27cf9eb
-    - name: Cat000_Frame_23
+    - name: Frame_23
       frameIndex: 23
       additiveSortOrder: 0
       cellRect:
@@ -4691,7 +4691,7 @@ ScriptedImporter:
         width: 23
         height: 40
       spriteId: 7f3b9c8d9e234cd4093698710b02f53a
-    - name: Cat000_Frame_24
+    - name: Frame_24
       frameIndex: 24
       additiveSortOrder: 0
       cellRect:
@@ -4700,7 +4700,7 @@ ScriptedImporter:
         width: 21
         height: 37
       spriteId: 5576d106a8ad8f04daca728560ff3bc8
-    - name: Cat000_Frame_25
+    - name: Frame_25
       frameIndex: 25
       additiveSortOrder: 0
       cellRect:
@@ -4709,7 +4709,7 @@ ScriptedImporter:
         width: 25
         height: 32
       spriteId: 47051fc432c4ff94bad8676e7da2403f
-    - name: Cat000_Frame_26
+    - name: Frame_26
       frameIndex: 26
       additiveSortOrder: 0
       cellRect:
@@ -4718,7 +4718,7 @@ ScriptedImporter:
         width: 21
         height: 34
       spriteId: ed83f0d308c159144a2a0d3289c65ee2
-    - name: Cat000_Frame_27
+    - name: Frame_27
       frameIndex: 27
       additiveSortOrder: 0
       cellRect:
@@ -4727,7 +4727,7 @@ ScriptedImporter:
         width: 23
         height: 35
       spriteId: 72fa005153924bd45bb3ad22dd3a84d8
-    - name: Cat000_Frame_28
+    - name: Frame_28
       frameIndex: 28
       additiveSortOrder: 0
       cellRect:
@@ -4736,7 +4736,7 @@ ScriptedImporter:
         width: 22
         height: 40
       spriteId: 41f752fbba92bf7489e34f321a60ea6b
-    - name: Cat000_Frame_30
+    - name: Frame_30
       frameIndex: 30
       additiveSortOrder: 0
       cellRect:
@@ -4745,7 +4745,7 @@ ScriptedImporter:
         width: 56
         height: 36
       spriteId: 14b14bc9f949b0b4db5beec4e1a4c0c0
-    - name: Cat000_Frame_31
+    - name: Frame_31
       frameIndex: 31
       additiveSortOrder: 0
       cellRect:
@@ -4754,7 +4754,7 @@ ScriptedImporter:
         width: 56
         height: 35
       spriteId: 1ef8d0bba28395647b63644e5f454cf7
-    - name: Cat000_Frame_32
+    - name: Frame_32
       frameIndex: 32
       additiveSortOrder: 0
       cellRect:
@@ -4763,7 +4763,7 @@ ScriptedImporter:
         width: 54
         height: 35
       spriteId: c0ff2c99a5880b94299549eb0116e9af
-    - name: Cat000_Frame_33
+    - name: Frame_33
       frameIndex: 33
       additiveSortOrder: 0
       cellRect:
@@ -4772,7 +4772,7 @@ ScriptedImporter:
         width: 54
         height: 35
       spriteId: e6d58a6a8d881a647bc644f4d5e67b61
-    - name: Cat000_Frame_34
+    - name: Frame_34
       frameIndex: 34
       additiveSortOrder: 0
       cellRect:
@@ -4781,7 +4781,7 @@ ScriptedImporter:
         width: 54
         height: 36
       spriteId: 996d522efc97ca44fadec0555cf8078d
-    - name: Cat000_Frame_35
+    - name: Frame_35
       frameIndex: 35
       additiveSortOrder: 0
       cellRect:
@@ -4790,7 +4790,7 @@ ScriptedImporter:
         width: 54
         height: 35
       spriteId: 3df2b3fd776e4504499ec78b61e1bd00
-    - name: Cat000_Frame_36
+    - name: Frame_36
       frameIndex: 36
       additiveSortOrder: 0
       cellRect:
@@ -4799,7 +4799,7 @@ ScriptedImporter:
         width: 53
         height: 34
       spriteId: 37138c99168364d428b8a813939bbeda
-    - name: Cat000_Frame_37
+    - name: Frame_37
       frameIndex: 37
       additiveSortOrder: 0
       cellRect:
@@ -4808,7 +4808,7 @@ ScriptedImporter:
         width: 54
         height: 33
       spriteId: 1b3d14efb618e794497892c239cd0838
-    - name: Cat000_Frame_38
+    - name: Frame_38
       frameIndex: 38
       additiveSortOrder: 0
       cellRect:
@@ -4817,7 +4817,7 @@ ScriptedImporter:
         width: 54
         height: 33
       spriteId: 3fda723679c924b40b13d66b4e84e2db
-    - name: Cat000_Frame_40
+    - name: Frame_40
       frameIndex: 40
       additiveSortOrder: 0
       cellRect:
@@ -4826,7 +4826,7 @@ ScriptedImporter:
         width: 23
         height: 43
       spriteId: 235e04c2bbdc4754095f0be414c69213
-    - name: Cat000_Frame_41
+    - name: Frame_41
       frameIndex: 41
       additiveSortOrder: 0
       cellRect:
@@ -4835,7 +4835,7 @@ ScriptedImporter:
         width: 20
         height: 44
       spriteId: fbcfb1099e41671448d8b4520af099c4
-    - name: Cat000_Frame_42
+    - name: Frame_42
       frameIndex: 42
       additiveSortOrder: 0
       cellRect:
@@ -4844,7 +4844,7 @@ ScriptedImporter:
         width: 23
         height: 44
       spriteId: 740ed0e8751d467459121582acab9d1e
-    - name: Cat000_Frame_43
+    - name: Frame_43
       frameIndex: 43
       additiveSortOrder: 0
       cellRect:
@@ -4853,7 +4853,7 @@ ScriptedImporter:
         width: 23
         height: 42
       spriteId: ced48c73f5713c646a4b5be7d92b53f8
-    - name: Cat000_Frame_44
+    - name: Frame_44
       frameIndex: 44
       additiveSortOrder: 0
       cellRect:
@@ -4862,7 +4862,7 @@ ScriptedImporter:
         width: 21
         height: 42
       spriteId: fd9224e22a4fefc4db7eeb1287a06ede
-    - name: Cat000_Frame_45
+    - name: Frame_45
       frameIndex: 45
       additiveSortOrder: 0
       cellRect:
@@ -4871,7 +4871,7 @@ ScriptedImporter:
         width: 19
         height: 38
       spriteId: 9ecad01dc433de24299344a0f6e81a80
-    - name: Cat000_Frame_46
+    - name: Frame_46
       frameIndex: 46
       additiveSortOrder: 0
       cellRect:
@@ -4880,7 +4880,7 @@ ScriptedImporter:
         width: 21
         height: 41
       spriteId: fd308e927ad020a49869074474872425
-    - name: Cat000_Frame_47
+    - name: Frame_47
       frameIndex: 47
       additiveSortOrder: 0
       cellRect:
@@ -4889,7 +4889,7 @@ ScriptedImporter:
         width: 23
         height: 42
       spriteId: e5e5c9d32f2ce0f4c96a16b0d22e187f
-    - name: Cat000_Frame_48
+    - name: Frame_48
       frameIndex: 48
       additiveSortOrder: 0
       cellRect:
@@ -4898,7 +4898,7 @@ ScriptedImporter:
         width: 21
         height: 44
       spriteId: 3f15977caa0b01044a0738431e67b436
-    - name: Cat000_Frame_50
+    - name: Frame_50
       frameIndex: 50
       additiveSortOrder: 0
       cellRect:
@@ -4907,7 +4907,7 @@ ScriptedImporter:
         width: 23
         height: 46
       spriteId: 6a5c6967686a64f48a3d996909e6a491
-    - name: Cat000_Frame_51
+    - name: Frame_51
       frameIndex: 51
       additiveSortOrder: 0
       cellRect:
@@ -4916,7 +4916,7 @@ ScriptedImporter:
         width: 20
         height: 42
       spriteId: 42494e63c2d4e35489289cbc2e55783f
-    - name: Cat000_Frame_52
+    - name: Frame_52
       frameIndex: 52
       additiveSortOrder: 0
       cellRect:
@@ -4925,7 +4925,7 @@ ScriptedImporter:
         width: 23
         height: 44
       spriteId: aca7fdfb273d50d489ec17a3bffc5537
-    - name: Cat000_Frame_53
+    - name: Frame_53
       frameIndex: 53
       additiveSortOrder: 0
       cellRect:
@@ -4934,7 +4934,7 @@ ScriptedImporter:
         width: 23
         height: 47
       spriteId: e2a888e2ea21eeb4d957aa84aebde57c
-    - name: Cat000_Frame_54
+    - name: Frame_54
       frameIndex: 54
       additiveSortOrder: 0
       cellRect:
@@ -4943,7 +4943,7 @@ ScriptedImporter:
         width: 22
         height: 46
       spriteId: 525b8c2f7bcd4f1419e21d7a6612e35e
-    - name: Cat000_Frame_55
+    - name: Frame_55
       frameIndex: 55
       additiveSortOrder: 0
       cellRect:
@@ -4952,7 +4952,7 @@ ScriptedImporter:
         width: 19
         height: 44
       spriteId: c372fba087411d94fb98535e3a351758
-    - name: Cat000_Frame_56
+    - name: Frame_56
       frameIndex: 56
       additiveSortOrder: 0
       cellRect:
@@ -4961,7 +4961,7 @@ ScriptedImporter:
         width: 21
         height: 44
       spriteId: f738b23a5725eed4c9b3ac6000f9ad4d
-    - name: Cat000_Frame_57
+    - name: Frame_57
       frameIndex: 57
       additiveSortOrder: 0
       cellRect:
@@ -4970,7 +4970,7 @@ ScriptedImporter:
         width: 23
         height: 45
       spriteId: 1204c0783469a814da24d5402cdd4cb1
-    - name: Cat000_Frame_58
+    - name: Frame_58
       frameIndex: 58
       additiveSortOrder: 0
       cellRect:
@@ -4979,7 +4979,7 @@ ScriptedImporter:
         width: 22
         height: 46
       spriteId: 8851bed8e0fdd6744b04481706582b87
-    - name: Cat000_Frame_60
+    - name: Frame_60
       frameIndex: 60
       additiveSortOrder: 0
       cellRect:
@@ -4988,7 +4988,7 @@ ScriptedImporter:
         width: 57
         height: 32
       spriteId: 4177f003a1baa7b4fafc6b41b35020a6
-    - name: Cat000_Frame_61
+    - name: Frame_61
       frameIndex: 61
       additiveSortOrder: 0
       cellRect:
@@ -4997,7 +4997,7 @@ ScriptedImporter:
         width: 59
         height: 30
       spriteId: 8b27475d9a736784793a3474ed37a191
-    - name: Cat000_Frame_62
+    - name: Frame_62
       frameIndex: 62
       additiveSortOrder: 0
       cellRect:
@@ -5006,7 +5006,7 @@ ScriptedImporter:
         width: 56
         height: 30
       spriteId: 510b068cdfa82a24d82b7617e29adcff
-    - name: Cat000_Frame_63
+    - name: Frame_63
       frameIndex: 63
       additiveSortOrder: 0
       cellRect:
@@ -5015,7 +5015,7 @@ ScriptedImporter:
         width: 58
         height: 30
       spriteId: 13e48599098e45a4ea34fb50dfc967e7
-    - name: Cat000_Frame_64
+    - name: Frame_64
       frameIndex: 64
       additiveSortOrder: 0
       cellRect:
@@ -5024,7 +5024,7 @@ ScriptedImporter:
         width: 59
         height: 29
       spriteId: fc54432a658ae77488625179f0e57ced
-    - name: Cat000_Frame_65
+    - name: Frame_65
       frameIndex: 65
       additiveSortOrder: 0
       cellRect:
@@ -5033,7 +5033,7 @@ ScriptedImporter:
         width: 57
         height: 30
       spriteId: d4d4db8f75c79f043ab96aad2bd64014
-    - name: Cat000_Frame_66
+    - name: Frame_66
       frameIndex: 66
       additiveSortOrder: 0
       cellRect:
@@ -5042,7 +5042,7 @@ ScriptedImporter:
         width: 57
         height: 32
       spriteId: de3755cfd82fbe147861b0ef150377fc
-    - name: Cat000_Frame_67
+    - name: Frame_67
       frameIndex: 67
       additiveSortOrder: 0
       cellRect:
@@ -5051,7 +5051,7 @@ ScriptedImporter:
         width: 57
         height: 31
       spriteId: 05983dd0a5cbfb44bb16ba79024c2b5f
-    - name: Cat000_Frame_68
+    - name: Frame_68
       frameIndex: 68
       additiveSortOrder: 0
       cellRect:
@@ -5060,7 +5060,7 @@ ScriptedImporter:
         width: 57
         height: 31
       spriteId: e34a70a7b0f3221428da6db026e1e2e8
-    - name: Cat000_Frame_70
+    - name: Frame_70
       frameIndex: 70
       additiveSortOrder: 0
       cellRect:
@@ -5069,7 +5069,7 @@ ScriptedImporter:
         width: 23
         height: 44
       spriteId: 6bd58830366b99e4597eb5df8c06944e
-    - name: Cat000_Frame_71
+    - name: Frame_71
       frameIndex: 71
       additiveSortOrder: 0
       cellRect:
@@ -5078,7 +5078,7 @@ ScriptedImporter:
         width: 21
         height: 42
       spriteId: 2f64888dff239e949b73a5423a14d5be
-    - name: Cat000_Frame_72
+    - name: Frame_72
       frameIndex: 72
       additiveSortOrder: 0
       cellRect:
@@ -5087,7 +5087,7 @@ ScriptedImporter:
         width: 26
         height: 44
       spriteId: badb035d97d4a6348810ec98e25bc405
-    - name: Cat000_Frame_73
+    - name: Frame_73
       frameIndex: 73
       additiveSortOrder: 0
       cellRect:
@@ -5096,7 +5096,7 @@ ScriptedImporter:
         width: 23
         height: 45
       spriteId: 29c740fbe388c0046a9c80ab59eded2d
-    - name: Cat000_Frame_74
+    - name: Frame_74
       frameIndex: 74
       additiveSortOrder: 0
       cellRect:
@@ -5105,7 +5105,7 @@ ScriptedImporter:
         width: 19
         height: 44
       spriteId: 5c66bc4b5fb0804419cc392737813e53
-    - name: Cat000_Frame_75
+    - name: Frame_75
       frameIndex: 75
       additiveSortOrder: 0
       cellRect:
@@ -5114,7 +5114,7 @@ ScriptedImporter:
         width: 23
         height: 46
       spriteId: b016ddfdedd26ee43bd28179d6c035b1
-    - name: Cat000_Frame_76
+    - name: Frame_76
       frameIndex: 76
       additiveSortOrder: 0
       cellRect:
@@ -5123,7 +5123,7 @@ ScriptedImporter:
         width: 26
         height: 46
       spriteId: a47ceaf77614973409e88240a82f1214
-    - name: Cat000_Frame_77
+    - name: Frame_77
       frameIndex: 77
       additiveSortOrder: 0
       cellRect:
@@ -5132,7 +5132,7 @@ ScriptedImporter:
         width: 20
         height: 44
       spriteId: f6cb37ca3b9f1cb44954f10303f5ba2b
-    - name: Cat000_Frame_78
+    - name: Frame_78
       frameIndex: 78
       additiveSortOrder: 0
       cellRect:
@@ -5141,7 +5141,7 @@ ScriptedImporter:
         width: 23
         height: 45
       spriteId: c106573fe57473740a45dc6691c7073b
-    - name: Cat000_Frame_80
+    - name: Frame_80
       frameIndex: 80
       additiveSortOrder: 0
       cellRect:
@@ -5150,7 +5150,7 @@ ScriptedImporter:
         width: 23
         height: 35
       spriteId: b68f0a1ffa8571b4b8ce767ec568cd3d
-    - name: Cat000_Frame_81
+    - name: Frame_81
       frameIndex: 81
       additiveSortOrder: 0
       cellRect:
@@ -5159,7 +5159,7 @@ ScriptedImporter:
         width: 19
         height: 34
       spriteId: 267b63be06beb164f8ee1ca4f5107746
-    - name: Cat000_Frame_82
+    - name: Frame_82
       frameIndex: 82
       additiveSortOrder: 0
       cellRect:
@@ -5168,7 +5168,7 @@ ScriptedImporter:
         width: 23
         height: 33
       spriteId: 87bda57fd77218745aeb3e1d6a6369ab
-    - name: Cat000_Frame_83
+    - name: Frame_83
       frameIndex: 83
       additiveSortOrder: 0
       cellRect:
@@ -5177,7 +5177,7 @@ ScriptedImporter:
         width: 19
         height: 34
       spriteId: 913fba6f59f8f4f458f8bb6e36933af3
-    - name: Cat000_Frame_84
+    - name: Frame_84
       frameIndex: 84
       additiveSortOrder: 0
       cellRect:
@@ -5186,7 +5186,7 @@ ScriptedImporter:
         width: 23
         height: 35
       spriteId: 5b6a18276c351d947b50a98ca0d4114a
-    - name: Cat000_Frame_85
+    - name: Frame_85
       frameIndex: 85
       additiveSortOrder: 0
       cellRect:
@@ -5195,7 +5195,7 @@ ScriptedImporter:
         width: 20
         height: 34
       spriteId: 2450a2803f6040a4f8ecbad5a66d191e
-    - name: Cat000_Frame_86
+    - name: Frame_86
       frameIndex: 86
       additiveSortOrder: 0
       cellRect:
@@ -5204,7 +5204,7 @@ ScriptedImporter:
         width: 23
         height: 33
       spriteId: 05ecadf4b2835f24c862d9440f2c78e8
-    - name: Cat000_Frame_87
+    - name: Frame_87
       frameIndex: 87
       additiveSortOrder: 0
       cellRect:
@@ -5213,7 +5213,7 @@ ScriptedImporter:
         width: 19
         height: 31
       spriteId: 1000f415b9c73cc47a060c4383d25a0f
-    - name: Cat000_Frame_88
+    - name: Frame_88
       frameIndex: 88
       additiveSortOrder: 0
       cellRect:
@@ -5222,7 +5222,7 @@ ScriptedImporter:
         width: 23
         height: 29
       spriteId: 97587cde261623345be61b515ae2dd3d
-    - name: Cat000_Frame_90
+    - name: Frame_90
       frameIndex: 90
       additiveSortOrder: 0
       cellRect:
@@ -5231,7 +5231,7 @@ ScriptedImporter:
         width: 56
         height: 36
       spriteId: aabbecc30ad206a4db071cabe3c27fb6
-    - name: Cat000_Frame_91
+    - name: Frame_91
       frameIndex: 91
       additiveSortOrder: 0
       cellRect:
@@ -5240,7 +5240,7 @@ ScriptedImporter:
         width: 56
         height: 35
       spriteId: 37225365a61af254a9a187486632e18d
-    - name: Cat000_Frame_92
+    - name: Frame_92
       frameIndex: 92
       additiveSortOrder: 0
       cellRect:
@@ -5249,7 +5249,7 @@ ScriptedImporter:
         width: 54
         height: 34
       spriteId: 314f7ba3637ff004284731344e398564
-    - name: Cat000_Frame_93
+    - name: Frame_93
       frameIndex: 93
       additiveSortOrder: 0
       cellRect:
@@ -5258,7 +5258,7 @@ ScriptedImporter:
         width: 52
         height: 35
       spriteId: 0a9bf7acfc20ddd4ea2e80e04c35303a
-    - name: Cat000_Frame_94
+    - name: Frame_94
       frameIndex: 94
       additiveSortOrder: 0
       cellRect:
@@ -5267,7 +5267,7 @@ ScriptedImporter:
         width: 50
         height: 35
       spriteId: 9cc356786b11c684c91e933d7a58dfa8
-    - name: Cat000_Frame_95
+    - name: Frame_95
       frameIndex: 95
       additiveSortOrder: 0
       cellRect:
@@ -5276,7 +5276,7 @@ ScriptedImporter:
         width: 49
         height: 34
       spriteId: b6b2c4efec20a9146bba1a70dd831d86
-    - name: Cat000_Frame_96
+    - name: Frame_96
       frameIndex: 96
       additiveSortOrder: 0
       cellRect:
@@ -5285,7 +5285,7 @@ ScriptedImporter:
         width: 52
         height: 36
       spriteId: 56c05569aa6054c4d8396647367e48d5
-    - name: Cat000_Frame_97
+    - name: Frame_97
       frameIndex: 97
       additiveSortOrder: 0
       cellRect:
@@ -5294,7 +5294,7 @@ ScriptedImporter:
         width: 55
         height: 35
       spriteId: 10305210a42a3bb4db8bd3df8483ea6f
-    - name: Cat000_Frame_98
+    - name: Frame_98
       frameIndex: 98
       additiveSortOrder: 0
       cellRect:
@@ -5303,7 +5303,7 @@ ScriptedImporter:
         width: 56
         height: 35
       spriteId: ea8bd7bd5d24e774baece81ba78df976
-    - name: Cat000_Frame_100
+    - name: Frame_100
       frameIndex: 100
       additiveSortOrder: 0
       cellRect:
@@ -5312,7 +5312,7 @@ ScriptedImporter:
         width: 23
         height: 43
       spriteId: 52931350592e2c645b2226a627597e3f
-    - name: Cat000_Frame_101
+    - name: Frame_101
       frameIndex: 101
       additiveSortOrder: 0
       cellRect:
@@ -5321,7 +5321,7 @@ ScriptedImporter:
         width: 20
         height: 43
       spriteId: d06f065ceaf2a4246a0970810f341bd8
-    - name: Cat000_Frame_102
+    - name: Frame_102
       frameIndex: 102
       additiveSortOrder: 0
       cellRect:
@@ -5330,7 +5330,7 @@ ScriptedImporter:
         width: 17
         height: 44
       spriteId: d5182c6255f45f74a96e89ce6ededaf2
-    - name: Cat000_Frame_103
+    - name: Frame_103
       frameIndex: 103
       additiveSortOrder: 0
       cellRect:
@@ -5339,7 +5339,7 @@ ScriptedImporter:
         width: 20
         height: 43
       spriteId: 093242d741b5a6546be1e51726b0933e
-    - name: Cat000_Frame_104
+    - name: Frame_104
       frameIndex: 104
       additiveSortOrder: 0
       cellRect:
@@ -5348,7 +5348,7 @@ ScriptedImporter:
         width: 23
         height: 42
       spriteId: 8a987d12908df6248831938123d6728e
-    - name: Cat000_Frame_105
+    - name: Frame_105
       frameIndex: 105
       additiveSortOrder: 0
       cellRect:
@@ -5357,7 +5357,7 @@ ScriptedImporter:
         width: 20
         height: 39
       spriteId: c9826cd0530bc8d4595aeba4e8100342
-    - name: Cat000_Frame_106
+    - name: Frame_106
       frameIndex: 106
       additiveSortOrder: 0
       cellRect:
@@ -5366,7 +5366,7 @@ ScriptedImporter:
         width: 17
         height: 40
       spriteId: 18ef21dcab6c12149934a47d3746ed07
-    - name: Cat000_Frame_107
+    - name: Frame_107
       frameIndex: 107
       additiveSortOrder: 0
       cellRect:
@@ -5375,7 +5375,7 @@ ScriptedImporter:
         width: 20
         height: 44
       spriteId: b9de1bae74620b54fbdc6075409b238f
-    - name: Cat000_Frame_108
+    - name: Frame_108
       frameIndex: 108
       additiveSortOrder: 0
       cellRect:
@@ -5384,7 +5384,7 @@ ScriptedImporter:
         width: 23
         height: 42
       spriteId: 8723b669e150cc04d95bca14b54c36a3
-    - name: Cat000_Frame_110
+    - name: Frame_110
       frameIndex: 110
       additiveSortOrder: 0
       cellRect:
@@ -5393,7 +5393,7 @@ ScriptedImporter:
         width: 23
         height: 46
       spriteId: 0f9c88113374c33489817569ea89d464
-    - name: Cat000_Frame_111
+    - name: Frame_111
       frameIndex: 111
       additiveSortOrder: 0
       cellRect:
@@ -5402,7 +5402,7 @@ ScriptedImporter:
         width: 20
         height: 44
       spriteId: 2e608a1c86f358f47ad1fbba300d93bb
-    - name: Cat000_Frame_112
+    - name: Frame_112
       frameIndex: 112
       additiveSortOrder: 0
       cellRect:
@@ -5411,7 +5411,7 @@ ScriptedImporter:
         width: 17
         height: 42
       spriteId: 4523f0cfafabe0a4ea44896505453c8c
-    - name: Cat000_Frame_113
+    - name: Frame_113
       frameIndex: 113
       additiveSortOrder: 0
       cellRect:
@@ -5420,7 +5420,7 @@ ScriptedImporter:
         width: 20
         height: 41
       spriteId: 9690fa2895def154e8f608f1df0682c1
-    - name: Cat000_Frame_114
+    - name: Frame_114
       frameIndex: 114
       additiveSortOrder: 0
       cellRect:
@@ -5429,7 +5429,7 @@ ScriptedImporter:
         width: 23
         height: 44
       spriteId: 9f4e33c54dccc404d876ed8a1484c719
-    - name: Cat000_Frame_115
+    - name: Frame_115
       frameIndex: 115
       additiveSortOrder: 0
       cellRect:
@@ -5438,7 +5438,7 @@ ScriptedImporter:
         width: 20
         height: 43
       spriteId: 9b85d9d721ba6dc4b9b47baa5c8ab9fd
-    - name: Cat000_Frame_116
+    - name: Frame_116
       frameIndex: 116
       additiveSortOrder: 0
       cellRect:
@@ -5447,7 +5447,7 @@ ScriptedImporter:
         width: 17
         height: 43
       spriteId: 66c257cda5b858048a5c815dd832784c
-    - name: Cat000_Frame_117
+    - name: Frame_117
       frameIndex: 117
       additiveSortOrder: 0
       cellRect:
@@ -5456,7 +5456,7 @@ ScriptedImporter:
         width: 20
         height: 46
       spriteId: 9759c833537866a48931894afb69bf30
-    - name: Cat000_Frame_118
+    - name: Frame_118
       frameIndex: 118
       additiveSortOrder: 0
       cellRect:
@@ -5465,7 +5465,7 @@ ScriptedImporter:
         width: 23
         height: 46
       spriteId: e6137205048a8f54b986946da9708f8b
-    - name: Cat000_Frame_120
+    - name: Frame_120
       frameIndex: 120
       additiveSortOrder: 0
       cellRect:
@@ -5474,7 +5474,7 @@ ScriptedImporter:
         width: 62
         height: 24
       spriteId: 921dcd8e775bb574a9681b3c0f5471b9
-    - name: Cat000_Frame_121
+    - name: Frame_121
       frameIndex: 121
       additiveSortOrder: 0
       cellRect:
@@ -5483,7 +5483,7 @@ ScriptedImporter:
         width: 61
         height: 24
       spriteId: 0680ae27daacb0b49bfc1fa3c2a7660d
-    - name: Cat000_Frame_122
+    - name: Frame_122
       frameIndex: 122
       additiveSortOrder: 0
       cellRect:
@@ -5492,7 +5492,7 @@ ScriptedImporter:
         width: 64
         height: 24
       spriteId: f5ec4cbb61d11904c9c5656486713c49
-    - name: Cat000_Frame_123
+    - name: Frame_123
       frameIndex: 123
       additiveSortOrder: 0
       cellRect:
@@ -5501,7 +5501,7 @@ ScriptedImporter:
         width: 62
         height: 24
       spriteId: 8f41944b4e00cbe4d8388bc8700b9871
-    - name: Cat000_Frame_124
+    - name: Frame_124
       frameIndex: 124
       additiveSortOrder: 0
       cellRect:
@@ -5510,7 +5510,7 @@ ScriptedImporter:
         width: 62
         height: 24
       spriteId: 3aed32690ee1a3545b3194e2ff86254b
-    - name: Cat000_Frame_125
+    - name: Frame_125
       frameIndex: 125
       additiveSortOrder: 0
       cellRect:
@@ -5519,7 +5519,7 @@ ScriptedImporter:
         width: 59
         height: 24
       spriteId: faaa9e069b4db01409e8103613e3cb89
-    - name: Cat000_Frame_126
+    - name: Frame_126
       frameIndex: 126
       additiveSortOrder: 0
       cellRect:
@@ -5528,7 +5528,7 @@ ScriptedImporter:
         width: 53
         height: 24
       spriteId: ae7ec8038b25f4c4aafca890cb4ff793
-    - name: Cat000_Frame_127
+    - name: Frame_127
       frameIndex: 127
       additiveSortOrder: 0
       cellRect:
@@ -5537,7 +5537,7 @@ ScriptedImporter:
         width: 61
         height: 24
       spriteId: e78a6e3a412d7174682e4a0043378bff
-    - name: Cat000_Frame_128
+    - name: Frame_128
       frameIndex: 128
       additiveSortOrder: 0
       cellRect:
@@ -5546,7 +5546,7 @@ ScriptedImporter:
         width: 63
         height: 24
       spriteId: 678998a4b16ea1748818501cd21b486d
-    - name: Cat000_Frame_130
+    - name: Frame_130
       frameIndex: 130
       additiveSortOrder: 0
       cellRect:
@@ -5555,7 +5555,7 @@ ScriptedImporter:
         width: 23
         height: 34
       spriteId: 9c8c0d67fbce3ca478599412f2729602
-    - name: Cat000_Frame_131
+    - name: Frame_131
       frameIndex: 131
       additiveSortOrder: 0
       cellRect:
@@ -5564,7 +5564,7 @@ ScriptedImporter:
         width: 20
         height: 35
       spriteId: e39ad2150823d044ea2729799e0a6d6c
-    - name: Cat000_Frame_132
+    - name: Frame_132
       frameIndex: 132
       additiveSortOrder: 0
       cellRect:
@@ -5573,7 +5573,7 @@ ScriptedImporter:
         width: 16
         height: 35
       spriteId: 67ea783771681dc44a43c59d3eacd1fe
-    - name: Cat000_Frame_133
+    - name: Frame_133
       frameIndex: 133
       additiveSortOrder: 0
       cellRect:
@@ -5582,7 +5582,7 @@ ScriptedImporter:
         width: 20
         height: 35
       spriteId: 0ea3df168a3b170498d7f75a91666bb6
-    - name: Cat000_Frame_134
+    - name: Frame_134
       frameIndex: 134
       additiveSortOrder: 0
       cellRect:
@@ -5591,7 +5591,7 @@ ScriptedImporter:
         width: 23
         height: 34
       spriteId: 6c673b1b6200d614ea88e26b3b23df0f
-    - name: Cat000_Frame_135
+    - name: Frame_135
       frameIndex: 135
       additiveSortOrder: 0
       cellRect:
@@ -5600,7 +5600,7 @@ ScriptedImporter:
         width: 20
         height: 35
       spriteId: 4760fbc64de5296429fe8854ddbf3fb5
-    - name: Cat000_Frame_136
+    - name: Frame_136
       frameIndex: 136
       additiveSortOrder: 0
       cellRect:
@@ -5609,7 +5609,7 @@ ScriptedImporter:
         width: 16
         height: 36
       spriteId: 69c6479d0392bbb40b6d89343712260c
-    - name: Cat000_Frame_137
+    - name: Frame_137
       frameIndex: 137
       additiveSortOrder: 0
       cellRect:
@@ -5618,7 +5618,7 @@ ScriptedImporter:
         width: 20
         height: 35
       spriteId: de83e0ca74644314bb8e3578783e561b
-    - name: Cat000_Frame_138
+    - name: Frame_138
       frameIndex: 138
       additiveSortOrder: 0
       cellRect:
@@ -5627,7 +5627,7 @@ ScriptedImporter:
         width: 23
         height: 34
       spriteId: 316a96b0e038dda41aea11d66e6b5451
-    - name: Cat000_Frame_140
+    - name: Frame_140
       frameIndex: 140
       additiveSortOrder: 0
       cellRect:
@@ -5636,7 +5636,7 @@ ScriptedImporter:
         width: 23
         height: 38
       spriteId: 1f2e992245d833a47b0e2e7d94c61ee8
-    - name: Cat000_Frame_141
+    - name: Frame_141
       frameIndex: 141
       additiveSortOrder: 0
       cellRect:
@@ -5645,7 +5645,7 @@ ScriptedImporter:
         width: 20
         height: 37
       spriteId: 85e06016b51f5d24eaf6a987317e8f65
-    - name: Cat000_Frame_142
+    - name: Frame_142
       frameIndex: 142
       additiveSortOrder: 0
       cellRect:
@@ -5654,7 +5654,7 @@ ScriptedImporter:
         width: 17
         height: 39
       spriteId: 65d87c9da43180c4a9be2a8e4901ee6d
-    - name: Cat000_Frame_143
+    - name: Frame_143
       frameIndex: 143
       additiveSortOrder: 0
       cellRect:
@@ -5663,7 +5663,7 @@ ScriptedImporter:
         width: 20
         height: 35
       spriteId: 0bb5cdf671ad3ac4db91de7c79c2dc83
-    - name: Cat000_Frame_144
+    - name: Frame_144
       frameIndex: 144
       additiveSortOrder: 0
       cellRect:
@@ -5672,7 +5672,7 @@ ScriptedImporter:
         width: 23
         height: 36
       spriteId: 669452ed723de824eba254f72430319c
-    - name: Cat000_Frame_145
+    - name: Frame_145
       frameIndex: 145
       additiveSortOrder: 0
       cellRect:
@@ -5681,7 +5681,7 @@ ScriptedImporter:
         width: 20
         height: 38
       spriteId: 8fd01de8f8f149b4bbc66424ba0adcc8
-    - name: Cat000_Frame_146
+    - name: Frame_146
       frameIndex: 146
       additiveSortOrder: 0
       cellRect:
@@ -5690,7 +5690,7 @@ ScriptedImporter:
         width: 17
         height: 39
       spriteId: e9b763945877f5d468596c1e1e85b3d7
-    - name: Cat000_Frame_147
+    - name: Frame_147
       frameIndex: 147
       additiveSortOrder: 0
       cellRect:
@@ -5699,7 +5699,7 @@ ScriptedImporter:
         width: 20
         height: 38
       spriteId: d27c6c291aa0c1f4396814945adebe94
-    - name: Cat000_Frame_148
+    - name: Frame_148
       frameIndex: 148
       additiveSortOrder: 0
       cellRect:
@@ -5708,7 +5708,7 @@ ScriptedImporter:
         width: 23
         height: 39
       spriteId: 32d0481632754c944b69a052081f96e3
-    - name: Cat000_Frame_150
+    - name: Frame_150
       frameIndex: 150
       additiveSortOrder: 0
       cellRect:
@@ -5717,7 +5717,7 @@ ScriptedImporter:
         width: 23
         height: 38
       spriteId: dd35dc0ee0969f147b74f510a0b0fab2
-    - name: Cat000_Frame_151
+    - name: Frame_151
       frameIndex: 151
       additiveSortOrder: 0
       cellRect:
@@ -5726,7 +5726,7 @@ ScriptedImporter:
         width: 20
         height: 37
       spriteId: d2e12be8475dca643a29d719167e202d
-    - name: Cat000_Frame_152
+    - name: Frame_152
       frameIndex: 152
       additiveSortOrder: 0
       cellRect:
@@ -5735,7 +5735,7 @@ ScriptedImporter:
         width: 17
         height: 39
       spriteId: 2d7c42d5c935c324abe06666810d5df4
-    - name: Cat000_Frame_153
+    - name: Frame_153
       frameIndex: 153
       additiveSortOrder: 0
       cellRect:
@@ -5744,7 +5744,7 @@ ScriptedImporter:
         width: 20
         height: 36
       spriteId: badcd634264558e4b863c9e1d4b75d37
-    - name: Cat000_Frame_154
+    - name: Frame_154
       frameIndex: 154
       additiveSortOrder: 0
       cellRect:
@@ -5753,7 +5753,7 @@ ScriptedImporter:
         width: 20
         height: 37
       spriteId: f6cbbcf1eca3ece45898ae856b0565c6
-    - name: Cat000_Frame_155
+    - name: Frame_155
       frameIndex: 155
       additiveSortOrder: 0
       cellRect:
@@ -5762,7 +5762,7 @@ ScriptedImporter:
         width: 20
         height: 39
       spriteId: 065d3a6b3f22fc04ca2ff9a543c5c1e4
-    - name: Cat000_Frame_156
+    - name: Frame_156
       frameIndex: 156
       additiveSortOrder: 0
       cellRect:
@@ -5771,7 +5771,7 @@ ScriptedImporter:
         width: 17
         height: 39
       spriteId: bfbd27059b91432449224c2eadfe01dd
-    - name: Cat000_Frame_157
+    - name: Frame_157
       frameIndex: 157
       additiveSortOrder: 0
       cellRect:
@@ -5780,7 +5780,7 @@ ScriptedImporter:
         width: 20
         height: 38
       spriteId: 7119595868db9884aa1c17132ae78762
-    - name: Cat000_Frame_158
+    - name: Frame_158
       frameIndex: 158
       additiveSortOrder: 0
       cellRect:
@@ -5789,7 +5789,7 @@ ScriptedImporter:
         width: 23
         height: 39
       spriteId: f938ce013d111cb468a4a84c1cd4b77e
-    - name: Cat000_Frame_160
+    - name: Frame_160
       frameIndex: 160
       additiveSortOrder: 0
       cellRect:
@@ -5798,7 +5798,7 @@ ScriptedImporter:
         width: 62
         height: 24
       spriteId: c36f41adca0c2144bb8a2a9b8d0e3a0c
-    - name: Cat000_Frame_161
+    - name: Frame_161
       frameIndex: 161
       additiveSortOrder: 0
       cellRect:
@@ -5807,7 +5807,7 @@ ScriptedImporter:
         width: 60
         height: 25
       spriteId: 283fb59f34a4a474bb1c8af84f1787b3
-    - name: Cat000_Frame_162
+    - name: Frame_162
       frameIndex: 162
       additiveSortOrder: 0
       cellRect:
@@ -5816,7 +5816,7 @@ ScriptedImporter:
         width: 62
         height: 25
       spriteId: a306091115464944d9b9c564cc8c95fa
-    - name: Cat000_Frame_163
+    - name: Frame_163
       frameIndex: 163
       additiveSortOrder: 0
       cellRect:
@@ -5825,7 +5825,7 @@ ScriptedImporter:
         width: 61
         height: 25
       spriteId: 2216f06defa88b94c923a0755e1e5616
-    - name: Cat000_Frame_164
+    - name: Frame_164
       frameIndex: 164
       additiveSortOrder: 0
       cellRect:
@@ -5834,7 +5834,7 @@ ScriptedImporter:
         width: 62
         height: 24
       spriteId: 40cb07f6f5893f344a85709c88cb05f8
-    - name: Cat000_Frame_165
+    - name: Frame_165
       frameIndex: 165
       additiveSortOrder: 0
       cellRect:
@@ -5843,7 +5843,7 @@ ScriptedImporter:
         width: 61
         height: 23
       spriteId: 59f476c4d12300e48bb3f43beb4ed358
-    - name: Cat000_Frame_166
+    - name: Frame_166
       frameIndex: 166
       additiveSortOrder: 0
       cellRect:
@@ -5852,7 +5852,7 @@ ScriptedImporter:
         width: 55
         height: 22
       spriteId: 8244db50e71efcf48ade0e89ac3f61c2
-    - name: Cat000_Frame_167
+    - name: Frame_167
       frameIndex: 167
       additiveSortOrder: 0
       cellRect:
@@ -5861,7 +5861,7 @@ ScriptedImporter:
         width: 63
         height: 23
       spriteId: 726727dc983f5984486e8735ede258a1
-    - name: Cat000_Frame_168
+    - name: Frame_168
       frameIndex: 168
       additiveSortOrder: 0
       cellRect:
@@ -5870,7 +5870,7 @@ ScriptedImporter:
         width: 63
         height: 24
       spriteId: 5798fcd1f154dc942b11dd4040204137
-    - name: Cat000_Frame_170
+    - name: Frame_170
       frameIndex: 170
       additiveSortOrder: 0
       cellRect:
@@ -5879,7 +5879,7 @@ ScriptedImporter:
         width: 62
         height: 24
       spriteId: 974f879a6984a4e4a8341efd578892a6
-    - name: Cat000_Frame_171
+    - name: Frame_171
       frameIndex: 171
       additiveSortOrder: 0
       cellRect:
@@ -5888,7 +5888,7 @@ ScriptedImporter:
         width: 61
         height: 24
       spriteId: 3b196b4b601f7d5459ba19aa06a9ac36
-    - name: Cat000_Frame_172
+    - name: Frame_172
       frameIndex: 172
       additiveSortOrder: 0
       cellRect:
@@ -5897,7 +5897,7 @@ ScriptedImporter:
         width: 64
         height: 24
       spriteId: 915f114dca37c5140974e907b692f74c
-    - name: Cat000_Frame_173
+    - name: Frame_173
       frameIndex: 173
       additiveSortOrder: 0
       cellRect:
@@ -5906,7 +5906,7 @@ ScriptedImporter:
         width: 62
         height: 24
       spriteId: 6300a9b17dbb83c4295f78ace8873a38
-    - name: Cat000_Frame_174
+    - name: Frame_174
       frameIndex: 174
       additiveSortOrder: 0
       cellRect:
@@ -5915,7 +5915,7 @@ ScriptedImporter:
         width: 62
         height: 24
       spriteId: 51204a27211b3364786bf526323371d6
-    - name: Cat000_Frame_175
+    - name: Frame_175
       frameIndex: 175
       additiveSortOrder: 0
       cellRect:
@@ -5924,7 +5924,7 @@ ScriptedImporter:
         width: 61
         height: 24
       spriteId: 642505f63f426d642baab411430808a9
-    - name: Cat000_Frame_176
+    - name: Frame_176
       frameIndex: 176
       additiveSortOrder: 0
       cellRect:
@@ -5933,7 +5933,7 @@ ScriptedImporter:
         width: 56
         height: 24
       spriteId: bf5021ae3ebcfaa4d96af5c33c9e382c
-    - name: Cat000_Frame_177
+    - name: Frame_177
       frameIndex: 177
       additiveSortOrder: 0
       cellRect:
@@ -5942,7 +5942,7 @@ ScriptedImporter:
         width: 63
         height: 24
       spriteId: 35cc2c51505e8924db613a21a6ac11ae
-    - name: Cat000_Frame_178
+    - name: Frame_178
       frameIndex: 178
       additiveSortOrder: 0
       cellRect:
@@ -5951,7 +5951,7 @@ ScriptedImporter:
         width: 63
         height: 24
       spriteId: 552e33ba88e55bf4880de08304b631f8
-    - name: Cat000_Frame_180
+    - name: Frame_180
       frameIndex: 180
       additiveSortOrder: 0
       cellRect:
@@ -5960,7 +5960,7 @@ ScriptedImporter:
         width: 55
         height: 35
       spriteId: ff88103be612bc34fb463581d11c082a
-    - name: Cat000_Frame_181
+    - name: Frame_181
       frameIndex: 181
       additiveSortOrder: 0
       cellRect:
@@ -5969,7 +5969,7 @@ ScriptedImporter:
         width: 53
         height: 33
       spriteId: 43e68926a0658934fa99a9a82fa6f095
-    - name: Cat000_Frame_182
+    - name: Frame_182
       frameIndex: 182
       additiveSortOrder: 0
       cellRect:
@@ -5978,7 +5978,7 @@ ScriptedImporter:
         width: 51
         height: 33
       spriteId: dfcd6ae82ba4e454186f1c04cb04f3ca
-    - name: Cat000_Frame_183
+    - name: Frame_183
       frameIndex: 183
       additiveSortOrder: 0
       cellRect:
@@ -5987,7 +5987,7 @@ ScriptedImporter:
         width: 50
         height: 33
       spriteId: afbd3425cd120244386b4545a44778be
-    - name: Cat000_Frame_184
+    - name: Frame_184
       frameIndex: 184
       additiveSortOrder: 0
       cellRect:
@@ -5996,7 +5996,7 @@ ScriptedImporter:
         width: 51
         height: 35
       spriteId: d780c347044be4f47ace954debbd4c3e
-    - name: Cat000_Frame_185
+    - name: Frame_185
       frameIndex: 185
       additiveSortOrder: 0
       cellRect:
@@ -6005,7 +6005,7 @@ ScriptedImporter:
         width: 55
         height: 33
       spriteId: fa7dcabbef989774eb384fe4d2e135c5
-    - name: Cat000_Frame_186
+    - name: Frame_186
       frameIndex: 186
       additiveSortOrder: 0
       cellRect:
@@ -6014,7 +6014,7 @@ ScriptedImporter:
         width: 58
         height: 31
       spriteId: 82db35065464e024e8e5aa0dc6e322f9
-    - name: Cat000_Frame_187
+    - name: Frame_187
       frameIndex: 187
       additiveSortOrder: 0
       cellRect:
@@ -6023,7 +6023,7 @@ ScriptedImporter:
         width: 57
         height: 33
       spriteId: 8325e7a046cf8924b9ec2561c1830101
-    - name: Cat000_Frame_188
+    - name: Frame_188
       frameIndex: 188
       additiveSortOrder: 0
       cellRect:
@@ -6032,7 +6032,7 @@ ScriptedImporter:
         width: 56
         height: 35
       spriteId: 855eeb91799b2d34f9eceae7fc8445aa
-    - name: Cat000_Frame_190
+    - name: Frame_190
       frameIndex: 190
       additiveSortOrder: 0
       cellRect:
@@ -6041,7 +6041,7 @@ ScriptedImporter:
         width: 23
         height: 43
       spriteId: 242f291752d2d874db519812ec075cf6
-    - name: Cat000_Frame_191
+    - name: Frame_191
       frameIndex: 191
       additiveSortOrder: 0
       cellRect:
@@ -6050,7 +6050,7 @@ ScriptedImporter:
         width: 23
         height: 43
       spriteId: 9e3643e1737c3a245a81aa848a39773d
-    - name: Cat000_Frame_192
+    - name: Frame_192
       frameIndex: 192
       additiveSortOrder: 0
       cellRect:
@@ -6059,7 +6059,7 @@ ScriptedImporter:
         width: 21
         height: 43
       spriteId: 67631bfdb0b559144a6f40db94292ce9
-    - name: Cat000_Frame_193
+    - name: Frame_193
       frameIndex: 193
       additiveSortOrder: 0
       cellRect:
@@ -6068,7 +6068,7 @@ ScriptedImporter:
         width: 23
         height: 43
       spriteId: b2f866bcfb19ebd47b1b9e8cc894803a
-    - name: Cat000_Frame_194
+    - name: Frame_194
       frameIndex: 194
       additiveSortOrder: 0
       cellRect:
@@ -6077,7 +6077,7 @@ ScriptedImporter:
         width: 23
         height: 42
       spriteId: 089c32e3fe5fce04b82adee28aed290b
-    - name: Cat000_Frame_195
+    - name: Frame_195
       frameIndex: 195
       additiveSortOrder: 0
       cellRect:
@@ -6086,7 +6086,7 @@ ScriptedImporter:
         width: 21
         height: 39
       spriteId: 579dfd6bd71535c499331390018d2720
-    - name: Cat000_Frame_196
+    - name: Frame_196
       frameIndex: 196
       additiveSortOrder: 0
       cellRect:
@@ -6095,7 +6095,7 @@ ScriptedImporter:
         width: 19
         height: 40
       spriteId: 458e22f1dba2a2f4c99c912f2a8841b0
-    - name: Cat000_Frame_197
+    - name: Frame_197
       frameIndex: 197
       additiveSortOrder: 0
       cellRect:
@@ -6104,7 +6104,7 @@ ScriptedImporter:
         width: 21
         height: 43
       spriteId: 768387eee8f4d5444b21b0b45024ba1a
-    - name: Cat000_Frame_198
+    - name: Frame_198
       frameIndex: 198
       additiveSortOrder: 0
       cellRect:
@@ -6113,7 +6113,7 @@ ScriptedImporter:
         width: 23
         height: 42
       spriteId: 29dd389bf95e6384ab968218d69438d5
-    - name: Cat000_Frame_200
+    - name: Frame_200
       frameIndex: 200
       additiveSortOrder: 0
       cellRect:
@@ -6122,7 +6122,7 @@ ScriptedImporter:
         width: 23
         height: 46
       spriteId: 768d031633617094196bc78601023ff3
-    - name: Cat000_Frame_201
+    - name: Frame_201
       frameIndex: 201
       additiveSortOrder: 0
       cellRect:
@@ -6131,7 +6131,7 @@ ScriptedImporter:
         width: 23
         height: 44
       spriteId: c018ac3753a280b45b3acd030beeac62
-    - name: Cat000_Frame_202
+    - name: Frame_202
       frameIndex: 202
       additiveSortOrder: 0
       cellRect:
@@ -6140,7 +6140,7 @@ ScriptedImporter:
         width: 21
         height: 43
       spriteId: 76ca0ae240ba9dc4bb45078c883a27be
-    - name: Cat000_Frame_203
+    - name: Frame_203
       frameIndex: 203
       additiveSortOrder: 0
       cellRect:
@@ -6149,7 +6149,7 @@ ScriptedImporter:
         width: 23
         height: 42
       spriteId: cfd18dea709bda7448a6c2e605e77ca1
-    - name: Cat000_Frame_204
+    - name: Frame_204
       frameIndex: 204
       additiveSortOrder: 0
       cellRect:
@@ -6158,7 +6158,7 @@ ScriptedImporter:
         width: 23
         height: 44
       spriteId: cc50a2c2d7cf5e949b32d5ac13164a6c
-    - name: Cat000_Frame_205
+    - name: Frame_205
       frameIndex: 205
       additiveSortOrder: 0
       cellRect:
@@ -6167,7 +6167,7 @@ ScriptedImporter:
         width: 21
         height: 44
       spriteId: 21d5bd5533f633948962f7cb3e4a231b
-    - name: Cat000_Frame_206
+    - name: Frame_206
       frameIndex: 206
       additiveSortOrder: 0
       cellRect:
@@ -6176,7 +6176,7 @@ ScriptedImporter:
         width: 19
         height: 41
       spriteId: a804dc9c33044b646bc21f84ee0a2f80
-    - name: Cat000_Frame_207
+    - name: Frame_207
       frameIndex: 207
       additiveSortOrder: 0
       cellRect:
@@ -6185,7 +6185,7 @@ ScriptedImporter:
         width: 21
         height: 44
       spriteId: 201430cb7e946ef408414122f31aff04
-    - name: Cat000_Frame_208
+    - name: Frame_208
       frameIndex: 208
       additiveSortOrder: 0
       cellRect:
@@ -6194,7 +6194,7 @@ ScriptedImporter:
         width: 23
         height: 46
       spriteId: 053abdabbc3287245a9714006f994cbf
-    - name: Cat000_Frame_210
+    - name: Frame_210
       frameIndex: 210
       additiveSortOrder: 0
       cellRect:
@@ -6203,7 +6203,7 @@ ScriptedImporter:
         width: 23
         height: 43
       spriteId: 36ea624d3a8d551478beff4e577fc86b
-    - name: Cat000_Frame_211
+    - name: Frame_211
       frameIndex: 211
       additiveSortOrder: 0
       cellRect:
@@ -6212,7 +6212,7 @@ ScriptedImporter:
         width: 20
         height: 43
       spriteId: fa0244fb571812847a4e3533587ce01e
-    - name: Cat000_Frame_212
+    - name: Frame_212
       frameIndex: 212
       additiveSortOrder: 0
       cellRect:
@@ -6221,7 +6221,7 @@ ScriptedImporter:
         width: 16
         height: 43
       spriteId: 48824ed8dbdbc15439d8b7c9a2a0ff65
-    - name: Cat000_Frame_213
+    - name: Frame_213
       frameIndex: 213
       additiveSortOrder: 0
       cellRect:
@@ -6230,7 +6230,7 @@ ScriptedImporter:
         width: 20
         height: 43
       spriteId: b5e9c94f30b190f40be82394ad78b4a0
-    - name: Cat000_Frame_214
+    - name: Frame_214
       frameIndex: 214
       additiveSortOrder: 0
       cellRect:
@@ -6239,7 +6239,7 @@ ScriptedImporter:
         width: 20
         height: 42
       spriteId: abbebedc8fba7a14982edc6ad02661b1
-    - name: Cat000_Frame_215
+    - name: Frame_215
       frameIndex: 215
       additiveSortOrder: 0
       cellRect:
@@ -6248,7 +6248,7 @@ ScriptedImporter:
         width: 20
         height: 39
       spriteId: 34af7b89414e9f644986ad2f5ce2d00a
-    - name: Cat000_Frame_216
+    - name: Frame_216
       frameIndex: 216
       additiveSortOrder: 0
       cellRect:
@@ -6257,7 +6257,7 @@ ScriptedImporter:
         width: 16
         height: 40
       spriteId: 958f02eabaf42644a96275348831afb7
-    - name: Cat000_Frame_217
+    - name: Frame_217
       frameIndex: 217
       additiveSortOrder: 0
       cellRect:
@@ -6266,7 +6266,7 @@ ScriptedImporter:
         width: 20
         height: 43
       spriteId: 78611f6b99435d047a0db254aafa98c8
-    - name: Cat000_Frame_218
+    - name: Frame_218
       frameIndex: 218
       additiveSortOrder: 0
       cellRect:
@@ -6275,7 +6275,7 @@ ScriptedImporter:
         width: 23
         height: 42
       spriteId: 76edf3ab582956147b1e790f25e40a4d
-    - name: Cat000_Frame_220
+    - name: Frame_220
       frameIndex: 220
       additiveSortOrder: 0
       cellRect:
@@ -6284,7 +6284,7 @@ ScriptedImporter:
         width: 56
         height: 36
       spriteId: 288901b5c8ab98a4a92476f0e89772cc
-    - name: Cat000_Frame_221
+    - name: Frame_221
       frameIndex: 221
       additiveSortOrder: 0
       cellRect:
@@ -6293,7 +6293,7 @@ ScriptedImporter:
         width: 56
         height: 35
       spriteId: 4e6e58b6affb36a4ab5513445101e934
-    - name: Cat000_Frame_222
+    - name: Frame_222
       frameIndex: 222
       additiveSortOrder: 0
       cellRect:
@@ -6302,7 +6302,7 @@ ScriptedImporter:
         width: 54
         height: 34
       spriteId: 4e0b310413397b64d9291a655a1c8c5d
-    - name: Cat000_Frame_223
+    - name: Frame_223
       frameIndex: 223
       additiveSortOrder: 0
       cellRect:
@@ -6311,7 +6311,7 @@ ScriptedImporter:
         width: 54
         height: 35
       spriteId: 4411ba13e192d1b40a21c612236800ae
-    - name: Cat000_Frame_224
+    - name: Frame_224
       frameIndex: 224
       additiveSortOrder: 0
       cellRect:
@@ -6320,7 +6320,7 @@ ScriptedImporter:
         width: 53
         height: 34
       spriteId: 473cd28d4e3435542907bf9b4f26507c
-    - name: Cat000_Frame_225
+    - name: Frame_225
       frameIndex: 225
       additiveSortOrder: 0
       cellRect:
@@ -6329,7 +6329,7 @@ ScriptedImporter:
         width: 54
         height: 35
       spriteId: 1a591cfbfc53c164389fc5eab1f2d84a
-    - name: Cat000_Frame_226
+    - name: Frame_226
       frameIndex: 226
       additiveSortOrder: 0
       cellRect:
@@ -6338,7 +6338,7 @@ ScriptedImporter:
         width: 55
         height: 35
       spriteId: 2755a0489ac10ed4eb01e654c782d273
-    - name: Cat000_Frame_227
+    - name: Frame_227
       frameIndex: 227
       additiveSortOrder: 0
       cellRect:
@@ -6347,7 +6347,7 @@ ScriptedImporter:
         width: 58
         height: 35
       spriteId: 9a8db5c337876684d8b1067122b0e946
-    - name: Cat000_Frame_228
+    - name: Frame_228
       frameIndex: 228
       additiveSortOrder: 0
       cellRect:

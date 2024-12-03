@@ -88,7 +88,7 @@ namespace Unrez.BackyardShowdown
             _isMoving = _isMovingHorizontal || _isMovingVertical;
             if (_isMoving)
             {
-                _rb.drag = _pet.Profile.Acceleration;
+                _rb.linearDamping = _pet.Profile.Acceleration;
                 bool notWalking = _inputCrouch || _inputSprint;
                 if (notWalking)
                 {
@@ -104,7 +104,7 @@ namespace Unrez.BackyardShowdown
                             _isCrouched = false;
                             OnCrouchChangedEvent?.Invoke(_isCrouched);
                         }
-                        _force = _pet.Profile.SpeedSprint * _rb.drag;
+                        _force = _pet.Profile.SpeedSprint * _rb.linearDamping;
                     }
                     else if (_inputCrouch)
                     {
@@ -118,7 +118,7 @@ namespace Unrez.BackyardShowdown
                             _isCrouched = true;
                             OnCrouchChangedEvent?.Invoke(_isCrouched);
                         }
-                        _force = _pet.Profile.SpeedCrouch * _rb.drag;
+                        _force = _pet.Profile.SpeedCrouch * _rb.linearDamping;
                     }
                 }
                 else
@@ -133,7 +133,7 @@ namespace Unrez.BackyardShowdown
                         _isSprinting = false;
                         OnSprintChangedEvent?.Invoke(_isSprinting);
                     }
-                    _force = _pet.Profile.Speed * _rb.drag; // walking
+                    _force = _pet.Profile.Speed * _rb.linearDamping; // walking
                 }
                 //Direction
                 _currentDirection = _lastDirection = Vector2.up * _movementInput.y + Vector2.right * _movementInput.x;
@@ -160,7 +160,7 @@ namespace Unrez.BackyardShowdown
                 {
                     _lastDirection = _currentDirection;
                     _currentDirection = Vector2.zero;
-                    _rb.drag = _pet.Profile.Deceleration; //Set Deceleration
+                    _rb.linearDamping = _pet.Profile.Deceleration; //Set Deceleration
                     //_force = _pet.Profile.SpeedSprint * _rb.drag;
                     //_rb.AddForce(Vector2.zero, ForceMode2D.Force);
                     OnDirectionChangedEvent?.Invoke(_currentDirection);
@@ -192,7 +192,7 @@ namespace Unrez.BackyardShowdown
         {
             if (newLinearDrag != -1)
             {
-                _rb.drag = 0;
+                _rb.linearDamping = 0;
             }
             Vector2 direction;
             if (useNewDirection)
