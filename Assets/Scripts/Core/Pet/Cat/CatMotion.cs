@@ -1,4 +1,6 @@
 
+using System;
+
 namespace Unrez.BackyardShowdown
 {
     public class CatMotion : PetMotion

@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 [InitializeOnLoad]
 public class PlayBootstrap
 {
+    [SerializeField]
+    private static bool _online = false;
     static PlayBootstrap()
     {
         EditorApplication.playModeStateChanged += OnPlayModeChanged;
@@ -14,12 +16,14 @@ public class PlayBootstrap
 
     static void OnPlayModeChanged(PlayModeStateChange state)
     {
-        
-        if (state == PlayModeStateChange.EnteredPlayMode)
+        if (_online)
         {
-            Debug.Log("Entering");
-            string scenePath = SceneUtility.GetScenePathByBuildIndex(0);
-            EditorSceneManager.playModeStartScene = AssetDatabase.LoadAssetAtPath<SceneAsset>(scenePath);
+            if (state == PlayModeStateChange.EnteredPlayMode)
+            {
+                Debug.Log("Entering");
+                string scenePath = SceneUtility.GetScenePathByBuildIndex(0);
+                EditorSceneManager.playModeStartScene = AssetDatabase.LoadAssetAtPath<SceneAsset>(scenePath);
+            }
         }
     }
 }

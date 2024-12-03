@@ -144,7 +144,7 @@ namespace Unrez.BackyardShowdown
                 if (_isMovingHorizontal)
                 {
                     _petSide = _movementInput.x > 0 ? PetSide.East : PetSide.West;
-                    _pet.Flip(_petSide);
+                    //_pet.Flip(_petSide);
                 }
                 if (_lastPetSide != _petSide)
                 {
@@ -211,9 +211,18 @@ namespace Unrez.BackyardShowdown
             return _isMoving;
         }
 
+        public bool IsSprinting()
+        {
+            return _isSprinting;
+        }
+
         public Vector2 GetDirection()
         {
             return _lastDirection;
+        }
+        public PetSide GetPetSide()
+        {
+            return _petSide;
         }
 
         public void SetMovementInput(Vector2 movementInput)

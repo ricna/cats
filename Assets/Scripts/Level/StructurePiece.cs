@@ -31,6 +31,7 @@ namespace Unrez.BackyardShowdown
             _spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
+        /*
         private void OnCollisionEnter2D(Collision2D collision)
         {
             Debug.Log($"OnCollisionEnter2D: {collision.gameObject.name}");
@@ -42,10 +43,14 @@ namespace Unrez.BackyardShowdown
             {
                 _structure.ChangeColor(new Color(0.5f, 0.5f, 0.5f));
             }
-        }
+        }*/
 
         public void UpdateSprite(Sprite sprite)
         {
+            if (_spriteRenderer == null)
+            {
+                _spriteRenderer = GetComponent<SpriteRenderer>();
+            }
             _spriteRenderer.sprite = sprite;
         }
 

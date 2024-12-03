@@ -201,6 +201,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GlobalObjectIdHash: 170000700
   InScenePlacedSourceGlobalObjectIdHash: 4199737136
+  DeferredDespawnTick: 0
+  Ownership: 1
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
@@ -208,6 +210,8 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!114 &3430128125790000280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,6 +224,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80d7c879794dfda4687da0e400131852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkRigidbodyBaseExpanded: 0
+  UseRigidBodyForMotion: 0
+  AutoUpdateKinematicState: 1
+  AutoSetKinematicOnDespawn: 1
 --- !u!114 &-5375956426882729271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,6 +241,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 803ac51dbc1327b43aac9c905d9d5c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 0
+  AuthorityMode: 0
+  TickSyncChildren: 0
   UseUnreliableDeltas: 0
   SyncPositionX: 1
   SyncPositionY: 1
@@ -249,6 +262,7 @@ MonoBehaviour:
   UseQuaternionCompression: 0
   UseHalfFloatPrecision: 0
   InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
   Interpolate: 1
   SlerpPosition: 0
 --- !u!114 &2733753823464567530
@@ -263,6 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f1fb9ea26d7df344a1b9608678e5031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   TransitionStateInfoList: []
   m_Animator: {fileID: 2160832692526638247}
 --- !u!114 &311459463207981573
@@ -277,6 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0554dece81d442343b29a0a9dccc1ecb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   _inputReader: {fileID: 11400000, guid: 957eac0e969caf64caedbcddd7a11d3b, type: 2}
 --- !u!114 &7109341369543300037
 MonoBehaviour:
@@ -290,6 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38fbebbfb5cf72b41abd94dae73eaf5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   <Profile>k__BackingField: {fileID: 0}
   _petNetInfo:
     OwnerId: 0
@@ -300,6 +317,8 @@ MonoBehaviour:
   _spriteRenderBody: {fileID: 5698381062905369433}
   _transformParent: {fileID: 0}
   _colliderOffset: {x: 0, y: 1.2}
+  _ratioFOVLightInner: 4
+  _ratioFOVLightOuter: 8
   _targetFOV: 0
   _currentFOV: 0
   _spotDetectedAvailable: 0
@@ -317,6 +336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25a4ea511a1ede14da74b53d898fdcee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   _transform: {fileID: 3113102540206626565}
   _rb: {fileID: 6407681758990779862}
   _animator: {fileID: 2160832692526638247}
@@ -341,8 +361,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a80c00412bd9094e91cec25241b4624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   _motion: {fileID: 3687823899086678351}
-  _particleDustTrail: {fileID: 1108508029905673707}
+  _psFootsteps: {fileID: 0}
 --- !u!114 &5024310094305606197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,6 +376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efc6f9978df1d614599f14d38d84bddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   _isTakingHit: 0
 --- !u!114 &-5177556667852182973
 MonoBehaviour:
@@ -368,6 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 544161b719e50254bac2edb952545422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   _abilities: []
 --- !u!1 &8682436550340605258
 GameObject:
@@ -464,17 +487,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3113102540206626565}
     m_Modifications:
+    - target: {fileID: 4095143722328331798, guid: f993c17142eddb748be7cd1b41338bbe, type: 3}
+      propertyPath: ShapeModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4394636857800614876, guid: f993c17142eddb748be7cd1b41338bbe, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 170000700
       objectReference: {fileID: 0}
     - target: {fileID: 7282226186979117272, guid: f993c17142eddb748be7cd1b41338bbe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2.91
       objectReference: {fileID: 0}
     - target: {fileID: 7282226186979117272, guid: f993c17142eddb748be7cd1b41338bbe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.8
+      value: 2.78
       objectReference: {fileID: 0}
     - target: {fileID: 7282226186979117272, guid: f993c17142eddb748be7cd1b41338bbe, type: 3}
       propertyPath: m_LocalPosition.z
@@ -517,11 +544,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f993c17142eddb748be7cd1b41338bbe, type: 3}
---- !u!198 &1108508029905673707 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4095143722328331798, guid: f993c17142eddb748be7cd1b41338bbe, type: 3}
-  m_PrefabInstance: {fileID: 4014653036897963005}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5960869837362103077 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7282226186979117272, guid: f993c17142eddb748be7cd1b41338bbe, type: 3}

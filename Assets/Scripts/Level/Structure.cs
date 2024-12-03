@@ -31,7 +31,13 @@ namespace Unrez.BackyardShowdown
                 caster2D.sortingLayer; ;
             }
             */
+            LoadStructureData();
 
+        }
+
+        [ContextMenu("Load Data")]
+        private void LoadStructureData()
+        {
             _pieces = GetComponentsInChildren<StructurePiece>();
             foreach (StructurePiece piece in _pieces)
             {
@@ -72,7 +78,6 @@ namespace Unrez.BackyardShowdown
             _color = _structureData.Color;
             UpdateColor();
         }
-
         public void ChangeColor(Color c)
         {
             _color = c;

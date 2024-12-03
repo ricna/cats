@@ -8,7 +8,7 @@ namespace Unrez.BackyardShowdown
         [SerializeField]
         private CatMotion _motion;
         [SerializeField]
-        private ParticleSystem _particleDustTrail;
+        private ParticleSystem _psFootsteps;
 
         private void Awake()
         {
@@ -35,8 +35,44 @@ namespace Unrez.BackyardShowdown
             {
                 ToggleDustTrail(enable);//display immediately
                 ToggleDustTrailServerRpc(enable);//call to display for others
-                
             }
+        }
+
+        private void LateUpdate()
+        {
+            if (!_motion.IsSprinting())
+            {
+                return;
+            }
+            float angle = 0;
+            switch (_motion.GetPetSide())
+            {
+                case PetSide.North:
+                    angle = 0;
+                    break;
+                case PetSide.NorthEast:
+                    angle = 180;
+                    break;
+                case PetSide.East:
+                    angle = 90;
+                    break;
+                case PetSide.SouthEast:
+                    angle = -90;
+                    break;
+                case PetSide.South:
+                    angle = -90;
+                    break;
+                case PetSide.SouthWest:
+                    angle = -90;
+                    break;
+                case PetSide.West:
+                    angle = -90;
+                    break;
+                case PetSide.NorthWest:
+                    angle = -90;
+                    break;
+            }
+            _psFootsteps.transform.rotation = Quaternion.Euler(0, 0, angle);
         }
 
         [ServerRpc(RequireOwnership = false)]
@@ -59,13 +95,13 @@ namespace Unrez.BackyardShowdown
         {
             if (enable)
             {
-                _particleDustTrail.Play();
+                _psFootsteps.Play();
             }
             else
             {
-                if (_particleDustTrail.isPlaying)
+                if (_psFootsteps.isPlaying)
                 {
-                    _particleDustTrail.Stop();
+                    _psFootsteps.Stop();
                 }
             }
         }
