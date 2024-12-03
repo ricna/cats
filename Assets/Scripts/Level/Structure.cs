@@ -15,24 +15,9 @@ namespace Unrez.BackyardShowdown
 
         private Color _color;
         
-        /*
-        private ShadowCaster2D[] _shadowCasters;
-        [SerializeField]
-        private SortingLayer _layersToCast;
-        */
-
         private void Start()
         {
-            /*
-            //_lasyerToCast = LayerMask.NameToLayer("")
-            _shadowCasters = GetComponentsInChildren<ShadowCaster2D>();
-            foreach (ShadowCaster2D caster2D in _shadowCasters)
-            {
-                caster2D.sortingLayer; ;
-            }
-            */
             LoadStructureData();
-
         }
 
         [ContextMenu("Load Data")]
