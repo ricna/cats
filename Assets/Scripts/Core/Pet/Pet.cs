@@ -32,6 +32,8 @@ namespace Unrez.BackyardShowdown
         protected PetCamera _petCamera;
         protected PetMap _petMap;
         protected PetLight _petLight;
+        protected PetTail _petTail;
+
         protected bool _minimapEnabled = false;
 
         [Header("References")]
@@ -43,7 +45,8 @@ namespace Unrez.BackyardShowdown
         [Header("Settings")]
         protected float _fovSpeed = 1;
         [SerializeField]
-        private Vector2 _colliderOffset = new Vector2(0, 1.2f);
+        private float _tailOffset;
+        private Vector2 _colliderOffset;
         [SerializeField]
         private float _ratioFOVLightInner = 4;
         [SerializeField]
@@ -65,7 +68,9 @@ namespace Unrez.BackyardShowdown
             _petMotion = GetComponent<PetMotion>();
             _petAbilities = GetComponent<PetAbilities>();
             _petHealth = GetComponent<PetHealth>();
+            _petTail = GetComponentInChildren<PetTail>();
             _collider = GetComponent<Collider2D>();
+            _colliderOffset = _collider.offset;
         }
 
         protected virtual void OnTriggerEnter2D(Collider2D collision) { }
@@ -136,6 +141,7 @@ namespace Unrez.BackyardShowdown
 
             //Light
             _petLight = (PetLight)FindAnyObjectByType(typeof(PetLight));
+
             _petLight.SetUp(this, Profile, _colliderOffset);
 
             //Start FOV
@@ -182,7 +188,14 @@ namespace Unrez.BackyardShowdown
                     _light.pointLightOuterRadius = _currentFOV * 4;
                 }*/
             }
+
         }
+
+        public PetTail GetTail()
+        {
+            return _petTail;
+        }
+
 
         public Vector2 GetCenter()
         {

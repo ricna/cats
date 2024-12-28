@@ -7,13 +7,33 @@ namespace Unrez.BackyardShowdown
     {
         [SerializeField]
         protected Light2D _light;
+        [SerializeField]
+        private PetTail _tail;
+        [Header("Debug")]
+        [SerializeField]
+        protected Pet _pet;
+        [SerializeField]
+        protected bool _isCat = false;
 
         public void SetUp(Pet pet, PetProfile profile, Vector2 _colliderOffset)
         {
+            _pet = pet;
+            _isCat = _pet is Cat;
+            _tail = _pet.GetTail();
+            if (!_isCat)
+            {
+                _light.gameObject.transform.SetParent(_tail.transform);
+                _light.gameObject.transform.localPosition = Vector2.zero;
+            }
+            else
+            {
+                _light.gameObject.transform.SetParent(_pet.transform);
+                _light.gameObject.transform.localPosition = _colliderOffset;
+            }
+
             _light.name = $"PetLight [{profile.name}]";
             _light.enabled = true;
-            _light.gameObject.transform.SetParent(pet.transform);
-            _light.gameObject.transform.localPosition = _colliderOffset;
+
             _light.lightType = profile.PetView.LightType;
             _light.color = profile.PetView.LightColor;
             _light.pointLightInnerRadius = profile.PetView.LightRadius.x;

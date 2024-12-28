@@ -11,6 +11,7 @@ public class PlayBootstrap
     private static bool _online = true;
     static PlayBootstrap()
     {
+        Debug.Log($"PlayBootstrap");
         EditorApplication.playModeStateChanged += OnPlayModeChanged;
     }
 
@@ -18,11 +19,14 @@ public class PlayBootstrap
     {
         if (_online)
         {
+            Debug.Log($"PlayBootstrap.OnPlayModeChanged {state}");
+
             if (state == PlayModeStateChange.EnteredPlayMode)
             {
                 Debug.Log("Entering");
                 string scenePath = SceneUtility.GetScenePathByBuildIndex(0);
                 EditorSceneManager.playModeStartScene = AssetDatabase.LoadAssetAtPath<SceneAsset>(scenePath);
+                EditorApplication.playModeStateChanged -= OnPlayModeChanged;
             }
         }
     }
