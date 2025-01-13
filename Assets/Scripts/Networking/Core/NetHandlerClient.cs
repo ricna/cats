@@ -28,7 +28,7 @@ namespace Unrez.Networking
         {
             try
             {
-                _joinAllocation = await Relay.Instance.JoinAllocationAsync(joinCode);
+                _joinAllocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
                 Debug.Log($"<color=cyan>JoinGame with code:{joinCode}</color>");
             }
             catch (Exception ex)
@@ -37,7 +37,7 @@ namespace Unrez.Networking
                 return;
             }
             UnityTransport unityTransport = NetworkManager.Singleton.GetComponent<UnityTransport>();
-            RelayServerData relayServerData = new RelayServerData(_joinAllocation, _connectionType);
+            RelayServerData relayServerData = AllocationUtils.ToRelayServerData(_joinAllocation, _connectionType);
             unityTransport.SetRelayServerData(relayServerData);
             NetworkManager.Singleton.StartClient();
         }

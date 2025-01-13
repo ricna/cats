@@ -40,7 +40,7 @@ namespace Unrez.Networking
         {
             try
             {
-                _allocation = await Relay.Instance.CreateAllocationAsync(_maxPlayers);
+                _allocation = await RelayService.Instance.CreateAllocationAsync(_maxPlayers);
             }
             catch (Exception ex)
             {
@@ -50,7 +50,7 @@ namespace Unrez.Networking
             //JoinCode
             try
             {
-                _joinCode = await Relay.Instance.GetJoinCodeAsync(_allocation.AllocationId);
+                _joinCode = await RelayService.Instance.GetJoinCodeAsync(_allocation.AllocationId);
                 Debug.Log($"<color=magenta>Allocation created with JoinCode:{_joinCode}</color>");
             }
             catch (Exception ex)
@@ -61,7 +61,7 @@ namespace Unrez.Networking
 
             //Transport
             UnityTransport unityTransport = NetworkManager.Singleton.GetComponent<UnityTransport>();
-            RelayServerData relayServerData = new RelayServerData(_allocation, _connectionType);
+            RelayServerData relayServerData = AllocationUtils.ToRelayServerData(_allocation, _connectionType);
             unityTransport.SetRelayServerData(relayServerData);
 
             //Lobby
@@ -75,7 +75,7 @@ namespace Unrez.Networking
                         "JoinCode", new DataObject(visibility:DataObject.VisibilityOptions.Member, value:_joinCode)
                     }
                 };
-                _lobby = await Unity.Services.Lobbies.Lobbies.Instance.CreateLobbyAsync(_userName, _maxPlayers, createLobbyOptions);
+                _lobby = await LobbyService.Instance.CreateLobbyAsync(_userName, _maxPlayers, createLobbyOptions);
                 StartCoroutine(HeartbeatLobby(15));
             }
             catch (LobbyServiceException lobbyException)
@@ -97,7 +97,7 @@ namespace Unrez.Networking
             WaitForSecondsRealtime delay = new WaitForSecondsRealtime(heartbeat);
             while (true)
             {
-                Unity.Services.Lobbies.Lobbies.Instance.SendHeartbeatPingAsync(_lobby.Id);
+                LobbyService.Instance.SendHeartbeatPingAsync(_lobby.Id);
                 yield return delay;
             }
         }
