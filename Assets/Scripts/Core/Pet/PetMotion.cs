@@ -15,6 +15,12 @@ namespace Unrez.BackyardShowdown
         protected Rigidbody2D _rb;
         [SerializeField]
         protected Animator _animator;
+        [SerializeField]
+        protected SpriteRenderer _spriteRenderBody;
+
+        [Header("Sprite Rotation")]
+        [SerializeField]
+        private float _rotationSpeed = 10f;
 
         [Header("Debugs")]
         protected Vector2 _movementInput;
@@ -22,8 +28,6 @@ namespace Unrez.BackyardShowdown
         protected float _force;
         [SerializeField]
         protected PetSide _petSide;
-        [SerializeField]
-        protected PetSide _lastPetSide;
         [SerializeField]
         protected bool _isMoving;
         [SerializeField]
@@ -40,7 +44,14 @@ namespace Unrez.BackyardShowdown
         protected Vector2 _currentDirection;
         protected Vector2 _lastDirection;
 
-        //Events
+        // Variáveis de Rede Sincronizadas
+        private readonly NetworkVariable<PetSide> _netPetSide = new NetworkVariable<PetSide>(PetSide.None);
+        private readonly NetworkVariable<Vector2> _netDirection = new NetworkVariable<Vector2>(Vector2.zero);
+
+        // Propriedade pública para expor a variável de rede.
+        public NetworkVariable<Vector2> NetDirection => _netDirection;
+
+        // Events
         public event Action<Vector2> OnDirectionChangedEvent;
         public event Action<bool> OnSprintChangedEvent;
         public event Action<bool> OnCrouchChangedEvent;
@@ -48,35 +59,73 @@ namespace Unrez.BackyardShowdown
         protected virtual void Awake()
         {
             _pet = GetComponent<Pet>();
+            if (_transform == null)
+            {
+                _transform = transform;
+            }
+        }
+
+        public override void OnNetworkSpawn()
+        {
+            base.OnNetworkSpawn();
+            _netPetSide.OnValueChanged += OnPetSideChanged;
+            _netDirection.OnValueChanged += OnDirectionChanged;
+        }
+
+        public override void OnNetworkDespawn()
+        {
+            base.OnNetworkDespawn();
+            _netPetSide.OnValueChanged -= OnPetSideChanged;
+            _netDirection.OnValueChanged -= OnDirectionChanged;
+        }
+
+        private void OnPetSideChanged(PetSide oldSide, PetSide newSide)
+        {
+            if (!IsOwner)
+            {
+                _petSide = newSide;
+                Animate();
+            }
+        }
+
+        private void OnDirectionChanged(Vector2 oldDirection, Vector2 newDirection)
+        {
+            if (!IsOwner)
+            {
+                _currentDirection = newDirection;
+            }
         }
 
         protected virtual void FixedUpdate()
         {
             if (!IsOwner)
             {
+                UpdateSpriteRotation();
+                Animate();
                 return;
             }
             if (_pet == null)
             {
                 return;
             }
-            CheckMotionInputs();
+
+            ProcessLocalInputs();
+            UpdateSpriteRotation();
             Animate();
+
+            UpdateNetworkStateServerRpc(_movementInput, _petSide);
         }
 
-        public virtual bool CanSprint()
+        [ServerRpc]
+        private void UpdateNetworkStateServerRpc(Vector2 movementInput, PetSide petSide)
         {
-            return true;
+            _netDirection.Value = movementInput;
+            _netPetSide.Value = petSide;
         }
 
-        public virtual bool CanCrouch()
+        private void ProcessLocalInputs()
         {
-            return true;
-        }
-
-        private void CheckMotionInputs()
-        {
-            if (!CanSprint() && !CanCrouch())
+            if (!_pet.CanSprint() && !_pet.CanCrouch())
             {
                 _isSprinting = false;
                 _isCrouched = false;
@@ -86,97 +135,119 @@ namespace Unrez.BackyardShowdown
             _isMovingHorizontal = _movementInput.x != 0;
             _isMovingVertical = _movementInput.y != 0;
             _isMoving = _isMovingHorizontal || _isMovingVertical;
+
             if (_isMoving)
             {
                 _rb.linearDamping = _pet.Profile.Acceleration;
-                bool notWalking = _inputCrouch || _inputSprint;
-                if (notWalking)
+                HandleMovementState();
+
+                _currentDirection = _movementInput;
+                if (_currentDirection != Vector2.zero)
                 {
-                    if (_inputSprint)
-                    {
-                        if (!_isSprinting)
-                        {
-                            _isSprinting = true;
-                            OnSprintChangedEvent?.Invoke(_isSprinting);
-                        }
-                        if (_isCrouched)
-                        {
-                            _isCrouched = false;
-                            OnCrouchChangedEvent?.Invoke(_isCrouched);
-                        }
-                        _force = _pet.Profile.SpeedSprint * _rb.linearDamping;
-                    }
-                    else if (_inputCrouch)
-                    {
-                        if (_isSprinting)
-                        {
-                            _isSprinting = false;
-                            OnSprintChangedEvent?.Invoke(_isSprinting);
-                        }
-                        if (!_isCrouched)
-                        {
-                            _isCrouched = true;
-                            OnCrouchChangedEvent?.Invoke(_isCrouched);
-                        }
-                        _force = _pet.Profile.SpeedCrouch * _rb.linearDamping;
-                    }
+                    _lastDirection = _currentDirection;
                 }
-                else
-                {
-                    if (_isCrouched)
-                    {
-                        _isCrouched = false;
-                        OnCrouchChangedEvent?.Invoke(_isCrouched);
-                    }
-                    if (_isSprinting)
-                    {
-                        _isSprinting = false;
-                        OnSprintChangedEvent?.Invoke(_isSprinting);
-                    }
-                    _force = _pet.Profile.Speed * _rb.linearDamping; // walking
-                }
-                //Direction
-                _currentDirection = _lastDirection = Vector2.up * _movementInput.y + Vector2.right * _movementInput.x;
-                if (_isMovingVertical)
-                {
-                    _petSide = _movementInput.y > 0 ? PetSide.North : PetSide.South;
-                }
-                if (_isMovingHorizontal)
-                {
-                    _petSide = _movementInput.x > 0 ? PetSide.East : PetSide.West;
-                    //_pet.Flip(_petSide);
-                }
-                if (_lastPetSide != _petSide)
-                {
-                    _lastPetSide = _petSide;
-                }
-                _pet.Flip(_petSide);
+
+                UpdatePetSide();
                 _rb.AddForce(_force * _currentDirection, ForceMode2D.Force);
                 OnDirectionChangedEvent?.Invoke(_currentDirection);
             }
             else
             {
+                _isMoving = false;
                 if (_currentDirection != Vector2.zero)
                 {
-                    _lastDirection = _currentDirection;
                     _currentDirection = Vector2.zero;
-                    _rb.linearDamping = _pet.Profile.Deceleration; //Set Deceleration
-                    //_force = _pet.Profile.SpeedSprint * _rb.drag;
-                    //_rb.AddForce(Vector2.zero, ForceMode2D.Force);
+                    _rb.linearDamping = _pet.Profile.Deceleration;
                     OnDirectionChangedEvent?.Invoke(_currentDirection);
                 }
+                _petSide = PetSide.None;
+            }
+        }
 
+        private void HandleMovementState()
+        {
+            if (_inputSprint)
+            {
+                if (!_isSprinting)
+                {
+                    _isSprinting = true;
+                    OnSprintChangedEvent?.Invoke(true);
+                }
+                if (_isCrouched)
+                {
+                    _isCrouched = false;
+                    OnCrouchChangedEvent?.Invoke(false);
+                }
+                _force = _pet.Profile.SpeedSprint * _rb.linearDamping;
+            }
+            else if (_inputCrouch)
+            {
                 if (_isSprinting)
                 {
                     _isSprinting = false;
-                    OnSprintChangedEvent?.Invoke(_isSprinting);
+                    OnSprintChangedEvent?.Invoke(false);
                 }
-
-                if (_inputCrouch != _isCrouched)
+                if (!_isCrouched)
                 {
-                    _isCrouched = _inputCrouch;
-                    OnCrouchChangedEvent?.Invoke(_isCrouched);
+                    _isCrouched = true;
+                    OnCrouchChangedEvent?.Invoke(true);
                 }
+                _force = _pet.Profile.SpeedCrouch * _rb.linearDamping;
+            }
+            else
+            {
+                if (_isCrouched)
+                {
+                    _isCrouched = false;
+                    OnCrouchChangedEvent?.Invoke(false);
+                }
+                if (_isSprinting)
+                {
+                    _isSprinting = false;
+                    OnSprintChangedEvent?.Invoke(false);
+                }
+                _force = _pet.Profile.Speed * _rb.linearDamping;
+            }
+        }
+
+        private void UpdatePetSide()
+        {
+            if (_isMovingVertical && Mathf.Abs(_movementInput.y) >= Mathf.Abs(_movementInput.x))
+            {
+                _petSide = _movementInput.y > 0 ? PetSide.North : PetSide.South;
+            }
+            else if (_isMovingHorizontal && Mathf.Abs(_movementInput.x) > Mathf.Abs(_movementInput.y))
+            {
+                _petSide = _movementInput.x > 0 ? PetSide.East : PetSide.West;
+            }
+
+            if (_isMovingVertical && _isMovingHorizontal)
+            {
+                if (_movementInput.x > 0 && _movementInput.y > 0) _petSide = PetSide.NorthEast;
+                else if (_movementInput.x < 0 && _movementInput.y > 0) _petSide = PetSide.NorthWest;
+                else if (_movementInput.x > 0 && _movementInput.y < 0) _petSide = PetSide.SouthEast;
+                else if (_movementInput.x < 0 && _movementInput.y < 0) _petSide = PetSide.SouthWest;
+            }
+        }
+
+        private void UpdateSpriteRotation()
+        {
+            Vector2 directionToRotate;
+
+            if (IsOwner)
+            {
+                directionToRotate = _isMoving ? _movementInput : _lastDirection;
+            }
+            else
+            {
+                directionToRotate = _netDirection.Value;
+            }
+
+            if (directionToRotate != Vector2.zero)
+            {
+                float angle = Mathf.Atan2(directionToRotate.y, directionToRotate.x) * Mathf.Rad2Deg;
+                Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
+                _spriteRenderBody.transform.rotation = Quaternion.Slerp(_spriteRenderBody.transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
             }
         }
 
@@ -185,7 +256,7 @@ namespace Unrez.BackyardShowdown
             _animator.SetBool(AnimatorParameter.IS_MOVING, _isMoving);
             _animator.SetBool(AnimatorParameter.IS_CROUCHED, _isCrouched);
             _animator.SetBool(AnimatorParameter.IS_SPRINTING, _isSprinting);
-            _animator.SetFloat(AnimatorParameter.PET_SIDE, (int)_lastPetSide);
+            _animator.SetFloat(AnimatorParameter.PET_SIDE, (int)_petSide);
         }
 
         public virtual void ApplyImpulse(float impulse, float newLinearDrag = -1, bool useNewDirection = false, float newDirX = 0, float newDirY = 0)
@@ -220,6 +291,7 @@ namespace Unrez.BackyardShowdown
         {
             return _lastDirection;
         }
+
         public PetSide GetPetSide()
         {
             return _petSide;
@@ -232,7 +304,7 @@ namespace Unrez.BackyardShowdown
 
         public virtual void SetSprintInput(bool sprint)
         {
-            if (!CanSprint())
+            if (!_pet.CanSprint())
             {
                 sprint = false;
             }
@@ -241,7 +313,7 @@ namespace Unrez.BackyardShowdown
 
         public virtual void SetCrouchInput(bool crouch)
         {
-            if (!CanCrouch())
+            if (!_pet.CanCrouch())
             {
                 crouch = false;
             }

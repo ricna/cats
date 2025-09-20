@@ -22,6 +22,7 @@ namespace Unrez.BackyardShowdown
         public PetProfile Profile { get; private set; }
 
         protected Animator _animator;
+        [SerializeField]
         protected Collider2D _collider;
 
         [SerializeField]
@@ -29,9 +30,12 @@ namespace Unrez.BackyardShowdown
         protected PetHealth _petHealth;
         protected PetMotion _petMotion;
         protected PetAbilities _petAbilities;
+
+        // Referências cacheáveis para objetos da cena
         protected PetCamera _petCamera;
         protected PetMap _petMap;
         protected PetLight _petLight;
+
         protected PetTail _petTail;
 
         protected bool _minimapEnabled = false;
@@ -71,6 +75,11 @@ namespace Unrez.BackyardShowdown
             _petTail = GetComponentInChildren<PetTail>();
             _collider = GetComponent<Collider2D>();
             _colliderOffset = _collider.offset;
+
+            // Cachea as referências de objetos da cena em Awake, que é chamado antes de OnNetworkSpawn.
+            _petMap = FindFirstObjectByType<PetMap>();
+            _petCamera = FindFirstObjectByType<PetCamera>();
+            _petLight = FindAnyObjectByType<PetLight>();
         }
 
         protected virtual void OnTriggerEnter2D(Collider2D collision) { }
@@ -94,8 +103,6 @@ namespace Unrez.BackyardShowdown
             Debug.Log($"OwnerClientId:{OwnerClientId}");
             PlayerSpawner playerSpawner = FindAnyObjectByType<PlayerSpawner>();
 
-            //Load Character
-            //_idxPet = IsHost ? 0 : NetHandlerClient.Instance.GetNextId();
             Profile = PetsContainer.Instance.Pets[OwnerClientId];
 
             if (playerSpawner.TestCatOnly)
@@ -114,7 +121,6 @@ namespace Unrez.BackyardShowdown
             _petNetInfo.OwnerId = OwnerClientId;
             _petNetInfo.Color = Profile.Color;
             _petNetInfo.Name = $"[PET] {Profile.name}_00{OwnerClientId}";
-            //OnPetProfileLoaded?.Invoke(); //TODO - Share info with others? Abilities?
             name = _petNetInfo.Name;
             _spriteRenderBody.color = _petNetInfo.Color;
         }
@@ -125,29 +131,16 @@ namespace Unrez.BackyardShowdown
             {
                 return;
             }
-            //Audio
             this.gameObject.AddComponent<AudioListener>();
 
-            //Map
-            _petMap = FindFirstObjectByType<PetMap>();
             _minimapEnabled = false;
             ToggleMinimap();
 
-            //Camera
-            _petCamera = FindFirstObjectByType<PetCamera>();
             _petCamera.SetupCamera(gameObject, gameObject);
-            //_petCamera.SetOrthoSize(64, 0f);
-            //_currentFOV = 64;
-
-            //Light
-            _petLight = (PetLight)FindAnyObjectByType(typeof(PetLight));
-
             _petLight.SetUp(this, Profile, _colliderOffset);
 
-            //Start FOV
             _targetFOV = _currentFOV = Profile.PetView.OrthoSize;
             _petCamera.SetOrthoSize(_currentFOV);
-
         }
 
         protected virtual void Update()
@@ -172,30 +165,27 @@ namespace Unrez.BackyardShowdown
                 {
                     _currentFOV = _targetFOV;
                 }
+
+                Vector2 lightRadius = new Vector2(_currentFOV * _ratioFOVLightInner, _currentFOV * _ratioFOVLightOuter);
                 _petCamera.SetOrthoSize(_currentFOV);
-                if (this is Cat)
-                {
-                    _petLight.SetRadius(new Vector2(_currentFOV * _ratioFOVLightInner, _currentFOV * _ratioFOVLightOuter));
-                }
-                else
-                {
-                    _petLight.SetRadius(new Vector2(_currentFOV * _ratioFOVLightInner, _currentFOV * _ratioFOVLightOuter));
-                }
-
-                /*if (ChaseManager.Instance.ApplyChaseStatus)
-                {
-                    _cameraController.SetOrthoSize(_currentFOV);
-                    _light.pointLightOuterRadius = _currentFOV * 4;
-                }*/
+                _petLight.SetRadius(lightRadius);
             }
+        }
 
+        public virtual bool CanSprint()
+        {
+            return true; // Padrão: qualquer pet pode correr
+        }
+
+        public virtual bool CanCrouch()
+        {
+            return true; // Padrão: qualquer pet pode agachar
         }
 
         public PetTail GetTail()
         {
             return _petTail;
         }
-
 
         public Vector2 GetCenter()
         {
@@ -204,13 +194,15 @@ namespace Unrez.BackyardShowdown
 
         public virtual void SetFOV(float fov)
         {
+            if (!IsOwner) return;
+            _targetFOV = fov;
             SetFOVClientRpc(fov);
         }
 
         [ClientRpc]
-        private void SetFOVClientRpc(float fov)// security? why ClientRpc? A: Came from ChaseManager and its only server script ;)
+        private void SetFOVClientRpc(float fov)
         {
-            if (!IsOwner)
+            if (IsOwner)
             {
                 return;
             }
@@ -267,11 +259,7 @@ namespace Unrez.BackyardShowdown
 
         public virtual bool CanMove()
         {
-            if (_petHealth.IsTakingHit())
-            {
-                return false;
-            }
-            return true;
+            return !_petHealth.IsTakingHit();
         }
 
         public virtual void SetCrouchInput(bool pressing)
@@ -292,62 +280,12 @@ namespace Unrez.BackyardShowdown
         public virtual void ToggleMinimap()
         {
             _minimapEnabled = !_minimapEnabled;
-            if (_minimapEnabled)
+            if (_petMap != null)
             {
-                _petMap.Display(true);
-            }
-            else
-            {
-                _petMap.Display(false);
+                _petMap.Display(_minimapEnabled);
             }
         }
 
         public abstract void ProcessInteractInput(bool pressing);
-
-        #region Flip
-
-        public virtual void Flip(PetSide petSide)
-        {
-            FlipFinally(petSide);
-            FlipServerRpc(petSide);
-        }
-
-        [ServerRpc(RequireOwnership = false)]
-        public virtual void FlipServerRpc(PetSide petSide)
-        {
-            //Debug.Log($"<color=blue>FlipServerRpc by {name}</color>");
-            FlipClientRpc(petSide);
-        }
-
-        [ClientRpc]
-        public virtual void FlipClientRpc(PetSide petSide)
-        {
-            if (IsOwner)
-            {
-                return;
-            }
-            FlipFinally(petSide);
-        }
-
-        public virtual void FlipFinally(PetSide petSide)
-        {
-            switch (petSide)
-            {
-                case PetSide.West:
-                case PetSide.SouthWest:
-                case PetSide.NorthWest:
-                    _spriteRenderBody.flipX = true;
-                    break;
-                default:
-                case PetSide.East:
-                case PetSide.NorthEast:
-                case PetSide.SouthEast:
-                case PetSide.North:
-                case PetSide.South:
-                    _spriteRenderBody.flipX = false;
-                    break;
-            }
-        }
-        #endregion
     }
 }

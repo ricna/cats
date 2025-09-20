@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3113102540206626565}
   - component: {fileID: 5698381062905369433}
   - component: {fileID: 2160832692526638247}
-  - component: {fileID: 3246157958940841636}
   - component: {fileID: 6407681758990779862}
   - component: {fileID: 276870807812051063}
   - component: {fileID: 3430128125790000280}
@@ -23,6 +22,7 @@ GameObject:
   - component: {fileID: 452170149191694173}
   - component: {fileID: 5024310094305606197}
   - component: {fileID: -5177556667852182973}
+  - component: {fileID: 7266514911952377831}
   m_Layer: 6
   m_Name: Cat
   m_TagString: Untagged
@@ -92,7 +92,7 @@ SpriteRenderer:
   m_SortingLayerID: 1857558075
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7867681320421581043, guid: f2b07e62a8797b74b898bf648997fa67, type: 3}
+  m_Sprite: {fileID: 1498084413, guid: 812168e20685f8442b2368bef011aade, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -111,7 +111,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 846332329567583967}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 0dd99e866cd1e464c9297b2ab5a715d6, type: 2}
   m_CullingMode: 0
@@ -125,42 +125,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!58 &3246157958940841636
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 846332329567583967}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 1.2}
-  m_Radius: 1
 --- !u!50 &6407681758990779862
 Rigidbody2D:
   serializedVersion: 5
@@ -200,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 170000700
+  GlobalObjectIdHash: 4199737136
   InScenePlacedSourceGlobalObjectIdHash: 4199737136
   DeferredDespawnTick: 0
   Ownership: 1
@@ -309,6 +273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   <Profile>k__BackingField: {fileID: 0}
+  _collider: {fileID: 0}
   _petNetInfo:
     OwnerId: 0
     Name: 
@@ -317,7 +282,6 @@ MonoBehaviour:
     Speed: 0
   _spriteRenderBody: {fileID: 5698381062905369433}
   _transformParent: {fileID: 0}
-  _tailTransform: {fileID: 0}
   _tailOffset: 0
   _ratioFOVLightInner: 4
   _ratioFOVLightOuter: 8
@@ -342,9 +306,10 @@ MonoBehaviour:
   _transform: {fileID: 3113102540206626565}
   _rb: {fileID: 6407681758990779862}
   _animator: {fileID: 2160832692526638247}
+  _spriteRenderBody: {fileID: 5698381062905369433}
+  _rotationSpeed: 10
   _force: 0
   _petSide: 0
-  _lastPetSide: 0
   _isMoving: 0
   _inputCrouch: 0
   _isCrouched: 0
@@ -394,6 +359,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   _abilities: []
+--- !u!70 &7266514911952377831
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846332329567583967}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 2.5, y: 1}
+  m_Direction: 1
 --- !u!1 &4764023511070945727
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,7 +422,7 @@ Transform:
   m_GameObject: {fileID: 4764023511070945727}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.91, y: 2.78, z: 0.052999973}
+  m_LocalPosition: {x: -0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -438,6 +440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15da3d1642f7bc94ebdb1a1cc1320ffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _tailDistance: 1.5
 --- !u!1 &8682436550340605258
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,6 +536,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3113102540206626565}
     m_Modifications:
+    - target: {fileID: 2399263839186427782, guid: f993c17142eddb748be7cd1b41338bbe, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4095143722328331798, guid: f993c17142eddb748be7cd1b41338bbe, type: 3}
       propertyPath: ShapeModule.enabled
       value: 0
@@ -543,11 +550,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7282226186979117272, guid: f993c17142eddb748be7cd1b41338bbe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.91
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7282226186979117272, guid: f993c17142eddb748be7cd1b41338bbe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.78
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7282226186979117272, guid: f993c17142eddb748be7cd1b41338bbe, type: 3}
       propertyPath: m_LocalPosition.z

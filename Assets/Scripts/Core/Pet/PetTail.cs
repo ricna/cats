@@ -17,12 +17,12 @@ namespace Unrez.BackyardShowdown
         }
 
 
-
+        /*
         private void Update()
         {
             _auxPetDirection = _pet.GetCurrentDirection();
             _auxPetCenter = _pet.GetCenter();
             transform.position = new Vector2(_auxPetCenter.x - _auxPetDirection.x * _tailDistance, _auxPetCenter.y - _auxPetDirection.y * _tailDistance);
-        }
+        }*/
     }
 }
