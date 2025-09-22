@@ -16,7 +16,7 @@ namespace Unrez.BackyardShowdown
         [SerializeField]
         private NetworkVariable<bool> _isAvailable = new NetworkVariable<bool>();
         [SerializeField]
-        private Pet _petInteracting;
+        private Pawn _petInteracting;
         private Collider2D _collider;
         public event Action<bool, bool> OnInteracting;
 
@@ -33,7 +33,7 @@ namespace Unrez.BackyardShowdown
             SetIsAvailableServerRpc(true);
         }
 
-        public void Interact(Pet pet)
+        public void Interact(Pawn pet)
         {
             if (!IsOwner)
             {
@@ -44,7 +44,7 @@ namespace Unrez.BackyardShowdown
                 return;
             }
             _petInteracting = pet;
-            InteractServerRpc(pet is Cat);
+            InteractServerRpc(pet is Prey);
 
         }
 
@@ -73,7 +73,7 @@ namespace Unrez.BackyardShowdown
             }
             if (_petInteracting != null)
             {
-                OnInteracting?.Invoke(_petInteracting is Cat, false);
+                OnInteracting?.Invoke(_petInteracting is Prey, false);
                 _petInteracting = null;
                 SetIsAvailableServerRpc(true);
             }

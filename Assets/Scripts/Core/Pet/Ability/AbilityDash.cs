@@ -14,21 +14,21 @@ namespace Unrez.BackyardShowdown
         protected override void Prepare()
         {
             Debug.Log("Dash Prepared");
-            _spriteRenderBody = _pet.GetComponent<SpriteRenderer>();
+            _spriteRenderBody = _pawn.GetComponent<SpriteRenderer>();
         }
 
         protected override IEnumerator Executing()
         {
             Debug.Log("Dash - IEnumerator Executing();");
-            _spriteRenderBody.color = _pet.GetStatus().Color;
-            _pet.ApplyImpulse(_dashForce);
+            _spriteRenderBody.color = _pawn.GetStatus().Color;
+            _pawn.ApplyImpulse(_dashForce);
             yield return new WaitForSeconds(_abilityDuration);
             _isExecuting = false;
         }
 
         protected override void Ready()
         {
-            _spriteRenderBody.color = _pet.GetStatus().Color;
+            _spriteRenderBody.color = _pawn.GetStatus().Color;
         }
     }
 }

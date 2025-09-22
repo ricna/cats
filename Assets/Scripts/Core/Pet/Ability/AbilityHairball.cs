@@ -24,7 +24,7 @@ namespace Unrez.BackyardShowdown
 
         protected override IEnumerator Executing()
         {
-            Vector2 direction = _pet.GetCurrentDirection();
+            Vector2 direction = _pawn.GetCurrentDirection();
             _spawnHairball.position = new Vector2(_transform.position.x - direction.x * _spawnHairballOffset, _transform.position.y - direction.y * _spawnHairballOffset);
             InstantiateHairballServerRpc(_spawnHairball.position);
             yield return new WaitForSeconds(_abilityDuration);
@@ -40,7 +40,7 @@ namespace Unrez.BackyardShowdown
         {
             Hairball barrier = Instantiate(_prefabHairball, spawn, Quaternion.identity); 
             barrier.GetComponent<NetworkObject>().Spawn();
-            barrier.SetOwnerClientRpc(_pet.GetStatus().OwnerId, _pet.GetStatus().Color);
+            barrier.SetOwnerClientRpc(_pawn.GetStatus().OwnerId, _pawn.GetStatus().Color);
         }
     }
 }

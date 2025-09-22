@@ -48,7 +48,7 @@ namespace Unrez.BackyardShowdown
 
         private void ProcessCollision(Collider2D collider)
         {
-            if (collider.TryGetComponent(out Cat cat))
+            if (collider.TryGetComponent(out Prey cat))
             {
                 Ability dashAbility = cat.GetAbilityByType(typeof(AbilityDash));
                 if (dashAbility != null)

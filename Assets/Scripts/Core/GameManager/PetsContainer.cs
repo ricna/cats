@@ -4,7 +4,7 @@ namespace Unrez.BackyardShowdown
 {
     public class PetsContainer : Singleton<PetsContainer>
     {
-        public PetProfile[] Pets;
+        public PawnProfile[] Pets;
 
     }
 }

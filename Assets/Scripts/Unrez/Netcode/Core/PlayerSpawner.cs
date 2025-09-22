@@ -24,7 +24,7 @@ namespace Unrez.Networking
         [SerializeField]
         private Transform _transformParent;
 
-        public event Action<ulong, Pet> OnPlayerSpawn;
+        public event Action<ulong, Pawn> OnPlayerSpawn;
         public event Action<ulong> OnPlayerDespawn;
 
         public override void OnNetworkSpawn()
@@ -63,14 +63,14 @@ namespace Unrez.Networking
             if (dog)
             {
                 newPlayer = Instantiate(_prefabDog);
-                ChaseManager.Instance.SetDog(newPlayer.GetComponent<Dog>());
+                ChaseManager.Instance.SetDog(newPlayer.GetComponent<Hunter>());
             }
             else
             {
                 newPlayer = Instantiate(_prefabCat);
-                ChaseManager.Instance.AddCat(newPlayer.GetComponent<Cat>());
+                ChaseManager.Instance.AddCat(newPlayer.GetComponent<Prey>());
             }
-            OnPlayerSpawn?.Invoke(OwnerClientId, newPlayer.GetComponent<Pet>());
+            OnPlayerSpawn?.Invoke(OwnerClientId, newPlayer.GetComponent<Pawn>());
             newPlayer.transform.position = spawns[clientId].position;
             NetworkObject networkObject = newPlayer.GetComponent<NetworkObject>();
             newPlayer.SetActive(true);

@@ -3,7 +3,7 @@ namespace Unrez.BackyardShowdown
 {
     public interface IInteractable
     {
-        void Interact(Pet pet);
+        void Interact(Pawn pet);
         void Release();
     }
 }

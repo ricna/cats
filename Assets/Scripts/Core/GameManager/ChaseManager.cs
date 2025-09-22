@@ -17,8 +17,8 @@ namespace Unrez.BackyardShowdown
         [SerializeField]
         private Map _map;
 
-        public List<Cat> _cats;
-        public Dog _dog;
+        public List<Prey> _cats;
+        public Hunter _dog;
 
         private float _distance;
         private float _lastDistance;
@@ -67,7 +67,7 @@ namespace Unrez.BackyardShowdown
         public override void OnNetworkSpawn()
         {
             _playerSpawner.OnPlayerSpawn += OnPlayerSpawnHandler;
-            _cats = new List<Cat>();
+            _cats = new List<Prey>();
         }
 
         public override void OnNetworkDespawn()
@@ -75,9 +75,9 @@ namespace Unrez.BackyardShowdown
             base.OnNetworkDespawn();
         }
 
-        private void OnPlayerSpawnHandler(ulong ownerId, Pet pet)
+        private void OnPlayerSpawnHandler(ulong ownerId, Pawn pet)
         {
-            if (pet is Cat cat)
+            if (pet is Prey cat)
             {
                 Debug.Log($"OnPlayerSpawnHandler - OwnerId {ownerId} Cat{cat.name}");
             }
@@ -91,7 +91,7 @@ namespace Unrez.BackyardShowdown
         private void CheckPetStatus()
         {
             _distance = _lastDistance = float.MaxValue;
-            foreach (Cat cat in _cats)
+            foreach (Prey cat in _cats)
             {
                 _distance = Vector3.Distance(_dog.transform.position, cat.transform.position);
                 if (_distance < _lastDistance)
@@ -121,7 +121,7 @@ namespace Unrez.BackyardShowdown
                             Debug.DrawLine(cat.transform.position, _dog.transform.position, Color.magenta);
                             if (hit)
                             {
-                                if (hit.transform.GetComponent<Dog>() != null)
+                                if (hit.transform.GetComponent<Hunter>() != null)
                                 {
                                     Debug.Log("INCHASE");
                                     cat.SetFOV(12);
@@ -147,12 +147,12 @@ namespace Unrez.BackyardShowdown
         }
 
 
-        public void SetDog(Dog dog)
+        public void SetDog(Hunter dog)
         {
             Debug.Log($"SetDog");
             _dog = dog;
         }
-        public void AddCat(Cat cat)
+        public void AddCat(Prey cat)
         {
             Debug.Log($"AddCat");
             _cats.Add(cat);

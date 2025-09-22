@@ -129,10 +129,10 @@ TextureImporter:
       name: Ocean_0
       rect:
         serializedVersion: 2
-        x: 1282
-        y: 1150
-        width: 530
-        height: 203
+        x: 845
+        y: 1197
+        width: 300
+        height: 113
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,10 +151,10 @@ TextureImporter:
       name: Ocean_1
       rect:
         serializedVersion: 2
-        x: 1867
-        y: 1327
-        width: 187
-        height: 131
+        x: 1227
+        y: 1162
+        width: 246
+        height: 180
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,8 +163,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5c088ff0e023e6478a14366d70ae2fd
-      internalID: -1964394910
+      spriteID: 05030688f9db1004a98ed982087752c7
+      internalID: 167216005
       vertices: []
       indices: 
       edges: []
@@ -173,10 +173,10 @@ TextureImporter:
       name: Ocean_2
       rect:
         serializedVersion: 2
-        x: 2020
-        y: 1293
-        width: 220
-        height: 114
+        x: 1512
+        y: 1150
+        width: 300
+        height: 203
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -185,8 +185,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f03f9314563db224992726506b19ae2f
-      internalID: 1498084413
+      spriteID: 981ec8047f0735144857c23d29e8e23f
+      internalID: -1036334316
       vertices: []
       indices: 
       edges: []
@@ -207,14 +207,36 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b4caa6c3985b3c4b8dd7d13a9f75e43
-      internalID: -1987803072
+      spriteID: 6ec8423b7fed05d47a0533872685d79f
+      internalID: -650992808
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
       name: Ocean_4
+      rect:
+        serializedVersion: 2
+        x: 2020
+        y: 1293
+        width: 220
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcc0205c861e465418263053029abc09
+      internalID: -504411978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ocean_5
       rect:
         serializedVersion: 2
         x: 3543
@@ -229,19 +251,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bd17f2663eea8044b4d696251e2223c
-      internalID: -1405289297
+      spriteID: 92c6a187ad5086947bfe117fef8a830a
+      internalID: 1642789722
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ocean_5
+      name: Ocean_6
       rect:
         serializedVersion: 2
-        x: 1918
-        y: 1132
-        width: 6
+        x: 818
+        y: 1250
+        width: 5
         height: 5
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -251,14 +273,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66acc14aa836ed64cabdc5b258777055
-      internalID: -1443819235
+      spriteID: 2201ca751af5428408bbbae929d635f3
+      internalID: -2076899391
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ocean_6
+      name: Ocean_7
       rect:
         serializedVersion: 2
         x: 2373
@@ -273,30 +295,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0de2731ac7785d647ac3125fb3c6d059
-      internalID: 304575780
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ocean_7
-      rect:
-        serializedVersion: 2
-        x: 1911
-        y: 1126
-        width: 4
-        height: 5
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ba3d5c9aebd0048459797b5b6eee0ebb
-      internalID: 2097830734
+      spriteID: e6177c939b1d9aa40b3946065e4293d0
+      internalID: -1079790254
       vertices: []
       indices: 
       edges: []
@@ -317,8 +317,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 367a006e113ca224f921c0f6016f09c2
-      internalID: -1419003747
+      spriteID: ae17400ef23fab04b80a927d8e7b0e23
+      internalID: -1292668142
       vertices: []
       indices: 
       edges: []
@@ -338,14 +338,14 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       Ocean_0: -8210071984612457726
-      Ocean_1: -1964394910
-      Ocean_2: 1498084413
-      Ocean_3: -1987803072
-      Ocean_4: -1405289297
-      Ocean_5: -1443819235
-      Ocean_6: 304575780
-      Ocean_7: 2097830734
-      Ocean_8: -1419003747
+      Ocean_1: 167216005
+      Ocean_2: -1036334316
+      Ocean_3: -650992808
+      Ocean_4: -504411978
+      Ocean_5: 1642789722
+      Ocean_6: -2076899391
+      Ocean_7: -1079790254
+      Ocean_8: -1292668142
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

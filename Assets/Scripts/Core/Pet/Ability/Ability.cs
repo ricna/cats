@@ -7,7 +7,7 @@ namespace Unrez.BackyardShowdown
 {
     public abstract class Ability : NetworkBehaviour
     {
-        protected Pet _pet;
+        protected Pawn _pawn;
 
         [Header("Settings - Ability")]
         [SerializeField]
@@ -25,7 +25,7 @@ namespace Unrez.BackyardShowdown
 
         protected virtual void Awake()
         {
-            _pet = GetComponent<Pet>();
+            _pawn = GetComponent<Pawn>();
             Prepare();
         }
 
