@@ -106,13 +106,13 @@ namespace Unrez.BackyardShowdown
             Debug.Log($"OwnerClientId:{OwnerClientId}");
             PlayerSpawner playerSpawner = FindAnyObjectByType<PlayerSpawner>();
 
-            Profile = PetsContainer.Instance.Pets[OwnerClientId];
+            Profile = PawnsContainer.Instance.Pawns[OwnerClientId];
 
             if (playerSpawner.TestCatOnly)
             {
                 if (this is Prey && OwnerClientId == 0)
                 {
-                    Profile = PetsContainer.Instance.Pets[PetsContainer.Instance.Pets.Length - 1];
+                    Profile = PawnsContainer.Instance.Pawns[PawnsContainer.Instance.Pawns.Length - 1];
                 }
             }
             _pawnAbilities.Allocate(Profile.Abilities.Length);

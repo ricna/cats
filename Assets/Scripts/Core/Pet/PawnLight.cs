@@ -28,7 +28,7 @@ namespace Unrez.BackyardShowdown
                 _light.gameObject.transform.localPosition = _colliderOffset;
             }
 
-            _light.name = $"PetLight [{profile.name}]";
+            _light.name = $"PawnLight [{profile.name}]";
             _light.enabled = true;
 
             _light.lightType = profile.PetView.LightType;
