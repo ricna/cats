@@ -5,8 +5,8 @@ namespace Unrez.BackyardShowdown
     [CreateAssetMenu(fileName = "New PetProfile", menuName = "Unrez/Cats/Pet", order = 0)]
     public class PawnProfile : ScriptableObject
     {
-        public PawnType PetType;
-        public PawnViewProfile PetView;
+        public PawnType Type;
+        public PawnViewProfile View;
         public Color Color;
         public float Speed;
         public float SpeedSprint;

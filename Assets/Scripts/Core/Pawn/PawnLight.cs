@@ -31,16 +31,16 @@ namespace Unrez.BackyardShowdown
             _light.name = $"PawnLight [{profile.name}]";
             _light.enabled = true;
 
-            _light.lightType = profile.PetView.LightType;
-            _light.color = profile.PetView.LightColor;
-            _light.pointLightInnerRadius = profile.PetView.LightRadius.x;
-            _light.pointLightOuterRadius = profile.PetView.LightRadius.y;
-            _light.intensity = profile.PetView.LightIntensity;
-            _light.falloffIntensity = profile.PetView.LightFalloffStrenght;
-            _light.shadowsEnabled = profile.PetView.Shadows;
-            _light.shadowIntensity = profile.PetView.ShadowsStrenght;
-            _light.shadowSoftness = profile.PetView.ShadowsSoftness;
-            _light.shadowSoftnessFalloffIntensity = profile.PetView.ShadowsFalloffStrenght;
+            _light.lightType = profile.View.LightType;
+            _light.color = profile.View.LightColor;
+            _light.pointLightInnerRadius = profile.View.LightRadius.x;
+            _light.pointLightOuterRadius = profile.View.LightRadius.y;
+            _light.intensity = profile.View.LightIntensity;
+            _light.falloffIntensity = profile.View.LightFalloffStrenght;
+            _light.shadowsEnabled = profile.View.Shadows;
+            _light.shadowIntensity = profile.View.ShadowsStrenght;
+            _light.shadowSoftness = profile.View.ShadowsSoftness;
+            _light.shadowSoftnessFalloffIntensity = profile.View.ShadowsFalloffStrenght;
         }
         public void SetOuterRadius(float radius)
         {

@@ -141,7 +141,7 @@ namespace Unrez.BackyardShowdown
 
             _pawnCamera.SetupCamera(gameObject, gameObject);
             _pawnLight.SetUp(this, Profile, _colliderOffset);
-            _targetFOV = _currentFOV = Profile.PetView.OrthoSize;
+            _targetFOV = _currentFOV = Profile.View.OrthoSize;
             _pawnCamera.SetOrthoSize(_currentFOV);
         }
 
