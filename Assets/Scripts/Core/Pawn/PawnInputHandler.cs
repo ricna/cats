@@ -107,7 +107,7 @@ namespace Unrez.BackyardShowdown
             {
                 return;
             }
-            Debug.Log(pos.x + " " + pos.y);
+            //Debug.Log(pos.x + " " + pos.y);
             _pawn.SetMousePositionInput(pos);
         }
 

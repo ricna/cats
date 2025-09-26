@@ -25,48 +25,26 @@ namespace Unrez.BackyardShowdown
         [SerializeField]
         private float _maxRotationSpeed = 15f; // Velocidade de rotação em movimento máximo
 
-        // NOVO: Cabeçalho e variável para o controle do mouse
-        [Header("Mouse Movement")]
-        [Tooltip("If true, the pawn will move towards the mouse cursor on click.")]
-        [SerializeField]
-        private bool _followMouse = false;
-
         [Header("Debugs")]
         protected Vector2 _movementInput;
-        [SerializeField]
         protected float _force;
-        [SerializeField]
-        protected PawnSide _petSide;
-        [SerializeField]
         protected bool _isMoving;
-        [SerializeField]
         protected bool _inputCrouch = false;
-        [SerializeField]
         protected bool _isCrouched;
-        [SerializeField]
         protected bool _inputFollow = false;
-        [SerializeField]
         protected bool _isFollowingMouse;
-        [SerializeField]
         protected bool _inputSprint = false;
-        [SerializeField]
         protected bool _isSprinting;
         protected bool _isMovingVertical = false;
         protected bool _isMovingHorizontal = false;
-        [SerializeField]
         protected Vector2 _currentDirection;
+        private float _currentRotation;
         protected Vector2 _lastDirection;
 
-        // Variáveis de Rede Sincronizadas
-        private readonly NetworkVariable<PawnSide> _netPetSide = new NetworkVariable<PawnSide>(PawnSide.None);
         private readonly NetworkVariable<Vector2> _netDirection = new NetworkVariable<Vector2>(Vector2.zero);
         private readonly NetworkVariable<float> _netRotation = new NetworkVariable<float>(0);
 
-        // Propriedade pública para expor a variável de rede.
-        public NetworkVariable<Vector2> NetDirection => _netDirection;
-
         // Events
-        public event Action<Vector2> OnDirectionChangedEvent;
         public event Action<bool> OnSprintChangedEvent;
         public event Action<bool> OnCrouchChangedEvent;
 
@@ -82,7 +60,6 @@ namespace Unrez.BackyardShowdown
         public override void OnNetworkSpawn()
         {
             base.OnNetworkSpawn();
-            _netPetSide.OnValueChanged += OnPetSideChanged;
             _netDirection.OnValueChanged += OnDirectionChanged;
             _netRotation.OnValueChanged += OnRotationChanged;
         }
@@ -90,18 +67,8 @@ namespace Unrez.BackyardShowdown
         public override void OnNetworkDespawn()
         {
             base.OnNetworkDespawn();
-            _netPetSide.OnValueChanged -= OnPetSideChanged;
             _netDirection.OnValueChanged -= OnDirectionChanged;
             _netRotation.OnValueChanged -= OnRotationChanged;
-        }
-
-        private void OnPetSideChanged(PawnSide oldSide, PawnSide newSide)
-        {
-            if (!IsOwner)
-            {
-                _petSide = newSide;
-                Animate();
-            }
         }
 
 
@@ -109,10 +76,9 @@ namespace Unrez.BackyardShowdown
         {
             if (!IsOwner)
             {
-                _lastRotation = newRotation;
+                _currentRotation = newRotation;
             }
         }
-
 
         private void OnDirectionChanged(Vector2 oldDirection, Vector2 newDirection)
         {
@@ -126,26 +92,19 @@ namespace Unrez.BackyardShowdown
         {
             if (!IsOwner)
             {
-                UpdateSpriteRotation();
-                Animate();
+                //UpdateSpriteRotation();
+                //Animate();
                 return;
             }
             if (_pawn == null)
             {
                 return;
             }
-
-            // NOVO: Adiciona a chamada para o método que processa o input do mouse
-            if (_followMouse)
-            {
-                HandleMouseInput();
-            }
-
+            HandleMouseInput();
             ProcessLocalInputs();
             UpdateSpriteRotation();
             Animate();
-
-            UpdateNetworkStateServerRpc(_movementInput, _petSide, _lastRotation);
+            UpdateNetworkStateServerRpc(_movementInput, _currentRotation);
         }
 
         private Vector2 _currentMousePosition;
@@ -165,10 +124,9 @@ namespace Unrez.BackyardShowdown
         }
 
         [ServerRpc]
-        private void UpdateNetworkStateServerRpc(Vector2 movementInput, PawnSide petSide, float rotation)
+        private void UpdateNetworkStateServerRpc(Vector2 movementInput, float rotation)
         {
             _netDirection.Value = movementInput;
-            _netPetSide.Value = petSide;
             _netRotation.Value = rotation;
         }
 
@@ -195,10 +153,7 @@ namespace Unrez.BackyardShowdown
                 {
                     _lastDirection = _currentDirection;
                 }
-
-                UpdatePetSide();
                 _rb.AddForce(_force * _currentDirection, ForceMode2D.Force);
-                OnDirectionChangedEvent?.Invoke(_currentDirection);
             }
             else
             {
@@ -207,9 +162,7 @@ namespace Unrez.BackyardShowdown
                 {
                     _currentDirection = Vector2.zero;
                     _rb.linearDamping = _pawn.Profile.Deceleration;
-                    OnDirectionChangedEvent?.Invoke(_currentDirection);
                 }
-                _petSide = PawnSide.None;
             }
         }
 
@@ -259,45 +212,21 @@ namespace Unrez.BackyardShowdown
             }
         }
 
-        private void UpdatePetSide()
-        {
-            if (_isMovingVertical && Mathf.Abs(_movementInput.y) >= Mathf.Abs(_movementInput.x))
-            {
-                _petSide = _movementInput.y > 0 ? PawnSide.North : PawnSide.South;
-            }
-            else if (_isMovingHorizontal && Mathf.Abs(_movementInput.x) > Mathf.Abs(_movementInput.y))
-            {
-                _petSide = _movementInput.x > 0 ? PawnSide.East : PawnSide.West;
-            }
-
-            if (_isMovingVertical && _isMovingHorizontal)
-            {
-                if (_movementInput.x > 0 && _movementInput.y > 0) _petSide = PawnSide.NorthEast;
-                else if (_movementInput.x < 0 && _movementInput.y > 0) _petSide = PawnSide.NorthWest;
-                else if (_movementInput.x > 0 && _movementInput.y < 0) _petSide = PawnSide.SouthEast;
-                else if (_movementInput.x < 0 && _movementInput.y < 0) _petSide = PawnSide.SouthWest;
-            }
-        }
-
-        private float _lastRotation;
         private void UpdateSpriteRotation()
         {
-            if (!IsOwner)
+            /*if (!IsOwner)
             {
                 float currentRotationSpeed = _pawn.Profile.MaxRotationSpeed;
-                float angle = _lastRotation;
-
-                Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, _lastRotation));
+                float angle = _currentRotation;
+                Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, _currentRotation));
                 _spriteRenderBody.transform.rotation = Quaternion.Slerp(_spriteRenderBody.transform.rotation, targetRotation, currentRotationSpeed * Time.deltaTime);
+                //_spriteRenderBody.transform.rotation = Quaternion.Euler(new Vector3(0, 0, _lastRotation));
+
                 return;
-            }
+            }*/
 
             Vector2 directionToRotate;
-
-
             directionToRotate = _isMoving ? _movementInput : _lastDirection;
-
-
             if (directionToRotate != Vector2.zero)
             {
                 // 1. Pega a velocidade atual do Rigidbody.
@@ -312,7 +241,7 @@ namespace Unrez.BackyardShowdown
                 //currentRotationSpeed = _pawn.Profile.MaxRotationSpeed;
 
                 // 5. Calcula o ângulo e a rotação alvo, como antes.
-                float angle = _lastRotation = Mathf.Atan2(directionToRotate.y, directionToRotate.x) * Mathf.Rad2Deg;
+                float angle = _currentRotation = Mathf.Atan2(directionToRotate.y, directionToRotate.x) * Mathf.Rad2Deg;
                 Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
                 _spriteRenderBody.transform.rotation = Quaternion.Slerp(_spriteRenderBody.transform.rotation, targetRotation, currentRotationSpeed * Time.deltaTime);
             }
@@ -323,7 +252,6 @@ namespace Unrez.BackyardShowdown
             _animator.SetBool(AnimatorParameter.IS_MOVING, _isMoving);
             _animator.SetBool(AnimatorParameter.IS_CROUCHED, _isCrouched);
             _animator.SetBool(AnimatorParameter.IS_SPRINTING, _isSprinting);
-            _animator.SetFloat(AnimatorParameter.PET_SIDE, (int)_petSide);
         }
 
         public virtual void ApplyImpulse(float impulse, float newLinearDrag = -1, bool useNewDirection = false, float newDirX = 0, float newDirY = 0)
@@ -359,12 +287,7 @@ namespace Unrez.BackyardShowdown
             return _lastDirection;
         }
 
-        public PawnSide GetPetSide()
-        {
-            return _petSide;
-        }
-
-        public void SetMovementInput(Vector2 movementInput)
+         public void SetMovementInput(Vector2 movementInput)
         {
             _movementInput = movementInput;
         }

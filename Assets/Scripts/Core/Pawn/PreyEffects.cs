@@ -38,43 +38,6 @@ namespace Unrez.BackyardShowdown
             }
         }
 
-        private void LateUpdate()
-        {
-            if (!_motion.IsSprinting())
-            {
-                return;
-            }
-            float angle = 0;
-            switch (_motion.GetPetSide())
-            {
-                case PawnSide.North:
-                    angle = 0;
-                    break;
-                case PawnSide.NorthEast:
-                    angle = 180;
-                    break;
-                case PawnSide.East:
-                    angle = 90;
-                    break;
-                case PawnSide.SouthEast:
-                    angle = -90;
-                    break;
-                case PawnSide.South:
-                    angle = -90;
-                    break;
-                case PawnSide.SouthWest:
-                    angle = -90;
-                    break;
-                case PawnSide.West:
-                    angle = -90;
-                    break;
-                case PawnSide.NorthWest:
-                    angle = -90;
-                    break;
-            }
-            _psFootsteps.transform.rotation = Quaternion.Euler(0, 0, angle);
-        }
-
         [ServerRpc(RequireOwnership = false)]
         private void ToggleDustTrailServerRpc(bool enable)
         {

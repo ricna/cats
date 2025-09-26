@@ -275,7 +275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  NetworkTransformExpanded: 0
+  NetworkTransformExpanded: 1
   AutoOwnerAuthorityTickOffset: 1
   PositionInterpolationType: 0
   RotationInterpolationType: 0
@@ -294,7 +294,7 @@ MonoBehaviour:
   SyncPositionZ: 0
   SyncRotAngleX: 0
   SyncRotAngleY: 0
-  SyncRotAngleZ: 0
+  SyncRotAngleZ: 1
   SyncScaleX: 0
   SyncScaleY: 0
   SyncScaleZ: 0
@@ -394,17 +394,6 @@ MonoBehaviour:
   _spriteRenderBody: {fileID: 8060715614537492126}
   _minRotationSpeed: 2
   _maxRotationSpeed: 15
-  _followMouse: 1
-  _force: 0
-  _petSide: 0
-  _isMoving: 0
-  _inputCrouch: 0
-  _isCrouched: 0
-  _inputFollow: 0
-  _isFollowingMouse: 0
-  _inputSprint: 0
-  _isSprinting: 0
-  _currentDirection: {x: 0, y: 0}
   _segmentPrefab: {fileID: 8745719751128773022, guid: 61eb7ad2fcd78de41a06fbabf78c6e9d, type: 3}
   _numberOfSegments: 0
   _segmentSpacing: 1.4
