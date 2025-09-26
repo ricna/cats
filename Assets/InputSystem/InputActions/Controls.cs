@@ -116,6 +116,33 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Action01"",
+                    ""type"": ""Button"",
+                    ""id"": ""dff191c1-f804-4787-b184-05ed82635145"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Action02"",
+                    ""type"": ""Button"",
+                    ""id"": ""8c2765ed-4636-47c0-8444-d84c2a094c27"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MousePosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""f1b6d89b-7367-4476-96b1-78bccc7e49cb"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -371,6 +398,50 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""ToggleMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e8635ec2-86b2-4dec-8433-d269b55f4a25"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Action01"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""75ae86b8-f5c1-43fe-8d45-477b19bc7144"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Action02"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e4714051-38dc-42b9-b2f2-33a05d487609"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""38bcf6d6-f53c-4938-a01a-0346db1973b1"",
+                    ""path"": ""<Touchscreen>/primaryTouch/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -422,6 +493,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Cat_Ability04 = m_Cat.FindAction("Ability04", throwIfNotFound: true);
         m_Cat_Minimap = m_Cat.FindAction("Minimap", throwIfNotFound: true);
         m_Cat_ToggleMenu = m_Cat.FindAction("ToggleMenu", throwIfNotFound: true);
+        m_Cat_Action01 = m_Cat.FindAction("Action01", throwIfNotFound: true);
+        m_Cat_Action02 = m_Cat.FindAction("Action02", throwIfNotFound: true);
+        m_Cat_MousePosition = m_Cat.FindAction("MousePosition", throwIfNotFound: true);
     }
 
     ~@Controls()
@@ -498,6 +572,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Cat_Ability04;
     private readonly InputAction m_Cat_Minimap;
     private readonly InputAction m_Cat_ToggleMenu;
+    private readonly InputAction m_Cat_Action01;
+    private readonly InputAction m_Cat_Action02;
+    private readonly InputAction m_Cat_MousePosition;
     public struct CatActions
     {
         private @Controls m_Wrapper;
@@ -512,6 +589,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Ability04 => m_Wrapper.m_Cat_Ability04;
         public InputAction @Minimap => m_Wrapper.m_Cat_Minimap;
         public InputAction @ToggleMenu => m_Wrapper.m_Cat_ToggleMenu;
+        public InputAction @Action01 => m_Wrapper.m_Cat_Action01;
+        public InputAction @Action02 => m_Wrapper.m_Cat_Action02;
+        public InputAction @MousePosition => m_Wrapper.m_Cat_MousePosition;
         public InputActionMap Get() { return m_Wrapper.m_Cat; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -551,6 +631,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @ToggleMenu.started += instance.OnToggleMenu;
             @ToggleMenu.performed += instance.OnToggleMenu;
             @ToggleMenu.canceled += instance.OnToggleMenu;
+            @Action01.started += instance.OnAction01;
+            @Action01.performed += instance.OnAction01;
+            @Action01.canceled += instance.OnAction01;
+            @Action02.started += instance.OnAction02;
+            @Action02.performed += instance.OnAction02;
+            @Action02.canceled += instance.OnAction02;
+            @MousePosition.started += instance.OnMousePosition;
+            @MousePosition.performed += instance.OnMousePosition;
+            @MousePosition.canceled += instance.OnMousePosition;
         }
 
         private void UnregisterCallbacks(ICatActions instance)
@@ -585,6 +674,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @ToggleMenu.started -= instance.OnToggleMenu;
             @ToggleMenu.performed -= instance.OnToggleMenu;
             @ToggleMenu.canceled -= instance.OnToggleMenu;
+            @Action01.started -= instance.OnAction01;
+            @Action01.performed -= instance.OnAction01;
+            @Action01.canceled -= instance.OnAction01;
+            @Action02.started -= instance.OnAction02;
+            @Action02.performed -= instance.OnAction02;
+            @Action02.canceled -= instance.OnAction02;
+            @MousePosition.started -= instance.OnMousePosition;
+            @MousePosition.performed -= instance.OnMousePosition;
+            @MousePosition.canceled -= instance.OnMousePosition;
         }
 
         public void RemoveCallbacks(ICatActions instance)
@@ -641,5 +739,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnAbility04(InputAction.CallbackContext context);
         void OnMinimap(InputAction.CallbackContext context);
         void OnToggleMenu(InputAction.CallbackContext context);
+        void OnAction01(InputAction.CallbackContext context);
+        void OnAction02(InputAction.CallbackContext context);
+        void OnMousePosition(InputAction.CallbackContext context);
     }
 }

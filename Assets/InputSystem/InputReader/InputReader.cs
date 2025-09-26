@@ -17,6 +17,9 @@ namespace Unrez.BackyardShowdown
         public event Action<bool> OnInteractEvent;
         public event Action OnToggleMenuEvent;
         public event Action OnMinimapEvent;
+        public event Action<bool> OnFollowMouseEvent;
+        public event Action<Vector2> OnMousePositionEvent;
+
 
         private void OnEnable()
         {
@@ -116,6 +119,28 @@ namespace Unrez.BackyardShowdown
             {
                 OnToggleMenuEvent?.Invoke();
             }
+        }
+
+        public void OnMousePosition(InputAction.CallbackContext context)
+        {
+            OnMousePositionEvent?.Invoke(context.ReadValue<Vector2>());
+        }
+
+        public void OnAction01(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                OnFollowMouseEvent?.Invoke(true);
+            }
+            else if (context.canceled)
+            {
+                OnFollowMouseEvent?.Invoke(false);
+            }
+        }
+
+        public void OnAction02(InputAction.CallbackContext context)
+        {
+            throw new NotImplementedException();
         }
     }
 }

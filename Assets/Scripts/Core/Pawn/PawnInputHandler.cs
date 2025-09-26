@@ -33,6 +33,11 @@ namespace Unrez.BackyardShowdown
             _inputReader.OnAbilityEvent += OnAbilityHandler;
             _inputReader.OnInteractEvent += OnInteractHandler;
             _inputReader.OnMinimapEvent += OnMinimapHandler;
+            _inputReader.OnFollowMouseEvent += OnFollowMouseHandler;
+            _inputReader.OnMousePositionEvent += OnMousePosition;
+
+
+
         }
 
         public override void OnNetworkDespawn()
@@ -47,7 +52,10 @@ namespace Unrez.BackyardShowdown
             _inputReader.OnCrouchEvent -= OnCrouchHandler;
             _inputReader.OnAbilityEvent -= OnAbilityHandler;
             _inputReader.OnInteractEvent -= OnInteractHandler;
-            _inputReader.OnMinimapEvent += OnMinimapHandler;
+            _inputReader.OnMinimapEvent -= OnMinimapHandler;
+            _inputReader.OnFollowMouseEvent -= OnFollowMouseHandler;
+            _inputReader.OnMousePositionEvent -= OnMousePosition;
+
 
         }
 
@@ -81,6 +89,26 @@ namespace Unrez.BackyardShowdown
                 return;
             }
             _pawn.SetCrouchInput(pressing);
+        }
+
+        private void OnFollowMouseHandler(bool pressing)
+        {
+            if (!IsOwner)
+            {
+                return;
+            }
+            Debug.Log($"PressionMouse{pressing}");
+            _pawn.SetFollowMouseInput(pressing);
+        }
+
+        private void OnMousePosition(Vector2 pos)
+        {
+            if (!IsOwner)
+            {
+                return;
+            }
+            Debug.Log(pos.x + " " + pos.y);
+            _pawn.SetMousePositionInput(pos);
         }
 
         private void OnAbilityHandler(int abilityID)

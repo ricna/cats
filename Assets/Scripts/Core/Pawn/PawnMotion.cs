@@ -1,6 +1,7 @@
 ﻿using System;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Unrez.BackyardShowdown
 {
@@ -20,7 +21,15 @@ namespace Unrez.BackyardShowdown
 
         [Header("Sprite Rotation")]
         [SerializeField]
-        private float _rotationSpeed = 10f;
+        private float _minRotationSpeed = 2f; // Velocidade de rotação quando quase parado
+        [SerializeField]
+        private float _maxRotationSpeed = 15f; // Velocidade de rotação em movimento máximo
+
+        // NOVO: Cabeçalho e variável para o controle do mouse
+        [Header("Mouse Movement")]
+        [Tooltip("If true, the pawn will move towards the mouse cursor on click.")]
+        [SerializeField]
+        private bool _followMouse = false;
 
         [Header("Debugs")]
         protected Vector2 _movementInput;
@@ -35,6 +44,10 @@ namespace Unrez.BackyardShowdown
         [SerializeField]
         protected bool _isCrouched;
         [SerializeField]
+        protected bool _inputFollow = false;
+        [SerializeField]
+        protected bool _isFollowingMouse;
+        [SerializeField]
         protected bool _inputSprint = false;
         [SerializeField]
         protected bool _isSprinting;
@@ -47,6 +60,7 @@ namespace Unrez.BackyardShowdown
         // Variáveis de Rede Sincronizadas
         private readonly NetworkVariable<PawnSide> _netPetSide = new NetworkVariable<PawnSide>(PawnSide.None);
         private readonly NetworkVariable<Vector2> _netDirection = new NetworkVariable<Vector2>(Vector2.zero);
+        private readonly NetworkVariable<float> _netRotation = new NetworkVariable<float>(0);
 
         // Propriedade pública para expor a variável de rede.
         public NetworkVariable<Vector2> NetDirection => _netDirection;
@@ -70,6 +84,7 @@ namespace Unrez.BackyardShowdown
             base.OnNetworkSpawn();
             _netPetSide.OnValueChanged += OnPetSideChanged;
             _netDirection.OnValueChanged += OnDirectionChanged;
+            _netRotation.OnValueChanged += OnRotationChanged;
         }
 
         public override void OnNetworkDespawn()
@@ -77,6 +92,7 @@ namespace Unrez.BackyardShowdown
             base.OnNetworkDespawn();
             _netPetSide.OnValueChanged -= OnPetSideChanged;
             _netDirection.OnValueChanged -= OnDirectionChanged;
+            _netRotation.OnValueChanged -= OnRotationChanged;
         }
 
         private void OnPetSideChanged(PawnSide oldSide, PawnSide newSide)
@@ -87,6 +103,16 @@ namespace Unrez.BackyardShowdown
                 Animate();
             }
         }
+
+
+        private void OnRotationChanged(float oldRotation, float newRotation)
+        {
+            if (!IsOwner)
+            {
+                _lastRotation = newRotation;
+            }
+        }
+
 
         private void OnDirectionChanged(Vector2 oldDirection, Vector2 newDirection)
         {
@@ -109,18 +135,41 @@ namespace Unrez.BackyardShowdown
                 return;
             }
 
+            // NOVO: Adiciona a chamada para o método que processa o input do mouse
+            if (_followMouse)
+            {
+                HandleMouseInput();
+            }
+
             ProcessLocalInputs();
             UpdateSpriteRotation();
             Animate();
 
-            UpdateNetworkStateServerRpc(_movementInput, _petSide);
+            UpdateNetworkStateServerRpc(_movementInput, _petSide, _lastRotation);
+        }
+
+        private Vector2 _currentMousePosition;
+        private void HandleMouseInput()
+        {
+            if (_inputFollow)
+            {
+                Vector2 mouseScreenPos = _currentMousePosition;
+                Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPos);
+                Vector2 direction = (Vector2)mouseWorldPosition - (Vector2)_transform.position;
+                _movementInput = direction.normalized;
+            }
+            else
+            {
+                _movementInput = Vector2.zero;
+            }
         }
 
         [ServerRpc]
-        private void UpdateNetworkStateServerRpc(Vector2 movementInput, PawnSide petSide)
+        private void UpdateNetworkStateServerRpc(Vector2 movementInput, PawnSide petSide, float rotation)
         {
             _netDirection.Value = movementInput;
             _netPetSide.Value = petSide;
+            _netRotation.Value = rotation;
         }
 
         private void ProcessLocalInputs()
@@ -230,24 +279,42 @@ namespace Unrez.BackyardShowdown
             }
         }
 
+        private float _lastRotation;
         private void UpdateSpriteRotation()
         {
+            if (!IsOwner)
+            {
+                float currentRotationSpeed = _pawn.Profile.MaxRotationSpeed;
+                float angle = _lastRotation;
+
+                Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, _lastRotation));
+                _spriteRenderBody.transform.rotation = Quaternion.Slerp(_spriteRenderBody.transform.rotation, targetRotation, currentRotationSpeed * Time.deltaTime);
+                return;
+            }
+
             Vector2 directionToRotate;
 
-            if (IsOwner)
-            {
-                directionToRotate = _isMoving ? _movementInput : _lastDirection;
-            }
-            else
-            {
-                directionToRotate = _netDirection.Value;
-            }
+
+            directionToRotate = _isMoving ? _movementInput : _lastDirection;
+
 
             if (directionToRotate != Vector2.zero)
             {
-                float angle = Mathf.Atan2(directionToRotate.y, directionToRotate.x) * Mathf.Rad2Deg;
+                // 1. Pega a velocidade atual do Rigidbody.
+                float currentSpeed = _rb.linearVelocity.magnitude;
+                // 2. Define uma velocidade máxima de referência (usar a de sprint é uma boa ideia).
+                float maxSpeedReference = _pawn.Profile.SpeedSprint;
+                // 3. Calcula um fator de velocidade (um valor entre 0 e 1).
+                float speedFactor = Mathf.Clamp01(currentSpeed / maxSpeedReference);
+                // 4. Interpola a velocidade de rotação usando o fator de velocidade.
+                float currentRotationSpeed = Mathf.Lerp(_pawn.Profile.MinRotationSpeed, _pawn.Profile.MaxRotationSpeed, speedFactor);
+
+                //currentRotationSpeed = _pawn.Profile.MaxRotationSpeed;
+
+                // 5. Calcula o ângulo e a rotação alvo, como antes.
+                float angle = _lastRotation = Mathf.Atan2(directionToRotate.y, directionToRotate.x) * Mathf.Rad2Deg;
                 Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
-                _spriteRenderBody.transform.rotation = Quaternion.Slerp(_spriteRenderBody.transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
+                _spriteRenderBody.transform.rotation = Quaternion.Slerp(_spriteRenderBody.transform.rotation, targetRotation, currentRotationSpeed * Time.deltaTime);
             }
         }
 
@@ -318,6 +385,20 @@ namespace Unrez.BackyardShowdown
                 crouch = false;
             }
             _inputCrouch = crouch;
+        }
+
+        public virtual void SetFollowMouseInput(bool follow)
+        {
+            if (!_pawn.CanFollow())
+            {
+                follow = false;
+            }
+            _inputFollow = follow;
+        }
+
+        public virtual void SetMousePosition(Vector2 pos)
+        {
+            _currentMousePosition = pos;
         }
     }
 }

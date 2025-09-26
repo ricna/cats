@@ -19,5 +19,8 @@ namespace Unrez.BackyardShowdown
         public float HairballCooldown;
 
         public Ability[] Abilities;
+
+        public float MinRotationSpeed;
+        public float MaxRotationSpeed;
     }
 }

@@ -48,6 +48,8 @@ namespace Unrez.BackyardShowdown
         protected SpriteRenderer _spriteRenderBody;
         [SerializeField]
         private Transform _transformParent;
+        [SerializeField]
+        protected PawnInputHandler _inputHandler;
 
         [Header("Settings")]
         protected float _fovSpeed = 1;
@@ -184,6 +186,10 @@ namespace Unrez.BackyardShowdown
             return true; // Padrão: qualquer pet pode agachar
         }
 
+        public virtual bool CanFollow()
+        {
+            return true;
+        }
         public PawnTail GetTail()
         {
             return _pawnTail;
@@ -267,6 +273,16 @@ namespace Unrez.BackyardShowdown
         public virtual void SetCrouchInput(bool pressing)
         {
             _pawnMotion.SetCrouchInput(pressing);
+        }
+
+        public virtual void SetFollowMouseInput(bool pressing)
+        {
+            _pawnMotion.SetFollowMouseInput(pressing);
+        }
+
+        public virtual void SetMousePositionInput(Vector2 pos)
+        {
+            _pawnMotion.SetMousePosition(pos);
         }
 
         public virtual void SetSprintInput(bool pressing)

@@ -12,16 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b7ae03fe9754c74c84b1fe2c7031d87, type: 3}
   m_Name: Hunter
   m_EditorClassIdentifier: 
-  PetType: 1
-  PetView: {fileID: 11400000, guid: fe1bbb22948f4ec4ebbf579ed5fa8d00, type: 2}
+  Type: 0
+  View: {fileID: 11400000, guid: fe1bbb22948f4ec4ebbf579ed5fa8d00, type: 2}
   Color: {r: 1, g: 1, b: 1, a: 1}
-  Speed: 10
-  SpeedSprint: 20
+  Speed: 0
+  SpeedSprint: 22
   SpeedCrouch: 8
-  Acceleration: 5
-  Deceleration: 10
+  Acceleration: 1
+  Deceleration: 1
   DashForce: 30
   DashCooldown: 3
   DashDuration: 0.25
   HairballCooldown: 1
   Abilities: []
+  MinRotationSpeed: 0.01
+  MaxRotationSpeed: 10

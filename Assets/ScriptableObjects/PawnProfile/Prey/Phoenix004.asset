@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7ae03fe9754c74c84b1fe2c7031d87, type: 3}
+  m_Name: Phoenix004
+  m_EditorClassIdentifier: 
+  Type: 0
+  View: {fileID: 11400000, guid: 4b02c9384f6d3f84b8588332145158f0, type: 2}
+  Color: {r: 0, g: 1, b: 0.44981623, a: 1}
+  Speed: 10
+  SpeedSprint: 20
+  SpeedCrouch: 4
+  Acceleration: 5
+  Deceleration: 5
+  DashForce: 30
+  DashCooldown: 3
+  DashDuration: 0.25
+  HairballCooldown: 1
+  Abilities:
+  - {fileID: 1199748626020003285, guid: 2fe63e0e00cbf264591dea58496e68a5, type: 3}
+  - {fileID: -4546934776620563410, guid: 64a3863e279b2954fbe75e17803e7f19, type: 3}
+  MinRotationSpeed: 0.01
+  MaxRotationSpeed: 10
