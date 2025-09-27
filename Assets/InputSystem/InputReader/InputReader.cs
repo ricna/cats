@@ -6,7 +6,7 @@ using static Controls;
 namespace Unrez.BackyardShowdown
 {
     [CreateAssetMenu(fileName = "New Input Reader", menuName = "Unrez/Input Reader")]
-    public class InputReader : ScriptableObject, ICatActions
+    public class InputReader : ScriptableObject, IGameplayActions
     {
         private Controls controls;
 
@@ -26,9 +26,9 @@ namespace Unrez.BackyardShowdown
             if (controls == null)
             {
                 controls = new Controls();
-                controls.Cat.SetCallbacks(this);
+                controls.Gameplay.SetCallbacks(this);
             }
-            controls.Cat.Enable();
+            controls.Gameplay.Enable();
         }
 
         public void OnMove(InputAction.CallbackContext context)

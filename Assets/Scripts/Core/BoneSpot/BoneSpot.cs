@@ -1,7 +1,6 @@
 ﻿using System;
 using Unity.Netcode;
 using UnityEngine;
-using Unrez.Essential.Audio;
 
 namespace Unrez.BackyardShowdown
 {
@@ -109,7 +108,7 @@ namespace Unrez.BackyardShowdown
             {
                 return;
             }
-            AudioManager.Instance.Play(_audioSource, _audioClipDugUp);
+            AudioManager.Instance.PlaySFX(_audioClipDugUp);
             OnBoneSpotDugUp?.Invoke(this);
         }
 
@@ -153,11 +152,11 @@ namespace Unrez.BackyardShowdown
             if (catsAreDigging)
             {
                 _spriteRenderer.color = Color.red;
-                AudioManager.Instance.Play(_audioSource, _audioClipDigging, true, true);
+                AudioManager.Instance.PlaySFXLoop(_audioClipDigging);
             }
             else
             {
-                AudioManager.Instance.Stop(_audioSource);
+                AudioManager.Instance.StopSFXLoop(_audioSource);
                 _spriteRenderer.color = Color.white;
             }
         }
@@ -175,7 +174,7 @@ namespace Unrez.BackyardShowdown
         private void ReburyEffectsClientRpc()
         {
             Debug.Log($"ReburyEffects");
-            AudioManager.Instance.Play(_audioSource, _audioClipRebury, true);
+            AudioManager.Instance.PlaySFX(_audioClipRebury);
             _particleRebury.Play();
         }
 

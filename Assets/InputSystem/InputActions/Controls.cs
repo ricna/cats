@@ -24,7 +24,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     ""name"": ""Controls"",
     ""maps"": [
         {
-            ""name"": ""Cat"",
+            ""name"": ""Gameplay"",
             ""id"": ""e7f033d9-29f5-4209-b8de-7593c29fdb15"",
             ""actions"": [
                 {
@@ -444,6 +444,162 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""UI"",
+            ""id"": ""53b967d5-dfd8-43f9-810b-8b8168d31ef2"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""1fb89f92-85a9-43fb-849e-967ec1c52b8e"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Back"",
+                    ""type"": ""Button"",
+                    ""id"": ""83126152-5229-4b1f-9a25-ed71531fc186"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Submit"",
+                    ""type"": ""Button"",
+                    ""id"": ""f33f5186-c659-4eec-992a-9b1bd1af08c8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""2aea389c-a843-4323-a8b2-7decf672aa59"",
+                    ""path"": ""<Keyboard>/{Cancel}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""206e6898-c3c0-4852-be5a-260752d0cb0b"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""c4a7f727-095e-4ba4-919b-b5e30e2faf2d"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""7c7688ed-6c87-44e2-be3f-516b98b18edf"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""07e8ba1f-824f-440d-8de3-742b8a08d7c9"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""3eb26716-8418-4483-ad1c-d7b82d2edfe0"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""91024105-3693-421b-928e-5a94fe54ba6b"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ce6924e9-321e-438e-96f2-bdaae252108b"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cf2e8eb2-1d5c-468e-bcd3-c5180217d318"",
+                    ""path"": ""<Gamepad>/dpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e8267623-0fc5-4dd3-9eb3-60e8b245b79d"",
+                    ""path"": ""<Keyboard>/{Submit}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Submit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6800e4b0-2871-4c45-b2c6-b04a4bb1ae8a"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Submit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -481,26 +637,32 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         }
     ]
 }");
-        // Cat
-        m_Cat = asset.FindActionMap("Cat", throwIfNotFound: true);
-        m_Cat_Move = m_Cat.FindAction("Move", throwIfNotFound: true);
-        m_Cat_Interact = m_Cat.FindAction("Interact", throwIfNotFound: true);
-        m_Cat_Sprint = m_Cat.FindAction("Sprint", throwIfNotFound: true);
-        m_Cat_Crouch = m_Cat.FindAction("Crouch", throwIfNotFound: true);
-        m_Cat_Ability01 = m_Cat.FindAction("Ability01", throwIfNotFound: true);
-        m_Cat_Ability02 = m_Cat.FindAction("Ability02", throwIfNotFound: true);
-        m_Cat_Ability03 = m_Cat.FindAction("Ability03", throwIfNotFound: true);
-        m_Cat_Ability04 = m_Cat.FindAction("Ability04", throwIfNotFound: true);
-        m_Cat_Minimap = m_Cat.FindAction("Minimap", throwIfNotFound: true);
-        m_Cat_ToggleMenu = m_Cat.FindAction("ToggleMenu", throwIfNotFound: true);
-        m_Cat_Action01 = m_Cat.FindAction("Action01", throwIfNotFound: true);
-        m_Cat_Action02 = m_Cat.FindAction("Action02", throwIfNotFound: true);
-        m_Cat_MousePosition = m_Cat.FindAction("MousePosition", throwIfNotFound: true);
+        // Gameplay
+        m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
+        m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
+        m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
+        m_Gameplay_Sprint = m_Gameplay.FindAction("Sprint", throwIfNotFound: true);
+        m_Gameplay_Crouch = m_Gameplay.FindAction("Crouch", throwIfNotFound: true);
+        m_Gameplay_Ability01 = m_Gameplay.FindAction("Ability01", throwIfNotFound: true);
+        m_Gameplay_Ability02 = m_Gameplay.FindAction("Ability02", throwIfNotFound: true);
+        m_Gameplay_Ability03 = m_Gameplay.FindAction("Ability03", throwIfNotFound: true);
+        m_Gameplay_Ability04 = m_Gameplay.FindAction("Ability04", throwIfNotFound: true);
+        m_Gameplay_Minimap = m_Gameplay.FindAction("Minimap", throwIfNotFound: true);
+        m_Gameplay_ToggleMenu = m_Gameplay.FindAction("ToggleMenu", throwIfNotFound: true);
+        m_Gameplay_Action01 = m_Gameplay.FindAction("Action01", throwIfNotFound: true);
+        m_Gameplay_Action02 = m_Gameplay.FindAction("Action02", throwIfNotFound: true);
+        m_Gameplay_MousePosition = m_Gameplay.FindAction("MousePosition", throwIfNotFound: true);
+        // UI
+        m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
+        m_UI_Move = m_UI.FindAction("Move", throwIfNotFound: true);
+        m_UI_Back = m_UI.FindAction("Back", throwIfNotFound: true);
+        m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
     }
 
     ~@Controls()
     {
-        UnityEngine.Debug.Assert(!m_Cat.enabled, "This will cause a leak and performance issues, Controls.Cat.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Gameplay.enabled, "This will cause a leak and performance issues, Controls.Gameplay.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, Controls.UI.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -559,48 +721,48 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Cat
-    private readonly InputActionMap m_Cat;
-    private List<ICatActions> m_CatActionsCallbackInterfaces = new List<ICatActions>();
-    private readonly InputAction m_Cat_Move;
-    private readonly InputAction m_Cat_Interact;
-    private readonly InputAction m_Cat_Sprint;
-    private readonly InputAction m_Cat_Crouch;
-    private readonly InputAction m_Cat_Ability01;
-    private readonly InputAction m_Cat_Ability02;
-    private readonly InputAction m_Cat_Ability03;
-    private readonly InputAction m_Cat_Ability04;
-    private readonly InputAction m_Cat_Minimap;
-    private readonly InputAction m_Cat_ToggleMenu;
-    private readonly InputAction m_Cat_Action01;
-    private readonly InputAction m_Cat_Action02;
-    private readonly InputAction m_Cat_MousePosition;
-    public struct CatActions
+    // Gameplay
+    private readonly InputActionMap m_Gameplay;
+    private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
+    private readonly InputAction m_Gameplay_Move;
+    private readonly InputAction m_Gameplay_Interact;
+    private readonly InputAction m_Gameplay_Sprint;
+    private readonly InputAction m_Gameplay_Crouch;
+    private readonly InputAction m_Gameplay_Ability01;
+    private readonly InputAction m_Gameplay_Ability02;
+    private readonly InputAction m_Gameplay_Ability03;
+    private readonly InputAction m_Gameplay_Ability04;
+    private readonly InputAction m_Gameplay_Minimap;
+    private readonly InputAction m_Gameplay_ToggleMenu;
+    private readonly InputAction m_Gameplay_Action01;
+    private readonly InputAction m_Gameplay_Action02;
+    private readonly InputAction m_Gameplay_MousePosition;
+    public struct GameplayActions
     {
         private @Controls m_Wrapper;
-        public CatActions(@Controls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_Cat_Move;
-        public InputAction @Interact => m_Wrapper.m_Cat_Interact;
-        public InputAction @Sprint => m_Wrapper.m_Cat_Sprint;
-        public InputAction @Crouch => m_Wrapper.m_Cat_Crouch;
-        public InputAction @Ability01 => m_Wrapper.m_Cat_Ability01;
-        public InputAction @Ability02 => m_Wrapper.m_Cat_Ability02;
-        public InputAction @Ability03 => m_Wrapper.m_Cat_Ability03;
-        public InputAction @Ability04 => m_Wrapper.m_Cat_Ability04;
-        public InputAction @Minimap => m_Wrapper.m_Cat_Minimap;
-        public InputAction @ToggleMenu => m_Wrapper.m_Cat_ToggleMenu;
-        public InputAction @Action01 => m_Wrapper.m_Cat_Action01;
-        public InputAction @Action02 => m_Wrapper.m_Cat_Action02;
-        public InputAction @MousePosition => m_Wrapper.m_Cat_MousePosition;
-        public InputActionMap Get() { return m_Wrapper.m_Cat; }
+        public GameplayActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_Gameplay_Move;
+        public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
+        public InputAction @Sprint => m_Wrapper.m_Gameplay_Sprint;
+        public InputAction @Crouch => m_Wrapper.m_Gameplay_Crouch;
+        public InputAction @Ability01 => m_Wrapper.m_Gameplay_Ability01;
+        public InputAction @Ability02 => m_Wrapper.m_Gameplay_Ability02;
+        public InputAction @Ability03 => m_Wrapper.m_Gameplay_Ability03;
+        public InputAction @Ability04 => m_Wrapper.m_Gameplay_Ability04;
+        public InputAction @Minimap => m_Wrapper.m_Gameplay_Minimap;
+        public InputAction @ToggleMenu => m_Wrapper.m_Gameplay_ToggleMenu;
+        public InputAction @Action01 => m_Wrapper.m_Gameplay_Action01;
+        public InputAction @Action02 => m_Wrapper.m_Gameplay_Action02;
+        public InputAction @MousePosition => m_Wrapper.m_Gameplay_MousePosition;
+        public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(CatActions set) { return set.Get(); }
-        public void AddCallbacks(ICatActions instance)
+        public static implicit operator InputActionMap(GameplayActions set) { return set.Get(); }
+        public void AddCallbacks(IGameplayActions instance)
         {
-            if (instance == null || m_Wrapper.m_CatActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_CatActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_GameplayActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_GameplayActionsCallbackInterfaces.Add(instance);
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
@@ -642,7 +804,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @MousePosition.canceled += instance.OnMousePosition;
         }
 
-        private void UnregisterCallbacks(ICatActions instance)
+        private void UnregisterCallbacks(IGameplayActions instance)
         {
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
@@ -685,21 +847,83 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @MousePosition.canceled -= instance.OnMousePosition;
         }
 
-        public void RemoveCallbacks(ICatActions instance)
+        public void RemoveCallbacks(IGameplayActions instance)
         {
-            if (m_Wrapper.m_CatActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_GameplayActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(ICatActions instance)
+        public void SetCallbacks(IGameplayActions instance)
         {
-            foreach (var item in m_Wrapper.m_CatActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_GameplayActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_CatActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_GameplayActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public CatActions @Cat => new CatActions(this);
+    public GameplayActions @Gameplay => new GameplayActions(this);
+
+    // UI
+    private readonly InputActionMap m_UI;
+    private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
+    private readonly InputAction m_UI_Move;
+    private readonly InputAction m_UI_Back;
+    private readonly InputAction m_UI_Submit;
+    public struct UIActions
+    {
+        private @Controls m_Wrapper;
+        public UIActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_UI_Move;
+        public InputAction @Back => m_Wrapper.m_UI_Back;
+        public InputAction @Submit => m_Wrapper.m_UI_Submit;
+        public InputActionMap Get() { return m_Wrapper.m_UI; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
+        public void AddCallbacks(IUIActions instance)
+        {
+            if (instance == null || m_Wrapper.m_UIActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_UIActionsCallbackInterfaces.Add(instance);
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+            @Back.started += instance.OnBack;
+            @Back.performed += instance.OnBack;
+            @Back.canceled += instance.OnBack;
+            @Submit.started += instance.OnSubmit;
+            @Submit.performed += instance.OnSubmit;
+            @Submit.canceled += instance.OnSubmit;
+        }
+
+        private void UnregisterCallbacks(IUIActions instance)
+        {
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+            @Back.started -= instance.OnBack;
+            @Back.performed -= instance.OnBack;
+            @Back.canceled -= instance.OnBack;
+            @Submit.started -= instance.OnSubmit;
+            @Submit.performed -= instance.OnSubmit;
+            @Submit.canceled -= instance.OnSubmit;
+        }
+
+        public void RemoveCallbacks(IUIActions instance)
+        {
+            if (m_Wrapper.m_UIActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IUIActions instance)
+        {
+            foreach (var item in m_Wrapper.m_UIActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_UIActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public UIActions @UI => new UIActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -727,7 +951,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_PhoneSchemeIndex];
         }
     }
-    public interface ICatActions
+    public interface IGameplayActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
@@ -742,5 +966,11 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnAction01(InputAction.CallbackContext context);
         void OnAction02(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
+    }
+    public interface IUIActions
+    {
+        void OnMove(InputAction.CallbackContext context);
+        void OnBack(InputAction.CallbackContext context);
+        void OnSubmit(InputAction.CallbackContext context);
     }
 }

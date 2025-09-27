@@ -1,8 +1,10 @@
-using Unity.Netcode;
 using UnityEngine;
 
 namespace Unrez.Essential
 {
+    /// <summary>
+    /// Singleton de Acesso Preguiçoso e Auto-Criação.
+    /// </summary>
     public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         private static bool _shuttingDown = false;
@@ -15,36 +17,46 @@ namespace Unrez.Essential
             {
                 if (_shuttingDown)
                 {
-                    Debug.LogAssertion($"[Singleton] Instance ' {typeof(T)} already destroyed. Returning null.");
+                    Debug.LogWarning($"[Singleton] Acesso à instância '{typeof(T).Name}' após o desligamento. Retornando null.");
                     return null;
                 }
+
                 lock (_lock)
                 {
                     if (_instance == null)
                     {
                         _instance = (T)FindAnyObjectByType(typeof(T));
+
                         if (_instance == null)
                         {
                             GameObject singletonObject = new GameObject();
                             _instance = singletonObject.AddComponent<T>();
-                            singletonObject.name = typeof(T).ToString() + "_SingletonInstance";
-                            DontDestroyOnLoad(singletonObject);
-                        }
-                        else
-                        {
-                            DontDestroyOnLoad(_instance.gameObject);
+                            singletonObject.name = typeof(T).Name + "_SingletonInstance";
                         }
 
+                        // Garante a persistência do objeto
+                        DontDestroyOnLoad(_instance.gameObject);
                     }
                     return _instance;
                 }
             }
         }
-        private void OnApplicationQuit()
+
+        // Protege contra duplicação
+        protected virtual void Awake()
+        {
+            if (Instance != this)
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        protected virtual void OnApplicationQuit()
         {
             _shuttingDown = true;
         }
-        private void OnDestroy()
+
+        protected virtual void OnDestroy()
         {
             _shuttingDown = true;
         }

@@ -26,18 +26,26 @@ namespace Unrez.BackyardShowdown
         private float _maxRotationSpeed = 15f; // Velocidade de rotação em movimento máximo
 
         [Header("Debugs")]
+        [SerializeField]
         protected Vector2 _movementInput;
         protected float _force;
+        [SerializeField] 
         protected bool _isMoving;
         protected bool _inputCrouch = false;
+        [SerializeField] 
         protected bool _isCrouched;
+        [SerializeField] 
         protected bool _inputFollow = false;
         protected bool _isFollowingMouse;
         protected bool _inputSprint = false;
+        [SerializeField]
         protected bool _isSprinting;
         protected bool _isMovingVertical = false;
         protected bool _isMovingHorizontal = false;
+
+        [SerializeField] 
         protected Vector2 _currentDirection;
+        [SerializeField] 
         private float _currentRotation;
         protected Vector2 _lastDirection;
 
